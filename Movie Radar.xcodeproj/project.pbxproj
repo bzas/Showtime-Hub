@@ -14,6 +14,7 @@
 		483BBC902BD7DA0C002453C9 /* Movie_RadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BBC8F2BD7DA0C002453C9 /* Movie_RadarTests.swift */; };
 		483BBC9A2BD7DA0D002453C9 /* Movie_RadarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BBC992BD7DA0D002453C9 /* Movie_RadarUITests.swift */; };
 		483BBC9C2BD7DA0D002453C9 /* Movie_RadarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BBC9B2BD7DA0D002453C9 /* Movie_RadarUITestsLaunchTests.swift */; };
+		B5169DF32BD7DFAA001E60E2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B5169DF22BD7DFAA001E60E2 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		483BBC952BD7DA0D002453C9 /* Movie RadarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Movie RadarUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		483BBC992BD7DA0D002453C9 /* Movie_RadarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_RadarUITests.swift; sourceTree = "<group>"; };
 		483BBC9B2BD7DA0D002453C9 /* Movie_RadarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_RadarUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B5169DF22BD7DFAA001E60E2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +97,10 @@
 			isa = PBXGroup;
 			children = (
 				483BBC7E2BD7DA0B002453C9 /* Movie_RadarApp.swift */,
-				483BBC802BD7DA0B002453C9 /* ContentView.swift */,
-				483BBC822BD7DA0C002453C9 /* Assets.xcassets */,
+				B5169DF12BD7DF79001E60E2 /* Common */,
+				B5169DEF2BD7DF54001E60E2 /* Modules */,
+				B5169DF42BD7E01E001E60E2 /* Services */,
+				B5169DF02BD7DF5C001E60E2 /* Resources */,
 				483BBC842BD7DA0C002453C9 /* Preview Content */,
 			);
 			path = "Movie Radar";
@@ -125,6 +129,69 @@
 				483BBC9B2BD7DA0D002453C9 /* Movie_RadarUITestsLaunchTests.swift */,
 			);
 			path = "Movie RadarUITests";
+			sourceTree = "<group>";
+		};
+		B5169DEF2BD7DF54001E60E2 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				483BBC802BD7DA0B002453C9 /* ContentView.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		B5169DF02BD7DF5C001E60E2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B5169DF22BD7DFAA001E60E2 /* Localizable.xcstrings */,
+				483BBC822BD7DA0C002453C9 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B5169DF12BD7DF79001E60E2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B5169DF42BD7E01E001E60E2 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B5169DF52BD7E056001E60E2 /* Network */,
+				B5169DF62BD7E05F001E60E2 /* SwiftData */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B5169DF52BD7E056001E60E2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B5169DF82BD7E091001E60E2 /* Models */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B5169DF62BD7E05F001E60E2 /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				B5169DF92BD7E2C8001E60E2 /* Models */,
+			);
+			path = SwiftData;
+			sourceTree = "<group>";
+		};
+		B5169DF82BD7E091001E60E2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		B5169DF92BD7E2C8001E60E2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +280,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 483BBC722BD7DA0B002453C9;
 			productRefGroup = 483BBC7C2BD7DA0B002453C9 /* Products */;
@@ -233,6 +301,7 @@
 			files = (
 				483BBC862BD7DA0C002453C9 /* Preview Assets.xcassets in Resources */,
 				483BBC832BD7DA0C002453C9 /* Assets.xcassets in Resources */,
+				B5169DF32BD7DFAA001E60E2 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
