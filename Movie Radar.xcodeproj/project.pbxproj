@@ -14,6 +14,10 @@
 		483BBC902BD7DA0C002453C9 /* Movie_RadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BBC8F2BD7DA0C002453C9 /* Movie_RadarTests.swift */; };
 		483BBC9A2BD7DA0D002453C9 /* Movie_RadarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BBC992BD7DA0D002453C9 /* Movie_RadarUITests.swift */; };
 		483BBC9C2BD7DA0D002453C9 /* Movie_RadarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483BBC9B2BD7DA0D002453C9 /* Movie_RadarUITestsLaunchTests.swift */; };
+		485FD2532BD7F6D900238336 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485FD2522BD7F6D900238336 /* MovieList.swift */; };
+		485FD2552BD7F6FD00238336 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485FD2542BD7F6FD00238336 /* Movie.swift */; };
+		485FD2592BD7F86800238336 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485FD2582BD7F86800238336 /* APIService.swift */; };
+		485FD25B2BD7FCD800238336 /* PathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485FD25A2BD7FCD800238336 /* PathBuilder.swift */; };
 		B5169DF32BD7DFAA001E60E2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B5169DF22BD7DFAA001E60E2 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +49,10 @@
 		483BBC952BD7DA0D002453C9 /* Movie RadarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Movie RadarUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		483BBC992BD7DA0D002453C9 /* Movie_RadarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_RadarUITests.swift; sourceTree = "<group>"; };
 		483BBC9B2BD7DA0D002453C9 /* Movie_RadarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_RadarUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		485FD2522BD7F6D900238336 /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
+		485FD2542BD7F6FD00238336 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		485FD2582BD7F86800238336 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		485FD25A2BD7FCD800238336 /* PathBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathBuilder.swift; sourceTree = "<group>"; };
 		B5169DF22BD7DFAA001E60E2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +139,15 @@
 			path = "Movie RadarUITests";
 			sourceTree = "<group>";
 		};
+		485FD2512BD7F6CD00238336 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				485FD2582BD7F86800238336 /* APIService.swift */,
+				485FD25A2BD7FCD800238336 /* PathBuilder.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
 		B5169DEF2BD7DF54001E60E2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +184,7 @@
 		B5169DF52BD7E056001E60E2 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				485FD2512BD7F6CD00238336 /* Requests */,
 				B5169DF82BD7E091001E60E2 /* Models */,
 			);
 			path = Network;
@@ -183,6 +201,8 @@
 		B5169DF82BD7E091001E60E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				485FD2522BD7F6D900238336 /* MovieList.swift */,
+				485FD2542BD7F6FD00238336 /* Movie.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -326,7 +346,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				485FD2532BD7F6D900238336 /* MovieList.swift in Sources */,
+				485FD25B2BD7FCD800238336 /* PathBuilder.swift in Sources */,
+				485FD2592BD7F86800238336 /* APIService.swift in Sources */,
 				483BBC812BD7DA0B002453C9 /* ContentView.swift in Sources */,
+				485FD2552BD7F6FD00238336 /* Movie.swift in Sources */,
 				483BBC7F2BD7DA0B002453C9 /* Movie_RadarApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

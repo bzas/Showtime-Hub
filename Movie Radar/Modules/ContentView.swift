@@ -9,13 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Button(action: {
+            getMovies()
+        }, label: {
+            Text("Button")
+        })
+    }
+    
+    func getMovies() {
+        Task {
+            if let movieList = try await APIService().getPopularMovies() {
+                movieList.results
+                    .compactMap { $0.title }
+                    .forEach { movie in
+                        print(movie)
+                    }
+            }
         }
-        .padding()
     }
 }
 
