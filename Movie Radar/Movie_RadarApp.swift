@@ -11,7 +11,7 @@ import SwiftUI
 struct Movie_RadarApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
         }
     }
 }

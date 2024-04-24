@@ -1,7 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Button" : {
+    "Favorites" : {
+
+    },
+    "Home" : {
+
+    },
+    "Movie detail" : {
+
+    },
+    "Settings" : {
 
     }
   },

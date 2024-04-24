@@ -15,17 +15,6 @@ struct PathBuilder {
         value: "9a6438f6c6ac059b769cbf8f5e4a2b9c"
     )
     
-    enum Path: String {
-        case popular = "/movie/popular",
-             search = "/search/movie",
-             image = "/t/p/w220_and_h330_face",
-             wideImage = "/t/p/w500"
-        
-        var isImage: Bool {
-            self == .image || self == .wideImage
-        }
-    }
-    
     static func request(_ path: Path, queryItems: [URLQueryItem] = []) -> URLRequest? {
         var urlString = ""
         
