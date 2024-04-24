@@ -13,11 +13,11 @@ struct MovieList: Codable {
     let totalPages: Int
 
     enum CodingKeys: String, CodingKey {
-        case page, 
+        case page,
              results,
              totalPages = "total_pages"
     }
-    
+
     init() {
         page = 0
         results = []

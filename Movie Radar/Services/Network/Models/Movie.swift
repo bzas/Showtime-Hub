@@ -15,7 +15,7 @@ struct Movie: Codable {
     let popularity: Double?
     let overview: String?
     let releaseDate: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case id,
              title,

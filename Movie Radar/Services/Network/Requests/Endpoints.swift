@@ -33,7 +33,7 @@ extension APIService {
     func searchMovies(queryString: String, page: Int = 1) async throws -> MovieList? {
         let queryItems = [
             URLQueryItem(name: "page", value: String(page)),
-            URLQueryItem(name: "query", value: queryString),
+            URLQueryItem(name: "query", value: queryString)
         ]
 
         guard let request = PathBuilder.request(.search, queryItems: queryItems) else {

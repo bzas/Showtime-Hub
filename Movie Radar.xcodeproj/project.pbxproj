@@ -295,6 +295,7 @@
 			buildConfigurationList = 483BBC9F2BD7DA0D002453C9 /* Build configuration list for PBXNativeTarget "Movie Radar" */;
 			buildPhases = (
 				483BBC772BD7DA0B002453C9 /* Sources */,
+				486292222BD957050036F500 /* SwiftLint */,
 				483BBC782BD7DA0B002453C9 /* Frameworks */,
 				483BBC792BD7DA0B002453C9 /* Resources */,
 			);
@@ -413,6 +414,29 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		486292222BD957050036F500 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint --fix && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		483BBC772BD7DA0B002453C9 /* Sources */ = {
@@ -601,6 +625,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Movie Radar/Preview Content\"";
 				DEVELOPMENT_TEAM = 3BFY9G26SK;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -630,6 +655,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Movie Radar/Preview Content\"";
 				DEVELOPMENT_TEAM = 3BFY9G26SK;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
