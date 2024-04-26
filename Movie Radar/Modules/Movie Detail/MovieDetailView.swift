@@ -12,6 +12,7 @@ struct MovieDetailView: View {
 
     var body: some View {
         Text("Movie detail")
+            .presentationDetents([.medium, .large])
     }
 }
 

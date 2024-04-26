@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Movie: Codable {
+struct Movie: Codable, Hashable {
     let backdropPath: String?
     let id: Int?
     let title: String?
@@ -25,4 +25,5 @@ struct Movie: Codable {
              voteAverage = "vote_average",
              releaseDate = "release_date"
     }
+
 }

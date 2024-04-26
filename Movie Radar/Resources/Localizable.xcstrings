@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Button" : {
+
+    },
     "Favorites" : {
 
     },
@@ -8,6 +11,9 @@
 
     },
     "Movie detail" : {
+
+    },
+    "Popular movies" : {
 
     },
     "Settings" : {

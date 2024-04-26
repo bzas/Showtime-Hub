@@ -8,19 +8,24 @@
 import Foundation
 
 struct MovieList: Codable {
-    let page: Int
-    var results: [Movie]
+    var page: Int
+    var movies: [Movie]
     let totalPages: Int
 
     enum CodingKeys: String, CodingKey {
         case page,
-             results,
+             movies = "results",
              totalPages = "total_pages"
     }
 
     init() {
         page = 0
-        results = []
+        movies = []
         totalPages = 1
+    }
+
+    mutating func append(_ movieList: MovieList) {
+        page = movieList.page
+        movies.append(contentsOf: movieList.movies)
     }
 }

@@ -7,17 +7,6 @@
 
 import Foundation
 
-enum Path: String {
-    case popular = "/movie/popular",
-         search = "/search/movie",
-         image = "/t/p/w220_and_h330_face",
-         wideImage = "/t/p/w500"
-
-    var isImage: Bool {
-        self == .image || self == .wideImage
-    }
-}
-
 extension APIService {
 
     // MARK: - /movie/popular
