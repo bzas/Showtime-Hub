@@ -7,21 +7,8 @@
 
 import SwiftUI
 
-extension Color {
-    static let brightPurple = Color(red: 187/255, green: 51/255, blue: 255/255)
-    static let brightBlue = Color(red: 30/255, green: 144/255, blue: 255/255)
-}
-
-extension LinearGradient {
-    static let appGradient = LinearGradient(
-        gradient: Gradient(colors: [.brightBlue, .brightPurple]),
-        startPoint: .topLeading,
-        endPoint: .bottomTrailing
-    )
-}
-
 struct MovieCarouselView: View {
-    @State var viewModel: ViewModel
+    @EnvironmentObject var viewModel: HomeView.ViewModel
 
     let rows = [
         GridItem(.flexible())
@@ -31,6 +18,7 @@ struct MovieCarouselView: View {
         VStack(spacing: 8) {
             HStack {
                 Text("Popular movies")
+                    .fontWeight(.bold)
                     .foregroundStyle(
                         LinearGradient.appGradient
                     )
@@ -38,8 +26,11 @@ struct MovieCarouselView: View {
             }
             ScrollView(.horizontal) {
                 LazyHGrid(rows: rows, spacing: 8) {
-                    ForEach(viewModel.movieList.movies, id: \.self) {
-                        MovieCarouselCellView(viewModel: .init(movie: $0))
+                    ForEach(viewModel.movieList.movies, id: \.self) { movie in
+                        MovieCarouselCellView(viewModel: .init(movie: movie))
+                            .onTapGesture {
+                                viewModel.detailMovieToShow = movie
+                        }
                     }
                 }
                 .frame(height: 200)
@@ -51,5 +42,5 @@ struct MovieCarouselView: View {
 }
 
 #Preview {
-    MovieCarouselView(viewModel: .init(apiService: APIServiceMock()))
+    MovieCarouselView()
 }

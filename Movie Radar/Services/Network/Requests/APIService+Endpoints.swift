@@ -31,4 +31,17 @@ extension APIService {
 
         return try await perform(request: request)
     }
+
+    // MARK: - /genre/movie/list
+    func getGenres() async throws -> GenreList? {
+        let queryItems = [
+            URLQueryItem(name: "language", value: Locale.current.language.languageCode?.identifier)
+        ]
+
+        guard let request = PathBuilder.request(.genres, queryItems: queryItems) else {
+            return nil
+        }
+
+        return try await perform(request: request)
+    }
 }

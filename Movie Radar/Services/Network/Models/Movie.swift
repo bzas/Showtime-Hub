@@ -16,6 +16,16 @@ struct Movie: Codable, Hashable {
     let overview: String?
     let releaseDate: String?
 
+    var imageUrl: URL? {
+        guard let backdropPath else { return nil }
+        return URL(string: PathBuilder.image(imagePath: backdropPath))
+    }
+
+    var wideImageUrl: URL? {
+        guard let backdropPath else { return nil }
+        return URL(string: PathBuilder.wideImage(imagePath: backdropPath))
+    }
+
     enum CodingKeys: String, CodingKey {
         case id,
              title,

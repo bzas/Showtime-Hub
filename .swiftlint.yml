@@ -1,2 +1,5 @@
 type_name:
   allowed_symbols: "_"
+
+disabled_rules:
+  switch_case_alignment

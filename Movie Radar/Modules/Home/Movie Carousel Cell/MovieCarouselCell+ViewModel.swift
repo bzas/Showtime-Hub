@@ -10,20 +10,10 @@ import Foundation
 extension MovieCarouselCellView {
     @Observable
     class ViewModel {
-        var id: Int?
-        var title = ""
-        var imageUrl: URL?
+        var movie: Movie
 
         init(movie: Movie) {
-            id = movie.id
-
-            if let title = movie.title {
-                self.title = title
-            }
-
-            if let backdropPath = movie.backdropPath {
-                imageUrl = URL(string: PathBuilder.image(imagePath: backdropPath))
-            }
+            self.movie = movie
         }
     }
 }

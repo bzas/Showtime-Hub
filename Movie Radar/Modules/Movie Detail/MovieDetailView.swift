@@ -11,15 +11,42 @@ struct MovieDetailView: View {
     @State var viewModel: ViewModel
 
     var body: some View {
-        Text("Movie detail")
-            .presentationDetents([.medium, .large])
+        VStack {
+            AsyncImage(url: viewModel.movie.wideImageUrl) { image in
+                image
+                    .resizable()
+                    .scaledToFit()
+            } placeholder: {
+                PlaceholderView()
+                    .frame(maxHeight: 220)
+            }
+            .clipped()
+            HStack {
+                Text(viewModel.movie.title ?? "")
+                    .font(.system(size: 25, weight: .light))
+                    .lineLimit(3)
+                Spacer()
+            }
+            .padding(.horizontal)
+            Spacer()
+        }
+        .presentationDetents([.medium, .large])
     }
 }
 
 #Preview {
     MovieDetailView(
         viewModel: .init(
-            apiService: APIServiceMock()
+            apiService: APIServiceMock(),
+            movie: Movie(
+                backdropPath: "",
+                id: 123,
+                title: "Title",
+                voteAverage: 3.14,
+                popularity: 5.5,
+                overview: "",
+                releaseDate: ""
+            )
         )
     )
 }

@@ -8,12 +8,42 @@
 import Foundation
 
 extension HomeView {
-    @Observable
-    class ViewModel {
+    class ViewModel: ObservableObject {
         var apiService: APIService
+
+        @Published var movieList = MovieList()
+        @Published var genreList = GenreList()
+        @Published var showDetailMovie = false
+        @Published var detailMovieToShow: Movie? {
+            didSet {
+                showDetailMovie.toggle()
+            }
+        }
 
         init(apiService: APIService) {
             self.apiService = apiService
+            getPopular()
+            getGenres()
+        }
+
+        func getPopular() {
+            Task {
+                if let newMovieList = try await apiService.getPopularMovies(page: movieList.page) {
+                    await MainActor.run {
+                        movieList.append(newMovieList)
+                    }
+                }
+            }
+        }
+
+        func getGenres() {
+            Task {
+                if let genreList = try await apiService.getGenres() {
+                    await MainActor.run {
+                        self.genreList = genreList
+                    }
+                }
+            }
         }
     }
 }

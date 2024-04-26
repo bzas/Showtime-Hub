@@ -11,9 +11,11 @@ extension MovieDetailView {
     @Observable
     class ViewModel {
         var apiService: APIService
+        var movie: Movie
 
-        init(apiService: APIService) {
+        init(apiService: APIService, movie: Movie) {
             self.apiService = apiService
+            self.movie = movie
         }
     }
 }

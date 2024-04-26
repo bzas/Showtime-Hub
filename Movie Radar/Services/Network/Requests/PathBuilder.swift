@@ -9,7 +9,8 @@ import Foundation
 
 enum Path: String {
     case popular = "/movie/popular",
-         search = "/search/movie"
+         search = "/search/movie",
+         genres = "/genre/movie/list"
 }
 
 struct PathBuilder {

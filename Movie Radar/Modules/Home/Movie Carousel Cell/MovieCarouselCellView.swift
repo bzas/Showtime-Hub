@@ -13,23 +13,15 @@ struct MovieCarouselCellView: View {
     var body: some View {
         VStack {
             ZStack {
-                AsyncImage(
-                    url: viewModel.imageUrl,
-                    transaction: Transaction()) { phase in
-                        switch phase {
-                            case .empty:
-                                ProgressView()
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .scaledToFill()
-                            default:
-                                Rectangle()
-                                    .fill(.gray)
-                        }
-                    }
-                    .frame(width: 100, height: 133)
-                    .clipped()
+                AsyncImage(url: viewModel.movie.imageUrl) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                } placeholder: {
+                    PlaceholderView()
+                }
+                .frame(width: 100, height: 133)
+                .clipped()
                 VStack {
                     HStack {
                         Spacer()
@@ -39,7 +31,7 @@ struct MovieCarouselCellView: View {
                 }
             }
             VStack {
-                Text(viewModel.title)
+                Text(viewModel.movie.title ?? "")
                     .font(.system(size: 12))
                     .lineLimit(3)
                     .frame(maxWidth: 100)

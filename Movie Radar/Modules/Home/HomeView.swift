@@ -8,23 +8,23 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State var viewModel: ViewModel
-
-    @State private var show = false
+    @StateObject var viewModel: ViewModel
 
     var body: some View {
         VStack {
-            MovieCarouselView(viewModel: .init(apiService: viewModel.apiService))
-
-            Button(action: {
-                show.toggle()
-            }, label: {
-                Text("Button")
-            })
+            MovieCarouselView()
+                .environmentObject(viewModel)
             Spacer()
         }
-        .sheet(isPresented: $show) {
-            MovieDetailView(viewModel: .init(apiService: viewModel.apiService))
+        .sheet(isPresented: $viewModel.showDetailMovie) {
+            if let detailMovieToShow = viewModel.detailMovieToShow {
+                MovieDetailView(
+                    viewModel: .init(
+                        apiService: viewModel.apiService,
+                        movie: detailMovieToShow
+                    )
+                )
+            }
         }
     }
 }
