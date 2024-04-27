@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlaceholderView: View {
     var body: some View {
-        Color.gray
+        Color.clear
     }
 }
 

@@ -20,6 +20,8 @@ extension HomeView {
             }
         }
 
+        @Published var selectedGenre: Genre?
+
         init(apiService: APIService) {
             self.apiService = apiService
             getPopular()
@@ -44,6 +46,18 @@ extension HomeView {
                     }
                 }
             }
+        }
+
+        func selectGenre(genre: Genre) {
+            if selectedGenre == genre {
+                selectedGenre = nil
+            } else {
+                selectedGenre = genre
+            }
+        }
+
+        func isSelected(genre: Genre) -> Bool {
+            genre == selectedGenre
         }
     }
 }

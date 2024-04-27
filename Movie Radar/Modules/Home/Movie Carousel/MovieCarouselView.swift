@@ -16,14 +16,7 @@ struct MovieCarouselView: View {
 
     var body: some View {
         VStack(spacing: 8) {
-            HStack {
-                Text("Popular movies")
-                    .fontWeight(.bold)
-                    .foregroundStyle(
-                        LinearGradient.appGradient
-                    )
-                Spacer()
-            }
+            HeaderText(text: "Popular movies")
             ScrollView(.horizontal) {
                 LazyHGrid(rows: rows, spacing: 8) {
                     ForEach(viewModel.movieList.movies, id: \.self) { movie in
@@ -37,7 +30,7 @@ struct MovieCarouselView: View {
             }
             .scrollIndicators(.hidden)
         }
-        .padding()
+        .padding(.horizontal)
     }
 }
 

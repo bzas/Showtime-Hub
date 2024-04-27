@@ -13,7 +13,7 @@ struct FavoriteButton: View {
         Button(
             action: action,
             label: {
-            Image(systemName: "heart.fill")
+            Image(systemName: "heart")
                     .foregroundStyle(LinearGradient.appGradient)
                     .frame(width: 25, height: 25)
         })

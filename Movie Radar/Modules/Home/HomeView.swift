@@ -14,6 +14,8 @@ struct HomeView: View {
         VStack {
             MovieCarouselView()
                 .environmentObject(viewModel)
+            GenreSelectorView()
+                .environmentObject(viewModel)
             Spacer()
         }
         .sheet(isPresented: $viewModel.showDetailMovie) {
