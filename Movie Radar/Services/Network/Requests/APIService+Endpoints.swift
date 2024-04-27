@@ -44,4 +44,24 @@ extension APIService {
 
         return try await perform(request: request)
     }
+
+    // MARK: - /discover/movie
+    func discoverMovies(genreId: Int?, page: Int = 1) async throws -> MovieList? {
+        var queryItems = [
+            URLQueryItem(name: "include_video", value: "true"),
+            URLQueryItem(name: "language", value: Locale.current.language.languageCode?.identifier),
+            URLQueryItem(name: "page", value: "\(page)"),
+            URLQueryItem(name: "sort_by", value: "popularity.desc")
+        ]
+
+        if let genreId {
+            queryItems.append(URLQueryItem(name: "with_genres", value: "\(genreId)"))
+        }
+
+        guard let request = PathBuilder.request(.discover, queryItems: queryItems) else {
+            return nil
+        }
+
+        return try await perform(request: request)
+    }
 }

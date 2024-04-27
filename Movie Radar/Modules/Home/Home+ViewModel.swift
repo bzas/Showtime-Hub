@@ -11,7 +11,8 @@ extension HomeView {
     class ViewModel: ObservableObject {
         var apiService: APIService
 
-        @Published var movieList = MovieList()
+        @Published var popularList = MovieList()
+        @Published var discoverList = MovieList()
         @Published var genreList = GenreList()
         @Published var showDetailMovie = false
         @Published var detailMovieToShow: Movie? {
@@ -26,13 +27,14 @@ extension HomeView {
             self.apiService = apiService
             getPopular()
             getGenres()
+            discoverMovies()
         }
 
         func getPopular() {
             Task {
-                if let newMovieList = try await apiService.getPopularMovies(page: movieList.page) {
+                if let movieList = try await apiService.getPopularMovies(page: popularList.page) {
                     await MainActor.run {
-                        movieList.append(newMovieList)
+                        popularList.append(movieList)
                     }
                 }
             }
@@ -48,12 +50,24 @@ extension HomeView {
             }
         }
 
+        func discoverMovies() {
+            Task {
+                if let movieList = try await apiService.discoverMovies(genreId: selectedGenre?.id, page: 1) {
+                    await MainActor.run {
+                        self.discoverList = movieList
+                    }
+                }
+            }
+        }
+
         func selectGenre(genre: Genre) {
             if selectedGenre == genre {
                 selectedGenre = nil
             } else {
                 selectedGenre = genre
             }
+
+            discoverMovies()
         }
 
         func isSelected(genre: Genre) -> Bool {

@@ -9,12 +9,14 @@ import Foundation
 
 struct Movie: Codable, Hashable {
     let backdropPath: String?
+    let genreIds: [Int] = []
     let id: Int?
-    let title: String?
-    let voteAverage: Double?
+    let originalTitle, overview: String?
     let popularity: Double?
-    let overview: String?
-    let releaseDate: String?
+    let posterPath, releaseDate, title: String?
+    let video: Bool?
+    let voteAverage: Double?
+    let voteCount: Int?
 
     var imageUrl: URL? {
         guard let backdropPath else { return nil }
@@ -27,13 +29,15 @@ struct Movie: Codable, Hashable {
     }
 
     enum CodingKeys: String, CodingKey {
-        case id,
-             title,
-             popularity,
-             overview,
-             backdropPath = "backdrop_path",
-             voteAverage = "vote_average",
-             releaseDate = "release_date"
+        case backdropPath = "backdrop_path"
+        case genreIds = "genre_ids"
+        case id
+        case originalTitle = "original_title"
+        case overview, popularity
+        case posterPath = "poster_path"
+        case releaseDate = "release_date"
+        case title, video
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
     }
-
 }

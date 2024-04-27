@@ -11,22 +11,25 @@ struct HomeView: View {
     @StateObject var viewModel: ViewModel
 
     var body: some View {
-        VStack {
-            MovieCarouselView()
-                .environmentObject(viewModel)
-            GenreSelectorView()
-                .environmentObject(viewModel)
-            Spacer()
-        }
-        .sheet(isPresented: $viewModel.showDetailMovie) {
-            if let detailMovieToShow = viewModel.detailMovieToShow {
-                MovieDetailView(
-                    viewModel: .init(
-                        apiService: viewModel.apiService,
-                        movie: detailMovieToShow
-                    )
-                )
+        ScrollView {
+            VStack {
+                MovieCarouselView()
+                    .environmentObject(viewModel)
+
+                MovieGridView()
+                    .environmentObject(viewModel)
+                Spacer()
             }
+            .sheet(isPresented: $viewModel.showDetailMovie) {
+                if let detailMovieToShow = viewModel.detailMovieToShow {
+                    MovieDetailView(
+                        viewModel: .init(
+                            apiService: viewModel.apiService,
+                            movie: detailMovieToShow
+                        )
+                    )
+                }
+        }
         }
     }
 }

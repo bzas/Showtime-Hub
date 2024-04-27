@@ -33,20 +33,3 @@ struct MovieDetailView: View {
         .presentationDetents([.medium, .large])
     }
 }
-
-#Preview {
-    MovieDetailView(
-        viewModel: .init(
-            apiService: APIServiceMock(),
-            movie: Movie(
-                backdropPath: "",
-                id: 123,
-                title: "Title",
-                voteAverage: 3.14,
-                popularity: 5.5,
-                overview: "",
-                releaseDate: ""
-            )
-        )
-    )
-}

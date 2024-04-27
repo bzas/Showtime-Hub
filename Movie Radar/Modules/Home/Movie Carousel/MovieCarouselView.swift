@@ -19,8 +19,8 @@ struct MovieCarouselView: View {
             HeaderText(text: "Popular movies")
             ScrollView(.horizontal) {
                 LazyHGrid(rows: rows, spacing: 8) {
-                    ForEach(viewModel.movieList.movies, id: \.self) { movie in
-                        MovieCarouselCellView(viewModel: .init(movie: movie))
+                    ForEach(viewModel.popularList.movies, id: \.self) { movie in
+                        MovieCarouselCellView(movie: movie)
                             .onTapGesture {
                                 viewModel.detailMovieToShow = movie
                         }
