@@ -7,7 +7,7 @@
 
 import Foundation
 
-class KeychainManager {
+class LocalStorage {
     let serviceIdentifier = "com.Boizas.MovieRadar.apiKey"
 
     func saveApiKey(apiKey: String) -> Bool {

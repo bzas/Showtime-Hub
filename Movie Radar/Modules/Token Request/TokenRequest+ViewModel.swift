@@ -18,7 +18,7 @@ extension TokenRequestView {
 
         func storeKey() -> Bool {
             if !apiKey.isEmpty,
-               KeychainManager().saveApiKey(apiKey: apiKey) {
+               LocalStorage().saveApiKey(apiKey: apiKey) {
                 apiService.updateApiKey(apiKey)
                 return true
             }

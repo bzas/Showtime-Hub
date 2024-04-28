@@ -23,7 +23,7 @@ struct MovieCarouselView: View {
                         MovieCarouselCellView(movie: movie)
                             .onTapGesture {
                                 viewModel.detailMovieToShow = movie
-                        }
+                            }
                     }
                 }
                 .frame(height: 200)

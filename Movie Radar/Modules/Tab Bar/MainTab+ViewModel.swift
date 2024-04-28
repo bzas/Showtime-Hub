@@ -13,7 +13,7 @@ extension MainTabView {
         @Published var isPresentingTokenRequest: Bool
 
         init() {
-            if let apiKey = KeychainManager().retrieveApiKey() {
+            if let apiKey = LocalStorage().retrieveApiKey() {
                 apiService = APIService(apiKey: apiKey)
                 isPresentingTokenRequest = false
             } else {

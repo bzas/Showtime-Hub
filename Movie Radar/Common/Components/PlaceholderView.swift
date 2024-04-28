@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlaceholderView: View {
     var body: some View {
-        Color.clear
+        UIColor.systemGray5.color
             .border(
                 LinearGradient.appGradient,
                 width: 1.5

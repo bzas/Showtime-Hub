@@ -23,6 +23,12 @@ struct MovieGridView: View {
             LazyVGrid(columns: columns, spacing: 8) {
                 ForEach(viewModel.discoverList.movies, id: \.self) { movie in
                     MovieGridCellView(movie: movie)
+                        .onAppear {
+                            viewModel.continueFetchIfNeeded(lastMoviePresented: movie)
+                        }
+                        .onTapGesture {
+                            viewModel.detailMovieToShow = movie
+                        }
                 }
             }
             .padding(.horizontal, 6)

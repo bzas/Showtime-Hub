@@ -25,37 +25,42 @@ extension HomeView {
 
         init(apiService: APIService) {
             self.apiService = apiService
-            getPopular()
-            getGenres()
-            discoverMovies()
+            Task {
+                try await fetchData()
+            }
         }
 
-        func getPopular() {
-            Task {
-                if let movieList = try await apiService.getPopularMovies(page: popularList.page) {
-                    await MainActor.run {
-                        popularList.append(movieList)
-                    }
+        func fetchData() async throws {
+            try await getPopular()
+            try await getGenres()
+            try await discoverMovies()
+        }
+
+        func getPopular() async throws {
+            if let movieList = try await apiService.getPopularMovies(page: popularList.page) {
+                await MainActor.run {
+                    popularList.append(movieList)
                 }
             }
         }
 
-        func getGenres() {
-            Task {
-                if let genreList = try await apiService.getGenres() {
-                    await MainActor.run {
-                        self.genreList = genreList
-                    }
+        func getGenres() async throws {
+            if let genreList = try await apiService.getGenres() {
+                await MainActor.run {
+                    self.genreList = genreList
                 }
             }
         }
 
-        func discoverMovies() {
-            Task {
-                if let movieList = try await apiService.discoverMovies(genreId: selectedGenre?.id, page: 1) {
-                    await MainActor.run {
-                        self.discoverList = movieList
-                    }
+        func discoverMovies() async throws {
+            print("PAGE: ")
+            print(discoverList.page)
+            if let movieList = try await apiService.discoverMovies(
+                genreId: selectedGenre?.id,
+                page: discoverList.page
+            ) {
+                await MainActor.run {
+                    discoverList.append(movieList)
                 }
             }
         }
@@ -67,11 +72,22 @@ extension HomeView {
                 selectedGenre = genre
             }
 
-            discoverMovies()
+            discoverList = MovieList()
+            Task {
+                try await discoverMovies()
+            }
         }
 
         func isSelected(genre: Genre) -> Bool {
             genre == selectedGenre
+        }
+
+        func continueFetchIfNeeded(lastMoviePresented: Movie) {
+            guard lastMoviePresented == discoverList.movies.last else { return }
+
+            Task {
+                try await discoverMovies()
+            }
         }
     }
 }

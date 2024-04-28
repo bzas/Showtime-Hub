@@ -19,13 +19,13 @@ struct MovieList: Codable {
     }
 
     init() {
-        page = 0
+        page = 1
         movies = []
         totalPages = 1
     }
 
     mutating func append(_ movieList: MovieList) {
-        page = movieList.page
+        page = movieList.page + 1
         movies.append(contentsOf: movieList.movies)
     }
 }

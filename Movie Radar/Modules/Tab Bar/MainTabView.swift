@@ -12,13 +12,13 @@ struct MainTabView: View {
 
     var body: some View {
         buildUI()
-        .sheet(isPresented: $viewModel.isPresentingTokenRequest) {
-            TokenRequestView(
-                viewModel: .init(
-                    apiService: viewModel.apiService
+            .sheet(isPresented: $viewModel.isPresentingTokenRequest) {
+                TokenRequestView(
+                    viewModel: .init(
+                        apiService: viewModel.apiService
+                    )
                 )
-            )
-        }
+            }
     }
 
     @ViewBuilder
