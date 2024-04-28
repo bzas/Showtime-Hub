@@ -28,11 +28,16 @@ class APIService {
         )
     }
 
-    func perform<T: Decodable>(request: URLRequest) async throws -> T {
-        let (data, _) = try await URLSession.shared.data(for: request)
-        return try JSONDecoder().decode(
-            T.self,
-            from: data
-        )
+    func perform<T: Decodable>(request: URLRequest) async -> T? {
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            return try JSONDecoder().decode(
+                T.self,
+                from: data
+            )
+        } catch {
+            print(error)
+            return nil
+        }
     }
 }

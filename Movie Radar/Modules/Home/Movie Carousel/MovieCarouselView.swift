@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MovieCarouselView: View {
     @EnvironmentObject var viewModel: HomeView.ViewModel
+    let type: MovieCarouselType
 
     let rows = [
         GridItem(.flexible())
@@ -16,10 +17,10 @@ struct MovieCarouselView: View {
 
     var body: some View {
         VStack(spacing: 8) {
-            HeaderText(text: "Popular movies")
+            HeaderText(text: type.title)
             ScrollView(.horizontal) {
                 LazyHGrid(rows: rows, spacing: 8) {
-                    ForEach(viewModel.popularList.movies, id: \.self) { movie in
+                    ForEach(viewModel.getMovieList(type: type), id: \.self) { movie in
                         MovieCarouselCellView(movie: movie)
                             .onTapGesture {
                                 viewModel.detailMovieToShow = movie
@@ -35,5 +36,5 @@ struct MovieCarouselView: View {
 }
 
 #Preview {
-    MovieCarouselView()
+    MovieCarouselView(type: .popular)
 }

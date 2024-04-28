@@ -16,12 +16,12 @@ extension MovieDetailView {
             self.apiService = apiService
             self.movie = movie
             Task {
-                try await fetchDetailMovie()
+                await fetchDetailMovie()
             }
         }
 
-        func fetchDetailMovie() async throws {
-            if let movieDetail = try await apiService.getMovieDetail(id: movie.id) {
+        func fetchDetailMovie() async {
+            if let movieDetail = await apiService.getMovieDetail(id: movie.id) {
                 await MainActor.run {
                     movie = movieDetail
                 }

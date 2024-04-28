@@ -12,8 +12,11 @@ struct HomeView: View {
 
     var body: some View {
         ScrollView {
-            VStack {
-                MovieCarouselView()
+            VStack(spacing: 0) {
+                MovieCarouselView(type: .popular)
+                    .environmentObject(viewModel)
+
+                MovieCarouselView(type: .topRated)
                     .environmentObject(viewModel)
 
                 MovieGridView()

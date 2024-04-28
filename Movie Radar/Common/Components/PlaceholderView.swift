@@ -10,10 +10,6 @@ import SwiftUI
 struct PlaceholderView: View {
     var body: some View {
         UIColor.systemGray5.color
-            .border(
-                LinearGradient.appGradient,
-                width: 1.5
-            )
             .overlay {
                 Image(systemName: "movieclapper")
                     .resizable()

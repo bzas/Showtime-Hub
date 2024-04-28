@@ -12,7 +12,8 @@ enum Path: String {
          search = "/search/movie",
          genres = "/genre/movie/list",
          discover = "/discover/movie",
-         detail = "/movie/"
+         detail = "/movie/",
+         topRated = "/movie/top_rated"
 }
 
 struct PathBuilder {

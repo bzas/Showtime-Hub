@@ -11,6 +11,7 @@ extension HomeView {
     class ViewModel: ObservableObject {
         var apiService: APIService
 
+        @Published var topRatedList = MovieList()
         @Published var popularList = MovieList()
         @Published var discoverList = MovieList()
         @Published var genreList = GenreList()
@@ -26,34 +27,43 @@ extension HomeView {
         init(apiService: APIService) {
             self.apiService = apiService
             Task {
-                try await fetchData()
+                await fetchData()
             }
         }
 
-        func fetchData() async throws {
-            try await getPopular()
-            try await getGenres()
-            try await discoverMovies()
+        func fetchData() async {
+            await getPopular()
+            await getTopRated()
+            await getGenres()
+            await discoverMovies()
         }
 
-        func getPopular() async throws {
-            if let movieList = try await apiService.getPopularMovies(page: popularList.page) {
+        func getTopRated() async {
+            if let movieList = await apiService.getTopRatedMovies(page: topRatedList.page) {
+                await MainActor.run {
+                    topRatedList.append(movieList)
+                }
+            }
+        }
+
+        func getPopular() async {
+            if let movieList = await apiService.getPopularMovies(page: popularList.page) {
                 await MainActor.run {
                     popularList.append(movieList)
                 }
             }
         }
 
-        func getGenres() async throws {
-            if let genreList = try await apiService.getGenres() {
+        func getGenres() async {
+            if let genreList = await apiService.getGenres() {
                 await MainActor.run {
                     self.genreList = genreList
                 }
             }
         }
 
-        func discoverMovies() async throws {
-            if let movieList = try await apiService.discoverMovies(
+        func discoverMovies() async {
+            if let movieList = await apiService.discoverMovies(
                 genreId: selectedGenre?.id,
                 page: discoverList.page
             ) {
@@ -72,7 +82,7 @@ extension HomeView {
 
             discoverList = MovieList()
             Task {
-                try await discoverMovies()
+                await discoverMovies()
             }
         }
 
@@ -84,7 +94,16 @@ extension HomeView {
             guard lastMoviePresented == discoverList.movies.last else { return }
 
             Task {
-                try await discoverMovies()
+                await discoverMovies()
+            }
+        }
+
+        func getMovieList(type: MovieCarouselType) -> [Movie] {
+            switch type {
+            case .popular:
+                return popularList.movies
+            case .topRated:
+                return topRatedList.movies
             }
         }
     }

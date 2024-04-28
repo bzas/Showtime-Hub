@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		480098EE2BDEF34100E663B4 /* MovieCarouselType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480098ED2BDEF34100E663B4 /* MovieCarouselType.swift */; };
 		4828DD672BDBF2C500AD86F0 /* LinearGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828DD662BDBF2C500AD86F0 /* LinearGradient.swift */; };
 		4828DD692BDBFA1200AD86F0 /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828DD682BDBFA1200AD86F0 /* PlaceholderView.swift */; };
 		4828DD6B2BDC44CA00AD86F0 /* GenreList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828DD6A2BDC44CA00AD86F0 /* GenreList.swift */; };
@@ -70,6 +71,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		480098ED2BDEF34100E663B4 /* MovieCarouselType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCarouselType.swift; sourceTree = "<group>"; };
 		4828DD662BDBF2C500AD86F0 /* LinearGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinearGradient.swift; sourceTree = "<group>"; };
 		4828DD682BDBFA1200AD86F0 /* PlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		4828DD6A2BDC44CA00AD86F0 /* GenreList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreList.swift; sourceTree = "<group>"; };
@@ -389,6 +391,7 @@
 		B5CA51842BDA6D4100A87992 /* Movie Carousel */ = {
 			isa = PBXGroup;
 			children = (
+				480098ED2BDEF34100E663B4 /* MovieCarouselType.swift */,
 				B5CA51852BDA6D5200A87992 /* MovieCarouselView.swift */,
 				B50EBFEF2BDB9A2300914327 /* MovieCarouselCellView.swift */,
 			);
@@ -552,6 +555,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				485FD2532BD7F6D900238336 /* MovieList.swift in Sources */,
+				480098EE2BDEF34100E663B4 /* MovieCarouselType.swift in Sources */,
 				B526ED872BD90CDA00BD19C2 /* Colors.swift in Sources */,
 				484F59742BDCFFFF0079D470 /* View.swift in Sources */,
 				B526ED922BD90EEF00BD19C2 /* Favorites+ViewModel.swift in Sources */,

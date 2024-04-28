@@ -9,8 +9,22 @@ import Foundation
 
 extension APIService {
 
+    // MARK: - /movie/top_rated
+    func getTopRatedMovies(page: Int = 1) async -> MovieList? {
+        let queryItems = [
+            languageQueryItem,
+            apiKeyQueryItem
+        ]
+
+        guard let request = PathBuilder.request(.topRated, queryItems: queryItems) else {
+            return nil
+        }
+
+        return await perform(request: request)
+    }
+
     // MARK: - /movie/popular
-    func getPopularMovies(page: Int = 1) async throws -> MovieList? {
+    func getPopularMovies(page: Int = 1) async -> MovieList? {
         let queryItems = [
             languageQueryItem,
             apiKeyQueryItem
@@ -20,11 +34,11 @@ extension APIService {
             return nil
         }
 
-        return try await perform(request: request)
+        return await perform(request: request)
     }
 
     // MARK: - /search/movie
-    func searchMovies(queryString: String, page: Int = 1) async throws -> MovieList? {
+    func searchMovies(queryString: String, page: Int = 1) async -> MovieList? {
         let queryItems = [
             languageQueryItem,
             apiKeyQueryItem,
@@ -36,11 +50,11 @@ extension APIService {
             return nil
         }
 
-        return try await perform(request: request)
+        return await perform(request: request)
     }
 
     // MARK: - /genre/movie/list
-    func getGenres() async throws -> GenreList? {
+    func getGenres() async -> GenreList? {
         let queryItems = [
             languageQueryItem,
             apiKeyQueryItem
@@ -50,11 +64,11 @@ extension APIService {
             return nil
         }
 
-        return try await perform(request: request)
+        return await perform(request: request)
     }
 
     // MARK: - /discover/movie
-    func discoverMovies(genreId: Int?, page: Int = 1) async throws -> MovieList? {
+    func discoverMovies(genreId: Int?, page: Int = 1) async -> MovieList? {
         var queryItems = [
             URLQueryItem(name: "include_video", value: "true"),
             URLQueryItem(name: "page", value: "\(page)"),
@@ -71,10 +85,10 @@ extension APIService {
             return nil
         }
 
-        return try await perform(request: request)
+        return await perform(request: request)
     }
 
-    func getMovieDetail(id: Int) async throws -> Movie? {
+    func getMovieDetail(id: Int) async -> Movie? {
         let queryItems = [
             languageQueryItem,
             apiKeyQueryItem
@@ -88,6 +102,6 @@ extension APIService {
             return nil
         }
 
-        return try await perform(request: request)
+        return await perform(request: request)
     }
 }
