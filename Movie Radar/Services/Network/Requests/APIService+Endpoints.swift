@@ -11,7 +11,12 @@ extension APIService {
 
     // MARK: - /movie/popular
     func getPopularMovies(page: Int = 1) async throws -> MovieList? {
-        guard let request = PathBuilder.request(.popular, queryItems: [apiKeyQueryItem]) else {
+        let queryItems = [
+            languageQueryItem,
+            apiKeyQueryItem
+        ]
+
+        guard let request = PathBuilder.request(.popular, queryItems: queryItems) else {
             return nil
         }
 
@@ -21,6 +26,8 @@ extension APIService {
     // MARK: - /search/movie
     func searchMovies(queryString: String, page: Int = 1) async throws -> MovieList? {
         let queryItems = [
+            languageQueryItem,
+            apiKeyQueryItem,
             URLQueryItem(name: "page", value: String(page)),
             URLQueryItem(name: "query", value: queryString)
         ]
@@ -35,7 +42,7 @@ extension APIService {
     // MARK: - /genre/movie/list
     func getGenres() async throws -> GenreList? {
         let queryItems = [
-            URLQueryItem(name: "language", value: Locale.current.language.languageCode?.identifier),
+            languageQueryItem,
             apiKeyQueryItem
         ]
 
@@ -50,9 +57,9 @@ extension APIService {
     func discoverMovies(genreId: Int?, page: Int = 1) async throws -> MovieList? {
         var queryItems = [
             URLQueryItem(name: "include_video", value: "true"),
-            URLQueryItem(name: "language", value: Locale.current.language.languageCode?.identifier),
             URLQueryItem(name: "page", value: "\(page)"),
             URLQueryItem(name: "sort_by", value: "popularity.desc"),
+            languageQueryItem,
             apiKeyQueryItem
         ]
 
@@ -61,6 +68,23 @@ extension APIService {
         }
 
         guard let request = PathBuilder.request(.discover, queryItems: queryItems) else {
+            return nil
+        }
+
+        return try await perform(request: request)
+    }
+
+    func getMovieDetail(id: Int) async throws -> Movie? {
+        let queryItems = [
+            languageQueryItem,
+            apiKeyQueryItem
+        ]
+
+        guard let request = PathBuilder.request(
+            .detail,
+            queryItems: queryItems,
+            pathComponent: "\(id)"
+        ) else {
             return nil
         }
 

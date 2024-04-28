@@ -28,6 +28,8 @@
 		485FD2592BD7F86800238336 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485FD2582BD7F86800238336 /* APIService.swift */; };
 		485FD25B2BD7FCD800238336 /* PathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485FD25A2BD7FCD800238336 /* PathBuilder.swift */; };
 		4896C4212BDEC0DB00E46C7D /* LocalStorage+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4896C4202BDEC0DB00E46C7D /* LocalStorage+UserDefaults.swift */; };
+		4896C4232BDEC83300E46C7D /* GenreCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4896C4222BDEC83300E46C7D /* GenreCellView.swift */; };
+		4896C4252BDEC89E00E46C7D /* GenreCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4896C4242BDEC89E00E46C7D /* GenreCarouselView.swift */; };
 		48F8C7E82BDCE22700EFB979 /* GenreSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F8C7E72BDCE22700EFB979 /* GenreSelectorView.swift */; };
 		48F8C7EA2BDCE7F200EFB979 /* HeaderText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F8C7E92BDCE7F100EFB979 /* HeaderText.swift */; };
 		48F8C7EC2BDCE96200EFB979 /* GenreSelectorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F8C7EB2BDCE96200EFB979 /* GenreSelectorCellView.swift */; };
@@ -92,6 +94,8 @@
 		485FD2582BD7F86800238336 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		485FD25A2BD7FCD800238336 /* PathBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathBuilder.swift; sourceTree = "<group>"; };
 		4896C4202BDEC0DB00E46C7D /* LocalStorage+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalStorage+UserDefaults.swift"; sourceTree = "<group>"; };
+		4896C4222BDEC83300E46C7D /* GenreCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCellView.swift; sourceTree = "<group>"; };
+		4896C4242BDEC89E00E46C7D /* GenreCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCarouselView.swift; sourceTree = "<group>"; };
 		48F8C7E72BDCE22700EFB979 /* GenreSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreSelectorView.swift; sourceTree = "<group>"; };
 		48F8C7E92BDCE7F100EFB979 /* HeaderText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderText.swift; sourceTree = "<group>"; };
 		48F8C7EB2BDCE96200EFB979 /* GenreSelectorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreSelectorCellView.swift; sourceTree = "<group>"; };
@@ -246,6 +250,15 @@
 			path = Requests;
 			sourceTree = "<group>";
 		};
+		4896C4262BDEC8C900E46C7D /* Genre Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				4896C4242BDEC89E00E46C7D /* GenreCarouselView.swift */,
+				4896C4222BDEC83300E46C7D /* GenreCellView.swift */,
+			);
+			path = "Genre Carousel";
+			sourceTree = "<group>";
+		};
 		48F8C7E62BDCE20B00EFB979 /* Movie Grid */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +381,7 @@
 			children = (
 				B526ED8B2BD90ED400BD19C2 /* MovieDetailView.swift */,
 				B526ED8D2BD90EDD00BD19C2 /* MovieDetail+ViewModel.swift */,
+				4896C4262BDEC8C900E46C7D /* Genre Carousel */,
 			);
 			path = "Movie Detail";
 			sourceTree = "<group>";
@@ -543,6 +557,7 @@
 				B526ED922BD90EEF00BD19C2 /* Favorites+ViewModel.swift in Sources */,
 				B50EBFF02BDB9A2300914327 /* MovieCarouselCellView.swift in Sources */,
 				48FE82A32BDD20D300E2DF31 /* MovieGridView.swift in Sources */,
+				4896C4232BDEC83300E46C7D /* GenreCellView.swift in Sources */,
 				48398F9F2BDE724B00D16B52 /* MainTab+ViewModel.swift in Sources */,
 				485FD25B2BD7FCD800238336 /* PathBuilder.swift in Sources */,
 				485FD2592BD7F86800238336 /* APIService.swift in Sources */,
@@ -572,6 +587,7 @@
 				B526ED982BD919B800BD19C2 /* APIService+Endpoints.swift in Sources */,
 				B526ED822BD90B2500BD19C2 /* FavoritesView.swift in Sources */,
 				48F8C7E82BDCE22700EFB979 /* GenreSelectorView.swift in Sources */,
+				4896C4252BDEC89E00E46C7D /* GenreCarouselView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

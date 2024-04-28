@@ -9,6 +9,10 @@ import Foundation
 
 class APIService {
     var apiKeyQueryItem: URLQueryItem
+    var languageQueryItem = URLQueryItem(
+        name: "language",
+        value: Locale.current.language.region?.identifier.localizedLowercase
+    )
 
     init(apiKey: String? = nil) {
         apiKeyQueryItem = URLQueryItem(

@@ -53,8 +53,6 @@ extension HomeView {
         }
 
         func discoverMovies() async throws {
-            print("PAGE: ")
-            print(discoverList.page)
             if let movieList = try await apiService.discoverMovies(
                 genreId: selectedGenre?.id,
                 page: discoverList.page

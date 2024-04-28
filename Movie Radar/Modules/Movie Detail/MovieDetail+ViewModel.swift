@@ -8,14 +8,24 @@
 import Foundation
 
 extension MovieDetailView {
-    @Observable
-    class ViewModel {
+    class ViewModel: ObservableObject {
         var apiService: APIService
-        var movie: Movie
+        @Published var movie: Movie
 
         init(apiService: APIService, movie: Movie) {
             self.apiService = apiService
             self.movie = movie
+            Task {
+                try await fetchDetailMovie()
+            }
+        }
+
+        func fetchDetailMovie() async throws {
+            if let movieDetail = try await apiService.getMovieDetail(id: movie.id) {
+                await MainActor.run {
+                    movie = movieDetail
+                }
+            }
         }
     }
 }

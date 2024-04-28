@@ -8,8 +8,7 @@
 import Foundation
 
 extension SettingsView {
-    @Observable
-    class ViewModel {
+    class ViewModel: ObservableObject {
         var apiService: APIService
 
         init(apiService: APIService) {

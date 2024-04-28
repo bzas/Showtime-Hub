@@ -11,7 +11,8 @@ enum Path: String {
     case popular = "/movie/popular",
          search = "/search/movie",
          genres = "/genre/movie/list",
-         discover = "/discover/movie"
+         discover = "/discover/movie",
+         detail = "/movie/"
 }
 
 struct PathBuilder {
@@ -27,8 +28,8 @@ struct PathBuilder {
         imgBaseUrl + "/t/p/w500" + imagePath
     }
 
-    static func request(_ path: Path, queryItems: [URLQueryItem]) -> URLRequest? {
-        let urlString = baseUrl + "/\(apiVersion)" + path.rawValue
+    static func request(_ path: Path, queryItems: [URLQueryItem], pathComponent: String = "") -> URLRequest? {
+        let urlString = baseUrl + "/\(apiVersion)" + path.rawValue + pathComponent
         var urlComponents = URLComponents(string: urlString)
         urlComponents?.queryItems = queryItems
         guard let url = urlComponents?.url else { return nil }

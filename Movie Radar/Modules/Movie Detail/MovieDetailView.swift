@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieDetailView: View {
-    @State var viewModel: ViewModel
+    @StateObject var viewModel: ViewModel
 
     var body: some View {
         VStack {
@@ -21,13 +21,25 @@ struct MovieDetailView: View {
                     .frame(maxHeight: 220)
             }
             .clipped()
-            HStack {
-                Text(viewModel.movie.title ?? "")
-                    .font(.system(size: 25, weight: .light))
-                    .lineLimit(3)
-                Spacer()
+
+            GenreCarouselView()
+                .padding(.horizontal)
+                .environmentObject(viewModel)
+
+            VStack(spacing: 10) {
+                HStack {
+                    Text(viewModel.movie.title ?? "")
+                        .font(.system(size: 25, weight: .light))
+                        .lineLimit(3)
+                    Spacer()
+                }
+
+                Text(viewModel.movie.overview ?? "")
+                    .multilineTextAlignment(.leading)
+                    .font(.system(size: 14))
             }
             .padding(.horizontal)
+
             Spacer()
         }
         .presentationDetents([.medium, .large])
