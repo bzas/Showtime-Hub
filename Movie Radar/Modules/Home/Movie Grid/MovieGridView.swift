@@ -25,7 +25,7 @@ struct MovieGridView: View {
                     MovieGridCellView(movie: movie)
                 }
             }
-            .padding(.horizontal)
+            .padding(.horizontal, 6)
         }
     }
 }

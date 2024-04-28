@@ -30,7 +30,7 @@ struct MovieCarouselView: View {
             }
             .scrollIndicators(.hidden)
         }
-        .padding(.horizontal)
+        .padding(.horizontal, 6)
     }
 }
 

@@ -11,7 +11,7 @@ extension APIService {
 
     // MARK: - /movie/popular
     func getPopularMovies(page: Int = 1) async throws -> MovieList? {
-        guard let request = PathBuilder.request(.popular) else {
+        guard let request = PathBuilder.request(.popular, queryItems: [apiKeyQueryItem]) else {
             return nil
         }
 
@@ -35,7 +35,8 @@ extension APIService {
     // MARK: - /genre/movie/list
     func getGenres() async throws -> GenreList? {
         let queryItems = [
-            URLQueryItem(name: "language", value: Locale.current.language.languageCode?.identifier)
+            URLQueryItem(name: "language", value: Locale.current.language.languageCode?.identifier),
+            apiKeyQueryItem
         ]
 
         guard let request = PathBuilder.request(.genres, queryItems: queryItems) else {
@@ -51,7 +52,8 @@ extension APIService {
             URLQueryItem(name: "include_video", value: "true"),
             URLQueryItem(name: "language", value: Locale.current.language.languageCode?.identifier),
             URLQueryItem(name: "page", value: "\(page)"),
-            URLQueryItem(name: "sort_by", value: "popularity.desc")
+            URLQueryItem(name: "sort_by", value: "popularity.desc"),
+            apiKeyQueryItem
         ]
 
         if let genreId {

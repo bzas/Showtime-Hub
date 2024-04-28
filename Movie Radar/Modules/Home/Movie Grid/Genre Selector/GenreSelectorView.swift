@@ -28,7 +28,7 @@ struct GenreSelectorView: View {
             .frame(maxHeight: 30)
             .scrollIndicators(.hidden)
         }
-        .padding(.horizontal)
+        .padding(.horizontal, 2)
     }
 }
 

@@ -15,14 +15,9 @@ enum Path: String {
 }
 
 struct PathBuilder {
-    private static let apiVersion = 3
-    private static let baseUrl = "https://api.themoviedb.org"
+    static let baseUrl = "https://api.themoviedb.org"
     private static let imgBaseUrl = "https://www.themoviedb.org"
-
-    private static let apiKeyQueryItem = URLQueryItem(
-        name: "api_key",
-        value: "9a6438f6c6ac059b769cbf8f5e4a2b9c"
-    )
+    private static let apiVersion = 3
 
     static func image(imagePath: String) -> String {
         imgBaseUrl + "/t/p/w220_and_h330_face" + imagePath
@@ -32,11 +27,10 @@ struct PathBuilder {
         imgBaseUrl + "/t/p/w500" + imagePath
     }
 
-    static func request(_ path: Path, queryItems: [URLQueryItem] = []) -> URLRequest? {
+    static func request(_ path: Path, queryItems: [URLQueryItem]) -> URLRequest? {
         let urlString = baseUrl + "/\(apiVersion)" + path.rawValue
         var urlComponents = URLComponents(string: urlString)
-        urlComponents?.queryItems = queryItems + [apiKeyQueryItem]
-
+        urlComponents?.queryItems = queryItems
         guard let url = urlComponents?.url else { return nil }
         return URLRequest(url: url)
     }

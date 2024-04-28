@@ -12,6 +12,7 @@ struct HeaderText: View {
     var body: some View {
         HStack {
             Text(text)
+                .lineLimit(2)
                 .font(.system(size: 25, weight: .light))
                 .foregroundStyle(
                     LinearGradient.appGradient

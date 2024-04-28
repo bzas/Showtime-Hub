@@ -8,5 +8,7 @@
 import Foundation
 
 class APIServiceMock: APIService {
-
+    init() {
+        super.init(apiKey: "test")
+    }
 }

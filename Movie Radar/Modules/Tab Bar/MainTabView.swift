@@ -8,35 +8,52 @@
 import SwiftUI
 
 struct MainTabView: View {
-    var apiService = APIService()
+    @StateObject private var viewModel = ViewModel()
 
     var body: some View {
-        TabView {
-            HomeView(viewModel: .init(apiService: apiService))
-                .tabItem {
-                    Label(
-                        "Home",
-                        systemImage: "house"
-                    )
-                }
-
-            FavoritesView(viewModel: .init(apiService: apiService))
-                .tabItem {
-                    Label(
-                        "Favorites",
-                        systemImage: "heart"
-                    )
-                }
-
-            SettingsView(viewModel: .init(apiService: apiService))
-                .tabItem {
-                    Label(
-                        "Settings",
-                        systemImage: "gearshape"
-                    )
-                }
+        buildUI()
+        .sheet(isPresented: $viewModel.isPresentingTokenRequest) {
+            TokenRequestView(
+                viewModel: .init(
+                    apiService: viewModel.apiService
+                )
+            )
         }
-        .tint(.purple)
+    }
+
+    @ViewBuilder
+    func buildUI() -> some View {
+        if viewModel.isPresentingTokenRequest {
+            UIColor.systemBackground.color
+                .ignoresSafeArea()
+        } else {
+            TabView {
+                HomeView(viewModel: .init(apiService: viewModel.apiService))
+                    .tabItem {
+                        Label(
+                            "Home",
+                            systemImage: "house"
+                        )
+                    }
+
+                FavoritesView(viewModel: .init(apiService: viewModel.apiService))
+                    .tabItem {
+                        Label(
+                            "Favorites",
+                            systemImage: "heart"
+                        )
+                    }
+
+                SettingsView(viewModel: .init(apiService: viewModel.apiService))
+                    .tabItem {
+                        Label(
+                            "Settings",
+                            systemImage: "gearshape"
+                        )
+                    }
+            }
+            .tint(.purple)
+        }
     }
 }
 
