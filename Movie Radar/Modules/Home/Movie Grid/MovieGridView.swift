@@ -16,23 +16,32 @@ struct MovieGridView: View {
     ]
 
     var body: some View {
-        VStack {
+        ScrollView {
+            HeaderText(text: "All")
             GenreSelectorView()
                 .environmentObject(viewModel)
 
-            LazyVGrid(columns: columns, spacing: 8) {
-                ForEach(viewModel.discoverList.movies, id: \.self) { movie in
-                    MovieGridCellView(movie: movie)
-                        .onAppear {
-                            viewModel.continueFetchIfNeeded(lastMoviePresented: movie)
+            VStack {
+                if !viewModel.discoverList.movies.isEmpty {
+                    LazyVGrid(columns: columns, spacing: 8) {
+                        ForEach(viewModel.discoverList.movies, id: \.self) { movie in
+                            MovieGridCellView(movie: movie)
+                                .onAppear {
+                                    viewModel.continueFetchIfNeeded(lastMoviePresented: movie)
+                                }
+                                .onTapGesture {
+                                    viewModel.detailMovieToShow = movie
+                                }
                         }
-                        .onTapGesture {
-                            viewModel.detailMovieToShow = movie
-                        }
+                    }
+                    .padding(.horizontal, 6)
+                } else {
+                    GridPlaceholderView()
                 }
             }
-            .padding(.horizontal, 6)
+            .padding(.bottom, 48)
         }
+        .scrollIndicators(.hidden)
     }
 }
 

@@ -50,6 +50,9 @@
 		B526ED922BD90EEF00BD19C2 /* Favorites+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526ED912BD90EEF00BD19C2 /* Favorites+ViewModel.swift */; };
 		B526ED942BD911AD00BD19C2 /* APIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526ED932BD911AD00BD19C2 /* APIServiceMock.swift */; };
 		B526ED982BD919B800BD19C2 /* APIService+Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B526ED972BD919B800BD19C2 /* APIService+Endpoints.swift */; };
+		B57D7E712BDF936D002848E4 /* MovieCarouselStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D7E702BDF936D002848E4 /* MovieCarouselStackView.swift */; };
+		B57D7E732BDF95F9002848E4 /* GridPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D7E722BDF95F9002848E4 /* GridPlaceholderView.swift */; };
+		B57D7E752BDFB3AA002848E4 /* CarouselPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57D7E742BDFB3AA002848E4 /* CarouselPlaceholderView.swift */; };
 		B5CA51862BDA6D5200A87992 /* MovieCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5CA51852BDA6D5200A87992 /* MovieCarouselView.swift */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +120,9 @@
 		B526ED912BD90EEF00BD19C2 /* Favorites+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorites+ViewModel.swift"; sourceTree = "<group>"; };
 		B526ED932BD911AD00BD19C2 /* APIServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceMock.swift; sourceTree = "<group>"; };
 		B526ED972BD919B800BD19C2 /* APIService+Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIService+Endpoints.swift"; sourceTree = "<group>"; };
+		B57D7E702BDF936D002848E4 /* MovieCarouselStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCarouselStackView.swift; sourceTree = "<group>"; };
+		B57D7E722BDF95F9002848E4 /* GridPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridPlaceholderView.swift; sourceTree = "<group>"; };
+		B57D7E742BDFB3AA002848E4 /* CarouselPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselPlaceholderView.swift; sourceTree = "<group>"; };
 		B5CA51852BDA6D5200A87992 /* MovieCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCarouselView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -266,6 +272,7 @@
 			children = (
 				48FE82A02BDD20A600E2DF31 /* Genre Selector */,
 				48FE82A22BDD20D300E2DF31 /* MovieGridView.swift */,
+				B57D7E722BDF95F9002848E4 /* GridPlaceholderView.swift */,
 				48FE82A42BDD20E100E2DF31 /* MovieGridCellView.swift */,
 			);
 			path = "Movie Grid";
@@ -392,6 +399,8 @@
 			isa = PBXGroup;
 			children = (
 				480098ED2BDEF34100E663B4 /* MovieCarouselType.swift */,
+				B57D7E702BDF936D002848E4 /* MovieCarouselStackView.swift */,
+				B57D7E742BDFB3AA002848E4 /* CarouselPlaceholderView.swift */,
 				B5CA51852BDA6D5200A87992 /* MovieCarouselView.swift */,
 				B50EBFEF2BDB9A2300914327 /* MovieCarouselCellView.swift */,
 			);
@@ -558,9 +567,11 @@
 				480098EE2BDEF34100E663B4 /* MovieCarouselType.swift in Sources */,
 				B526ED872BD90CDA00BD19C2 /* Colors.swift in Sources */,
 				484F59742BDCFFFF0079D470 /* View.swift in Sources */,
+				B57D7E712BDF936D002848E4 /* MovieCarouselStackView.swift in Sources */,
 				B526ED922BD90EEF00BD19C2 /* Favorites+ViewModel.swift in Sources */,
 				B50EBFF02BDB9A2300914327 /* MovieCarouselCellView.swift in Sources */,
 				48FE82A32BDD20D300E2DF31 /* MovieGridView.swift in Sources */,
+				B57D7E732BDF95F9002848E4 /* GridPlaceholderView.swift in Sources */,
 				4896C4232BDEC83300E46C7D /* GenreCellView.swift in Sources */,
 				48398F9F2BDE724B00D16B52 /* MainTab+ViewModel.swift in Sources */,
 				485FD25B2BD7FCD800238336 /* PathBuilder.swift in Sources */,
@@ -573,6 +584,7 @@
 				B526ED852BD90BAF00BD19C2 /* SettingsView.swift in Sources */,
 				4896C4212BDEC0DB00E46C7D /* LocalStorage+UserDefaults.swift in Sources */,
 				B526ED8C2BD90ED400BD19C2 /* MovieDetailView.swift in Sources */,
+				B57D7E752BDFB3AA002848E4 /* CarouselPlaceholderView.swift in Sources */,
 				B526ED8A2BD90EC800BD19C2 /* Home+ViewModel.swift in Sources */,
 				B526ED942BD911AD00BD19C2 /* APIServiceMock.swift in Sources */,
 				B5CA51862BDA6D5200A87992 /* MovieCarouselView.swift in Sources */,

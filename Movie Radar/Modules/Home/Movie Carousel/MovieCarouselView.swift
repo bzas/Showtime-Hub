@@ -20,11 +20,16 @@ struct MovieCarouselView: View {
             HeaderText(text: type.title)
             ScrollView(.horizontal) {
                 LazyHGrid(rows: rows, spacing: 8) {
-                    ForEach(viewModel.getMovieList(type: type), id: \.self) { movie in
-                        MovieCarouselCellView(movie: movie)
-                            .onTapGesture {
-                                viewModel.detailMovieToShow = movie
-                            }
+                    let movies = viewModel.getMovieList(type: type)
+                    if movies.isEmpty {
+                        CarouselPlaceholderView()
+                    } else {
+                        ForEach(movies, id: \.self) { movie in
+                            MovieCarouselCellView(movie: movie)
+                                .onTapGesture {
+                                    viewModel.detailMovieToShow = movie
+                                }
+                        }
                     }
                 }
                 .frame(height: 200)

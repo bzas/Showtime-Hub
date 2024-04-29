@@ -9,14 +9,17 @@ import Foundation
 
 enum MovieCarouselType {
     case popular,
-         topRated
+         topRated,
+         upcoming
 
     var title: String {
         switch self {
-        case .popular:
-            return "Popular"
-        case .topRated:
-            return "Top rated"
+            case .popular:
+                return "Popular"
+            case .topRated:
+                return "Top rated"
+            case .upcoming:
+                return "Upcoming"
         }
     }
 }

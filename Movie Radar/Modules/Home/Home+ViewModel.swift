@@ -13,6 +13,7 @@ extension HomeView {
 
         @Published var topRatedList = MovieList()
         @Published var popularList = MovieList()
+        @Published var upcomingList = MovieList()
         @Published var discoverList = MovieList()
         @Published var genreList = GenreList()
         @Published var showDetailMovie = false
@@ -35,13 +36,22 @@ extension HomeView {
             await getPopular()
             await getTopRated()
             await getGenres()
-            await discoverMovies()
+            await getDiscoverMovies()
+            await getUpcoming()
         }
 
         func getTopRated() async {
             if let movieList = await apiService.getTopRatedMovies(page: topRatedList.page) {
                 await MainActor.run {
                     topRatedList.append(movieList)
+                }
+            }
+        }
+
+        func getUpcoming() async {
+            if let movieList = await apiService.getUpcomingMovies(page: upcomingList.page) {
+                await MainActor.run {
+                    upcomingList.append(movieList)
                 }
             }
         }
@@ -62,7 +72,7 @@ extension HomeView {
             }
         }
 
-        func discoverMovies() async {
+        func getDiscoverMovies() async {
             if let movieList = await apiService.discoverMovies(
                 genreId: selectedGenre?.id,
                 page: discoverList.page
@@ -82,7 +92,7 @@ extension HomeView {
 
             discoverList = MovieList()
             Task {
-                await discoverMovies()
+                await getDiscoverMovies()
             }
         }
 
@@ -94,16 +104,18 @@ extension HomeView {
             guard lastMoviePresented == discoverList.movies.last else { return }
 
             Task {
-                await discoverMovies()
+                await getDiscoverMovies()
             }
         }
 
         func getMovieList(type: MovieCarouselType) -> [Movie] {
             switch type {
-            case .popular:
-                return popularList.movies
-            case .topRated:
-                return topRatedList.movies
+                case .popular:
+                    return popularList.movies
+                case .topRated:
+                    return topRatedList.movies
+                case .upcoming:
+                    return upcomingList.movies
             }
         }
     }

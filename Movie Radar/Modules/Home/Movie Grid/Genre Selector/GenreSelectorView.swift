@@ -16,7 +16,6 @@ struct GenreSelectorView: View {
 
     var body: some View {
         VStack(spacing: 8) {
-            HeaderText(text: "All")
             ScrollView(.horizontal) {
                 LazyHGrid(rows: rows, spacing: 8) {
                     ForEach(viewModel.genreList.genres, id: \.self) { genre in

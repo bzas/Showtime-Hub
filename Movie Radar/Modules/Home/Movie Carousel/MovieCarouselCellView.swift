@@ -25,6 +25,7 @@ struct MovieCarouselCellView: View {
                 Text(movie.title ?? "")
                     .font(.system(size: 12))
                     .lineLimit(3)
+                    .multilineTextAlignment(.leading)
                     .frame(maxWidth: 100)
                 Spacer()
             }

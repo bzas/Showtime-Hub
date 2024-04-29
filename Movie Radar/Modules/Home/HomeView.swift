@@ -11,27 +11,23 @@ struct HomeView: View {
     @StateObject var viewModel: ViewModel
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                MovieCarouselView(type: .popular)
-                    .environmentObject(viewModel)
+        TabView {
+            MovieCarouselStackView()
+                .environmentObject(viewModel)
 
-                MovieCarouselView(type: .topRated)
-                    .environmentObject(viewModel)
-
-                MovieGridView()
-                    .environmentObject(viewModel)
-                Spacer()
-            }
-            .sheet(isPresented: $viewModel.showDetailMovie) {
-                if let detailMovieToShow = viewModel.detailMovieToShow {
-                    MovieDetailView(
-                        viewModel: .init(
-                            apiService: viewModel.apiService,
-                            movie: detailMovieToShow
-                        )
+            MovieGridView()
+                .environmentObject(viewModel)
+        }
+        .tabViewStyle(.page)
+        .indexViewStyle(.page(backgroundDisplayMode: .always))
+        .sheet(isPresented: $viewModel.showDetailMovie) {
+            if let detailMovieToShow = viewModel.detailMovieToShow {
+                MovieDetailView(
+                    viewModel: .init(
+                        apiService: viewModel.apiService,
+                        movie: detailMovieToShow
                     )
-                }
+                )
             }
         }
     }

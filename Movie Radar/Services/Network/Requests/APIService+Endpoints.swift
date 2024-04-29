@@ -10,7 +10,7 @@ import Foundation
 extension APIService {
 
     // MARK: - /movie/top_rated
-    func getTopRatedMovies(page: Int = 1) async -> MovieList? {
+    func getTopRatedMovies(page: Int) async -> MovieList? {
         let queryItems = [
             languageQueryItem,
             apiKeyQueryItem
@@ -24,7 +24,7 @@ extension APIService {
     }
 
     // MARK: - /movie/popular
-    func getPopularMovies(page: Int = 1) async -> MovieList? {
+    func getPopularMovies(page: Int) async -> MovieList? {
         let queryItems = [
             languageQueryItem,
             apiKeyQueryItem
@@ -37,8 +37,22 @@ extension APIService {
         return await perform(request: request)
     }
 
+    // MARK: - /movie/upcoming
+    func getUpcomingMovies(page: Int) async -> MovieList? {
+        let queryItems = [
+            languageQueryItem,
+            apiKeyQueryItem
+        ]
+
+        guard let request = PathBuilder.request(.upcoming, queryItems: queryItems) else {
+            return nil
+        }
+
+        return await perform(request: request)
+    }
+
     // MARK: - /search/movie
-    func searchMovies(queryString: String, page: Int = 1) async -> MovieList? {
+    func searchMovies(queryString: String, page: Int) async -> MovieList? {
         let queryItems = [
             languageQueryItem,
             apiKeyQueryItem,
@@ -68,7 +82,7 @@ extension APIService {
     }
 
     // MARK: - /discover/movie
-    func discoverMovies(genreId: Int?, page: Int = 1) async -> MovieList? {
+    func discoverMovies(genreId: Int?, page: Int) async -> MovieList? {
         var queryItems = [
             URLQueryItem(name: "include_video", value: "true"),
             URLQueryItem(name: "page", value: "\(page)"),
