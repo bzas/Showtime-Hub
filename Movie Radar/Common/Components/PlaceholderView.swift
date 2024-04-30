@@ -7,11 +7,27 @@
 
 import SwiftUI
 
+enum PlaceholderType {
+    case movie,
+         person
+
+    var imageName: String {
+        switch self {
+        case .movie:
+            return "movieclapper"
+        case .person:
+            return "person"
+        }
+    }
+}
+
 struct PlaceholderView: View {
+    var type: PlaceholderType
+
     var body: some View {
         UIColor.systemGray5.color
             .overlay {
-                Image(systemName: "movieclapper")
+                Image(systemName: type.imageName)
                     .resizable()
                     .foregroundStyle(LinearGradient.appGradient)
                     .frame(width: 40, height: 40)
@@ -20,5 +36,5 @@ struct PlaceholderView: View {
 }
 
 #Preview {
-    PlaceholderView()
+    PlaceholderView(type: .movie)
 }

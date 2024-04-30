@@ -16,9 +16,9 @@ struct MovieGridCellView: View {
                 .resizable()
                 .scaledToFill()
         } placeholder: {
-            PlaceholderView()
-                .frame(height: 265)
+            PlaceholderView(type: .movie)
         }
+        .frame(width: 150, height: 200)
         .clipped()
         .overlay {
             VStack {

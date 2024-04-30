@@ -17,7 +17,7 @@ struct CarouselPlaceholderView: View {
             LazyHGrid(rows: rows, spacing: 8) {
                 ForEach(0..<8, id: \.self) { _ in
                     VStack {
-                        PlaceholderView()
+                        PlaceholderView(type: .movie)
                             .frame(width: 100, height: 133)
                         HStack {
                             UIColor.systemGray5.color

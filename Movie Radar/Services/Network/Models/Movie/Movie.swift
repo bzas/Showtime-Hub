@@ -29,12 +29,22 @@ struct Movie: Codable, Hashable {
 
     var imageUrl: URL? {
         guard let backdropPath else { return nil }
-        return URL(string: PathBuilder.image(imagePath: backdropPath))
+        return URL(
+            string: PathBuilder.image(
+                type: .movie,
+                imagePath: backdropPath
+            )
+        )
     }
 
     var wideImageUrl: URL? {
         guard let backdropPath else { return nil }
-        return URL(string: PathBuilder.wideImage(imagePath: backdropPath))
+        return URL(
+            string: PathBuilder.image(
+                type: .wideMovie,
+                imagePath: backdropPath
+            )
+        )
     }
 
     enum CodingKeys: String, CodingKey {

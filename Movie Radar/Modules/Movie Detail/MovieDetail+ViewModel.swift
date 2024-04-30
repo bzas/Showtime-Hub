@@ -11,12 +11,14 @@ extension MovieDetailView {
     class ViewModel: ObservableObject {
         var apiService: APIService
         @Published var movie: Movie
+        @Published var movieActors: [Cast] = []
 
         init(apiService: APIService, movie: Movie) {
             self.apiService = apiService
             self.movie = movie
             Task {
                 await fetchDetailMovie()
+                await fetchMovieActors()
             }
         }
 
@@ -24,6 +26,14 @@ extension MovieDetailView {
             if let movieDetail = await apiService.getMovieDetail(id: movie.id) {
                 await MainActor.run {
                     movie = movieDetail
+                }
+            }
+        }
+
+        func fetchMovieActors() async {
+            if let movieActors = await apiService.getMovieActors(id: movie.id) {
+                await MainActor.run {
+                    self.movieActors = movieActors
                 }
             }
         }

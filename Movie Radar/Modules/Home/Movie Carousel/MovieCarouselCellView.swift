@@ -17,16 +17,19 @@ struct MovieCarouselCellView: View {
                     .resizable()
                     .scaledToFill()
             } placeholder: {
-                PlaceholderView()
+                PlaceholderView(type: .movie)
             }
             .frame(width: 100, height: 133)
             .clipped()
             VStack {
-                Text(movie.title ?? "")
-                    .font(.system(size: 12))
-                    .lineLimit(3)
-                    .multilineTextAlignment(.leading)
-                    .frame(maxWidth: 100)
+                HStack {
+                    Text(movie.title ?? "")
+                        .font(.system(size: 12))
+                        .lineLimit(3)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: 80, alignment: .leading)
+                    Spacer()
+                }
                 Spacer()
             }
         }

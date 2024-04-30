@@ -10,22 +10,22 @@ import SwiftUI
 struct MovieGridView: View {
     @EnvironmentObject var viewModel: HomeView.ViewModel
 
-    let columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
+    let rows = [
+        GridItem(.fixed(200)),
+        GridItem(.fixed(200))
     ]
 
     var body: some View {
-        ScrollView {
+        VStack {
             HeaderText(text: "All")
             GenreSelectorView()
                 .environmentObject(viewModel)
-
-            VStack {
-                if !viewModel.discoverList.movies.isEmpty {
-                    LazyVGrid(columns: columns, spacing: 8) {
+            if !viewModel.discoverList.movies.isEmpty {
+                ScrollView(.horizontal) {
+                    LazyHGrid(rows: rows, spacing: 8) {
                         ForEach(viewModel.discoverList.movies, id: \.self) { movie in
                             MovieGridCellView(movie: movie)
+                                .frame(width: 150, height: 200)
                                 .onAppear {
                                     viewModel.continueFetchIfNeeded(lastMoviePresented: movie)
                                 }
@@ -34,14 +34,14 @@ struct MovieGridView: View {
                                 }
                         }
                     }
-                    .padding(.horizontal, 6)
-                } else {
-                    GridPlaceholderView()
+                    .padding(.vertical, 6)
                 }
+                .padding(.horizontal, 6)
+            } else {
+                GridPlaceholderView()
             }
-            .padding(.bottom, 48)
+            Spacer()
         }
-        .scrollIndicators(.hidden)
     }
 }
 

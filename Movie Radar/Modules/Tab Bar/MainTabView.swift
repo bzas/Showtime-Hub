@@ -19,6 +19,9 @@ struct MainTabView: View {
                     )
                 )
             }
+            .onAppear {
+                UIScrollView.appearance().bounces = false
+            }
     }
 
     @ViewBuilder

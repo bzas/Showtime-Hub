@@ -118,4 +118,22 @@ extension APIService {
 
         return await perform(request: request)
     }
+
+    func getMovieActors(id: Int) async -> [Cast]? {
+        let queryItems = [
+            languageQueryItem,
+            apiKeyQueryItem
+        ]
+
+        guard let request = PathBuilder.request(
+            .credits,
+            queryItems: queryItems,
+            pathComponent: "\(id)"
+        ) else {
+            return nil
+        }
+
+        let credits: Credits? = await perform(request: request)
+        return credits?.actors ?? []
+    }
 }
