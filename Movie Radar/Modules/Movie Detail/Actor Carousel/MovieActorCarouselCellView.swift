@@ -19,7 +19,7 @@ struct MovieActorCarouselCellView: View {
             } placeholder: {
                 PlaceholderView(type: .person)
             }
-            .frame(width: 125, height: 125)
+            .frame(width: 100, height: 100)
             .clipShape(Circle())
 
             VStack {
@@ -29,10 +29,9 @@ struct MovieActorCarouselCellView: View {
                     .font(.system(size: 12, weight: .light))
                 Text(movieActor.character ?? "")
                     .font(.system(size: 10, weight: .thin))
+                Spacer()
             }
-            .frame(width: 100)
-
-            Spacer()
+            .frame(width: 90, height: 70)
         }
     }
 }

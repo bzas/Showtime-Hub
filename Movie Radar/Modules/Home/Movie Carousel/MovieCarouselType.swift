@@ -14,12 +14,12 @@ enum MovieCarouselType {
 
     var title: String {
         switch self {
-            case .popular:
-                return "Popular"
-            case .topRated:
-                return "Top rated"
-            case .upcoming:
-                return "Upcoming"
+        case .popular:
+            return "Popular"
+        case .topRated:
+            return "Top rated"
+        case .upcoming:
+            return "Upcoming"
         }
     }
 }

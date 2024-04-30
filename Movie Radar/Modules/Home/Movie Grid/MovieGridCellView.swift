@@ -11,7 +11,7 @@ struct MovieGridCellView: View {
     @State var movie: Movie
 
     var body: some View {
-        AsyncImage(url: movie.imageUrl) { image in
+        AsyncImage(url: movie.posterImageUrl) { image in
             image
                 .resizable()
                 .scaledToFill()

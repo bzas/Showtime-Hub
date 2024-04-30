@@ -21,7 +21,7 @@ struct Cast: Codable, Hashable {
         guard let profilePath else { return nil }
         return URL(
             string: PathBuilder.image(
-                type: .actor,
+                type: .square,
                 imagePath: profilePath
             )
         )

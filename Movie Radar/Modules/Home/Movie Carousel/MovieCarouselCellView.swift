@@ -12,7 +12,7 @@ struct MovieCarouselCellView: View {
 
     var body: some View {
         VStack {
-            AsyncImage(url: movie.imageUrl) { image in
+            AsyncImage(url: movie.posterImageUrl) { image in
                 image
                     .resizable()
                     .scaledToFill()

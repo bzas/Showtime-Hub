@@ -12,15 +12,15 @@ struct MovieDetailView: View {
 
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(spacing: 25) {
                 ZStack {
-                    AsyncImage(url: viewModel.movie.wideImageUrl) { image in
+                    AsyncImage(url: viewModel.movie.squareImageUrl) { image in
                         image
                             .resizable()
                             .scaledToFit()
                     } placeholder: {
                         PlaceholderView(type: .movie)
-                            .frame(height: 220)
+                            .aspectRatio(1, contentMode: .fill)
                     }
                     .clipped()
 
@@ -35,26 +35,24 @@ struct MovieDetailView: View {
 
                     VStack {
                         Spacer()
+                        HStack {
+                            Text(viewModel.movie.title ?? "")
+                                .font(.system(size: 30, weight: .light))
+                                .lineLimit(6)
+                                .shadow(color: UIColor.systemBackground.color, radius: 2)
+                            Spacer()
+                        }
+                        .padding(.trailing)
                         GenreCarouselView()
-                            .padding(6)
                             .environmentObject(viewModel)
                     }
+                    .padding(.horizontal)
                 }
 
                 VStack(spacing: 20) {
-                    VStack(spacing: 10) {
-                        HStack {
-                            Text(viewModel.movie.title ?? "")
-                                .font(.system(size: 25, weight: .light))
-                                .lineLimit(3)
-                            Spacer()
-                        }
-
-                        Text(viewModel.movie.overview ?? "")
-                            .multilineTextAlignment(.leading)
-                            .font(.system(size: 14))
-                    }
-
+                    Text(viewModel.movie.overview ?? "")
+                        .multilineTextAlignment(.leading)
+                        .font(.system(size: 14))
                     MovieActorCarouselView()
                         .environmentObject(viewModel)
                 }
@@ -64,6 +62,5 @@ struct MovieDetailView: View {
             }
         }
         .scrollIndicators(.hidden)
-        .presentationDetents([.medium, .large])
     }
 }

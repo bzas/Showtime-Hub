@@ -24,7 +24,7 @@ struct MovieActorCarouselView: View {
             }
 
             ScrollView(.horizontal) {
-                LazyHGrid(rows: rows, spacing: 12) {
+                LazyHGrid(rows: rows, spacing: 20) {
                     ForEach(viewModel.movieActors, id: \.self) { movieActor in
                         MovieActorCarouselCellView(movieActor: movieActor)
                     }

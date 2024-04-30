@@ -27,21 +27,21 @@ struct Movie: Codable, Hashable {
     let voteAverage: Double?
     let voteCount: Int?
 
-    var imageUrl: URL? {
+    var posterImageUrl: URL? {
         guard let backdropPath else { return nil }
         return URL(
             string: PathBuilder.image(
-                type: .movie,
+                type: .poster,
                 imagePath: backdropPath
             )
         )
     }
 
-    var wideImageUrl: URL? {
+    var squareImageUrl: URL? {
         guard let backdropPath else { return nil }
         return URL(
             string: PathBuilder.image(
-                type: .wideMovie,
+                type: .square,
                 imagePath: backdropPath
             )
         )

@@ -110,12 +110,12 @@ extension HomeView {
 
         func getMovieList(type: MovieCarouselType) -> [Movie] {
             switch type {
-                case .popular:
-                    return popularList.movies
-                case .topRated:
-                    return topRatedList.movies
-                case .upcoming:
-                    return upcomingList.movies
+            case .popular:
+                return popularList.movies
+            case .topRated:
+                return topRatedList.movies
+            case .upcoming:
+                return upcomingList.movies
             }
         }
     }
