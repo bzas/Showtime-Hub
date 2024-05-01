@@ -11,12 +11,7 @@ extension APIService {
 
     // MARK: - /movie/top_rated
     func getTopRatedMovies(page: Int) async -> MovieList? {
-        let queryItems = [
-            languageQueryItem,
-            apiKeyQueryItem
-        ]
-
-        guard let request = PathBuilder.request(.topRated, queryItems: queryItems) else {
+        guard let request = PathBuilder.request(.topRated, queryItems: defaultQueryItems) else {
             return nil
         }
 
@@ -25,12 +20,7 @@ extension APIService {
 
     // MARK: - /movie/popular
     func getPopularMovies(page: Int) async -> MovieList? {
-        let queryItems = [
-            languageQueryItem,
-            apiKeyQueryItem
-        ]
-
-        guard let request = PathBuilder.request(.popular, queryItems: queryItems) else {
+        guard let request = PathBuilder.request(.popular, queryItems: defaultQueryItems) else {
             return nil
         }
 
@@ -39,12 +29,7 @@ extension APIService {
 
     // MARK: - /movie/upcoming
     func getUpcomingMovies(page: Int) async -> MovieList? {
-        let queryItems = [
-            languageQueryItem,
-            apiKeyQueryItem
-        ]
-
-        guard let request = PathBuilder.request(.upcoming, queryItems: queryItems) else {
+        guard let request = PathBuilder.request(.upcoming, queryItems: defaultQueryItems) else {
             return nil
         }
 
@@ -54,11 +39,9 @@ extension APIService {
     // MARK: - /search/movie
     func searchMovies(queryString: String, page: Int) async -> MovieList? {
         let queryItems = [
-            languageQueryItem,
-            apiKeyQueryItem,
             URLQueryItem(name: "page", value: String(page)),
             URLQueryItem(name: "query", value: queryString)
-        ]
+        ] + defaultQueryItems
 
         guard let request = PathBuilder.request(.search, queryItems: queryItems) else {
             return nil
@@ -69,12 +52,7 @@ extension APIService {
 
     // MARK: - /genre/movie/list
     func getGenres() async -> GenreList? {
-        let queryItems = [
-            languageQueryItem,
-            apiKeyQueryItem
-        ]
-
-        guard let request = PathBuilder.request(.genres, queryItems: queryItems) else {
+        guard let request = PathBuilder.request(.genres, queryItems: defaultQueryItems) else {
             return nil
         }
 
@@ -86,10 +64,8 @@ extension APIService {
         var queryItems = [
             URLQueryItem(name: "include_video", value: "true"),
             URLQueryItem(name: "page", value: "\(page)"),
-            URLQueryItem(name: "sort_by", value: "popularity.desc"),
-            languageQueryItem,
-            apiKeyQueryItem
-        ]
+            URLQueryItem(name: "sort_by", value: "popularity.desc")
+        ] + defaultQueryItems
 
         if let genreId {
             queryItems.append(URLQueryItem(name: "with_genres", value: "\(genreId)"))
@@ -102,15 +78,11 @@ extension APIService {
         return await perform(request: request)
     }
 
+    // MARK: - /movie/{movie_id}
     func getMovieDetail(id: Int) async -> Movie? {
-        let queryItems = [
-            languageQueryItem,
-            apiKeyQueryItem
-        ]
-
         guard let request = PathBuilder.request(
             .detail,
-            queryItems: queryItems,
+            queryItems: defaultQueryItems,
             pathComponent: "\(id)"
         ) else {
             return nil
@@ -119,15 +91,11 @@ extension APIService {
         return await perform(request: request)
     }
 
+    // MARK: - /movie/{movie_id}/credits
     func getMovieActors(id: Int) async -> [Cast]? {
-        let queryItems = [
-            languageQueryItem,
-            apiKeyQueryItem
-        ]
-
         guard let request = PathBuilder.request(
             .credits,
-            queryItems: queryItems,
+            queryItems: defaultQueryItems,
             pathComponent: "\(id)"
         ) else {
             return nil
@@ -135,5 +103,18 @@ extension APIService {
 
         let credits: Credits? = await perform(request: request)
         return credits?.actors ?? []
+    }
+
+    // MARK: - /movie/{movie_id}/similar
+    func getSimilarMovies(id: Int) async -> MovieList? {
+        guard let request = PathBuilder.request(
+            .similar,
+            queryItems: defaultQueryItems,
+            pathComponent: "\(id)"
+        ) else {
+            return nil
+        }
+
+        return await perform(request: request)
     }
 }

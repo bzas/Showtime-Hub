@@ -14,6 +14,13 @@ class APIService {
         value: Locale.current.language.region?.identifier.localizedLowercase
     )
 
+    var defaultQueryItems: [URLQueryItem] {
+        [
+            apiKeyQueryItem,
+            languageQueryItem
+        ]
+    }
+
     init(apiKey: String? = nil) {
         apiKeyQueryItem = URLQueryItem(
             name: "api_key",
