@@ -19,7 +19,6 @@ struct GenreCarouselView: View {
             LazyHGrid(rows: rows, spacing: 8) {
                 ForEach(viewModel.movie.genres ?? [], id: \.self) { genre in
                     GenreCellView(genre: genre)
-                        .environmentObject(viewModel)
                 }
             }
         }

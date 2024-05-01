@@ -105,11 +105,24 @@ extension APIService {
         return credits?.actors ?? []
     }
 
-    // MARK: - /movie/{movie_id}/similar
-    func getSimilarMovies(id: Int) async -> MovieList? {
+    // MARK: - /movie/{movie_id}/recommendations
+    func getMovieRecommendations(id: Int) async -> MovieList? {
         guard let request = PathBuilder.request(
-            .similar,
+            .recommendations,
             queryItems: defaultQueryItems,
+            pathComponent: "\(id)"
+        ) else {
+            return nil
+        }
+
+        return await perform(request: request)
+    }
+
+    // MARK: - /movie/{movie_id}/reviews
+    func getMovieReviews(id: Int) async -> ReviewList? {
+        guard let request = PathBuilder.request(
+            .reviews,
+            queryItems: [apiKeyQueryItem],
             pathComponent: "\(id)"
         ) else {
             return nil

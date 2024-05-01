@@ -23,5 +23,15 @@ struct MovieDetailView: View {
             }
         }
         .scrollIndicators(.hidden)
+        .sheet(isPresented: $viewModel.showDetailMovie) {
+            if let detailMovieToShow = viewModel.detailMovieToShow {
+                MovieDetailView(
+                    viewModel: .init(
+                        apiService: viewModel.apiService,
+                        movie: detailMovieToShow
+                    )
+                )
+            }
+        }
     }
 }

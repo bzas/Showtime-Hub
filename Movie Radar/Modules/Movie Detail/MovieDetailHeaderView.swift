@@ -15,14 +15,13 @@ struct MovieDetailHeaderView: View {
             AsyncImage(url: viewModel.movie.originalImageUrl) { image in
                 image
                     .resizable()
-                    .scaledToFill()
+                    .scaledToFit()
             } placeholder: {
                 PlaceholderView(type: .movie)
+                    .frame(height: 560)
             }
-            .frame(
-                width: UIScreen.main.bounds.width,
-                height: UIScreen.main.bounds.width
-            )
+            .clipped()
+
             LinearGradient(
                 stops: [
                     Gradient.Stop(color: .clear, location: 0.6),

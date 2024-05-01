@@ -38,10 +38,20 @@ struct Movie: Codable, Hashable {
     }
 
     var originalImageUrl: URL? {
-        guard let backdropPath else { return nil }
+        guard let posterPath else { return nil }
         return URL(
             string: PathBuilder.image(
                 type: .original,
+                imagePath: posterPath
+            )
+        )
+    }
+
+    var wideImageUrl: URL? {
+        guard let backdropPath else { return nil }
+        return URL(
+            string: PathBuilder.image(
+                type: .wide,
                 imagePath: backdropPath
             )
         )

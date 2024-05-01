@@ -14,10 +14,10 @@ struct MovieGridCellView: View {
         AsyncImage(url: movie.posterImageUrl) { image in
             image
                 .resizable()
-                .scaledToFill()
+                .scaledToFit()
         } placeholder: {
             PlaceholderView(type: .movie)
-                .frame(height: 265)
+                .frame(height: 270)
         }
         .clipped()
         .overlay {
@@ -26,7 +26,7 @@ struct MovieGridCellView: View {
                     Text(movie.title ?? "")
                         .font(.system(size: 14))
                         .foregroundStyle(.white)
-                        .shadow(color: Color.black, radius: 2)
+                        .shadow(color: Color.black, radius: 1)
                         .padding(6)
                     Spacer()
                 }

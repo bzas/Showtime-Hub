@@ -24,14 +24,14 @@ struct MovieActorCarouselCellView: View {
 
             VStack {
                 Text(movieActor.name ?? "")
-                    .lineLimit(3)
+                    .lineLimit(2)
                     .multilineTextAlignment(.center)
                     .font(.system(size: 12, weight: .light))
                 Text(movieActor.character ?? "")
                     .font(.system(size: 10, weight: .thin))
                 Spacer()
             }
-            .frame(width: 90, height: 70)
+            .frame(width: 90, height: 60)
         }
     }
 }
