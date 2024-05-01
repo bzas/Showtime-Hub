@@ -11,9 +11,7 @@ extension HomeView {
     class ViewModel: ObservableObject {
         var apiService: APIService
 
-        @Published var topRatedList = MovieList()
         @Published var popularList = MovieList()
-        @Published var upcomingList = MovieList()
         @Published var discoverList = MovieList()
         @Published var genreList = GenreList()
         @Published var showDetailMovie = false
@@ -34,25 +32,16 @@ extension HomeView {
 
         func fetchData() async {
             await getPopular()
-            await getTopRated()
             await getGenres()
             await getDiscoverMovies()
-            await getUpcoming()
         }
 
-        func getTopRated() async {
-            if let movieList = await apiService.getTopRatedMovies(page: topRatedList.page) {
-                await MainActor.run {
-                    topRatedList.append(movieList)
-                }
-            }
-        }
-
-        func getUpcoming() async {
-            if let movieList = await apiService.getUpcomingMovies(page: upcomingList.page) {
-                await MainActor.run {
-                    upcomingList.append(movieList)
-                }
+        func refreshData() {
+            popularList = MovieList()
+            discoverList = MovieList()
+            genreList = GenreList()
+            Task {
+                await fetchData()
             }
         }
 
@@ -105,17 +94,6 @@ extension HomeView {
 
             Task {
                 await getDiscoverMovies()
-            }
-        }
-
-        func getMovieList(type: MovieCarouselType) -> [Movie] {
-            switch type {
-            case .popular:
-                return popularList.movies
-            case .topRated:
-                return topRatedList.movies
-            case .upcoming:
-                return upcomingList.movies
             }
         }
     }

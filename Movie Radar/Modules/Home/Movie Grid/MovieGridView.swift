@@ -10,38 +10,20 @@ import SwiftUI
 struct MovieGridView: View {
     @EnvironmentObject var viewModel: HomeView.ViewModel
 
-    let rows = [
-        GridItem(.fixed(200)),
-        GridItem(.fixed(200))
-    ]
-
     var body: some View {
         VStack {
-            HeaderText(text: "All")
+            HeaderText(text: "Discover")
             GenreSelectorView()
                 .environmentObject(viewModel)
             if !viewModel.discoverList.movies.isEmpty {
-                ScrollView(.horizontal) {
-                    LazyHGrid(rows: rows, spacing: 8) {
-                        ForEach(viewModel.discoverList.movies, id: \.self) { movie in
-                            MovieGridCellView(movie: movie)
-                                .frame(width: 150, height: 200)
-                                .onAppear {
-                                    viewModel.continueFetchIfNeeded(lastMoviePresented: movie)
-                                }
-                                .onTapGesture {
-                                    viewModel.detailMovieToShow = movie
-                                }
-                        }
-                    }
-                    .padding(.vertical, 6)
-                }
-                .padding(.horizontal, 6)
+                DiscoverMoviesGridView()
+                    .environmentObject(viewModel)
             } else {
                 GridPlaceholderView()
             }
-            Spacer()
         }
+        .padding(.horizontal, 6)
+        .padding(.bottom, 48)
     }
 }
 

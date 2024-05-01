@@ -8,21 +8,18 @@
 import SwiftUI
 
 struct GridPlaceholderView: View {
-    let rows = [
-        GridItem(.fixed(200)),
-        GridItem(.fixed(200))
-    ]
+    let columns = [
+         GridItem(.flexible()),
+         GridItem(.flexible())
+     ]
 
     var body: some View {
-        ScrollView(.horizontal) {
-            LazyHGrid(rows: rows, spacing: 8) {
-                ForEach(0..<8, id: \.self) { _ in
-                    PlaceholderView(type: .movie)
-                        .frame(width: 150)
-                }
+        LazyVGrid(columns: columns, spacing: 8) {
+            ForEach(0..<8, id: \.self) { _ in
+                PlaceholderView(type: .movie)
+                    .frame(height: 265)
             }
         }
-        .padding(.horizontal, 6)
     }
 }
 

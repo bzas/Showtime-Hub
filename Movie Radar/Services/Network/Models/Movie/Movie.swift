@@ -37,11 +37,11 @@ struct Movie: Codable, Hashable {
         )
     }
 
-    var squareImageUrl: URL? {
+    var originalImageUrl: URL? {
         guard let backdropPath else { return nil }
         return URL(
             string: PathBuilder.image(
-                type: .square,
+                type: .original,
                 imagePath: backdropPath
             )
         )

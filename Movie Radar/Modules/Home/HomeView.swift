@@ -12,34 +12,16 @@ struct HomeView: View {
 
     var body: some View {
 
-        ScrollView(.init()) {
-            ZStack {
-                GeometryReader { proxy in
-                    TabView {
-                        MovieCarouselStackView()
-                            .environmentObject(viewModel)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .frame(width: proxy.size.width, height: proxy.size.height)
-                            .rotationEffect(.degrees(-90))
+        ScrollView {
+            VStack {
+                MovieCarouselView(type: .popular)
+                    .environmentObject(viewModel)
 
-                        MovieGridView()
-                            .environmentObject(viewModel)
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .frame(width: proxy.size.width, height: proxy.size.height)
-                            .rotationEffect(.degrees(-90))
-                    }
-                    .frame(width: proxy.size.height, height: proxy.size.width)
-                    .rotationEffect(.degrees(90), anchor: .topLeading)
-                    .offset(x: proxy.size.width)
-                }
-                .tabViewStyle(
-                    PageTabViewStyle(indexDisplayMode: .never)
-                )
+                MovieGridView()
+                    .environmentObject(viewModel)
             }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
-            .navigationBarBackButtonHidden(true)
         }
+        .scrollIndicators(.hidden)
         .sheet(isPresented: $viewModel.showDetailMovie) {
             if let detailMovieToShow = viewModel.detailMovieToShow {
                 MovieDetailView(
@@ -50,28 +32,6 @@ struct HomeView: View {
                 )
             }
         }
-
-        /*
-        TabView {
-            MovieCarouselStackView()
-                .environmentObject(viewModel)
-            
-            MovieGridView()
-                .environmentObject(viewModel)
-        }
-        .tabViewStyle(.page)
-        .indexViewStyle(.page(backgroundDisplayMode: .always))
-        .sheet(isPresented: $viewModel.showDetailMovie) {
-            if let detailMovieToShow = viewModel.detailMovieToShow {
-                MovieDetailView(
-                    viewModel: .init(
-                        apiService: viewModel.apiService,
-                        movie: detailMovieToShow
-                    )
-                )
-            }
-        }
-         */
     }
 }
 

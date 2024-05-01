@@ -12,16 +12,17 @@ struct MovieDetailHeaderView: View {
 
     var body: some View {
         ZStack {
-            AsyncImage(url: viewModel.movie.squareImageUrl) { image in
+            AsyncImage(url: viewModel.movie.originalImageUrl) { image in
                 image
                     .resizable()
-                    .scaledToFit()
+                    .scaledToFill()
             } placeholder: {
                 PlaceholderView(type: .movie)
-                    .aspectRatio(1, contentMode: .fill)
             }
-            .clipped()
-
+            .frame(
+                width: UIScreen.main.bounds.width,
+                height: UIScreen.main.bounds.width
+            )
             LinearGradient(
                 stops: [
                     Gradient.Stop(color: .clear, location: 0.6),

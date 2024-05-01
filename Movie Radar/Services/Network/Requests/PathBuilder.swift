@@ -22,29 +22,8 @@ enum Path: String {
 enum ImageType: String {
     case wide = "/t/p/w500",
          square = "/t/p/w470_and_h470_face",
-         poster = "/t/p/w220_and_h330_face"
-
-    var height: CGFloat? {
-        switch self {
-        case .wide:
-            500
-        case .square:
-            470
-        case .poster:
-            330
-        }
-    }
-
-    var width: CGFloat? {
-        switch self {
-        case .wide:
-            nil
-        case .square:
-            470
-        case .poster:
-            220
-        }
-    }
+         poster = "/t/p/w220_and_h330_face",
+         original = "/t/p/original"
 }
 
 struct PathBuilder {
