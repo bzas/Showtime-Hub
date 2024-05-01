@@ -39,6 +39,9 @@ struct MovieDetailBodyView: View {
 
                 SimilarMoviesCarouselView()
                     .environmentObject(viewModel)
+
+                LinksCarouselView()
+                    .environmentObject(viewModel)
             }
         }
         .padding(.horizontal)

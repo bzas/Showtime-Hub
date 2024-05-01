@@ -17,7 +17,8 @@ enum Path: String {
          upcoming = "/movie/upcoming",
          credits = "/movie/%@/credits",
          recommendations = "/movie/%@/recommendations",
-         reviews = "/movie/%@/reviews"
+         reviews = "/movie/%@/reviews",
+         links = "/movie/%@/external_ids"
 }
 
 enum ImageType: String {

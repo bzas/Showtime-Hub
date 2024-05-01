@@ -130,4 +130,17 @@ extension APIService {
 
         return await perform(request: request)
     }
+
+    // MARK: - /movie/{movie_id}/external_ids
+    func getMovieLinks(id: Int) async -> LinkList? {
+        guard let request = PathBuilder.request(
+            .links,
+            queryItems: defaultQueryItems,
+            pathComponent: "\(id)"
+        ) else {
+            return nil
+        }
+
+        return await perform(request: request)
+    }
 }

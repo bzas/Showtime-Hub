@@ -14,6 +14,7 @@ extension MovieDetailView {
         @Published var movieActors: [Cast] = []
         @Published var movieRecommendationsList = MovieList()
         @Published var reviewList = ReviewList()
+        @Published var linkList: LinkList?
         @Published var showDetailMovie = false
         @Published var detailMovieToShow: Movie? {
             didSet {
@@ -29,6 +30,7 @@ extension MovieDetailView {
                 await fetchMovieActors()
                 await fetchSimilarMovies()
                 await fetchReviews()
+                await fetchLinks()
             }
         }
 
@@ -60,6 +62,14 @@ extension MovieDetailView {
             if let reviewList = await apiService.getMovieReviews(id: movie.id) {
                 await MainActor.run {
                     self.reviewList = reviewList
+                }
+            }
+        }
+
+        func fetchLinks() async {
+            if let linkList = await apiService.getMovieLinks(id: movie.id) {
+                await MainActor.run {
+                    self.linkList = linkList
                 }
             }
         }
