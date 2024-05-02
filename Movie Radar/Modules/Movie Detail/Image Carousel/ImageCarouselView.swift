@@ -22,12 +22,20 @@ struct ImageCarouselView: View {
                 Spacer()
             }
 
-            ScrollView(.horizontal) {
-                LazyHGrid(rows: rows, spacing: 16) {
-                    ForEach(viewModel.imageList.posters, id: \.self) { imageInfo in
-                        ImageCarouselCellView(imageInfo: imageInfo)
+            if viewModel.imageList.posters.isEmpty {
+                Text("No images available")
+                    .font(.system(size: 14))
+                    .padding(.top, 4)
+            } else {
+                ScrollView(.horizontal) {
+                    LazyHGrid(rows: rows, spacing: 16) {
+                        ForEach(viewModel.imageList.posters, id: \.self) { imageInfo in
+                            ImageCarouselCellView(imageInfo: imageInfo)
+                        }
                     }
+                    .scrollTargetLayout()
                 }
+                .scrollTargetBehavior(.viewAligned)
             }
         }
         .padding(.bottom)

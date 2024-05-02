@@ -17,9 +17,10 @@ extension TokenRequestView {
         }
 
         func storeKey() -> Bool {
-            if !apiKey.isEmpty,
-               LocalStorage().saveApiKey(apiKey: apiKey) {
-                let keyWithoutSpaces = apiKey.trimmingCharacters(in: .whitespacesAndNewlines)
+            let keyWithoutSpaces = apiKey.trimmingCharacters(in: .whitespacesAndNewlines)
+
+            if !keyWithoutSpaces.isEmpty,
+               LocalStorage().saveApiKey(apiKey: keyWithoutSpaces) {
                 apiService.updateApiKey(keyWithoutSpaces)
                 return true
             }

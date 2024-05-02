@@ -31,7 +31,9 @@ struct SimilarMoviesCarouselView: View {
                             }
                     }
                 }
+                .scrollTargetLayout()
             }
+            .scrollTargetBehavior(.viewAligned)
         }
     }
 }
