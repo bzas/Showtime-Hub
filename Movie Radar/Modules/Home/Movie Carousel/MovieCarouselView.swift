@@ -16,27 +16,29 @@ struct MovieCarouselView: View {
     ]
 
     var body: some View {
-        VStack(spacing: 8) {
-            HeaderText(text: type.title)
-            ScrollView(.horizontal) {
-                LazyHGrid(rows: rows, spacing: 8) {
-                    let movies = viewModel.popularList.movies
-                    if movies.isEmpty {
-                        CarouselPlaceholderView()
-                    } else {
-                        ForEach(movies, id: \.self) { movie in
-                            MovieCarouselCellView(movie: movie)
-                                .onTapGesture {
-                                    viewModel.detailMovieToShow = movie
-                                }
-                        }
+        ScrollView(.horizontal) {
+            LazyHGrid(rows: rows, spacing: 0) {
+                let movies = viewModel.popularList.movies
+                if movies.isEmpty {
+                    PlaceholderView(type: .movie)
+                        .frame(
+                            width: UIScreen.main.bounds.width,
+                            height: UIScreen.main.bounds.width / 1.778
+                        )
+                } else {
+                    ForEach(movies, id: \.self) { movie in
+                        MovieCarouselCellView(movie: movie)
+                            .onTapGesture {
+                                viewModel.detailMovieToShow = movie
+                            }
                     }
                 }
-                .frame(height: 200)
             }
-            .scrollIndicators(.hidden)
+            .scrollTargetLayout()
         }
-        .padding(.horizontal, 6)
+        .scrollTargetBehavior(.paging)
+        .scrollIndicators(.hidden)
+        .padding(.bottom)
     }
 }
 

@@ -13,8 +13,12 @@ struct MovieGridView: View {
     var body: some View {
         VStack {
             HeaderText(text: "Discover")
+
+            SearchBar(text: .constant(""))
+
             GenreSelectorView()
                 .environmentObject(viewModel)
+
             if !viewModel.discoverList.movies.isEmpty {
                 DiscoverMoviesGridView()
                     .environmentObject(viewModel)

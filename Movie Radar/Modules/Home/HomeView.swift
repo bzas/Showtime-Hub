@@ -11,7 +11,6 @@ struct HomeView: View {
     @StateObject var viewModel: ViewModel
 
     var body: some View {
-
         ScrollView {
             VStack {
                 MovieCarouselView(type: .popular)

@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Cancel" : {
+
+    },
     "Cast" : {
 
     },
@@ -26,6 +29,9 @@
 
     },
     "Save" : {
+
+    },
+    "Search ..." : {
 
     },
     "Settings" : {
