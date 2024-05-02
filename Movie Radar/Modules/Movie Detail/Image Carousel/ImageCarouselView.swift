@@ -1,13 +1,13 @@
 //
-//  SimilarMoviesCarousel.swift
+//  MovieCarouselView.swift
 //  Movie Radar
 //
-//  Created by Alfonso Boizas Crespo on 1/5/24.
+//  Created by Alfonso Boizas Crespo on 2/5/24.
 //
 
 import SwiftUI
 
-struct SimilarMoviesCarouselView: View {
+struct ImageCarouselView: View {
     @EnvironmentObject var viewModel: MovieDetailView.ViewModel
     let rows = [
         GridItem(.flexible())
@@ -16,7 +16,7 @@ struct SimilarMoviesCarouselView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Similar movies")
+                Text("Images")
                     .foregroundStyle(LinearGradient.appGradient)
                     .font(.system(size: 20))
                 Spacer()
@@ -24,18 +24,16 @@ struct SimilarMoviesCarouselView: View {
 
             ScrollView(.horizontal) {
                 LazyHGrid(rows: rows, spacing: 16) {
-                    ForEach(viewModel.movieRecommendationsList.movies, id: \.self) { movie in
-                        RecommendationsCarouselCellView(movie: movie)
-                            .onTapGesture {
-                                viewModel.detailMovieToShow = movie
-                            }
+                    ForEach(viewModel.imageList.posters, id: \.self) { imageInfo in
+                        ImageCarouselCellView(imageInfo: imageInfo)
                     }
                 }
             }
         }
+        .padding(.bottom)
     }
 }
 
 #Preview {
-    SimilarMoviesCarouselView()
+    ImageCarouselView()
 }

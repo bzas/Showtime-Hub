@@ -11,6 +11,7 @@ extension MovieDetailView {
     class ViewModel: ObservableObject {
         var apiService: APIService
         @Published var movie: Movie
+        @Published var imageList = ImageList()
         @Published var movieActors: [Cast] = []
         @Published var movieRecommendationsList = MovieList()
         @Published var reviewList = ReviewList()
@@ -27,6 +28,7 @@ extension MovieDetailView {
             self.movie = movie
             Task {
                 await fetchDetailMovie()
+                await fetchImages()
                 await fetchMovieActors()
                 await fetchSimilarMovies()
                 await fetchReviews()
@@ -70,6 +72,14 @@ extension MovieDetailView {
             if let linkList = await apiService.getMovieLinks(id: movie.id) {
                 await MainActor.run {
                     self.linkList = linkList
+                }
+            }
+        }
+
+        func fetchImages() async {
+            if let imageList = await apiService.getMovieImages(id: movie.id) {
+                await MainActor.run {
+                    self.imageList = imageList
                 }
             }
         }

@@ -11,38 +11,24 @@ struct MovieDetailBodyView: View {
     @EnvironmentObject var viewModel: MovieDetailView.ViewModel
 
     var body: some View {
-        VStack(spacing: 20) {
-            VStack(spacing: 12) {
-                if let voteAverage = viewModel.movie.voteAverage {
-                    HStack {
-                        Image(systemName: "star.fill")
-                            .resizable()
-                            .frame(width: 10, height: 10)
-                        Text(String(format: "%.1f / 10", voteAverage))
-                            .font(.system(size: 15))
-                        Spacer()
-                    }
-                    .foregroundStyle(.yellow)
-                }
+        VStack {
+            MovieDescriptionView()
+                .environmentObject(viewModel)
 
-                Text(viewModel.movie.overview ?? "")
-                    .multilineTextAlignment(.leading)
-                    .font(.system(size: 14))
-            }
+            ImageCarouselView()
+                .environmentObject(viewModel)
 
-            VStack {
-                MovieActorCarouselView()
-                    .environmentObject(viewModel)
+            MovieActorCarouselView()
+                .environmentObject(viewModel)
 
-                ReviewCarouselView()
-                    .environmentObject(viewModel)
+            ReviewCarouselView()
+                .environmentObject(viewModel)
 
-                SimilarMoviesCarouselView()
-                    .environmentObject(viewModel)
+            SimilarMoviesCarouselView()
+                .environmentObject(viewModel)
 
-                LinksCarouselView()
-                    .environmentObject(viewModel)
-            }
+            LinksCarouselView()
+                .environmentObject(viewModel)
         }
         .padding(.horizontal)
     }

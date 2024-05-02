@@ -143,4 +143,17 @@ extension APIService {
 
         return await perform(request: request)
     }
+
+    // MARK: - /movie/{movie_id}/images
+    func getMovieImages(id: Int) async -> ImageList? {
+        guard let request = PathBuilder.request(
+            .images,
+            queryItems: defaultQueryItems,
+            pathComponent: "\(id)"
+        ) else {
+            return nil
+        }
+
+        return await perform(request: request)
+    }
 }
