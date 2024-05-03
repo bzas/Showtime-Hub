@@ -26,7 +26,7 @@ struct MovieGridCellView: View {
                     Text(movie.title ?? "")
                         .font(.system(size: 14))
                         .foregroundStyle(.white)
-                        .shadow(color: Color.black, radius: 1)
+                        .shadow(radius: 1)
                         .padding(6)
                     Spacer()
                 }

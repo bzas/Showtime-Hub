@@ -12,8 +12,9 @@ extension HomeView {
         var apiService: APIService
 
         @Published var popularList = MovieList()
-        @Published var discoverList = MovieList()
+        @Published var searchText = ""
         @Published var genreList = GenreList()
+        @Published var discoverList = MovieList()
         @Published var showDetailMovie = false
         @Published var detailMovieToShow: Movie? {
             didSet {

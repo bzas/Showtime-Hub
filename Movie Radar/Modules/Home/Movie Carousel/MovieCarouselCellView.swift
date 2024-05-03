@@ -60,7 +60,7 @@ struct MovieCarouselCellView: View {
                             .frame(maxWidth: 200, alignment: .leading)
                             .lineLimit(3)
                             .multilineTextAlignment(.leading)
-                            .shadow(color: .black, radius: 2)
+                            .shadow(radius: 2)
 
                     if let releaseDate = movie.releaseDate {
                         Text("Release: " + releaseDate)

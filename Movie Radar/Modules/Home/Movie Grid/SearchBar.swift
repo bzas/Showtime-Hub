@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct SearchBar: View {
-    @Binding var text: String
-
+    @EnvironmentObject var viewModel: HomeView.ViewModel
     @FocusState private var isEditing: Bool
 
     var body: some View {
         HStack {
-            TextField("Search ...", text: $text)
+            TextField("Search...", text: $viewModel.searchText)
                 .padding(7)
                 .padding(.horizontal, 12)
                 .background(Color(.systemGray6))
@@ -24,7 +23,7 @@ struct SearchBar: View {
             if isEditing {
                 Button(action: {
                     self.isEditing = false
-                    self.text = ""
+                    self.viewModel.searchText = ""
                 }, label: {
                     Text("Cancel")
                 })

@@ -411,9 +411,9 @@
 		48F8C7E62BDCE20B00EFB979 /* Movie Grid */ = {
 			isa = PBXGroup;
 			children = (
+				48B012BC2BE42D12000BFA28 /* SearchBar.swift */,
 				48FE82A02BDD20A600E2DF31 /* Genre Selector */,
 				48FE82A22BDD20D300E2DF31 /* MovieGridView.swift */,
-				48B012BC2BE42D12000BFA28 /* SearchBar.swift */,
 				48432BD72BE234A900610AA9 /* DiscoverMoviesGridView.swift */,
 				B57D7E722BDF95F9002848E4 /* GridPlaceholderView.swift */,
 				48FE82A42BDD20E100E2DF31 /* MovieGridCellView.swift */,
@@ -947,6 +947,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -976,6 +977,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

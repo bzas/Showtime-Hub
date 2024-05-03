@@ -17,6 +17,6 @@ struct FavoriteButton: View {
                     .foregroundStyle(LinearGradient.appGradient)
                     .frame(width: 25, height: 25)
         })
-        .shadow(color: Color.black, radius: 2)
+        .shadow(radius: 2)
     }
 }

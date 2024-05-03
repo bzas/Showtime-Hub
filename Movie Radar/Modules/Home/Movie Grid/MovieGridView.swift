@@ -13,8 +13,9 @@ struct MovieGridView: View {
     var body: some View {
         VStack {
             HeaderText(text: "Discover")
+                .id(1)
 
-            SearchBar(text: .constant(""))
+            SearchBar()
 
             GenreSelectorView()
                 .environmentObject(viewModel)
