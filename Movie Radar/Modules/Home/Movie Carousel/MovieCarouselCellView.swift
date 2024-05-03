@@ -12,7 +12,6 @@ struct MovieCarouselCellView: View {
 
     var body: some View {
         ZStack {
-
             ZStack {
                 AsyncImage(url: movie.wideImageUrl) { image in
                     image
@@ -31,7 +30,7 @@ struct MovieCarouselCellView: View {
                 LinearGradient(
                     stops: [
                         Gradient.Stop(color: .clear, location: 0.6),
-                        Gradient.Stop(color: UIColor.systemBackground.color, location: 1)
+                        Gradient.Stop(color: Color.black, location: 1)
                     ],
                     startPoint: .top,
                     endPoint: .bottom
@@ -72,6 +71,12 @@ struct MovieCarouselCellView: View {
                 Spacer()
             }
             .padding()
+            .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
+                content
+                    .opacity(phase.isIdentity ? 1 : 0.6)
+                    .scaleEffect(phase.isIdentity ? 1 : 0.75)
+                    .blur(radius: phase.isIdentity ? 0 : 2)
+            }
         }
     }
 }

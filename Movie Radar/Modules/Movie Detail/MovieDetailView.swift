@@ -15,20 +15,33 @@ struct MovieDetailView: View {
             VStack(spacing: 25) {
                 MovieDetailHeaderView()
                     .environmentObject(viewModel)
+                    .id(0)
 
                 MovieDetailBodyView()
                     .environmentObject(viewModel)
-
-                Spacer()
+                    .id(1)
             }
         }
         .scrollIndicators(.hidden)
+
         .sheet(isPresented: $viewModel.showDetailMovie) {
             if let detailMovieToShow = viewModel.detailMovieToShow {
                 MovieDetailView(
                     viewModel: .init(
                         apiService: viewModel.apiService,
                         movie: detailMovieToShow
+                    )
+                )
+            }
+        }
+        .blur(radius: viewModel.showDetailImage ? 10 : 0)
+        .overlay {
+            if viewModel.showDetailImage {
+                ImageDetailView(
+                    viewModel: .init(
+                        imageList: viewModel.imageList,
+                        startingIndex: viewModel.imageIndexToShow,
+                        showDetailImage: $viewModel.showDetailImage
                     )
                 )
             }

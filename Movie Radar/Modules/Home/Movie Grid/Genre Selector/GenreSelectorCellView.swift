@@ -14,7 +14,7 @@ struct GenreSelectorCellView: View {
     var body: some View {
         Text(genre.name)
             .font(.system(size: 14))
-            .foregroundStyle(viewModel.isSelected(genre: genre) ? UIColor.systemBackground.color : .gray)
+            .foregroundStyle(viewModel.isSelected(genre: genre) ? Color.black : .gray)
             .animation(.default)
             .padding(.horizontal)
             .frame(height: 30)

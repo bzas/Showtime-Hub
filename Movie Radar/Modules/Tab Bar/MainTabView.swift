@@ -24,7 +24,7 @@ struct MainTabView: View {
     @ViewBuilder
     func buildUI() -> some View {
         if viewModel.isPresentingTokenRequest {
-            UIColor.systemBackground.color
+            Color.black
                 .ignoresSafeArea()
         } else {
             TabView {

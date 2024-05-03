@@ -29,8 +29,13 @@ struct ImageCarouselView: View {
             } else {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 16) {
-                        ForEach(viewModel.imageList.posters, id: \.self) { imageInfo in
+                        ForEach(Array(viewModel.imageList.posters.enumerated()), id: \.1.self) { (index, imageInfo) in
                             ImageCarouselCellView(imageInfo: imageInfo)
+                                .onTapGesture {
+                                    withAnimation {
+                                        viewModel.imageIndexToShow = index
+                                    }
+                                }
                         }
                     }
                     .scrollTargetLayout()
