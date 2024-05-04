@@ -15,11 +15,8 @@ struct MovieDetailView: View {
             VStack(spacing: 25) {
                 MovieDetailHeaderView()
                     .environmentObject(viewModel)
-                    .id(0)
-
                 MovieDetailBodyView()
                     .environmentObject(viewModel)
-                    .id(1)
             }
         }
         .scrollIndicators(.hidden)

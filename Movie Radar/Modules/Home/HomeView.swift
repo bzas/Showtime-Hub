@@ -11,24 +11,31 @@ struct HomeView: View {
     @StateObject var viewModel: ViewModel
 
     var body: some View {
-        ScrollView {
-            VStack {
-                MovieCarouselView(type: .popular)
-                    .environmentObject(viewModel)
+        ScrollViewReader { proxy in
+            ScrollView {
+                VStack {
+                    MovieCarouselView(type: .popular)
+                        .environmentObject(viewModel)
 
-                MovieGridView()
-                    .environmentObject(viewModel)
+                    MovieGridView()
+                        .environmentObject(viewModel)
+                }
             }
-        }
-        .scrollIndicators(.hidden)
-        .fullScreenCover(isPresented: $viewModel.showDetailMovie) {
-            if let detailMovieToShow = viewModel.detailMovieToShow {
-                MovieDetailView(
-                    viewModel: .init(
-                        apiService: viewModel.apiService,
-                        movie: detailMovieToShow
+            .scrollIndicators(.hidden)
+            .fullScreenCover(isPresented: $viewModel.showDetailMovie) {
+                if let detailMovieToShow = viewModel.detailMovieToShow {
+                    MovieDetailView(
+                        viewModel: .init(
+                            apiService: viewModel.apiService,
+                            movie: detailMovieToShow
+                        )
                     )
-                )
+                }
+            }
+            .onChange(of: viewModel.isSearching) {
+                withAnimation {
+                    proxy.scrollTo("HomeHeader", anchor: .top)
+                }
             }
         }
     }

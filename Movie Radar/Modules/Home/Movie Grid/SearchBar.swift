@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchBar: View {
     @EnvironmentObject var viewModel: HomeView.ViewModel
-    @FocusState private var isEditing: Bool
+    @FocusState var isEditing: Bool
 
     var body: some View {
         HStack {
@@ -19,11 +19,15 @@ struct SearchBar: View {
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
                 .focused($isEditing)
+                .onChange(of: isEditing) {
+                    viewModel.updatePopularVisibility(isEditingSearch: isEditing)
+                }
 
             if isEditing || !viewModel.searchText.isEmpty {
                 Button(action: {
-                    self.isEditing = false
-                    self.viewModel.searchText = ""
+                    isEditing = false
+                    viewModel.searchText = ""
+                    viewModel.updatePopularVisibility(isEditingSearch: isEditing)
                 }, label: {
                     Text("Cancel")
                 })

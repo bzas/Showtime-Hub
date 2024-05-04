@@ -13,7 +13,7 @@ struct MovieGridView: View {
     var body: some View {
         VStack {
             HeaderText(text: "Discover")
-                .id(1)
+                .id("HomeHeader")
 
             SearchBar()
 

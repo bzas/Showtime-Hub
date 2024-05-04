@@ -23,6 +23,7 @@ extension HomeView {
         @Published var genreList = GenreList()
         @Published var discoverList = MovieList()
         @Published var showDetailMovie = false
+        @Published var isSearching = false
         @Published var detailMovieToShow: Movie? {
             didSet {
                 showDetailMovie.toggle()
@@ -129,6 +130,10 @@ extension HomeView {
             Task {
                 await getDiscoverMovies()
             }
+        }
+
+        func updatePopularVisibility(isEditingSearch: Bool) {
+            isSearching = isEditingSearch || !searchText.isEmpty
         }
     }
 }
