@@ -25,7 +25,8 @@ struct MovieDetailHeaderView: View {
 
             LinearGradient(
                 stops: [
-                    Gradient.Stop(color: Color.black, location: 0.05),
+                    Gradient.Stop(color: Color.black, location: 0.025),
+                    Gradient.Stop(color: Color.black.opacity(0.5), location: 0.1),
                     Gradient.Stop(color: .clear, location: 0.6),
                     Gradient.Stop(color: Color.black, location: 0.95)
                 ],
@@ -41,7 +42,9 @@ struct MovieDetailHeaderView: View {
                         Image(systemName: "xmark")
                             .resizable()
                             .frame(width: 20, height: 20)
-                            .foregroundStyle(.white.opacity(0.4))
+                            .foregroundStyle(.white.opacity(0.3))
+                            .padding(4)
+                            .padding(.top)
                     }
                     Spacer()
                 }

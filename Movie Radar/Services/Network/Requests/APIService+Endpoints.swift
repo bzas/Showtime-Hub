@@ -37,9 +37,9 @@ extension APIService {
     }
 
     // MARK: - /search/movie
-    func searchMovies(queryString: String, page: Int) async -> MovieList? {
+    func searchMovies(queryString: String) async -> MovieList? {
         let queryItems = [
-            URLQueryItem(name: "page", value: String(page)),
+            URLQueryItem(name: "page", value: "\(1)"),
             URLQueryItem(name: "query", value: queryString)
         ] + defaultQueryItems
 

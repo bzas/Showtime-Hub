@@ -37,6 +37,12 @@ struct MovieCarouselCellView: View {
                 )
             }
             .padding(.bottom, 66)
+            .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
+                content
+                    .opacity(phase.isIdentity ? 1 : 0.6)
+                    .scaleEffect(phase.isIdentity ? 1 : 0.9)
+                    .blur(radius: phase.isIdentity ? 0 : 2)
+            }
 
             HStack(spacing: 8) {
                 VStack {
@@ -73,8 +79,8 @@ struct MovieCarouselCellView: View {
             .padding()
             .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
                 content
-                    .opacity(phase.isIdentity ? 1 : 0.6)
-                    .scaleEffect(phase.isIdentity ? 1 : 0.75)
+                    .opacity(phase.isIdentity ? 1 : 0.4)
+                    .scaleEffect(phase.isIdentity ? 1 : 0.9)
                     .blur(radius: phase.isIdentity ? 0 : 2)
             }
         }

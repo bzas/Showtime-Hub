@@ -20,7 +20,7 @@ struct SearchBar: View {
                 .cornerRadius(8)
                 .focused($isEditing)
 
-            if isEditing {
+            if isEditing || !viewModel.searchText.isEmpty {
                 Button(action: {
                     self.isEditing = false
                     self.viewModel.searchText = ""

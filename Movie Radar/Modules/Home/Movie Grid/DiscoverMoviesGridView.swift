@@ -15,15 +15,23 @@ struct DiscoverMoviesGridView: View {
     ]
 
     var body: some View {
-        LazyVGrid(columns: columns, spacing: 8) {
-            ForEach(viewModel.discoverList.movies, id: \.self) { movie in
-                MovieGridCellView(movie: movie)
-                    .onAppear {
-                        viewModel.continueFetchIfNeeded(lastMoviePresented: movie)
-                    }
-                    .onTapGesture {
-                        viewModel.detailMovieToShow = movie
-                    }
+        if viewModel.gridMovies.isEmpty {
+            VStack {
+                Text("No movies were found")
+                    .padding()
+                Spacer()
+            }
+        } else {
+            LazyVGrid(columns: columns, spacing: 8) {
+                ForEach(viewModel.gridMovies, id: \.self) { movie in
+                    MovieGridCellView(movie: movie)
+                        .onAppear {
+                            viewModel.continueFetchIfNeeded(lastMoviePresented: movie)
+                        }
+                        .onTapGesture {
+                            viewModel.detailMovieToShow = movie
+                        }
+                }
             }
         }
     }

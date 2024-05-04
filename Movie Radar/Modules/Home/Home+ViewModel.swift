@@ -12,7 +12,14 @@ extension HomeView {
         var apiService: APIService
 
         @Published var popularList = MovieList()
-        @Published var searchText = ""
+        @Published var searchList = MovieList()
+        @Published var searchText = "" {
+            didSet {
+                Task {
+                    await searchMovies()
+                }
+            }
+        }
         @Published var genreList = GenreList()
         @Published var discoverList = MovieList()
         @Published var showDetailMovie = false
@@ -23,6 +30,14 @@ extension HomeView {
         }
 
         @Published var selectedGenre: Genre?
+
+        var gridMovies: [Movie] {
+            if searchText.isEmpty {
+                return discoverList.movies
+            }
+
+            return searchList.movies
+        }
 
         init(apiService: APIService) {
             self.apiService = apiService
@@ -73,6 +88,23 @@ extension HomeView {
             }
         }
 
+        func searchMovies() async {
+            guard !searchText.isEmpty else {
+                await MainActor.run {
+                    searchList = MovieList()
+                }
+                return
+            }
+
+            if let movieList = await apiService.searchMovies(
+                queryString: searchText
+            ) {
+                await MainActor.run {
+                    searchList = movieList
+                }
+            }
+        }
+
         func selectGenre(genre: Genre) {
             if selectedGenre == genre {
                 selectedGenre = nil
@@ -91,7 +123,8 @@ extension HomeView {
         }
 
         func continueFetchIfNeeded(lastMoviePresented: Movie) {
-            guard lastMoviePresented == discoverList.movies.last else { return }
+            guard searchText.isEmpty,
+                  lastMoviePresented == discoverList.movies.last else { return }
 
             Task {
                 await getDiscoverMovies()
