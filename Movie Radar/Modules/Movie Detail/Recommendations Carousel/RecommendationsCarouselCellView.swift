@@ -12,7 +12,7 @@ struct RecommendationsCarouselCellView: View {
     let maxWidth = 150.0
 
     var body: some View {
-        VStack {
+        VStack(spacing: 2) {
             AsyncImage(url: movie.wideImageUrl) { image in
                 image
                     .resizable()
@@ -25,10 +25,10 @@ struct RecommendationsCarouselCellView: View {
 
             Text(movie.title ?? "")
                 .font(.system(size: 12, weight: .light))
-                .lineLimit(3)
+                .lineLimit(2)
+                .frame(maxWidth: maxWidth - 8, alignment: .topLeading)
                 .multilineTextAlignment(.leading)
-                .frame(maxWidth: maxWidth - 8, alignment: .leading)
-            Spacer()
+                .frame(height: 30)
         }
     }
 }

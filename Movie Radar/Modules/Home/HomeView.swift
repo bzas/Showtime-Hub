@@ -33,8 +33,10 @@ struct HomeView: View {
                 }
             }
             .onChange(of: viewModel.isSearching) {
-                withAnimation {
-                    proxy.scrollTo("HomeHeader", anchor: .top)
+                if viewModel.isSearching {
+                    withAnimation {
+                        proxy.scrollTo("HomeHeader", anchor: .top)
+                    }
                 }
             }
         }

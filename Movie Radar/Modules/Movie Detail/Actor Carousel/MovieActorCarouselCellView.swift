@@ -29,9 +29,12 @@ struct MovieActorCarouselCellView: View {
                     .font(.system(size: 12, weight: .light))
                 Text(movieActor.character ?? "")
                     .font(.system(size: 10, weight: .thin))
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
                 Spacer()
             }
-            .frame(width: 90, height: 60)
+            .frame(height: 80)
+            .frame(maxWidth: 90)
         }
     }
 }

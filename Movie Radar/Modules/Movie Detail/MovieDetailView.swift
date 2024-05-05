@@ -21,7 +21,7 @@ struct MovieDetailView: View {
         }
         .scrollIndicators(.hidden)
 
-        .sheet(isPresented: $viewModel.showDetailMovie) {
+        .fullScreenCover(isPresented: $viewModel.showDetailMovie) {
             if let detailMovieToShow = viewModel.detailMovieToShow {
                 MovieDetailView(
                     viewModel: .init(
