@@ -60,11 +60,15 @@ extension APIService {
     }
 
     // MARK: - /discover/movie
-    func discoverMovies(genreId: Int?, page: Int) async -> MovieList? {
+    func discoverMovies(
+        genreId: Int?,
+        sortType: String,
+        page: Int
+    ) async -> MovieList? {
         var queryItems = [
             URLQueryItem(name: "include_video", value: "true"),
             URLQueryItem(name: "page", value: "\(page)"),
-            URLQueryItem(name: "sort_by", value: "popularity.desc")
+            URLQueryItem(name: "sort_by", value: sortType)
         ] + defaultQueryItems
 
         if let genreId {

@@ -12,8 +12,16 @@ struct MovieGridView: View {
 
     var body: some View {
         VStack {
-            HeaderText(text: "Discover")
-                .id("HomeHeader")
+            HStack {
+                HeaderText(text: "Discover")
+                    .id("HomeHeader")
+
+                VStack {
+                    Spacer()
+                    SortSelectorView()
+                        .environmentObject(viewModel)
+                }
+            }
 
             SearchBar()
 

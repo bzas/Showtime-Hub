@@ -31,6 +31,11 @@ extension HomeView {
         }
 
         @Published var selectedGenre: Genre?
+        @Published var sortType: GridSortType = .popularityDesc {
+            didSet {
+                refreshGrid()
+            }
+        }
 
         var gridMovies: [Movie] {
             if searchText.isEmpty {
@@ -53,12 +58,10 @@ extension HomeView {
             await getDiscoverMovies()
         }
 
-        func refreshData() {
-            popularList = MovieList()
+        func refreshGrid() {
             discoverList = MovieList()
-            genreList = GenreList()
             Task {
-                await fetchData()
+                await getDiscoverMovies()
             }
         }
 
@@ -81,6 +84,7 @@ extension HomeView {
         func getDiscoverMovies() async {
             if let movieList = await apiService.discoverMovies(
                 genreId: selectedGenre?.id,
+                sortType: sortType.requestKey,
                 page: discoverList.page
             ) {
                 await MainActor.run {
