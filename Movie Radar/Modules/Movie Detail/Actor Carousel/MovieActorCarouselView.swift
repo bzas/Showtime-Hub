@@ -23,14 +23,18 @@ struct MovieActorCarouselView: View {
                 Spacer()
             }
 
-            ScrollView(.horizontal) {
-                LazyHGrid(rows: rows, spacing: 20) {
-                    ForEach(viewModel.movieActors, id: \.self) { movieActor in
-                        MovieActorCarouselCellView(movieActor: movieActor)
+            if viewModel.movieActors.isEmpty {
+                NoDataAvailableView(title: "No cast info available")
+            } else {
+                ScrollView(.horizontal) {
+                    LazyHGrid(rows: rows, spacing: 20) {
+                        ForEach(viewModel.movieActors, id: \.self) { movieActor in
+                            MovieActorCarouselCellView(movieActor: movieActor)
+                        }
                     }
                 }
+                .scrollIndicators(.hidden)
             }
-            .scrollIndicators(.hidden)
         }
     }
 }

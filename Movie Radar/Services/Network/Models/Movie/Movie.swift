@@ -27,6 +27,10 @@ struct Movie: Codable, Hashable {
     let voteAverage: Double?
     let voteCount: Int?
 
+    var hasInfo: Bool {
+        backdropPath != nil && overview != nil
+    }
+
     var posterImageUrl: URL? {
         guard let backdropPath else { return nil }
         return URL(

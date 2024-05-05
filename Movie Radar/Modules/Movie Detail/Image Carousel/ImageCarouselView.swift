@@ -23,9 +23,7 @@ struct ImageCarouselView: View {
             }
 
             if viewModel.imageList.posters.isEmpty {
-                Text("No images available")
-                    .font(.system(size: 14))
-                    .padding(.top, 4)
+                NoDataAvailableView(title: "No images available")
             } else {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 16) {

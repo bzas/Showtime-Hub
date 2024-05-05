@@ -22,18 +22,22 @@ struct SimilarMoviesCarouselView: View {
                 Spacer()
             }
 
-            ScrollView(.horizontal) {
-                LazyHGrid(rows: rows, spacing: 16) {
-                    ForEach(viewModel.movieRecommendationsList.movies, id: \.self) { movie in
-                        RecommendationsCarouselCellView(movie: movie)
-                            .onTapGesture {
-                                viewModel.detailMovieToShow = movie
-                            }
+            if viewModel.movieRecommendationsList.movies.isEmpty {
+                NoDataAvailableView(title: "No recommendations available")
+            } else {
+                ScrollView(.horizontal) {
+                    LazyHGrid(rows: rows, spacing: 16) {
+                        ForEach(viewModel.movieRecommendationsList.movies, id: \.self) { movie in
+                            RecommendationsCarouselCellView(movie: movie)
+                                .onTapGesture {
+                                    viewModel.detailMovieToShow = movie
+                                }
+                        }
                     }
+                    .scrollTargetLayout()
                 }
-                .scrollTargetLayout()
+                .scrollTargetBehavior(.viewAligned)
             }
-            .scrollTargetBehavior(.viewAligned)
         }
     }
 }

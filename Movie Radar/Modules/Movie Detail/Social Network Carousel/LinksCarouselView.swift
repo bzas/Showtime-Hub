@@ -29,9 +29,7 @@ struct LinksCarouselView: View {
                 )
             }
             if links.isEmpty {
-                Text("No reviews available")
-                    .font(.system(size: 14))
-                    .padding(.top, 4)
+                NoDataAvailableView(title: "No links available")
             } else {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 25) {

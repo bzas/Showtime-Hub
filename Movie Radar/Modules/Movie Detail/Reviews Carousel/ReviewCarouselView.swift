@@ -23,9 +23,7 @@ struct ReviewCarouselView: View {
             }
 
             if viewModel.reviewList.reviews.isEmpty {
-                Text("No reviews available")
-                    .font(.system(size: 14))
-                    .padding(.top, 4)
+                NoDataAvailableView(title: "No reviews available")
             } else {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 12) {
