@@ -25,11 +25,14 @@ struct SearchBar: View {
 
             if isEditing || !viewModel.searchText.isEmpty {
                 Button(action: {
-                    isEditing = false
-                    viewModel.searchText = ""
+                    withAnimation {
+                        isEditing = false
+                        viewModel.searchText = ""
+                    }
                     viewModel.updatePopularVisibility(isEditingSearch: isEditing)
                 }, label: {
                     Text("Cancel")
+                        .foregroundStyle(LinearGradient.appGradient)
                 })
                 .padding(.trailing, 10)
             }

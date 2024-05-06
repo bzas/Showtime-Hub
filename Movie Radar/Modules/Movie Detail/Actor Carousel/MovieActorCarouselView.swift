@@ -30,6 +30,9 @@ struct MovieActorCarouselView: View {
                     LazyHGrid(rows: rows, spacing: 20) {
                         ForEach(viewModel.movieActors, id: \.self) { movieActor in
                             MovieActorCarouselCellView(movieActor: movieActor)
+                                .onTapGesture {
+                                    viewModel.detailPersonToShow = movieActor
+                                }
                         }
                     }
                 }

@@ -14,8 +14,8 @@ struct Cast: Codable, Hashable {
     let name, originalName: String?
     let popularity: Double
     let profilePath: String?
-    let castID: Int?
     let character: String?
+    let creditId: String?
 
     var imageUrl: URL? {
         guard let profilePath else { return nil }
@@ -29,12 +29,12 @@ struct Cast: Codable, Hashable {
 
     enum CodingKeys: String, CodingKey {
         case gender, id
+        case creditId = "credit_id"
         case knownForDepartment = "known_for_department"
         case name
         case originalName = "original_name"
         case popularity
         case profilePath = "profile_path"
-        case castID = "cast_id"
         case character
     }
 }

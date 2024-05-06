@@ -34,6 +34,7 @@ struct MainTabView: View {
                             "Home",
                             systemImage: "house"
                         )
+                        .tint(.purple)
                     }
 
                 FavoritesView(viewModel: .init(apiService: viewModel.apiService))
@@ -42,6 +43,7 @@ struct MainTabView: View {
                             "Favorites",
                             systemImage: "heart"
                         )
+                        .tint(.purple)
                     }
 
                 SettingsView(viewModel: .init(apiService: viewModel.apiService))
@@ -50,9 +52,9 @@ struct MainTabView: View {
                             "Settings",
                             systemImage: "gearshape"
                         )
+                        .tint(.purple)
                     }
             }
-            .tint(.purple)
         }
     }
 }

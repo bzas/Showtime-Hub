@@ -26,13 +26,12 @@ struct SortSelectorView: View {
                     })
                 }
             }
+            .tint(.white)
             .font(.system(size: 14, weight: .semibold))
-            .foregroundStyle(.white)
-            .padding(6)
-            .frame(width: 120)
-            .background(UIColor.systemGray5.color)
-            .clipShape(Capsule())
+            .buttonStyle(.bordered)
         }
+        .disabled(viewModel.isSearching)
+        .opacity(viewModel.isSearching ? 0.5 : 1)
     }
 }
 

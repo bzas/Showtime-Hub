@@ -16,13 +16,22 @@ extension MovieDetailView {
         @Published var movieRecommendationsList = MovieList()
         @Published var reviewList = ReviewList()
         @Published var linkList: LinkList?
-        @Published var showDetailMovie = false
+
         @Published var showDetailImage = false
         @Published var imageIndexToShow: Int? {
             didSet {
                 showDetailImage.toggle()
             }
         }
+
+        @Published var showDetailPerson = false
+        @Published var detailPersonToShow: Cast? {
+            didSet {
+                showDetailPerson.toggle()
+            }
+        }
+
+        @Published var showDetailMovie = false
         @Published var detailMovieToShow: Movie? {
             didSet {
                 showDetailMovie.toggle()

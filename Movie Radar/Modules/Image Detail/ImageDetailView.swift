@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ImageDetailView: View {
-    @State var viewModel: ViewModel
+    @StateObject var viewModel: ViewModel
     let rows = [
         GridItem(.flexible())
     ]

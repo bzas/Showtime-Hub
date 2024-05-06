@@ -7,6 +7,22 @@
 
 import Foundation
 
+enum Path: String {
+    case popular = "/movie/popular",
+         search = "/search/movie",
+         genres = "/genre/movie/list",
+         discover = "/discover/movie",
+         detail = "/movie/%@",
+         topRated = "/movie/top_rated",
+         upcoming = "/movie/upcoming",
+         credits = "/movie/%@/credits",
+         recommendations = "/movie/%@/recommendations",
+         reviews = "/movie/%@/reviews",
+         links = "/movie/%@/external_ids",
+         images = "/movie/%@/images",
+         actorDetail = "/person/%@"
+}
+
 extension APIService {
 
     // MARK: - /movie/top_rated
@@ -152,6 +168,19 @@ extension APIService {
     func getMovieImages(id: Int) async -> ImageList? {
         guard let request = PathBuilder.request(
             .images,
+            queryItems: defaultQueryItems,
+            pathComponent: "\(id)"
+        ) else {
+            return nil
+        }
+
+        return await perform(request: request)
+    }
+
+    // MARK: - /person/{credit_id}
+    func getPersonDetail(id: Int) async -> Person? {
+        guard let request = PathBuilder.request(
+            .actorDetail,
             queryItems: defaultQueryItems,
             pathComponent: "\(id)"
         ) else {

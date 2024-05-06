@@ -20,13 +20,22 @@ struct MovieDetailView: View {
             }
         }
         .scrollIndicators(.hidden)
-
         .fullScreenCover(isPresented: $viewModel.showDetailMovie) {
             if let detailMovieToShow = viewModel.detailMovieToShow {
                 MovieDetailView(
                     viewModel: .init(
                         apiService: viewModel.apiService,
                         movie: detailMovieToShow
+                    )
+                )
+            }
+        }
+        .sheet(isPresented: $viewModel.showDetailPerson) {
+            if let detailPersonId = viewModel.detailPersonToShow?.id {
+                PersonDetailView(
+                    viewModel: .init(
+                        apiService: viewModel.apiService,
+                        personId: detailPersonId
                     )
                 )
             }

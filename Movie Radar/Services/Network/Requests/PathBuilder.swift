@@ -7,21 +7,6 @@
 
 import Foundation
 
-enum Path: String {
-    case popular = "/movie/popular",
-         search = "/search/movie",
-         genres = "/genre/movie/list",
-         discover = "/discover/movie",
-         detail = "/movie/%@",
-         topRated = "/movie/top_rated",
-         upcoming = "/movie/upcoming",
-         credits = "/movie/%@/credits",
-         recommendations = "/movie/%@/recommendations",
-         reviews = "/movie/%@/reviews",
-         links = "/movie/%@/external_ids",
-         images = "/movie/%@/images"
-}
-
 enum ImageType: String {
     case wide = "/t/p/w500",
          square = "/t/p/w470_and_h470_face",
