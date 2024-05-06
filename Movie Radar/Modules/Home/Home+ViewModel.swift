@@ -11,7 +11,7 @@ extension HomeView {
     class ViewModel: ObservableObject {
         var apiService: APIService
 
-        @Published var popularList = MovieList()
+        @Published var upcomingList = MovieList()
         @Published var searchList = MovieList()
         @Published var searchText = "" {
             didSet {
@@ -53,7 +53,7 @@ extension HomeView {
         }
 
         func fetchData() async {
-            await getPopular()
+            await getUpcoming()
             await getGenres()
             await getDiscoverMovies()
         }
@@ -65,10 +65,10 @@ extension HomeView {
             }
         }
 
-        func getPopular() async {
-            if let movieList = await apiService.getPopularMovies(page: popularList.page) {
+        func getUpcoming() async {
+            if let movieList = await apiService.getUpcomingMovies(page: upcomingList.page) {
                 await MainActor.run {
-                    popularList.append(movieList)
+                    upcomingList.append(movieList)
                 }
             }
         }
@@ -136,7 +136,7 @@ extension HomeView {
             }
         }
 
-        func updatePopularVisibility(isEditingSearch: Bool) {
+        func updateUpcomingVisibility(isEditingSearch: Bool) {
             isSearching = isEditingSearch || !searchText.isEmpty
         }
     }

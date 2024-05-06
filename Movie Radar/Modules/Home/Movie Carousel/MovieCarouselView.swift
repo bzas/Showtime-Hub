@@ -18,7 +18,7 @@ struct MovieCarouselView: View {
     var body: some View {
         ScrollView(.horizontal) {
             LazyHGrid(rows: rows, spacing: 0) {
-                let movies = viewModel.popularList.movies
+                let movies = viewModel.upcomingList.movies
                 if movies.isEmpty {
                     PlaceholderView(type: .movie)
                         .frame(

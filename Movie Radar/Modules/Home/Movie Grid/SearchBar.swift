@@ -20,7 +20,7 @@ struct SearchBar: View {
                 .cornerRadius(8)
                 .focused($isEditing)
                 .onChange(of: isEditing) {
-                    viewModel.updatePopularVisibility(isEditingSearch: isEditing)
+                    viewModel.updateUpcomingVisibility(isEditingSearch: isEditing)
                 }
 
             if isEditing || !viewModel.searchText.isEmpty {
@@ -29,7 +29,7 @@ struct SearchBar: View {
                         isEditing = false
                         viewModel.searchText = ""
                     }
-                    viewModel.updatePopularVisibility(isEditingSearch: isEditing)
+                    viewModel.updateUpcomingVisibility(isEditingSearch: isEditing)
                 }, label: {
                     Text("Cancel")
                         .foregroundStyle(LinearGradient.appGradient)
