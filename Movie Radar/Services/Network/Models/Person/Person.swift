@@ -17,7 +17,7 @@ struct Person: Codable {
         guard let profilePath else { return nil }
         return URL(
             string: PathBuilder.image(
-                type: .poster,
+                type: .original,
                 imagePath: profilePath
             )
         )

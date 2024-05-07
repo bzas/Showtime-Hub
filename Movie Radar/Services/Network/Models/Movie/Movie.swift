@@ -27,6 +27,84 @@ struct Movie: Codable, Hashable {
     let voteAverage: Double?
     let voteCount: Int?
 
+    init(id: Int) {
+        self.init(
+            backdropPath: nil,
+            budget: nil,
+            genres: nil,
+            homepage: nil,
+            id: id,
+            imdbID: nil,
+            originCountry: nil,
+            originalLanguage: nil,
+            originalTitle: nil,
+            overview: nil,
+            popularity: nil,
+            posterPath: nil,
+            productionCompanies: nil,
+            productionCountries: nil,
+            releaseDate: nil,
+            revenue: nil,
+            runtime: nil,
+            status: nil,
+            tagline: nil,
+            title: nil,
+            video: nil,
+            voteAverage: nil,
+            voteCount: nil
+        )
+    }
+
+    init(
+        backdropPath: String?,
+        budget: Int?,
+        genres: [Genre]?,
+        homepage: String?,
+        id: Int,
+        imdbID: String?,
+        originCountry: [String]?,
+        originalLanguage: String?,
+        originalTitle: String?,
+        overview: String?,
+        popularity: Double?,
+        posterPath: String?,
+        productionCompanies: [ProductionCompany]?,
+        productionCountries: [ProductionCountry]?,
+        releaseDate: String?,
+        revenue: Int?,
+        runtime: Int?,
+        status: String?,
+        tagline: String?,
+        title: String?,
+        video: Bool?,
+        voteAverage: Double?,
+        voteCount: Int?
+    ) {
+        self.backdropPath = backdropPath
+        self.budget = budget
+        self.genres = genres
+        self.homepage = homepage
+        self.id = id
+        self.imdbID = imdbID
+        self.originCountry = originCountry
+        self.originalLanguage = originalLanguage
+        self.originalTitle = originalTitle
+        self.overview = overview
+        self.popularity = popularity
+        self.posterPath = posterPath
+        self.productionCompanies = productionCompanies
+        self.productionCountries = productionCountries
+        self.releaseDate = releaseDate
+        self.revenue = revenue
+        self.runtime = runtime
+        self.status = status
+        self.tagline = tagline
+        self.title = title
+        self.video = video
+        self.voteAverage = voteAverage
+        self.voteCount = voteCount
+    }
+
     var hasInfo: Bool {
         backdropPath != nil && overview != nil
     }

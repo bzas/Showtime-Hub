@@ -1,26 +1,26 @@
 //
-//  SimilarMoviesCarouselCellView.swift
+//  PersonMovieCarouselCellView.swift
 //  Movie Radar
 //
-//  Created by Alfonso Boizas Crespo on 1/5/24.
+//  Created by Alfonso Boizas Crespo on 6/5/24.
 //
 
 import SwiftUI
 
-struct RecommendationsCarouselCellView: View {
-    var movie: Movie
+struct PersonMovieCarouselCellView: View {
+    var movie: PersonMovie
     let maxWidth = 200.0
 
     var body: some View {
         VStack(spacing: 2) {
-            AsyncImage(url: movie.wideImageUrl) { image in
+            AsyncImage(url: movie.imageUrl) { image in
                 image
                     .resizable()
                     .scaledToFill()
             } placeholder: {
                 PlaceholderView(type: .movie)
             }
-            .frame(width: maxWidth, height: maxWidth * 0.66)
+            .frame(width: maxWidth, height: maxWidth * 1.33)
             .clipped()
 
             Text(movie.title ?? "")

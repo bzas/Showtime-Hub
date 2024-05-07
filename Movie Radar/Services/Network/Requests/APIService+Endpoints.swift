@@ -20,7 +20,8 @@ enum Path: String {
          reviews = "/movie/%@/reviews",
          links = "/movie/%@/external_ids",
          images = "/movie/%@/images",
-         actorDetail = "/person/%@"
+         personDetail = "/person/%@",
+         personMovies = "/person/%@/movie_credits"
 }
 
 extension APIService {
@@ -180,7 +181,20 @@ extension APIService {
     // MARK: - /person/{credit_id}
     func getPersonDetail(id: Int) async -> Person? {
         guard let request = PathBuilder.request(
-            .actorDetail,
+            .personDetail,
+            queryItems: defaultQueryItems,
+            pathComponent: "\(id)"
+        ) else {
+            return nil
+        }
+
+        return await perform(request: request)
+    }
+
+    // MARK: - /person/{credit_id}/movie_credits
+    func getPersonMovies(id: Int) async -> PersonMovieList? {
+        guard let request = PathBuilder.request(
+            .personMovies,
             queryItems: defaultQueryItems,
             pathComponent: "\(id)"
         ) else {
