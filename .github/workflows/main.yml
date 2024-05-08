@@ -1,0 +1,38 @@
+name: iOS Tests
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Xcode
+      uses: actions/setup-xcode@v2
+      with:
+        xcode-version: '15.x'
+
+    - name: Install dependencies
+      run: |
+        brew install swiftlint
+
+    - name: Build and Test
+      run: |
+        xcodebuild clean test \
+          -workspace Movie-Radar.xcworkspace \
+          -scheme Movie-Radar \
+          -destination 'platform=iOS Simulator,name=iPhone 13'
+
+    - name: Check for Test Failures
+      run: |
+        TEST_FAILURES=$(find . -type d -name "TestResults" | xargs -I {} find {} -name "*.xcresult" | xargs xcparse list-tests -f json | jq '.[] | select(.Status != "Success")')
+        if [[ -n "$TEST_FAILURES" ]]; then
+          echo "Tests failed:"
+          echo "$TEST_FAILURES"
+          exit 1
+        fi
