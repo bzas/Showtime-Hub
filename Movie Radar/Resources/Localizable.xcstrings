@@ -1,0 +1,96 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld min" : {
+
+    },
+    "%lld$" : {
+
+    },
+    "About" : {
+
+    },
+    "App icon" : {
+
+    },
+    "Budget" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Cast" : {
+
+    },
+    "Contact us" : {
+
+    },
+    "Director" : {
+
+    },
+    "Favorites" : {
+
+    },
+    "Home" : {
+
+    },
+    "Images" : {
+
+    },
+    "Links" : {
+
+    },
+    "Movies" : {
+
+    },
+    "No movies were found" : {
+
+    },
+    "No profile data" : {
+
+    },
+    "Personalization" : {
+
+    },
+    "Powered by The Movie Database" : {
+
+    },
+    "Rate on the App Store" : {
+
+    },
+    "Release " : {
+
+    },
+    "Revenue" : {
+
+    },
+    "Reviews" : {
+
+    },
+    "Save on photos" : {
+
+    },
+    "Search..." : {
+
+    },
+    "Settings" : {
+
+    },
+    "Share" : {
+
+    },
+    "Similar movies" : {
+
+    },
+    "Sort by:" : {
+
+    },
+    "Theme" : {
+
+    },
+    "Version" : {
+
+    }
+  },
+  "version" : "1.0"
+}
