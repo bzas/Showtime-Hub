@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  HomeMoviesView+ViewModel.swift
 //  Movie Radar
 //
 //  Created by Alfonso Boizas Crespo on 24/4/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension HomeView {
+extension HomeMoviesView {
     class ViewModel: ObservableObject {
         var apiService: APIService
 

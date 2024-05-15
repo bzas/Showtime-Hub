@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DiscoverMoviesGridView: View {
-    @EnvironmentObject var viewModel: HomeView.ViewModel
+    @EnvironmentObject var viewModel: HomeMoviesView.ViewModel
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())

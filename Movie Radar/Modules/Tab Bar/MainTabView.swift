@@ -13,7 +13,7 @@ struct MainTabView: View {
 
     var body: some View {
         TabView {
-            HomeView(viewModel: .init(apiService: apiService))
+            MainHomeView(apiService: apiService)
                 .tabItem {
                     Label(
                         "Home",

@@ -28,6 +28,7 @@ struct MovieCarouselCellView: View {
 
                 LinearGradient(
                     stops: [
+                        Gradient.Stop(color: .black, location: 0.05),
                         Gradient.Stop(color: .clear, location: 0.6),
                         Gradient.Stop(color: Color.black, location: 1)
                     ],
@@ -36,6 +37,7 @@ struct MovieCarouselCellView: View {
                 )
             }
             .padding(.bottom, 66)
+            .padding(.top, 8)
             .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
                 content
                     .opacity(phase.isIdentity ? 1 : 0.6)

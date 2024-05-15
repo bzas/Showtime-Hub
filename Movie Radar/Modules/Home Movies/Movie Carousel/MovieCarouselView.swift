@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MovieCarouselView: View {
-    @EnvironmentObject var viewModel: HomeView.ViewModel
+    @EnvironmentObject var viewModel: HomeMoviesView.ViewModel
     let type: MovieCarouselType
 
     let rows = [

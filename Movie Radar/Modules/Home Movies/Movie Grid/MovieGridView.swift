@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct MovieGridView: View {
-    @EnvironmentObject var viewModel: HomeView.ViewModel
+    @EnvironmentObject var viewModel: HomeMoviesView.ViewModel
 
     var body: some View {
         VStack {
             HStack {
-                HeaderText(text: "Discover")
-                    .id("HomeHeader")
+                Spacer()
 
                 VStack {
                     Spacer()
@@ -22,6 +21,7 @@ struct MovieGridView: View {
                         .environmentObject(viewModel)
                 }
             }
+            .id("HomeHeader")
 
             SearchBar()
 

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SortSelectorView: View {
-    @EnvironmentObject var viewModel: HomeView.ViewModel
+    @EnvironmentObject var viewModel: HomeMoviesView.ViewModel
 
     var body: some View {
         HStack {

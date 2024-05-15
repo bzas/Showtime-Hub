@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  HomeMoviesView.swift
 //  Movie Radar
 //
 //  Created by Alfonso Boizas Crespo on 24/4/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct HomeMoviesView: View {
     @StateObject var viewModel: ViewModel
 
     var body: some View {
@@ -44,7 +44,7 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView(
+    HomeMoviesView(
         viewModel: .init(
             apiService: APIServiceMock()
         )

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GenreSelectorCellView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
-    @EnvironmentObject var viewModel: HomeView.ViewModel
+    @EnvironmentObject var viewModel: HomeMoviesView.ViewModel
     var genre: Genre
 
     var body: some View {
