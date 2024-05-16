@@ -1,5 +1,5 @@
 //
-//  PersonMovieCarouselCellView.swift
+//  PersonCarouselCellView.swift
 //  Movie Radar
 //
 //  Created by Alfonso Boizas Crespo on 6/5/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PersonMovieCarouselCellView: View {
+struct PersonCarouselCellView: View {
     var movie: PersonMedia
     let maxWidth = 200.0
 

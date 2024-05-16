@@ -15,9 +15,9 @@ struct MainHomeView: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
-                HomeMoviesView(viewModel: .init(apiService: apiService))
+                HomeContentView(viewModel: .init(apiService: apiService))
                     .tag(0)
-                HomeSeriesView(viewModel: .init(apiService: apiService))
+                HomeContentView(viewModel: .init(apiService: apiService))
                     .tag(1)
             }
             .tabViewStyle(.page)
@@ -30,14 +30,14 @@ struct MainHomeView: View {
                             weight: selectedTab == 0 ? .heavy : .regular)
                         )
                         .foregroundStyle(appGradient.value)
-                        .opacity(selectedTab == 0 ? 0.6 : 0.3)
+                        .opacity(selectedTab == 0 ? 0.6 : 0.4)
                     Text("Series")
                         .font(.system(
                             size: selectedTab == 1 ? 35 : 18,
                             weight: selectedTab == 1 ? .heavy : .regular)
                         )
                         .foregroundStyle(appGradient.value)
-                        .opacity(selectedTab == 1 ? 0.6 : 0.3)
+                        .opacity(selectedTab == 1 ? 0.6 : 0.4)
                 }
                 .frame(maxWidth: .infinity)
                 .background(

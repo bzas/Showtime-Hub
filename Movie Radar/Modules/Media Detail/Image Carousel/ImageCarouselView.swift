@@ -1,15 +1,15 @@
 //
-//  PersonCarouselView.swift
+//  MediaCarouselView.swift
 //  Movie Radar
 //
-//  Created by Alfonso Boizas Crespo on 6/5/24.
+//  Created by Alfonso Boizas Crespo on 2/5/24.
 //
 
 import SwiftUI
 
-struct PersonCarouselView: View {
+struct ImageCarouselView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
-    @EnvironmentObject var viewModel: PersonDetailView.ViewModel
+    @EnvironmentObject var viewModel: MediaDetailView.ViewModel
     let rows = [
         GridItem(.flexible())
     ]
@@ -17,36 +17,35 @@ struct PersonCarouselView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Movies")
+                Text("Images")
                     .foregroundStyle(appGradient.value)
                     .font(.system(size: 20))
                 Spacer()
             }
 
-            if viewModel.movies.isEmpty {
-                NoDataAvailableView(title: "No information available")
+            if viewModel.imageList.posters.isEmpty {
+                NoDataAvailableView(title: "No images available")
             } else {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 16) {
-                        ForEach(viewModel.movies, id: \.self) { movie in
-                            PersonCarouselCellView(movie: movie)
+                        ForEach(Array(viewModel.imageList.posters.enumerated()), id: \.1.self) { (index, imageInfo) in
+                            ImageCarouselCellView(imageInfo: imageInfo)
                                 .onTapGesture {
-                                    if let movieId = movie.id {
-                                        viewModel.selectedMovieToShow = Media(id: movieId)
+                                    withAnimation {
+                                        viewModel.imageIndexToShow = index
                                     }
                                 }
                         }
                     }
                     .scrollTargetLayout()
                 }
-                .scrollIndicators(.hidden)
                 .scrollTargetBehavior(.viewAligned)
             }
         }
-        .padding()
+        .padding(.bottom)
     }
 }
 
 #Preview {
-    PersonCarouselView()
+    ImageCarouselView()
 }

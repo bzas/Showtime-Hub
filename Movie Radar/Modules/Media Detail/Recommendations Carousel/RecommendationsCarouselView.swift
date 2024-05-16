@@ -1,15 +1,15 @@
 //
-//  PersonCarouselView.swift
+//  SimilarMoviesCarousel.swift
 //  Movie Radar
 //
-//  Created by Alfonso Boizas Crespo on 6/5/24.
+//  Created by Alfonso Boizas Crespo on 1/5/24.
 //
 
 import SwiftUI
 
-struct PersonCarouselView: View {
+struct SimilarMoviesCarouselView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
-    @EnvironmentObject var viewModel: PersonDetailView.ViewModel
+    @EnvironmentObject var viewModel: MediaDetailView.ViewModel
     let rows = [
         GridItem(.flexible())
     ]
@@ -17,36 +17,32 @@ struct PersonCarouselView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Movies")
+                Text("Similar movies")
                     .foregroundStyle(appGradient.value)
                     .font(.system(size: 20))
                 Spacer()
             }
 
-            if viewModel.movies.isEmpty {
-                NoDataAvailableView(title: "No information available")
+            if viewModel.movieRecommendationsList.results.isEmpty {
+                NoDataAvailableView(title: "No recommendations available")
             } else {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 16) {
-                        ForEach(viewModel.movies, id: \.self) { movie in
-                            PersonCarouselCellView(movie: movie)
+                        ForEach(viewModel.movieRecommendationsList.results, id: \.self) { movie in
+                            RecommendationsCarouselCellView(movie: movie)
                                 .onTapGesture {
-                                    if let movieId = movie.id {
-                                        viewModel.selectedMovieToShow = Media(id: movieId)
-                                    }
+                                    viewModel.detailMovieToShow = movie
                                 }
                         }
                     }
                     .scrollTargetLayout()
                 }
-                .scrollIndicators(.hidden)
                 .scrollTargetBehavior(.viewAligned)
             }
         }
-        .padding()
     }
 }
 
 #Preview {
-    PersonCarouselView()
+    SimilarMoviesCarouselView()
 }

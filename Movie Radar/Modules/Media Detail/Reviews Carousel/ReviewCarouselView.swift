@@ -1,15 +1,15 @@
 //
-//  PersonCarouselView.swift
+//  ReviewsCarouselView.swift
 //  Movie Radar
 //
-//  Created by Alfonso Boizas Crespo on 6/5/24.
+//  Created by Alfonso Boizas Crespo on 1/5/24.
 //
 
 import SwiftUI
 
-struct PersonCarouselView: View {
+struct ReviewCarouselView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
-    @EnvironmentObject var viewModel: PersonDetailView.ViewModel
+    @EnvironmentObject var viewModel: MediaDetailView.ViewModel
     let rows = [
         GridItem(.flexible())
     ]
@@ -17,23 +17,21 @@ struct PersonCarouselView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Movies")
+                Text("Reviews")
                     .foregroundStyle(appGradient.value)
                     .font(.system(size: 20))
                 Spacer()
             }
 
-            if viewModel.movies.isEmpty {
-                NoDataAvailableView(title: "No information available")
+            if viewModel.reviewList.reviews.isEmpty {
+                NoDataAvailableView(title: "No reviews available")
             } else {
                 ScrollView(.horizontal) {
-                    LazyHGrid(rows: rows, spacing: 16) {
-                        ForEach(viewModel.movies, id: \.self) { movie in
-                            PersonCarouselCellView(movie: movie)
+                    LazyHGrid(rows: rows, spacing: 12) {
+                        ForEach(viewModel.reviewList.reviews, id: \.self) { review in
+                            ReviewCarouselCellView(review: review)
                                 .onTapGesture {
-                                    if let movieId = movie.id {
-                                        viewModel.selectedMovieToShow = Media(id: movieId)
-                                    }
+                                    viewModel.detailReviewToShow = review
                                 }
                         }
                     }
@@ -43,10 +41,10 @@ struct PersonCarouselView: View {
                 .scrollTargetBehavior(.viewAligned)
             }
         }
-        .padding()
+        .padding(.bottom)
     }
 }
 
 #Preview {
-    PersonCarouselView()
+    ReviewCarouselView()
 }

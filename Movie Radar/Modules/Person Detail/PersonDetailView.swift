@@ -28,7 +28,7 @@ struct PersonDetailView: View {
                                 .padding()
                         }
 
-                        PersonMovieCarouselView()
+                        PersonCarouselView()
                             .environmentObject(viewModel)
                     }
                 }
@@ -36,7 +36,7 @@ struct PersonDetailView: View {
             }
             .fullScreenCover(isPresented: $viewModel.showDetailMovie) {
                 if let selectedMovieToShow = viewModel.selectedMovieToShow {
-                    MovieDetailView(
+                    MediaDetailView(
                         viewModel: .init(
                             apiService: viewModel.apiService,
                             movie: selectedMovieToShow
