@@ -29,7 +29,8 @@ struct HomeContentView: View {
                     MediaDetailView(
                         viewModel: .init(
                             apiService: viewModel.apiService,
-                            movie: detailMediaToShow
+                            media: detailMediaToShow,
+                            type: viewModel.type
                         )
                     )
                 }

@@ -17,21 +17,21 @@ struct SimilarMoviesCarouselView: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Similar movies")
+                Text("Similar")
                     .foregroundStyle(appGradient.value)
                     .font(.system(size: 20))
                 Spacer()
             }
 
-            if viewModel.movieRecommendationsList.results.isEmpty {
+            if viewModel.recommendationsList.results.isEmpty {
                 NoDataAvailableView(title: "No recommendations available")
             } else {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 16) {
-                        ForEach(viewModel.movieRecommendationsList.results, id: \.self) { movie in
+                        ForEach(viewModel.recommendationsList.results, id: \.self) { movie in
                             RecommendationsCarouselCellView(movie: movie)
                                 .onTapGesture {
-                                    viewModel.detailMovieToShow = movie
+                                    viewModel.detailMediaToShow = movie
                                 }
                         }
                     }

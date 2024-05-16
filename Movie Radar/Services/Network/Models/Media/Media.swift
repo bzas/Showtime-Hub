@@ -20,13 +20,22 @@ struct Media: Codable, Hashable {
     let posterPath: String?
     let productionCompanies: [ProductionCompany]?
     let productionCountries: [ProductionCountry]?
-    let releaseDate: String?
     let runtime: Int?
-    let status, tagline, title: String?
+    let status, tagline: String?
     let video: Bool?
     let voteAverage: Double?
     let voteCount: Int?
+    private let releaseDate, airDate: String?
+    private let title, name: String?
 
+    var date: String? {
+        releaseDate ?? airDate
+    }
+    
+    var publicName: String {
+        title ?? name ?? ""
+    }
+    
     init(id: Int) {
         self.init(
             backdropPath: nil,
@@ -44,6 +53,7 @@ struct Media: Codable, Hashable {
             productionCompanies: nil,
             productionCountries: nil,
             releaseDate: nil,
+            airDate: nil,
             revenue: nil,
             runtime: nil,
             status: nil,
@@ -51,7 +61,8 @@ struct Media: Codable, Hashable {
             title: nil,
             video: nil,
             voteAverage: nil,
-            voteCount: nil
+            voteCount: nil,
+            name: nil
         )
     }
 
@@ -71,6 +82,7 @@ struct Media: Codable, Hashable {
         productionCompanies: [ProductionCompany]?,
         productionCountries: [ProductionCountry]?,
         releaseDate: String?,
+        airDate: String?,
         revenue: Int?,
         runtime: Int?,
         status: String?,
@@ -78,7 +90,8 @@ struct Media: Codable, Hashable {
         title: String?,
         video: Bool?,
         voteAverage: Double?,
-        voteCount: Int?
+        voteCount: Int?,
+        name: String?
     ) {
         self.backdropPath = backdropPath
         self.budget = budget
@@ -95,6 +108,7 @@ struct Media: Codable, Hashable {
         self.productionCompanies = productionCompanies
         self.productionCountries = productionCountries
         self.releaseDate = releaseDate
+        self.airDate = airDate
         self.revenue = revenue
         self.runtime = runtime
         self.status = status
@@ -103,6 +117,7 @@ struct Media: Codable, Hashable {
         self.video = video
         self.voteAverage = voteAverage
         self.voteCount = voteCount
+        self.name = name
     }
 
     var hasInfo: Bool {
@@ -155,6 +170,8 @@ struct Media: Codable, Hashable {
         case status, tagline, title, video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
+        case name
+        case airDate = "first_air_date"
     }
 }
 

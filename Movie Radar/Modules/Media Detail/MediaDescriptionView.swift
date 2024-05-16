@@ -12,7 +12,7 @@ struct MediaDescriptionView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            if let voteAverage = viewModel.movie.voteAverage {
+            if let voteAverage = viewModel.media.voteAverage {
                 HStack {
                     Image(systemName: "star.fill")
                         .resizable()
@@ -24,7 +24,7 @@ struct MediaDescriptionView: View {
                 .foregroundStyle(.yellow)
             }
 
-            if let budget = viewModel.movie.budget,
+            if let budget = viewModel.media.budget,
                budget > 0 {
                 HStack {
                     Text("Budget")
@@ -36,7 +36,7 @@ struct MediaDescriptionView: View {
                 .font(.system(size: 14))
             }
 
-            if let revenue = viewModel.movie.revenue,
+            if let revenue = viewModel.media.revenue,
                revenue > 0 {
                 HStack {
                     Text("Revenue")
@@ -48,7 +48,7 @@ struct MediaDescriptionView: View {
                 .font(.system(size: 14))
             }
 
-            Text(viewModel.movie.overview ?? "")
+            Text(viewModel.media.overview ?? "")
                 .multilineTextAlignment(.leading)
                 .font(.system(size: 14))
         }

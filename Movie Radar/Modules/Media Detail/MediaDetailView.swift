@@ -20,12 +20,13 @@ struct MediaDetailView: View {
             }
         }
         .scrollIndicators(.hidden)
-        .fullScreenCover(isPresented: $viewModel.showDetailMovie) {
-            if let detailMovieToShow = viewModel.detailMovieToShow {
+        .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
+            if let detailMediaToShow = viewModel.detailMediaToShow {
                 MediaDetailView(
                     viewModel: .init(
                         apiService: viewModel.apiService,
-                        movie: detailMovieToShow
+                        media: detailMediaToShow,
+                        type: viewModel.type
                     )
                 )
             }

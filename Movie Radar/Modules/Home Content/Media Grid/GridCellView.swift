@@ -23,7 +23,7 @@ struct GridCellView: View {
         .overlay {
             VStack {
                 HStack {
-                    Text(movie.title ?? "")
+                    Text(movie.publicName)
                         .font(.system(size: 14))
                         .foregroundStyle(.white)
                         .shadow(radius: 1)

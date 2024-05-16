@@ -61,14 +61,14 @@ struct MediaCarouselCellView: View {
 
                 VStack(spacing: 6) {
                     Spacer()
-                        Text(movie.title ?? "")
+                        Text(movie.publicName)
                             .font(.system(size: 20))
                             .frame(maxWidth: 200, alignment: .leading)
                             .lineLimit(3)
                             .multilineTextAlignment(.leading)
                             .shadow(radius: 2)
 
-                    if let releaseDate = movie.releaseDate {
+                    if let releaseDate = movie.date {
                         HStack(spacing: 0) {
                             Text("Release ")
                                 .fontWeight(.bold)

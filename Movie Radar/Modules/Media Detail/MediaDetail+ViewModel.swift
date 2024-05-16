@@ -10,11 +10,13 @@ import Foundation
 extension MediaDetailView {
     class ViewModel: ObservableObject {
         var apiService: APIService
-        @Published var movie: Media
+        var type: MediaType
+        
+        @Published var media: Media
         @Published var imageList = ImageList()
         @Published var mediaActors: [Cast] = []
         @Published var director: Cast?
-        @Published var movieRecommendationsList = MediaList()
+        @Published var recommendationsList = MediaList()
         @Published var reviewList = ReviewList()
         @Published var linkList: LinkList?
 
@@ -32,10 +34,10 @@ extension MediaDetailView {
             }
         }
 
-        @Published var showDetailMovie = false
-        @Published var detailMovieToShow: Media? {
+        @Published var showDetailMedia = false
+        @Published var detailMediaToShow: Media? {
             didSet {
-                showDetailMovie.toggle()
+                showDetailMedia.toggle()
             }
         }
 
@@ -46,29 +48,34 @@ extension MediaDetailView {
             }
         }
 
-        init(apiService: APIService, movie: Media) {
+        init(
+            apiService: APIService,
+            media: Media,
+            type: MediaType
+        ) {
             self.apiService = apiService
-            self.movie = movie
+            self.media = media
+            self.type = type
             Task {
-                await fetchDetailMovie()
+                await fetchDetail()
                 await fetchImages()
                 await fetchMediaActors()
-                await fetchSimilarMovies()
+                await fetchSimilar()
                 await fetchReviews()
                 await fetchLinks()
             }
         }
 
-        func fetchDetailMovie() async {
-            if let movieDetail = await apiService.getMovieDetail(id: movie.id) {
+        func fetchDetail() async {
+            if let movieDetail = await apiService.getDetail(type: type, id: media.id) {
                 await MainActor.run {
-                    movie = movieDetail
+                    media = movieDetail
                 }
             }
         }
 
         func fetchMediaActors() async {
-            if let movieCredits = await apiService.getMovieActors(id: movie.id) {
+            if let movieCredits = await apiService.getMediaActors(type: type, id: media.id) {
                 await MainActor.run {
                     mediaActors = movieCredits.actors
                     director = movieCredits.director
@@ -76,16 +83,19 @@ extension MediaDetailView {
             }
         }
 
-        func fetchSimilarMovies() async {
-            if let movieRecommendationsList = await apiService.getMovieRecommendations(id: movie.id) {
+        func fetchSimilar() async {
+            if let movieRecommendationsList = await apiService.getRecommendations(
+                type: type,
+                id: media.id
+            ) {
                 await MainActor.run {
-                    self.movieRecommendationsList = movieRecommendationsList
+                    self.recommendationsList = movieRecommendationsList
                 }
             }
         }
 
         func fetchReviews() async {
-            if let reviewList = await apiService.getMovieReviews(id: movie.id) {
+            if let reviewList = await apiService.getReviews(type: type, id: media.id) {
                 await MainActor.run {
                     self.reviewList = reviewList
                 }
@@ -93,7 +103,7 @@ extension MediaDetailView {
         }
 
         func fetchLinks() async {
-            if let linkList = await apiService.getMovieLinks(id: movie.id) {
+            if let linkList = await apiService.getLinks(type: type, id: media.id) {
                 await MainActor.run {
                     self.linkList = linkList
                 }
@@ -101,7 +111,7 @@ extension MediaDetailView {
         }
 
         func fetchImages() async {
-            if let imageList = await apiService.getMovieImages(id: movie.id) {
+            if let imageList = await apiService.getImages(type: type, id: media.id) {
                 await MainActor.run {
                     self.imageList = imageList
                 }

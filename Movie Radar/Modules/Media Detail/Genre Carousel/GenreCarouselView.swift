@@ -17,7 +17,7 @@ struct GenreCarouselView: View {
     var body: some View {
         ScrollView(.horizontal) {
             LazyHGrid(rows: rows, spacing: 8) {
-                ForEach(viewModel.movie.genres ?? [], id: \.self) { genre in
+                ForEach(viewModel.media.genres ?? [], id: \.self) { genre in
                     GenreCellView(genre: genre)
                 }
             }

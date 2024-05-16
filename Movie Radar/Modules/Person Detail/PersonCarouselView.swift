@@ -32,7 +32,7 @@ struct PersonCarouselView: View {
                             PersonCarouselCellView(movie: movie)
                                 .onTapGesture {
                                     if let movieId = movie.id {
-                                        viewModel.selectedMovieToShow = Media(id: movieId)
+                                        viewModel.selectedMediaToShow = Media(id: movieId)
                                     }
                                 }
                         }

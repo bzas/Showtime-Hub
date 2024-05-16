@@ -29,8 +29,8 @@ struct MainHomeView: View {
                     } label: {
                         Text("Movies")
                             .font(.system(
-                                size: selectedTab == 0 ? 35 : 18,
-                                weight: selectedTab == 0 ? .heavy : .regular)
+                                size: selectedTab == 0 ? 25 : 16,
+                                weight: selectedTab == 0 ? .bold : .regular)
                             )
                             .foregroundStyle(appGradient.value)
                             .opacity(selectedTab == 0 ? 0.6 : 0.4)
@@ -41,14 +41,15 @@ struct MainHomeView: View {
                     } label: {
                         Text("Series")
                             .font(.system(
-                                size: selectedTab == 1 ? 35 : 18,
-                                weight: selectedTab == 1 ? .heavy : .regular)
+                                size: selectedTab == 1 ? 25 : 16,
+                                weight: selectedTab == 1 ? .bold : .regular)
                             )
                             .foregroundStyle(appGradient.value)
                             .opacity(selectedTab == 1 ? 0.6 : 0.4)
                     }
                 }
                 .frame(maxWidth: .infinity)
+                .padding(.bottom, 4)
                 .background(
                     LinearGradient(
                         colors: [.black, .clear],
@@ -56,7 +57,6 @@ struct MainHomeView: View {
                         endPoint: .bottom
                     )
                 )
-                
                 Spacer()
             }
         }

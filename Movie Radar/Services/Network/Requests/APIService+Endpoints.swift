@@ -8,44 +8,30 @@
 import Foundation
 
 enum Path: String {
-    case popular = "/movie/popular",
-         search = "/search/movie",
+    case search = "/search/movie",
          searchTv = "/search/tv",
          genres = "/genre/movie/list",
          genresTv = "/genre/tv/list",
          discover = "/discover/movie",
          discoverTv = "/discover/tv",
          detail = "/movie/%@",
-         topRated = "/movie/top_rated",
+         detailTv = "/tv/%@",
          upcoming = "/movie/upcoming",
          credits = "/movie/%@/credits",
+         creditsTv = "/tv/%@/credits",
          recommendations = "/movie/%@/recommendations",
+         recommendationsTv = "/tv/%@/recommendations",
          reviews = "/movie/%@/reviews",
+         reviewsTv = "/tv/%@/reviews",
          links = "/movie/%@/external_ids",
+         linksTv = "/tv/%@/external_ids",
          images = "/movie/%@/images",
+         imagesTv = "/tv/%@/images",
          personDetail = "/person/%@",
          personMovies = "/person/%@/movie_credits"
 }
 
 extension APIService {
-
-    // MARK: - /movie/top_rated
-    func getTopRatedMovies(page: Int) async -> MediaList? {
-        guard let request = PathBuilder.request(.topRated, queryItems: defaultQueryItems) else {
-            return nil
-        }
-
-        return await perform(request: request)
-    }
-
-    // MARK: - /movie/popular
-    func getPopularMovies(page: Int) async -> MediaList? {
-        guard let request = PathBuilder.request(.popular, queryItems: defaultQueryItems) else {
-            return nil
-        }
-
-        return await perform(request: request)
-    }
 
     // MARK: - /movie/upcoming
     func getUpcomingMovies(page: Int) async -> MediaList? {
@@ -56,30 +42,36 @@ extension APIService {
         return await perform(request: request)
     }
 
-    // MARK: - /search/
+    // MARK: - /search/{type}
     func searchMovies(type: MediaType, queryString: String) async -> MediaList? {
         let queryItems = [
             URLQueryItem(name: "page", value: "\(1)"),
             URLQueryItem(name: "query", value: queryString)
         ] + defaultQueryItems
 
-        guard let request = PathBuilder.request(type.searchPath, queryItems: queryItems) else {
+        guard let request = PathBuilder.request(
+            type.isMovie ? .search : .searchTv,
+            queryItems: queryItems
+        ) else {
             return nil
         }
 
         return await perform(request: request)
     }
 
-    // MARK: - /genre/{ }/list
+    // MARK: - /genre/{type}/list
     func getGenres(type: MediaType) async -> GenreList? {
-        guard let request = PathBuilder.request(type.genresPath, queryItems: defaultQueryItems) else {
+        guard let request = PathBuilder.request(
+            type.isMovie ? .genres : .genresTv,
+            queryItems: defaultQueryItems
+        ) else {
             return nil
         }
 
         return await perform(request: request)
     }
 
-    // MARK: - /discover/
+    // MARK: - /discover/{type}
     func discoverMedia(
         type: MediaType,
         genreId: Int?,
@@ -96,17 +88,20 @@ extension APIService {
             queryItems.append(URLQueryItem(name: "with_genres", value: "\(genreId)"))
         }
 
-        guard let request = PathBuilder.request(type.discoverPath, queryItems: queryItems) else {
+        guard let request = PathBuilder.request(
+            type.isMovie ? .discover : .discoverTv,
+            queryItems: queryItems
+        ) else {
             return nil
         }
 
         return await perform(request: request)
     }
 
-    // MARK: - /movie/{movie_id}
-    func getMovieDetail(id: Int) async -> Media? {
+    // MARK: - /{type}/{media_id}
+    func getDetail(type: MediaType, id: Int) async -> Media? {
         guard let request = PathBuilder.request(
-            .detail,
+            type.isMovie ? .detail : .detailTv,
             queryItems: defaultQueryItems,
             pathComponent: "\(id)"
         ) else {
@@ -116,10 +111,10 @@ extension APIService {
         return await perform(request: request)
     }
 
-    // MARK: - /movie/{movie_id}/credits
-    func getMovieActors(id: Int) async -> Credits? {
+    // MARK: - /{type}/{media_id}/credits
+    func getMediaActors(type: MediaType, id: Int) async -> Credits? {
         guard let request = PathBuilder.request(
-            .credits,
+            type.isMovie ? .credits : .creditsTv,
             queryItems: defaultQueryItems,
             pathComponent: "\(id)"
         ) else {
@@ -129,10 +124,10 @@ extension APIService {
         return await perform(request: request)
     }
 
-    // MARK: - /movie/{movie_id}/recommendations
-    func getMovieRecommendations(id: Int) async -> MediaList? {
+    // MARK: - /{type}/{media_id}/recommendations
+    func getRecommendations(type: MediaType, id: Int) async -> MediaList? {
         guard let request = PathBuilder.request(
-            .recommendations,
+            type.isMovie ? .recommendations : .recommendationsTv,
             queryItems: defaultQueryItems,
             pathComponent: "\(id)"
         ) else {
@@ -142,10 +137,10 @@ extension APIService {
         return await perform(request: request)
     }
 
-    // MARK: - /movie/{movie_id}/reviews
-    func getMovieReviews(id: Int) async -> ReviewList? {
+    // MARK: - /{type}/{media_id}/reviews
+    func getReviews(type: MediaType, id: Int) async -> ReviewList? {
         guard let request = PathBuilder.request(
-            .reviews,
+            type.isMovie ? .reviews : .reviewsTv,
             queryItems: [apiKeyQueryItem],
             pathComponent: "\(id)"
         ) else {
@@ -155,10 +150,10 @@ extension APIService {
         return await perform(request: request)
     }
 
-    // MARK: - /movie/{movie_id}/external_ids
-    func getMovieLinks(id: Int) async -> LinkList? {
+    // MARK: - /{type}/{media_id}/external_ids
+    func getLinks(type: MediaType, id: Int) async -> LinkList? {
         guard let request = PathBuilder.request(
-            .links,
+            type.isMovie ? .links : .linksTv,
             queryItems: defaultQueryItems,
             pathComponent: "\(id)"
         ) else {
@@ -168,10 +163,10 @@ extension APIService {
         return await perform(request: request)
     }
 
-    // MARK: - /movie/{movie_id}/images
-    func getMovieImages(id: Int) async -> ImageList? {
+    // MARK: - /{type}/{media_id}/images
+    func getImages(type: MediaType, id: Int) async -> ImageList? {
         guard let request = PathBuilder.request(
-            .images,
+            type.isMovie ? .images : .imagesTv,
             queryItems: defaultQueryItems,
             pathComponent: "\(id)"
         ) else {

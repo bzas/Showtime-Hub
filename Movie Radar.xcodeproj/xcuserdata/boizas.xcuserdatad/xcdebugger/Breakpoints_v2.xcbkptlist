@@ -3,23 +3,4 @@
    uuid = "1E38C6D7-1BDE-4222-BB50-E6475A678BCA"
    type = "1"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3EA50329-2DC9-45F4-A8B4-6652CB2B7E6D"
-            shouldBeEnabled = "No"
-            condition = "type == .tv"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Movie Radar/Modules/Home Content/HomeContent+ViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "getDiscoverContent()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>

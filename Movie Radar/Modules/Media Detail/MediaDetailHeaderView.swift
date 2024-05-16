@@ -13,7 +13,7 @@ struct MediaDetailHeaderView: View {
 
     var body: some View {
         ZStack {
-            AsyncImage(url: viewModel.movie.originalImageUrl) { image in
+            AsyncImage(url: viewModel.media.originalImageUrl) { image in
                 image
                     .resizable()
                     .scaledToFill()
@@ -51,7 +51,7 @@ struct MediaDetailHeaderView: View {
 
                 Spacer()
                 HStack {
-                    Text(viewModel.movie.title ?? "")
+                    Text(viewModel.media.publicName)
                         .font(.system(size: 30, weight: .light))
                         .lineLimit(6)
                         .shadow(color: Color.black, radius: 2)
@@ -59,7 +59,7 @@ struct MediaDetailHeaderView: View {
                 }
                 .padding(.trailing)
 
-                if let runtime = viewModel.movie.runtime {
+                if let runtime = viewModel.media.runtime {
                     HStack {
                         Text("\(runtime) min")
                             .font(.system(size: 14, weight: .light))

@@ -17,7 +17,7 @@ extension PersonDetailView {
         @Published var birthInfo: String?
 
         @Published var showDetailMovie = false
-        @Published var selectedMovieToShow: Media? {
+        @Published var selectedMediaToShow: Media? {
             didSet {
                 showDetailMovie.toggle()
             }
