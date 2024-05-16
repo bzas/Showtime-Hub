@@ -1,5 +1,5 @@
 //
-//  GridSortType.swift
+//  MovieGridSortType.swift
 //  Movie Radar
 //
 //  Created by Alfonso Boizas Crespo on 5/5/24.
@@ -7,10 +7,11 @@
 
 import Foundation
 
-enum GridSortType: CaseIterable {
+enum MovieGridSortType: CaseIterable {
     case popularityDesc,
          name,
-         releaseDate,
+         releaseDateDesc,
+         releaseDateAsc,
          revenue
 
     var requestKey: String {
@@ -19,8 +20,10 @@ enum GridSortType: CaseIterable {
             "popularity.desc"
         case .name:
             "title.asc"
-        case .releaseDate:
+        case .releaseDateDesc:
             "primary_release_date.desc"
+        case .releaseDateAsc:
+            "primary_release_date.asc"
         case .revenue:
             "revenue.desc"
         }
@@ -32,8 +35,10 @@ enum GridSortType: CaseIterable {
             "Popularity"
         case .name:
             "Name"
-        case .releaseDate:
-            "Release date"
+        case .releaseDateDesc:
+            "Newest"
+        case .releaseDateAsc:
+            "Oldest"
         case .revenue:
             "Revenue"
         }

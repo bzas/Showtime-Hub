@@ -29,11 +29,11 @@ struct MainHomeView: View {
                     } label: {
                         Text("Movies")
                             .font(.system(
-                                size: selectedTab == 0 ? 25 : 16,
-                                weight: selectedTab == 0 ? .bold : .regular)
+                                size: selectedTab == 0 ? 25 : 16)
                             )
                             .foregroundStyle(appGradient.value)
-                            .opacity(selectedTab == 0 ? 0.6 : 0.4)
+                            .opacity(selectedTab == 0 ? 0.8 : 0.4)
+                            .shadow(radius: 1)
                     }
                     
                     Button {
@@ -41,13 +41,14 @@ struct MainHomeView: View {
                     } label: {
                         Text("Series")
                             .font(.system(
-                                size: selectedTab == 1 ? 25 : 16,
-                                weight: selectedTab == 1 ? .bold : .regular)
+                                size: selectedTab == 1 ? 25 : 16)
                             )
                             .foregroundStyle(appGradient.value)
-                            .opacity(selectedTab == 1 ? 0.6 : 0.4)
+                            .opacity(selectedTab == 1 ? 0.8 : 0.4)
+                            .shadow(radius: 1)
                     }
                 }
+                .animation(.spring(duration: 0.3, bounce: 0), value: selectedTab)
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 4)
                 .background(

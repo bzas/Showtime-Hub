@@ -15,15 +15,11 @@ struct SortSelectorView: View {
             Text("Sort by:")
                 .font(.system(size: 12, weight: .light))
 
-            Menu(viewModel.sortType.title) {
-                ForEach(GridSortType.allCases, id: \.self) { type in
-                    Button(action: {
-                        withAnimation {
-                            viewModel.sortType = type
-                        }
-                    }, label: {
-                        Text(type.title)
-                    })
+            Menu(viewModel.movieSortType.title) {
+                if viewModel.type.isMovie {
+                    movieSortTypes()
+                } else {
+                    seriesSortTypes()
                 }
             }
             .tint(.white)
@@ -32,6 +28,35 @@ struct SortSelectorView: View {
         }
         .disabled(viewModel.isSearching)
         .opacity(viewModel.isSearching ? 0.5 : 1)
+        .if(viewModel.type == .tv) { view in
+            view.padding(.top, 35)
+        }
+    }
+    
+    @ViewBuilder
+    func movieSortTypes() -> some View {
+        ForEach(MovieGridSortType.allCases, id: \.self) { type in
+            Button(action: {
+                withAnimation {
+                    viewModel.movieSortType = type
+                }
+            }, label: {
+                Text(type.title)
+            })
+        }
+    }
+    
+    @ViewBuilder
+    func seriesSortTypes() -> some View {
+        ForEach(SeriesGridSortType.allCases, id: \.self) { type in
+            Button(action: {
+                withAnimation {
+                    viewModel.seriesSortType = type
+                }
+            }, label: {
+                Text(type.title)
+            })
+        }
     }
 }
 

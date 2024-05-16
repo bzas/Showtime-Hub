@@ -32,12 +32,17 @@ extension HomeContentView {
         }
 
         @Published var selectedGenre: Genre?
-        @Published var sortType: GridSortType = .popularityDesc {
+        @Published var movieSortType: MovieGridSortType = .popularityDesc {
             didSet {
                 refreshGrid()
             }
         }
-
+        @Published var seriesSortType: SeriesGridSortType = .popularityDesc {
+            didSet {
+                refreshGrid()
+            }
+        }
+        
         var gridItems: [Media] {
             if searchText.isEmpty {
                 return discoverList.results
@@ -87,7 +92,7 @@ extension HomeContentView {
             if let mediaList = await apiService.discoverMedia(
                 type: type,
                 genreId: selectedGenre?.id,
-                sortType: sortType.requestKey,
+                sortType: type.isMovie ? movieSortType.requestKey : seriesSortType.requestKey,
                 page: discoverList.page
             ) {
                 await MainActor.run {
