@@ -24,15 +24,32 @@ struct MainHomeView: View {
             
             VStack {
                 HStack {
-                    Text(selectedTab == 0 ? "Movies" : "Series")
-                        .font(.system(size: 35, weight: .heavy))
+                    Text("Movies")
+                        .font(.system(
+                            size: selectedTab == 0 ? 35 : 18,
+                            weight: selectedTab == 0 ? .heavy : .regular)
+                        )
                         .foregroundStyle(appGradient.value)
-                        .opacity(0.3)
-                    Spacer()
+                        .opacity(selectedTab == 0 ? 0.6 : 0.3)
+                    Text("Series")
+                        .font(.system(
+                            size: selectedTab == 1 ? 35 : 18,
+                            weight: selectedTab == 1 ? .heavy : .regular)
+                        )
+                        .foregroundStyle(appGradient.value)
+                        .opacity(selectedTab == 1 ? 0.6 : 0.3)
                 }
+                .frame(maxWidth: .infinity)
+                .background(
+                    LinearGradient(
+                        colors: [.black, .clear],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                
                 Spacer()
             }
-            .padding(.horizontal)
             .disabled(true)
         }
     }
