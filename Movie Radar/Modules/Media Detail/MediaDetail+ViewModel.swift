@@ -12,7 +12,7 @@ extension MediaDetailView {
         var apiService: APIService
         @Published var movie: Media
         @Published var imageList = ImageList()
-        @Published var movieActors: [Cast] = []
+        @Published var mediaActors: [Cast] = []
         @Published var director: Cast?
         @Published var movieRecommendationsList = MediaList()
         @Published var reviewList = ReviewList()
@@ -52,7 +52,7 @@ extension MediaDetailView {
             Task {
                 await fetchDetailMovie()
                 await fetchImages()
-                await fetchMovieActors()
+                await fetchMediaActors()
                 await fetchSimilarMovies()
                 await fetchReviews()
                 await fetchLinks()
@@ -67,10 +67,10 @@ extension MediaDetailView {
             }
         }
 
-        func fetchMovieActors() async {
+        func fetchMediaActors() async {
             if let movieCredits = await apiService.getMovieActors(id: movie.id) {
                 await MainActor.run {
-                    movieActors = movieCredits.actors
+                    mediaActors = movieCredits.actors
                     director = movieCredits.director
                 }
             }

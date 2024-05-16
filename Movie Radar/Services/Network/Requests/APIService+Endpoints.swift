@@ -10,9 +10,11 @@ import Foundation
 enum Path: String {
     case popular = "/movie/popular",
          search = "/search/movie",
+         searchTv = "/search/tv",
          genres = "/genre/movie/list",
+         genresTv = "/genre/tv/list",
          discover = "/discover/movie",
-         discoverTV = "/discover/tv",
+         discoverTv = "/discover/tv",
          detail = "/movie/%@",
          topRated = "/movie/top_rated",
          upcoming = "/movie/upcoming",
@@ -54,31 +56,32 @@ extension APIService {
         return await perform(request: request)
     }
 
-    // MARK: - /search/movie
-    func searchMovies(queryString: String) async -> MediaList? {
+    // MARK: - /search/
+    func searchMovies(type: MediaType, queryString: String) async -> MediaList? {
         let queryItems = [
             URLQueryItem(name: "page", value: "\(1)"),
             URLQueryItem(name: "query", value: queryString)
         ] + defaultQueryItems
 
-        guard let request = PathBuilder.request(.search, queryItems: queryItems) else {
+        guard let request = PathBuilder.request(type.searchPath, queryItems: queryItems) else {
             return nil
         }
 
         return await perform(request: request)
     }
 
-    // MARK: - /genre/movie/list
-    func getGenres() async -> GenreList? {
-        guard let request = PathBuilder.request(.genres, queryItems: defaultQueryItems) else {
+    // MARK: - /genre/{ }/list
+    func getGenres(type: MediaType) async -> GenreList? {
+        guard let request = PathBuilder.request(type.genresPath, queryItems: defaultQueryItems) else {
             return nil
         }
 
         return await perform(request: request)
     }
 
-    // MARK: - /discover/movie
-    func discoverMovies(
+    // MARK: - /discover/
+    func discoverMedia(
+        type: MediaType,
         genreId: Int?,
         sortType: String,
         page: Int
@@ -93,30 +96,7 @@ extension APIService {
             queryItems.append(URLQueryItem(name: "with_genres", value: "\(genreId)"))
         }
 
-        guard let request = PathBuilder.request(.discover, queryItems: queryItems) else {
-            return nil
-        }
-
-        return await perform(request: request)
-    }
-
-    // MARK: - /discover/tv
-    func discoverSeries(
-        genreId: Int?,
-        sortType: String,
-        page: Int
-    ) async -> MediaList? {
-        var queryItems = [
-            URLQueryItem(name: "include_video", value: "true"),
-            URLQueryItem(name: "page", value: "\(page)"),
-            URLQueryItem(name: "sort_by", value: sortType)
-        ] + defaultQueryItems
-
-        if let genreId {
-            queryItems.append(URLQueryItem(name: "with_genres", value: "\(genreId)"))
-        }
-
-        guard let request = PathBuilder.request(.discoverTV, queryItems: queryItems) else {
+        guard let request = PathBuilder.request(type.discoverPath, queryItems: queryItems) else {
             return nil
         }
 

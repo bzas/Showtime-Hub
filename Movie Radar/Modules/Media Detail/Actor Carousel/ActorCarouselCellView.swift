@@ -1,5 +1,5 @@
 //
-//  MovieActorCarouselCellView.swift
+//  ActorCarouselCellView.swift
 //  Movie Radar
 //
 //  Created by Alfonso Boizas Crespo on 30/4/24.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct MovieActorCarouselCellView: View {
-    var movieActor: Cast
+struct ActorCarouselCellView: View {
+    var mediaActor: Cast
 
     var body: some View {
         VStack {
-            AsyncImage(url: movieActor.imageUrl) { image in
+            AsyncImage(url: mediaActor.imageUrl) { image in
                 image
                     .resizable()
                     .scaledToFill()
@@ -23,11 +23,11 @@ struct MovieActorCarouselCellView: View {
             .clipShape(Circle())
 
             VStack {
-                Text(movieActor.name ?? "")
+                Text(mediaActor.name ?? "")
                     .lineLimit(2)
                     .multilineTextAlignment(.center)
                     .font(.system(size: 12, weight: .light))
-                Text(movieActor.character ?? "")
+                Text(mediaActor.character ?? "")
                     .font(.system(size: 10, weight: .thin))
                     .multilineTextAlignment(.center)
                     .lineLimit(2)

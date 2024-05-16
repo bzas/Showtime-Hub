@@ -15,29 +15,38 @@ struct MainHomeView: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
-                HomeContentView(viewModel: .init(apiService: apiService))
+                HomeContentView(viewModel: .init(apiService: apiService, type: .movie))
                     .tag(0)
-                HomeContentView(viewModel: .init(apiService: apiService))
+                HomeContentView(viewModel: .init(apiService: apiService, type: .tv))
                     .tag(1)
             }
             .tabViewStyle(.page)
             
             VStack {
                 HStack {
-                    Text("Movies")
-                        .font(.system(
-                            size: selectedTab == 0 ? 35 : 18,
-                            weight: selectedTab == 0 ? .heavy : .regular)
-                        )
-                        .foregroundStyle(appGradient.value)
-                        .opacity(selectedTab == 0 ? 0.6 : 0.4)
-                    Text("Series")
-                        .font(.system(
-                            size: selectedTab == 1 ? 35 : 18,
-                            weight: selectedTab == 1 ? .heavy : .regular)
-                        )
-                        .foregroundStyle(appGradient.value)
-                        .opacity(selectedTab == 1 ? 0.6 : 0.4)
+                    Button {
+                        selectedTab = 0
+                    } label: {
+                        Text("Movies")
+                            .font(.system(
+                                size: selectedTab == 0 ? 35 : 18,
+                                weight: selectedTab == 0 ? .heavy : .regular)
+                            )
+                            .foregroundStyle(appGradient.value)
+                            .opacity(selectedTab == 0 ? 0.6 : 0.4)
+                    }
+                    
+                    Button {
+                        selectedTab = 1
+                    } label: {
+                        Text("Series")
+                            .font(.system(
+                                size: selectedTab == 1 ? 35 : 18,
+                                weight: selectedTab == 1 ? .heavy : .regular)
+                            )
+                            .foregroundStyle(appGradient.value)
+                            .opacity(selectedTab == 1 ? 0.6 : 0.4)
+                    }
                 }
                 .frame(maxWidth: .infinity)
                 .background(
@@ -50,7 +59,6 @@ struct MainHomeView: View {
                 
                 Spacer()
             }
-            .disabled(true)
         }
     }
 }

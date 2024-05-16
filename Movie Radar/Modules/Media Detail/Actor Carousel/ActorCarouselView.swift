@@ -1,5 +1,5 @@
 //
-//  MovieActorCarousel.swift
+//  ActorCarousel.swift
 //  Movie Radar
 //
 //  Created by Alfonso Boizas Crespo on 30/4/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MovieActorCarouselView: View {
+struct ActorCarouselView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
     @EnvironmentObject var viewModel: MediaDetailView.ViewModel
 
@@ -24,15 +24,15 @@ struct MovieActorCarouselView: View {
                 Spacer()
             }
 
-            if viewModel.movieActors.isEmpty {
+            if viewModel.mediaActors.isEmpty {
                 NoDataAvailableView(title: "No cast info available")
             } else {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 20) {
-                        ForEach(viewModel.movieActors, id: \.self) { movieActor in
-                            MovieActorCarouselCellView(movieActor: movieActor)
+                        ForEach(viewModel.mediaActors, id: \.self) { mediaActor in
+                            ActorCarouselCellView(mediaActor: mediaActor)
                                 .onTapGesture {
-                                    viewModel.detailPersonToShow = movieActor
+                                    viewModel.detailPersonToShow = mediaActor
                                 }
                         }
                     }
@@ -44,5 +44,5 @@ struct MovieActorCarouselView: View {
 }
 
 #Preview {
-    MovieActorCarouselView()
+    ActorCarouselView()
 }

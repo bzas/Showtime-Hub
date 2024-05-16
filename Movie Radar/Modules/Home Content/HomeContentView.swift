@@ -14,8 +14,10 @@ struct HomeContentView: View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack {
-                    MediaCarouselView(type: .popular)
-                        .environmentObject(viewModel)
+                    if viewModel.type == .movie {                        
+                        MediaCarouselView(type: .popular)
+                            .environmentObject(viewModel)
+                    }
 
                     GridView()
                         .environmentObject(viewModel)
@@ -46,7 +48,8 @@ struct HomeContentView: View {
 #Preview {
     HomeContentView(
         viewModel: .init(
-            apiService: APIServiceMock()
+            apiService: APIServiceMock(),
+            type: .movie
         )
     )
 }

@@ -10,13 +10,14 @@ import Foundation
 extension HomeContentView {
     class ViewModel: ObservableObject {
         var apiService: APIService
+        var type: MediaType
 
         @Published var upcomingList = MediaList()
         @Published var searchList = MediaList()
         @Published var searchText = "" {
             didSet {
                 Task {
-                    await searchMovies()
+                    await searchMedia()
                 }
             }
         }
@@ -45,8 +46,9 @@ extension HomeContentView {
             return searchList.results
         }
 
-        init(apiService: APIService) {
+        init(apiService: APIService, type: MediaType) {
             self.apiService = apiService
+            self.type = type
             Task {
                 await fetchData()
             }
@@ -74,7 +76,7 @@ extension HomeContentView {
         }
 
         func getGenres() async {
-            if let genreList = await apiService.getGenres() {
+            if let genreList = await apiService.getGenres(type: type) {
                 await MainActor.run {
                     self.genreList = genreList
                 }
@@ -82,18 +84,19 @@ extension HomeContentView {
         }
 
         func getDiscoverContent() async {
-            if let movieList = await apiService.discoverMovies(
+            if let mediaList = await apiService.discoverMedia(
+                type: type,
                 genreId: selectedGenre?.id,
                 sortType: sortType.requestKey,
                 page: discoverList.page
             ) {
                 await MainActor.run {
-                    discoverList.append(movieList)
+                    discoverList.append(mediaList)
                 }
             }
         }
 
-        func searchMovies() async {
+        func searchMedia() async {
             guard !searchText.isEmpty else {
                 await MainActor.run {
                     searchList = MediaList()
@@ -102,6 +105,7 @@ extension HomeContentView {
             }
 
             if let movieList = await apiService.searchMovies(
+                type: type,
                 queryString: searchText
             ) {
                 await MainActor.run {
