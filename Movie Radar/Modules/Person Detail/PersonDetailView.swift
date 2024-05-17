@@ -28,13 +28,16 @@ struct PersonDetailView: View {
                                 .padding()
                         }
 
-                        PersonCarouselView()
+                        PersonCarouselView(type: .movie)
+                            .environmentObject(viewModel)
+                        
+                        PersonCarouselView(type: .tv)
                             .environmentObject(viewModel)
                     }
                 }
                 .scrollIndicators(.hidden)
             }
-            .fullScreenCover(isPresented: $viewModel.showDetailMovie) {
+            .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
                 if let selectedMediaToShow = viewModel.selectedMediaToShow {
                     MediaDetailView(
                         viewModel: .init(

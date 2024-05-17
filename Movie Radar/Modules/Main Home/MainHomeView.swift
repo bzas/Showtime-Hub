@@ -28,7 +28,7 @@ struct MainHomeView: View {
                     Button {
                         selectedTab = 0
                     } label: {
-                        Text("Movies")
+                        Text(MediaType.movie.title)
                             .font(.system(
                                 size: selectedTab == 0 ? 25 : 16)
                             )
@@ -40,7 +40,7 @@ struct MainHomeView: View {
                     Button {
                         selectedTab = 1
                     } label: {
-                        Text("Series")
+                        Text(MediaType.tv.title)
                             .font(.system(
                                 size: selectedTab == 1 ? 25 : 16)
                             )

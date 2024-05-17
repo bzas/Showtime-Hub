@@ -13,4 +13,13 @@ enum MediaType: String {
     var isMovie: Bool {
         self == .movie
     }
+    
+    var title: String {
+        switch self {
+        case .movie:
+            "Movies"
+        case .tv:
+            "Series"
+        }
+    }
 }

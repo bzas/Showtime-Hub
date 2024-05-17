@@ -13,13 +13,14 @@ extension PersonDetailView {
         var personId: Int
         @Published var person: Person?
         @Published var movies = [PersonMedia]()
+        @Published var series = [PersonMedia]()
         @Published var detailLoaded = false
         @Published var birthInfo: String?
 
-        @Published var showDetailMovie = false
+        @Published var showDetailMedia = false
         @Published var selectedMediaToShow: Media? {
             didSet {
-                showDetailMovie.toggle()
+                showDetailMedia.toggle()
             }
         }
 
@@ -30,6 +31,7 @@ extension PersonDetailView {
             Task {
                 await fetchDetail()
                 await fetchMovies()
+                await fetchSeries()
             }
         }
 
@@ -51,9 +53,17 @@ extension PersonDetailView {
         }
 
         func fetchMovies() async {
-            if let movieList = await apiService.getPersonMovies(id: personId) {
+            if let movieList = await apiService.getPersonMedia(type: .movie, id: personId) {
                 await MainActor.run {
-                    self.movies = movieList.popularMovies
+                    self.movies = movieList.popular
+                }
+            }
+        }
+        
+        func fetchSeries() async {
+            if let seriesList = await apiService.getPersonMedia(type: .tv, id: personId) {
+                await MainActor.run {
+                    self.series = seriesList.popular
                 }
             }
         }

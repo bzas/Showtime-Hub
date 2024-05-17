@@ -28,7 +28,8 @@ enum Path: String {
          images = "/movie/%@/images",
          imagesTv = "/tv/%@/images",
          personDetail = "/person/%@",
-         personMovies = "/person/%@/movie_credits"
+         personMovies = "/person/%@/movie_credits",
+         personTv = "/person/%@/tv_credits"
 }
 
 extension APIService {
@@ -189,10 +190,10 @@ extension APIService {
         return await perform(request: request)
     }
 
-    // MARK: - /person/{credit_id}/movie_credits
-    func getPersonMovies(id: Int) async -> PersonMediaList? {
+    // MARK: - /person/{credit_id}/{type}
+    func getPersonMedia(type: MediaType, id: Int) async -> PersonMediaList? {
         guard let request = PathBuilder.request(
-            .personMovies,
+            type.isMovie ? .personMovies : .personTv,
             queryItems: defaultQueryItems,
             pathComponent: "\(id)"
         ) else {

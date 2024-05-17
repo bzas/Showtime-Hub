@@ -10,7 +10,7 @@ import Foundation
 struct PersonMediaList: Codable {
     let cast, crew: [PersonMedia]
 
-    var popularMovies: [PersonMedia] {
+    var popular: [PersonMedia] {
         cast.sorted {
             ($0.popularity ?? 0) > ($1.popularity ?? 0)
         }
