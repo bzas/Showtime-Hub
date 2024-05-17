@@ -31,6 +31,9 @@ struct MediaCarouselView: View {
                             .onTapGesture {
                                 viewModel.detailMediaToShow = movie
                             }
+                            .contextMenu {
+                                MediaContextMenu()
+                            }
                     }
                 }
             }

@@ -32,23 +32,7 @@ struct DiscoverMediaGridView: View {
                             viewModel.detailMediaToShow = movie
                         }
                         .contextMenu {
-                            Button {
-                                // Add to Favorites
-                            } label: {
-                                HStack {
-                                    Image(systemName: "heart")
-                                    Text("Add to Favorites")
-                                }
-                            }
-
-                            Button {
-                                // Add to viewed
-                            } label: {
-                                HStack {
-                                    Image(systemName: "checkmark.square")
-                                    Text("Mark as viewed")
-                                }
-                            }
+                            MediaContextMenu()
                         }
                 }
             }

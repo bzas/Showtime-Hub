@@ -50,7 +50,10 @@ struct MainHomeView: View {
                     }
                 }
                 .sensoryFeedback(.success, trigger: selectedTab)
-                .animation(.spring(duration: 0.3, bounce: 0), value: selectedTab)
+                .animation(
+                    .spring(duration: 0.3, bounce: 0),
+                    value: selectedTab
+                )
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 8)
                 .background(
