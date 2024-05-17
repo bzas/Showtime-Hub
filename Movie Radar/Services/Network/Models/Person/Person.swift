@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Person: Codable {
+struct Person: Codable, Hashable {
     let biography, birthday, deathday: String?
     let id: Int?
     let name, placeOfBirth: String?

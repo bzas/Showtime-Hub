@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		48289DE32BF5084B00C7F68B /* MainHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48289DE22BF5084B00C7F68B /* MainHomeView.swift */; };
+		4846E8662BF7968300D7ADAB /* MediaCrewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E8652BF7968300D7ADAB /* MediaCrewCellView.swift */; };
+		4846E8692BF7986100D7ADAB /* MediaCrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E8682BF7986100D7ADAB /* MediaCrewView.swift */; };
 		48A309132BF503C900F1733C /* Movie_RadarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309122BF503C900F1733C /* Movie_RadarApp.swift */; };
 		48A309172BF503CB00F1733C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48A309162BF503CB00F1733C /* Assets.xcassets */; };
 		48A3091A2BF503CB00F1733C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48A309192BF503CB00F1733C /* Preview Assets.xcassets */; };
@@ -56,7 +58,6 @@
 		48A309B22BF5041900F1733C /* MediaDetailBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3097A2BF5041900F1733C /* MediaDetailBodyView.swift */; };
 		48A309B32BF5041900F1733C /* MediaDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3097B2BF5041900F1733C /* MediaDetailHeaderView.swift */; };
 		48A309B42BF5041900F1733C /* MediaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3097C2BF5041900F1733C /* MediaDetailView.swift */; };
-		48A309B52BF5041900F1733C /* MediaDirectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3097D2BF5041900F1733C /* MediaDirectorView.swift */; };
 		48A309B62BF5041900F1733C /* PersonDetail+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3097F2BF5041900F1733C /* PersonDetail+ViewModel.swift */; };
 		48A309B72BF5041900F1733C /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309802BF5041900F1733C /* PersonDetailView.swift */; };
 		48A309B82BF5041900F1733C /* PersonCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309812BF5041900F1733C /* PersonCarouselCellView.swift */; };
@@ -117,6 +118,8 @@
 
 /* Begin PBXFileReference section */
 		48289DE22BF5084B00C7F68B /* MainHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeView.swift; sourceTree = "<group>"; };
+		4846E8652BF7968300D7ADAB /* MediaCrewCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCrewCellView.swift; sourceTree = "<group>"; };
+		4846E8682BF7986100D7ADAB /* MediaCrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCrewView.swift; sourceTree = "<group>"; };
 		48A3090F2BF503C900F1733C /* Movie Radar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Radar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A309122BF503C900F1733C /* Movie_RadarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_RadarApp.swift; sourceTree = "<group>"; };
 		48A309162BF503CB00F1733C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -168,7 +171,6 @@
 		48A3097A2BF5041900F1733C /* MediaDetailBodyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaDetailBodyView.swift; sourceTree = "<group>"; };
 		48A3097B2BF5041900F1733C /* MediaDetailHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaDetailHeaderView.swift; sourceTree = "<group>"; };
 		48A3097C2BF5041900F1733C /* MediaDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaDetailView.swift; sourceTree = "<group>"; };
-		48A3097D2BF5041900F1733C /* MediaDirectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaDirectorView.swift; sourceTree = "<group>"; };
 		48A3097F2BF5041900F1733C /* PersonDetail+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersonDetail+ViewModel.swift"; sourceTree = "<group>"; };
 		48A309802BF5041900F1733C /* PersonDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
 		48A309812BF5041900F1733C /* PersonCarouselCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCarouselCellView.swift; sourceTree = "<group>"; };
@@ -241,6 +243,15 @@
 				48289DE22BF5084B00C7F68B /* MainHomeView.swift */,
 			);
 			path = "Main Home";
+			sourceTree = "<group>";
+		};
+		4846E8672BF7982400D7ADAB /* Crew */ = {
+			isa = PBXGroup;
+			children = (
+				4846E8682BF7986100D7ADAB /* MediaCrewView.swift */,
+				4846E8652BF7968300D7ADAB /* MediaCrewCellView.swift */,
+			);
+			path = Crew;
 			sourceTree = "<group>";
 		};
 		48A309062BF503C900F1733C = {
@@ -374,7 +385,7 @@
 			path = "Media Grid";
 			sourceTree = "<group>";
 		};
-		48A309622BF5041900F1733C /* Home Content */ = {
+		48A309622BF5041900F1733C /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				48A309612BF5041900F1733C /* HomeContentView.swift */,
@@ -382,7 +393,7 @@
 				48A309552BF5041900F1733C /* Media Carousel */,
 				48A3095F2BF5041900F1733C /* Media Grid */,
 			);
-			path = "Home Content";
+			path = Home;
 			sourceTree = "<group>";
 		};
 		48A309652BF5041900F1733C /* Image Detail */ = {
@@ -457,12 +468,12 @@
 				48A309712BF5041900F1733C /* Recommendations Carousel */,
 				48A309742BF5041900F1733C /* Reviews Carousel */,
 				48A309772BF5041900F1733C /* Social Network Carousel */,
+				4846E8672BF7982400D7ADAB /* Crew */,
 				48A309782BF5041900F1733C /* MediaDescriptionView.swift */,
 				48A309792BF5041900F1733C /* MediaDetail+ViewModel.swift */,
 				48A3097A2BF5041900F1733C /* MediaDetailBodyView.swift */,
 				48A3097B2BF5041900F1733C /* MediaDetailHeaderView.swift */,
 				48A3097C2BF5041900F1733C /* MediaDetailView.swift */,
-				48A3097D2BF5041900F1733C /* MediaDirectorView.swift */,
 			);
 			path = "Media Detail";
 			sourceTree = "<group>";
@@ -515,7 +526,7 @@
 			children = (
 				48A309912BF5041900F1733C /* Tab Bar */,
 				48289DE12BF5083D00C7F68B /* Main Home */,
-				48A309622BF5041900F1733C /* Home Content */,
+				48A309622BF5041900F1733C /* Home */,
 				48A309652BF5041900F1733C /* Image Detail */,
 				48A3097E2BF5041900F1733C /* Media Detail */,
 				48A309842BF5041900F1733C /* Person Detail */,
@@ -780,7 +791,6 @@
 				48A309A22BF5041900F1733C /* ImageDetail+ViewModel.swift in Sources */,
 				48A309EF2BF5044400F1733C /* Cast.swift in Sources */,
 				48A309EB2BF5044400F1733C /* LinkList.swift in Sources */,
-				48A309B52BF5041900F1733C /* MediaDirectorView.swift in Sources */,
 				48A309942BF5041900F1733C /* UserListView.swift in Sources */,
 				48A309F12BF5044400F1733C /* Person.swift in Sources */,
 				48A309132BF503C900F1733C /* Movie_RadarApp.swift in Sources */,
@@ -825,6 +835,7 @@
 				48A3094E2BF5040700F1733C /* View.swift in Sources */,
 				48A309B92BF5041900F1733C /* PersonCarouselView.swift in Sources */,
 				48A309A42BF5041900F1733C /* ActorCarouselCellView.swift in Sources */,
+				4846E8662BF7968300D7ADAB /* MediaCrewCellView.swift in Sources */,
 				48A309B32BF5041900F1733C /* MediaDetailHeaderView.swift in Sources */,
 				48A3094A2BF5040700F1733C /* HeaderText.swift in Sources */,
 				48A309BF2BF5041900F1733C /* ContactView.swift in Sources */,
@@ -852,6 +863,7 @@
 				48A309A02BF5041900F1733C /* HomeContent+ViewModel.swift in Sources */,
 				48A309482BF5040700F1733C /* AppGradient.swift in Sources */,
 				48A309B42BF5041900F1733C /* MediaDetailView.swift in Sources */,
+				4846E8692BF7986100D7ADAB /* MediaCrewView.swift in Sources */,
 				48A309F52BF5044400F1733C /* ReviewList.swift in Sources */,
 				48A309E62BF5044400F1733C /* Genre.swift in Sources */,
 				48A309F32BF5044400F1733C /* PersonMediaList.swift in Sources */,

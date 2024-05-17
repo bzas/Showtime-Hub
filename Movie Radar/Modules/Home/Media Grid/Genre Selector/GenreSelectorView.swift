@@ -31,6 +31,10 @@ struct GenreSelectorView: View {
         .padding(.horizontal, 2)
         .disabled(viewModel.isSearching)
         .opacity(viewModel.isSearching ? 0.5 : 1)
+        .sensoryFeedback(
+            .impact(flexibility: .soft, intensity: 1),
+            trigger: viewModel.selectedGenre
+        )
     }
 }
 

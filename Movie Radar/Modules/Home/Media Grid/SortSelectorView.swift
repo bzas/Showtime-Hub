@@ -22,7 +22,10 @@ struct SortSelectorView: View {
                     seriesSortTypes()
                 }
             }
-            .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.5), trigger: viewModel.sortTitle)
+            .sensoryFeedback(
+                .impact(flexibility: .soft, intensity: 1),
+                trigger: viewModel.sortTitle
+            )
             .tint(.white)
             .font(.system(size: 14, weight: .semibold))
             .buttonStyle(.bordered)

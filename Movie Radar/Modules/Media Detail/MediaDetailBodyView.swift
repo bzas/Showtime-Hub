@@ -15,8 +15,13 @@ struct MediaDetailBodyView: View {
             MediaDescriptionView()
                 .environmentObject(viewModel)
 
-            MovieDirectorView()
-                .environmentObject(viewModel)
+            if viewModel.type.isMovie {
+                MediaCrewView(type: .movie)
+                    .environmentObject(viewModel)
+            } else {
+                MediaCrewView(type: .tv)
+                    .environmentObject(viewModel)
+            }
 
             ImageCarouselView()
                 .environmentObject(viewModel)

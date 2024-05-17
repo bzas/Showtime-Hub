@@ -1,18 +1,20 @@
 //
-//  MovieDirectorView.swift
+//  MediaCrewCellView.swift
 //  Movie Radar
 //
-//  Created by Alfonso Boizas Crespo on 14/5/24.
+//  Created by Alfonso Boizas Crespo on 17/5/24.
 //
 
 import SwiftUI
 
-struct MovieDirectorView: View {
-    @EnvironmentObject var viewModel: MediaDetailView.ViewModel
+struct MediaCrewCellView: View {
+    @State var name: String?
+    @State var role: String?
+    @State var image: URL?
 
     var body: some View {
         HStack(spacing: 18) {
-            AsyncImage(url: viewModel.director?.imageUrl) { image in
+            AsyncImage(url: image) { image in
                 image.resizable()
                     .scaledToFill()
             } placeholder: {
@@ -23,13 +25,13 @@ struct MovieDirectorView: View {
 
             VStack {
                 HStack {
-                    Text(viewModel.director?.name ?? "")
+                    Text(name ?? "")
                         .font(.system(size: 18))
                     Spacer()
                 }
 
                 HStack {
-                    Text("Director")
+                    Text(role ?? "")
                         .font(.system(size: 14, weight: .light))
                     Spacer()
                 }
@@ -37,12 +39,9 @@ struct MovieDirectorView: View {
             Spacer()
         }
         .padding(.bottom)
-        .onTapGesture {
-            viewModel.detailPersonToShow = viewModel.director
-        }
     }
 }
 
 #Preview {
-    MovieDirectorView()
+    MediaCrewCellView()
 }
