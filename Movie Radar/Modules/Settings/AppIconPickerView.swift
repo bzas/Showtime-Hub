@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AppIconPickerView: View {
-    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @EnvironmentObject var viewModel: SettingsView.ViewModel
 
     var body: some View {

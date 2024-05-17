@@ -12,7 +12,7 @@ struct SortSelectorView: View {
 
     var body: some View {
         HStack {
-            Text("Sort by:")
+            Text("Sort by")
                 .font(.system(size: 12, weight: .light))
 
             Menu(viewModel.movieSortType.title) {

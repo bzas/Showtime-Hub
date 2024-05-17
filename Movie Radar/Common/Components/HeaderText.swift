@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HeaderText: View {
-    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     var text: String
     var body: some View {
         HStack {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AppThemePickerView: View {
-    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
 
     var body: some View {
         VStack {

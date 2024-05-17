@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainHomeView: View {
-    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     var apiService: APIService
     @State private var selectedTab = 0
     
@@ -48,6 +48,7 @@ struct MainHomeView: View {
                             .shadow(radius: 1)
                     }
                 }
+                .sensoryFeedback(.impact(flexibility: .soft, intensity: 1), trigger: selectedTab)
                 .animation(.spring(duration: 0.3, bounce: 0), value: selectedTab)
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 4)

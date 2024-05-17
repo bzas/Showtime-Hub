@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReviewCarouselView: View {
-    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @EnvironmentObject var viewModel: MediaDetailView.ViewModel
     let rows = [
         GridItem(.flexible())

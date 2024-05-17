@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PersonCarouselView: View {
-    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @EnvironmentObject var viewModel: PersonDetailView.ViewModel
     let rows = [
         GridItem(.flexible())

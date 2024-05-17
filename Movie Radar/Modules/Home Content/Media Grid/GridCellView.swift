@@ -33,5 +33,11 @@ struct GridCellView: View {
                 Spacer()
             }
         }
+        .scrollTransition(.animated.threshold(.visible(0.3))) { content, phase in
+            content
+                .opacity(phase.isIdentity ? 1 : 0.6)
+                .scaleEffect(phase.isIdentity ? 1 : 0.9)
+                .blur(radius: phase.isIdentity ? 0 : 2)
+        }
     }
 }

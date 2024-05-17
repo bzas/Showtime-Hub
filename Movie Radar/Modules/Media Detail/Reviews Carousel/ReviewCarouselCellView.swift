@@ -23,9 +23,11 @@ struct ReviewCarouselCellView: View {
                 .lineLimit(10)
                 .font(.system(size: 12))
                 .padding(.horizontal, 4)
+            
+            Spacer()
         }
         .frame(width: 275, height: 100)
-        .padding(.vertical, 6)
+        .padding(.vertical, 8)
         .padding(.horizontal)
         .background(UIColor.systemGray5.color)
     }

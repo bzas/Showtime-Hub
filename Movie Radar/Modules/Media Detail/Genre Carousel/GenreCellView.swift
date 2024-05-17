@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct GenreCellView: View {
-    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     var genre: Genre
 
     var body: some View {
         Text(genre.name)
-            .font(.system(size: 14))
+            .font(.system(size: 14, weight: .light))
             .foregroundStyle(appGradient.value)
             .padding(.horizontal)
             .frame(height: 30)
@@ -21,7 +21,7 @@ struct GenreCellView: View {
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(
                         appGradient.value,
-                        lineWidth: 1.5
+                        lineWidth: 1
                     )
                     .fill(.clear)
                     .padding(2)

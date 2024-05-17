@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchBar: View {
-    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @EnvironmentObject var viewModel: HomeContentView.ViewModel
     @FocusState var isEditing: Bool
 

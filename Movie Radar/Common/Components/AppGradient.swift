@@ -8,13 +8,13 @@
 import SwiftUI
 
 enum AppGradient: String, CaseIterable, Codable {
-    case bluePurple,
+    case white,
+         bluePurple,
          blueGreen,
          yellowOrange,
          bluePink,
          yellow,
-         pink,
-         white
+         pink
 
     var value: LinearGradient {
         switch self {

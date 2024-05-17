@@ -28,7 +28,6 @@ struct MediaCarouselCellView: View {
 
                 LinearGradient(
                     stops: [
-                        Gradient.Stop(color: .black, location: 0.05),
                         Gradient.Stop(color: .clear, location: 0.6),
                         Gradient.Stop(color: Color.black, location: 1)
                     ],
@@ -41,7 +40,6 @@ struct MediaCarouselCellView: View {
             .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
                 content
                     .opacity(phase.isIdentity ? 1 : 0.6)
-                    .scaleEffect(phase.isIdentity ? 1 : 0.9)
                     .blur(radius: phase.isIdentity ? 0 : 2)
             }
 
@@ -82,7 +80,7 @@ struct MediaCarouselCellView: View {
                 Spacer()
             }
             .padding()
-            .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
+            .scrollTransition(.animated.threshold(.visible(0.6))) { content, phase in
                 content
                     .opacity(phase.isIdentity ? 1 : 0.4)
                     .scaleEffect(phase.isIdentity ? 1 : 0.9)

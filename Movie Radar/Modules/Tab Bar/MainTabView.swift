@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     private var apiService = APIService()
 
     var body: some View {

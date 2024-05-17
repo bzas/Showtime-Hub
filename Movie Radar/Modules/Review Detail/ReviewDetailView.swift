@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReviewDetailView: View {
-    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .bluePurple
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     var review: Review
 
     var body: some View {
