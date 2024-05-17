@@ -15,13 +15,14 @@ struct SortSelectorView: View {
             Text("Sort by")
                 .font(.system(size: 12, weight: .light))
 
-            Menu(viewModel.movieSortType.title) {
+            Menu(viewModel.sortTitle) {
                 if viewModel.type.isMovie {
                     movieSortTypes()
                 } else {
                     seriesSortTypes()
                 }
             }
+            .sensoryFeedback(.impact(flexibility: .soft, intensity: 0.5), trigger: viewModel.sortTitle)
             .tint(.white)
             .font(.system(size: 14, weight: .semibold))
             .buttonStyle(.bordered)

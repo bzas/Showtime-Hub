@@ -21,6 +21,7 @@ struct MainHomeView: View {
                     .tag(1)
             }
             .tabViewStyle(.page)
+            .padding(.top, 4)
             
             VStack {
                 HStack {
@@ -48,13 +49,16 @@ struct MainHomeView: View {
                             .shadow(radius: 1)
                     }
                 }
-                .sensoryFeedback(.impact(flexibility: .soft, intensity: 1), trigger: selectedTab)
+                .sensoryFeedback(.success, trigger: selectedTab)
                 .animation(.spring(duration: 0.3, bounce: 0), value: selectedTab)
                 .frame(maxWidth: .infinity)
-                .padding(.bottom, 4)
+                .padding(.bottom, 8)
                 .background(
                     LinearGradient(
-                        colors: [.black, .clear],
+                        stops: [
+                            .init(color: .black, location: 0.3),
+                            .init(color: .clear, location: 1)
+                        ],
                         startPoint: .top,
                         endPoint: .bottom
                     )

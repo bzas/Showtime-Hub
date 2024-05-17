@@ -1,5 +1,5 @@
 //
-//  FavoritesView.swift
+//  UserListView.swift
 //  Movie Radar
 //
 //  Created by Alfonso Boizas Crespo on 24/4/24.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct FavoritesView: View {
-    @State var viewModel: ViewModel
+struct UserListView: View {
+    @StateObject var viewModel: ViewModel
 
     var body: some View {
         Text("Favorites")
@@ -16,7 +16,7 @@ struct FavoritesView: View {
 }
 
 #Preview {
-    FavoritesView(
+    UserListView(
         viewModel: .init(
             apiService: APIServiceMock()
         )

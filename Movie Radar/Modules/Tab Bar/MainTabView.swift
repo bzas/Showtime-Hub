@@ -21,11 +21,11 @@ struct MainTabView: View {
                     )
                 }
 
-            FavoritesView(viewModel: .init(apiService: apiService))
+            UserListView(viewModel: .init(apiService: apiService))
                 .tabItem {
                     Label(
-                        "Favorites",
-                        systemImage: "heart"
+                        "Saved",
+                        systemImage: "archivebox"
                     )
                 }
 

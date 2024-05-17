@@ -31,14 +31,17 @@ extension HomeContentView {
             }
         }
 
+        @Published var sortTitle: String = "Popularity"
         @Published var selectedGenre: Genre?
         @Published var movieSortType: MovieGridSortType = .popularityDesc {
             didSet {
+                sortTitle = movieSortType.title
                 refreshGrid()
             }
         }
         @Published var seriesSortType: SeriesGridSortType = .popularityDesc {
             didSet {
+                sortTitle = seriesSortType.title
                 refreshGrid()
             }
         }

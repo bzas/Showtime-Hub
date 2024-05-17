@@ -22,8 +22,8 @@
 		48A3094C2BF5040700F1733C /* PlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309412BF5040700F1733C /* PlaceholderView.swift */; };
 		48A3094D2BF5040700F1733C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309432BF5040700F1733C /* Colors.swift */; };
 		48A3094E2BF5040700F1733C /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309442BF5040700F1733C /* View.swift */; };
-		48A309932BF5041900F1733C /* Favorites+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3094F2BF5041900F1733C /* Favorites+ViewModel.swift */; };
-		48A309942BF5041900F1733C /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309502BF5041900F1733C /* FavoritesView.swift */; };
+		48A309932BF5041900F1733C /* UserList+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3094F2BF5041900F1733C /* UserList+ViewModel.swift */; };
+		48A309942BF5041900F1733C /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309502BF5041900F1733C /* UserListView.swift */; };
 		48A309952BF5041900F1733C /* MediaCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309522BF5041900F1733C /* MediaCarouselCellView.swift */; };
 		48A309962BF5041900F1733C /* MediaCarouselType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309532BF5041900F1733C /* MediaCarouselType.swift */; };
 		48A309972BF5041900F1733C /* MediaCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309542BF5041900F1733C /* MediaCarouselView.swift */; };
@@ -134,8 +134,8 @@
 		48A309412BF5040700F1733C /* PlaceholderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderView.swift; sourceTree = "<group>"; };
 		48A309432BF5040700F1733C /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		48A309442BF5040700F1733C /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		48A3094F2BF5041900F1733C /* Favorites+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Favorites+ViewModel.swift"; sourceTree = "<group>"; };
-		48A309502BF5041900F1733C /* FavoritesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		48A3094F2BF5041900F1733C /* UserList+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserList+ViewModel.swift"; sourceTree = "<group>"; };
+		48A309502BF5041900F1733C /* UserListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		48A309522BF5041900F1733C /* MediaCarouselCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCarouselCellView.swift; sourceTree = "<group>"; };
 		48A309532BF5041900F1733C /* MediaCarouselType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCarouselType.swift; sourceTree = "<group>"; };
 		48A309542BF5041900F1733C /* MediaCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCarouselView.swift; sourceTree = "<group>"; };
@@ -332,13 +332,13 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
-		48A309512BF5041900F1733C /* Favorites */ = {
+		48A309512BF5041900F1733C /* User Lists */ = {
 			isa = PBXGroup;
 			children = (
-				48A3094F2BF5041900F1733C /* Favorites+ViewModel.swift */,
-				48A309502BF5041900F1733C /* FavoritesView.swift */,
+				48A3094F2BF5041900F1733C /* UserList+ViewModel.swift */,
+				48A309502BF5041900F1733C /* UserListView.swift */,
 			);
-			path = Favorites;
+			path = "User Lists";
 			sourceTree = "<group>";
 		};
 		48A309552BF5041900F1733C /* Media Carousel */ = {
@@ -520,7 +520,7 @@
 				48A3097E2BF5041900F1733C /* Media Detail */,
 				48A309842BF5041900F1733C /* Person Detail */,
 				48A309862BF5041900F1733C /* Review Detail */,
-				48A309512BF5041900F1733C /* Favorites */,
+				48A309512BF5041900F1733C /* User Lists */,
 				48A3098F2BF5041900F1733C /* Settings */,
 			);
 			path = Modules;
@@ -781,7 +781,7 @@
 				48A309EF2BF5044400F1733C /* Cast.swift in Sources */,
 				48A309EB2BF5044400F1733C /* LinkList.swift in Sources */,
 				48A309B52BF5041900F1733C /* MediaDirectorView.swift in Sources */,
-				48A309942BF5041900F1733C /* FavoritesView.swift in Sources */,
+				48A309942BF5041900F1733C /* UserListView.swift in Sources */,
 				48A309F12BF5044400F1733C /* Person.swift in Sources */,
 				48A309132BF503C900F1733C /* Movie_RadarApp.swift in Sources */,
 				48A309B62BF5041900F1733C /* PersonDetail+ViewModel.swift in Sources */,
@@ -803,7 +803,7 @@
 				48289DE32BF5084B00C7F68B /* MainHomeView.swift in Sources */,
 				48A309C32BF5041900F1733C /* TmdbPromotionView.swift in Sources */,
 				48A309E72BF5044400F1733C /* GenreList.swift in Sources */,
-				48A309932BF5041900F1733C /* Favorites+ViewModel.swift in Sources */,
+				48A309932BF5041900F1733C /* UserList+ViewModel.swift in Sources */,
 				48A309AD2BF5041900F1733C /* ReviewCarouselView.swift in Sources */,
 				48A309F72BF5044400F1733C /* APIService+Endpoints.swift in Sources */,
 				48A309E82BF5044400F1733C /* ImageList.swift in Sources */,

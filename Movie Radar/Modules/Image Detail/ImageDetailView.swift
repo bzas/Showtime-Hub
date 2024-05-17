@@ -59,7 +59,6 @@ struct ImageDetailView: View {
                                         Text("Share")
                                     }
                                 }
-
                             }
                         }
                     }
