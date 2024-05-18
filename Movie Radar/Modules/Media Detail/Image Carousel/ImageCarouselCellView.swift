@@ -18,7 +18,7 @@ struct ImageCarouselCellView: View {
         } placeholder: {
             PlaceholderView()
         }
-        .frame(width: 133, height: 200)
+        .frame(width: 200, height: 300)
         .clipped()
     }
 }

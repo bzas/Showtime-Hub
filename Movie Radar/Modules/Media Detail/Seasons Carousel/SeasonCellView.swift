@@ -8,11 +8,25 @@
 import SwiftUI
 
 struct SeasonCellView: View {
+    var season: Season
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            AsyncImage(url: season.imageUrl) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+            } placeholder: {
+                PlaceholderView()
+            }
+            .frame(width: 133, height: 200)
+            .clipped()
+            
+            HStack {
+                Text(season.name ?? "")
+                    .font(.system(size: 12, weight: .light))
+                Spacer()
+            }
+        }
     }
-}
-
-#Preview {
-    SeasonCellView()
 }

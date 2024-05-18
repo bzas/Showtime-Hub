@@ -25,6 +25,9 @@ struct MediaDetailBodyView: View {
 
             ImageCarouselView()
                 .environmentObject(viewModel)
+            
+            SeasonsCarouselView()
+                .environmentObject(viewModel)
 
             ActorCarouselView()
                 .environmentObject(viewModel)

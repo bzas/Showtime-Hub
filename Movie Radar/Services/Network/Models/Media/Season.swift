@@ -8,10 +8,20 @@
 import Foundation
 
 struct Season: Codable, Hashable {
-    let airDate: String
-    let episodeCount, id: Int
-    let name, overview, posterPath: String
-    let seasonNumber, voteAverage: Int
+    let airDate: String?
+    let episodeCount, id: Int?
+    let name, overview, posterPath: String?
+    let seasonNumber: Int?
+    
+    var imageUrl: URL? {
+        guard let posterPath else { return nil }
+        return URL(
+            string: PathBuilder.image(
+                type: .poster,
+                imagePath: posterPath
+            )
+        )
+    }
 
     enum CodingKeys: String, CodingKey {
         case airDate = "air_date"
@@ -19,6 +29,5 @@ struct Season: Codable, Hashable {
         case id, name, overview
         case posterPath = "poster_path"
         case seasonNumber = "season_number"
-        case voteAverage = "vote_average"
     }
 }

@@ -27,6 +27,8 @@ struct Media: Codable, Hashable {
     let voteCount: Int?
     let creators: [Person]?
     let seasons: [Season]?
+    let seasonNumber: Int?
+    let episodeNumber: Int?
     private let releaseDate, airDate: String?
     private let title, name: String?
 
@@ -66,7 +68,9 @@ struct Media: Codable, Hashable {
             voteCount: nil,
             name: nil,
             creators: nil,
-            seasons: nil
+            seasons: nil, 
+            seasonNumber: nil,
+            episodeNumber: nil
         )
     }
 
@@ -97,7 +101,9 @@ struct Media: Codable, Hashable {
         voteCount: Int?,
         name: String?,
         creators: [Person]?,
-        seasons: [Season]?
+        seasons: [Season]?, 
+        seasonNumber: Int?,
+        episodeNumber: Int?
     ) {
         self.backdropPath = backdropPath
         self.budget = budget
@@ -126,6 +132,8 @@ struct Media: Codable, Hashable {
         self.name = name
         self.creators = creators
         self.seasons = seasons
+        self.seasonNumber = seasonNumber
+        self.episodeNumber = episodeNumber
     }
 
     var hasInfo: Bool {
@@ -182,6 +190,8 @@ struct Media: Codable, Hashable {
         case airDate = "first_air_date"
         case creators = "created_by"
         case seasons
+        case seasonNumber = "number_of_seasons"
+        case episodeNumber = "number_of_episodes"
     }
 }
 
