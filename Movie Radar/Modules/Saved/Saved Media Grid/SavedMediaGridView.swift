@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SavedMediaGridView: View {
     @EnvironmentObject var viewModel: SavedMediaView.ViewModel
+    @Query(sort: \SavedMedia.detail.popularity, order: .forward) var mediaItems: [SavedMedia]
+    
     var type: SavedType
     
     let fullScreenColumns = [
@@ -23,8 +26,7 @@ struct SavedMediaGridView: View {
     ]
 
     var body: some View {
-        let items = viewModel.items(type: type)
-        if items.isEmpty {
+        if mediaItems.isEmpty {
             VStack {
                 Text("No items saved yet")
                     .foregroundStyle(.gray)
@@ -34,18 +36,21 @@ struct SavedMediaGridView: View {
         } else {
             let columns = viewModel.selectedDisplayMode == .list ? listColumns : fullScreenColumns
             LazyVGrid(columns: columns, spacing: 8) {
-                ForEach(items, id: \.self) { media in
+                ForEach(mediaItems, id: \.self) { media in
                     switch viewModel.selectedDisplayMode {
                     case .list:
-                        ListGridCellView(media: media)
+                        ListGridCellView(media: media.detail)
                             .onTapGesture {
                                 viewModel.detailMediaToShow = media
                             }
                             .contextMenu {
-                                MediaContextMenu()
+                                MediaContextMenu(
+                                    media: media.detail,
+                                    mediaType: viewModel.selectedPickerItem
+                                )
                             }
                     case .fullScreen:
-                        FullScreenGridCellView()
+                        FullScreenGridCellView(media: media.detail)
                     }
                 }
             }

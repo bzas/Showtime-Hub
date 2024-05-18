@@ -16,7 +16,7 @@ struct SavedMediaView: View {
             VStack {
                 SavedMediaFiltersView()
                     .environmentObject(viewModel)
-
+                
                 TabView(selection: $selectedTab) {
                     SavedMediaGridView(type: .favorites)
                         .environmentObject(viewModel)
@@ -35,24 +35,16 @@ struct SavedMediaView: View {
                 secondTitle: SavedType.viewed.title
             )
         }
-//        .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
-//            if let detailMediaToShow = viewModel.detailMediaToShow {
-//                MediaDetailView(
-//                    viewModel: .init(
-//                        apiService: viewModel.apiService,
-//                        media: detailMediaToShow,
-//                        type: viewModel.type
-//                    )
-//                )
-//            }
-//        }
+        .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
+            if let detailMediaToShow = viewModel.detailMediaToShow {
+                MediaDetailView(
+                    viewModel: .init(
+                        apiService: viewModel.apiService,
+                        media: detailMediaToShow.detail,
+                        type: detailMediaToShow.type
+                    )
+                )
+            }
+        }
     }
-}
-
-#Preview {
-    SavedMediaView(
-        viewModel: .init(
-            apiService: APIServiceMock()
-        )
-    )
 }

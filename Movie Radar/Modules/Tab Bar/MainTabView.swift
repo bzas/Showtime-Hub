@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @Environment(\.modelContext) var modelContext
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     private var apiService = APIService()
 
@@ -21,13 +22,18 @@ struct MainTabView: View {
                     )
                 }
 
-            SavedMediaView(viewModel: .init(apiService: apiService))
-                .tabItem {
-                    Label(
-                        "Saved",
-                        systemImage: "archivebox"
-                    )
-                }
+            SavedMediaView(
+                viewModel: .init(
+                    apiService: apiService,
+                    modelContext: modelContext
+                )
+            )
+            .tabItem {
+                Label(
+                    "Saved",
+                    systemImage: "archivebox"
+                )
+            }
 
             SettingsView(viewModel: .init(apiService: apiService))
                 .tabItem {

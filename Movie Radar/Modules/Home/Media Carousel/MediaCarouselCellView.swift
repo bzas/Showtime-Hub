@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct MediaCarouselCellView: View {
-    @State var movie: Media
+    @State var media: Media
 
     var body: some View {
         ZStack {
             ZStack {
-                AsyncImage(url: movie.wideImageUrl) { image in
+                AsyncImage(url: media.wideImageUrl) { image in
                     image
                         .resizable()
                         .scaledToFill()
@@ -46,7 +46,7 @@ struct MediaCarouselCellView: View {
             HStack(spacing: 8) {
                 VStack {
                     Spacer()
-                    AsyncImage(url: movie.posterImageUrl) { image in
+                    AsyncImage(url: media.posterImageUrl) { image in
                         image
                             .resizable()
                             .scaledToFill()
@@ -59,14 +59,14 @@ struct MediaCarouselCellView: View {
 
                 VStack(spacing: 6) {
                     Spacer()
-                        Text(movie.publicName)
+                        Text(media.publicName)
                             .font(.system(size: 20))
                             .frame(maxWidth: 200, alignment: .leading)
                             .lineLimit(3)
                             .multilineTextAlignment(.leading)
                             .shadow(radius: 2)
 
-                    if let releaseDate = movie.date {
+                    if let releaseDate = media.date {
                         HStack(spacing: 0) {
                             Text("Release ")
                                 .fontWeight(.bold)

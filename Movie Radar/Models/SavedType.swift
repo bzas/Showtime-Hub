@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum SavedType: String {
+enum SavedType: String, Codable {
     case favorites, viewed
     
     var title: String {

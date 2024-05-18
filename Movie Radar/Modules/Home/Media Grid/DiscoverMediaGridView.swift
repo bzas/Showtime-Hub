@@ -32,7 +32,10 @@ struct DiscoverMediaGridView: View {
                             viewModel.detailMediaToShow = media
                         }
                         .contextMenu {
-                            MediaContextMenu()
+                            MediaContextMenu(
+                                media: media,
+                                mediaType: viewModel.type
+                            )
                         }
                 }
             }

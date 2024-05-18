@@ -26,13 +26,16 @@ struct MediaCarouselView: View {
                             height: UIScreen.main.bounds.width / 1.778
                         )
                 } else {
-                    ForEach(movies, id: \.self) { movie in
-                        MediaCarouselCellView(movie: movie)
+                    ForEach(movies, id: \.self) { media in
+                        MediaCarouselCellView(media: media)
                             .onTapGesture {
-                                viewModel.detailMediaToShow = movie
+                                viewModel.detailMediaToShow = media
                             }
                             .contextMenu {
-                                MediaContextMenu()
+                                MediaContextMenu(
+                                    media: media,
+                                    mediaType: viewModel.type
+                                )
                             }
                     }
                 }

@@ -12,10 +12,6 @@ struct DisplaySelectorView: View {
     @State private var triggerHapticFeedback = false
 
     var body: some View {
-        VStack(spacing: 2) {
-            Text("Display mode")
-                .font(.system(size: 12, weight: .light))
-
             Menu {
                 ForEach(GridDisplayMode.allCases, id: \.self) { displayMode in
                     Button(action: {
@@ -27,9 +23,14 @@ struct DisplaySelectorView: View {
                     })
                 }
             } label: {
-                HStack(spacing: 5) {
-                    Text(viewModel.selectedDisplayMode.title)
-                    Image(systemName: "chevron.down")
+                VStack(spacing: 2) {
+                    Text("Display mode")
+                        .font(.system(size: 12, weight: .light))
+                    
+                    HStack(spacing: 5) {
+                        Text(viewModel.selectedDisplayMode.title)
+                        Image(systemName: "chevron.down")
+                    }
                 }
             }
             .sensoryFeedback(
@@ -50,7 +51,6 @@ struct DisplaySelectorView: View {
                 trigger: triggerHapticFeedback
             )
         }
-    }
 }
 
 #Preview {

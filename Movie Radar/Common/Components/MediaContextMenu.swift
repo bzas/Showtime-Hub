@@ -6,11 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MediaContextMenu: View {
+    let media: Media
+    let mediaType: MediaType
+    
+    @Environment(\.modelContext) var modelContext
+
     var body: some View {
         Button {
-            // Add to Favorites
+            insert(savedType: .favorites)
         } label: {
             HStack {
                 Image(systemName: "heart")
@@ -19,7 +25,7 @@ struct MediaContextMenu: View {
         }
 
         Button {
-            // Add to viewed
+            insert(savedType: .viewed)
         } label: {
             HStack {
                 Image(systemName: "checkmark.square")
@@ -27,8 +33,13 @@ struct MediaContextMenu: View {
             }
         }
     }
-}
-
-#Preview {
-    MediaContextMenu()
+    
+    func insert(savedType: SavedType) {
+        let storage = LocalStorage(modelContext: modelContext)
+        storage.insert(
+            media: media,
+            type: mediaType,
+            savedType: savedType
+        )
+    }
 }
