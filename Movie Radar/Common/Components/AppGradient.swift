@@ -68,7 +68,11 @@ enum AppGradient: String, CaseIterable, Codable {
         case .bluePurple:
                 .purple
         case .blueGreen:
-                .blue
+            Color(
+                red: 144 / 255,
+                green: 206 / 255,
+                blue: 161 / 255
+            )
         case .yellowOrange:
                 .yellow
         case .bluePink:

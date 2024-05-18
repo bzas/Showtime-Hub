@@ -17,7 +17,7 @@ struct SeasonsCarouselView: View {
                 HeaderText(text: "Seasons")
                 
                 ScrollView(.horizontal) {
-                    LazyHStack(spacing: 8) {
+                    LazyHStack(spacing: 12) {
                         ForEach(seasons, id: \.1.self) { (index, season) in
                             SeasonCellView(season: season)
                                 .onTapGesture {

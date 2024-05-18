@@ -8,7 +8,7 @@
 import Foundation
 
 enum MediaType: String {
-    case movie, tv
+    case movie, tv, all
 
     var isMovie: Bool {
         self == .movie
@@ -20,6 +20,8 @@ enum MediaType: String {
             "Movies"
         case .tv:
             "Series"
+        case .all:
+            "All"
         }
     }
 }

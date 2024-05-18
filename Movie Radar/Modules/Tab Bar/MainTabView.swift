@@ -21,7 +21,7 @@ struct MainTabView: View {
                     )
                 }
 
-            UserListView(viewModel: .init(apiService: apiService))
+            SavedMediaView(viewModel: .init(apiService: apiService))
                 .tabItem {
                     Label(
                         "Saved",

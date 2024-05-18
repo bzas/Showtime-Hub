@@ -28,7 +28,7 @@
     "Contact us" : {
 
     },
-    "Favorites" : {
+    "Display mode" : {
 
     },
     "Home" : {
@@ -71,6 +71,9 @@
 
     },
     "Saved" : {
+
+    },
+    "Saved media" : {
 
     },
     "Search..." : {
