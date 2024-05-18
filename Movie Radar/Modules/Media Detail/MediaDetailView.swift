@@ -46,14 +46,22 @@ struct MediaDetailView: View {
                 ReviewDetailView(review: detailReview)
             }
         }
-        .blur(radius: viewModel.showDetailImage ? 10 : 0)
+        .blur(radius: (viewModel.showDetailImage || viewModel.showDetailSeason) ? 10 : 0)
         .overlay {
             if viewModel.showDetailImage {
                 ImageDetailView(
                     viewModel: .init(
                         imageList: viewModel.imageList,
                         startingIndex: viewModel.imageIndexToShow,
-                        showDetailImage: $viewModel.showDetailImage
+                        showDetail: $viewModel.showDetailImage
+                    )
+                )
+            } else if viewModel.showDetailSeason {
+                ImageDetailView(
+                    viewModel: .init(
+                        seasons: viewModel.media.seasons ?? [],
+                        startingIndex: viewModel.seasonIndexToShow,
+                        showDetail: $viewModel.showDetailSeason
                     )
                 )
             }

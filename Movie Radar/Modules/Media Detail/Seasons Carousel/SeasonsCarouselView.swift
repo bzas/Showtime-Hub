@@ -11,15 +11,20 @@ struct SeasonsCarouselView: View {
     @EnvironmentObject var viewModel: MediaDetailView.ViewModel
     
     var body: some View {
-        if let seasons = viewModel.media.seasons,
-           !seasons.isEmpty {
+        let seasons = Array((viewModel.media.seasons ?? []).enumerated())
+        if !seasons.isEmpty {
             VStack {
                 HeaderText(text: "Seasons")
                 
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 8) {
-                        ForEach(seasons, id: \.self) { season in
+                        ForEach(seasons, id: \.1.self) { (index, season) in
                             SeasonCellView(season: season)
+                                .onTapGesture {
+                                    withAnimation {
+                                        viewModel.seasonIndexToShow = index
+                                    }
+                                }
                         }
                     }
                     .scrollTargetLayout()

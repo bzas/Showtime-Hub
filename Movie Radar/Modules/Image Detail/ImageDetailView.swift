@@ -12,29 +12,53 @@ struct ImageDetailView: View {
     let rows = [
         GridItem(.flexible())
     ]
-
+    
     var body: some View {
         GeometryReader { proxy in
-            VStack {
+            VStack(spacing: 8) {
                 Spacer()
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows) {
-                        ForEach(Array(viewModel.images.enumerated()), id: \.1.self) { (index, poster) in
-                            AsyncImage(
-                                url: poster.originalImageUrl,
-                                transaction: Transaction(animation: .smooth)) { phase in
-                                    switch phase {
-                                    case .success(let image):
-                                        image
-                                            .resizable()
-                                            .scaledToFit()
-                                    default:
-                                        Color.clear
+                        ForEach(Array(viewModel.images.enumerated()), id: \.1.self) { (index, imageData) in
+                            VStack {
+                                AsyncImage(
+                                    url: imageData.imageUrl,
+                                    transaction: Transaction(animation: .smooth)) { phase in
+                                        switch phase {
+                                        case .success(let image):
+                                            image
+                                                .resizable()
+                                                .scaledToFit()
+                                        default:
+                                            Color.clear
+                                        }
+                                    }
+                                    .id(index)
+                                    .frame(width: proxy.size.width / (viewModel.isBigImage ? 1.25 : 2))
+                                    .clipped()
+                                
+                                VStack {
+                                    if let name = imageData.name {
+                                        Text(name)
+                                            .font(.system(size: 18, weight: .semibold))
+                                    }
+                                    
+                                    if let subtitle = imageData.subtitle {
+                                        Text(subtitle)
+                                            .font(.system(size: 14))
+                                    }
+                                    
+                                    if let description = imageData.descriptionText {
+                                        ScrollView {
+                                            Text(description)
+                                                .multilineTextAlignment(.center)
+                                                .font(.system(size: 12, weight: .light))
+                                                .frame(width: proxy.size.width / 1.25)
+                                        }
+                                        .frame(maxHeight: 150)
                                     }
                                 }
-                            .id(index)
-                            .frame(width: proxy.size.width / 1.25)
-                            .clipped()
+                            }
                             .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
                                 content
                                     .opacity(phase.isIdentity ? 1 : 0.6)
@@ -43,16 +67,16 @@ struct ImageDetailView: View {
                             }
                             .contextMenu {
                                 Button {
-                                    viewModel.downloadImage(url: poster.originalImageUrl)
+                                    viewModel.downloadImage(url: imageData.imageUrl)
                                 } label: {
                                     HStack {
                                         Image(systemName: "arrow.down.square")
                                         Text("Save on photos")
                                     }
                                 }
-
+                                
                                 Button {
-                                    viewModel.urlToShare = poster.originalImageUrl
+                                    viewModel.urlToShare = imageData.imageUrl
                                 } label: {
                                     HStack {
                                         Image(systemName: "square.and.arrow.up")
@@ -62,8 +86,7 @@ struct ImageDetailView: View {
                             }
                         }
                     }
-                    .padding(.leading, (proxy.size.width - (proxy.size.width / 1.25)) / 2)
-                    .padding(.trailing, (proxy.size.width - (proxy.size.width / 1.25)) / 2)
+                    .padding(.horizontal, (proxy.size.width - (proxy.size.width / 1.25)) / 2)
                     .scrollTargetLayout()
                 }
                 .scrollTargetBehavior(.viewAligned)
@@ -77,7 +100,7 @@ struct ImageDetailView: View {
                 }
             }
             .onTapGesture {
-                viewModel.showDetailImage.wrappedValue = false
+                viewModel.showDetail.wrappedValue = false
             }
         }
     }

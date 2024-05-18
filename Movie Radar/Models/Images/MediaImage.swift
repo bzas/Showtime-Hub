@@ -1,5 +1,5 @@
 //
-//  MovieImage.swift
+//  MediaImage.swift
 //  Movie Radar
 //
 //  Created by Alfonso Boizas Crespo on 2/5/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieImage: Codable, Hashable {
+struct MediaImage: Codable, Hashable {
     let aspectRatio: Double?
     let height: Int?
     let filePath: String?

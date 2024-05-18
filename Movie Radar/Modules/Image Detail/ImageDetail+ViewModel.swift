@@ -9,9 +9,10 @@ import SwiftUI
 
 extension ImageDetailView {
     class ViewModel: ObservableObject {
-        @Published var images = [MovieImage]()
-        var showDetailImage: Binding<Bool>
+        var showDetail: Binding<Bool>
 
+        @Published var images = [ImageData]()
+        @Published var isBigImage: Bool
         @Published var isSharePresented = false
         @Published var urlToShare: URL? {
             didSet {
@@ -22,10 +23,27 @@ extension ImageDetailView {
         init(
             imageList: ImageList,
             startingIndex: Int?,
-            showDetailImage: Binding<Bool>
+            showDetail: Binding<Bool>
         ) {
-            self.images = imageList.transform(startIn: startingIndex ?? 0)
-            self.showDetailImage = showDetailImage
+            self.images = ImageData.create(
+                images: imageList.posters,
+                startIndex: startingIndex ?? 0
+            )
+            self.showDetail = showDetail
+            self.isBigImage = true
+        }
+        
+        init(
+            seasons: [Season],
+            startingIndex: Int?,
+            showDetail: Binding<Bool>
+        ) {
+            self.images = ImageData.create(
+                seasons: seasons,
+                startIndex: startingIndex ?? 0
+            )
+            self.showDetail = showDetail
+            self.isBigImage = false
         }
 
         func downloadImage(url: URL?) {

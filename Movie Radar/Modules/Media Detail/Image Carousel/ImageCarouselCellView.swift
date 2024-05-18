@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ImageCarouselCellView: View {
-    var imageInfo: MovieImage
+    var imageInfo: MediaImage
 
     var body: some View {
         AsyncImage(url: imageInfo.originalImageUrl) { image in

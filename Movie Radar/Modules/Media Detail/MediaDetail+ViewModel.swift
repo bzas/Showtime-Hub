@@ -25,6 +25,13 @@ extension MediaDetailView {
                 showDetailImage.toggle()
             }
         }
+        
+        @Published var showDetailSeason = false
+        @Published var seasonIndexToShow: Int? {
+            didSet {
+                showDetailSeason.toggle()
+            }
+        }
 
         @Published var showDetailPerson = false
         @Published var detailPersonToShow: Cast? {
