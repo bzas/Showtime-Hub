@@ -47,6 +47,7 @@ struct MediaDetailView: View {
             }
         }
         .blur(radius: (viewModel.showDetailImage || viewModel.showDetailSeason) ? 10 : 0)
+        .opacity((viewModel.showDetailImage || viewModel.showDetailSeason) ? 0.6 : 1)
         .overlay {
             if viewModel.showDetailImage {
                 ImageDetailView(

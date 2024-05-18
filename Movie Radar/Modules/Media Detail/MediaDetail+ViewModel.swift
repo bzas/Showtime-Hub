@@ -94,12 +94,14 @@ extension MediaDetailView {
             if let movieCredits = await apiService.getMediaActors(type: type, id: media.id) {
                 await MainActor.run {
                     mediaActors = movieCredits.actors
-                    productionCrew = [
-                        GenericCrew(
-                            name: movieCredits.director?.name,
-                            imageUrl: movieCredits.director?.imageUrl
-                        )
-                    ]
+                    if type.isMovie {
+                        productionCrew = [
+                            GenericCrew(
+                                name: movieCredits.director?.name,
+                                imageUrl: movieCredits.director?.imageUrl
+                            )
+                        ]
+                    }
                 }
             }
         }
