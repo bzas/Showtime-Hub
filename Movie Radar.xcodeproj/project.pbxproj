@@ -11,6 +11,10 @@
 		4846E8662BF7968300D7ADAB /* MediaCrewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E8652BF7968300D7ADAB /* MediaCrewCellView.swift */; };
 		4846E8692BF7986100D7ADAB /* MediaCrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E8682BF7986100D7ADAB /* MediaCrewView.swift */; };
 		4846E86B2BF7A31000D7ADAB /* MediaContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E86A2BF7A31000D7ADAB /* MediaContextMenu.swift */; };
+		4846E86D2BF8C0B700D7ADAB /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E86C2BF8C0B700D7ADAB /* Season.swift */; };
+		4846E8702BF8C11F00D7ADAB /* SeasonsCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E86F2BF8C11F00D7ADAB /* SeasonsCarouselView.swift */; };
+		4846E8722BF8C12B00D7ADAB /* SeasonCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E8712BF8C12B00D7ADAB /* SeasonCellView.swift */; };
+		4846E8742BF8C49700D7ADAB /* GenericCrew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E8732BF8C49700D7ADAB /* GenericCrew.swift */; };
 		48A309132BF503C900F1733C /* Movie_RadarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309122BF503C900F1733C /* Movie_RadarApp.swift */; };
 		48A309172BF503CB00F1733C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48A309162BF503CB00F1733C /* Assets.xcassets */; };
 		48A3091A2BF503CB00F1733C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48A309192BF503CB00F1733C /* Preview Assets.xcassets */; };
@@ -122,6 +126,10 @@
 		4846E8652BF7968300D7ADAB /* MediaCrewCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCrewCellView.swift; sourceTree = "<group>"; };
 		4846E8682BF7986100D7ADAB /* MediaCrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCrewView.swift; sourceTree = "<group>"; };
 		4846E86A2BF7A31000D7ADAB /* MediaContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaContextMenu.swift; sourceTree = "<group>"; };
+		4846E86C2BF8C0B700D7ADAB /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
+		4846E86F2BF8C11F00D7ADAB /* SeasonsCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonsCarouselView.swift; sourceTree = "<group>"; };
+		4846E8712BF8C12B00D7ADAB /* SeasonCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCellView.swift; sourceTree = "<group>"; };
+		4846E8732BF8C49700D7ADAB /* GenericCrew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericCrew.swift; sourceTree = "<group>"; };
 		48A3090F2BF503C900F1733C /* Movie Radar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Radar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A309122BF503C900F1733C /* Movie_RadarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_RadarApp.swift; sourceTree = "<group>"; };
 		48A309162BF503CB00F1733C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -254,6 +262,15 @@
 				4846E8652BF7968300D7ADAB /* MediaCrewCellView.swift */,
 			);
 			path = Crew;
+			sourceTree = "<group>";
+		};
+		4846E86E2BF8C11000D7ADAB /* Seasons Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				4846E86F2BF8C11F00D7ADAB /* SeasonsCarouselView.swift */,
+				4846E8712BF8C12B00D7ADAB /* SeasonCellView.swift */,
+			);
+			path = "Seasons Carousel";
 			sourceTree = "<group>";
 		};
 		48A309062BF503C900F1733C = {
@@ -465,6 +482,12 @@
 		48A3097E2BF5041900F1733C /* Media Detail */ = {
 			isa = PBXGroup;
 			children = (
+				48A3097C2BF5041900F1733C /* MediaDetailView.swift */,
+				48A309792BF5041900F1733C /* MediaDetail+ViewModel.swift */,
+				48A3097B2BF5041900F1733C /* MediaDetailHeaderView.swift */,
+				48A3097A2BF5041900F1733C /* MediaDetailBodyView.swift */,
+				48A309782BF5041900F1733C /* MediaDescriptionView.swift */,
+				4846E86E2BF8C11000D7ADAB /* Seasons Carousel */,
 				48A309682BF5041900F1733C /* Actor Carousel */,
 				48A3096B2BF5041900F1733C /* Genre Carousel */,
 				48A3096E2BF5041900F1733C /* Image Carousel */,
@@ -472,11 +495,6 @@
 				48A309742BF5041900F1733C /* Reviews Carousel */,
 				48A309772BF5041900F1733C /* Social Network Carousel */,
 				4846E8672BF7982400D7ADAB /* Crew */,
-				48A309782BF5041900F1733C /* MediaDescriptionView.swift */,
-				48A309792BF5041900F1733C /* MediaDetail+ViewModel.swift */,
-				48A3097A2BF5041900F1733C /* MediaDetailBodyView.swift */,
-				48A3097B2BF5041900F1733C /* MediaDetailHeaderView.swift */,
-				48A3097C2BF5041900F1733C /* MediaDetailView.swift */,
 			);
 			path = "Media Detail";
 			sourceTree = "<group>";
@@ -582,6 +600,8 @@
 				48F38C012BF69A96003F0CD0 /* SeriesGridSortType.swift */,
 				48A309D12BF5044400F1733C /* Media.swift */,
 				48A309D22BF5044400F1733C /* MediaList.swift */,
+				4846E86C2BF8C0B700D7ADAB /* Season.swift */,
+				4846E8732BF8C49700D7ADAB /* GenericCrew.swift */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -798,6 +818,7 @@
 				48A309942BF5041900F1733C /* UserListView.swift in Sources */,
 				48A309F12BF5044400F1733C /* Person.swift in Sources */,
 				48A309132BF503C900F1733C /* Movie_RadarApp.swift in Sources */,
+				4846E86D2BF8C0B700D7ADAB /* Season.swift in Sources */,
 				48A309B62BF5041900F1733C /* PersonDetail+ViewModel.swift in Sources */,
 				48A309C42BF5041900F1733C /* MainTabView.swift in Sources */,
 				48A309A32BF5041900F1733C /* ImageDetailView.swift in Sources */,
@@ -808,6 +829,7 @@
 				48A309F62BF5044400F1733C /* APIService.swift in Sources */,
 				48A3099A2BF5041900F1733C /* DiscoverMediaGridView.swift in Sources */,
 				48A309ED2BF5044400F1733C /* Media.swift in Sources */,
+				4846E8722BF8C12B00D7ADAB /* SeasonCellView.swift in Sources */,
 				48A309F82BF5044400F1733C /* APIServiceMock.swift in Sources */,
 				48A309BA2BF5041900F1733C /* PersonHeaderView.swift in Sources */,
 				48F38C002BF6868A003F0CD0 /* MediaType.swift in Sources */,
@@ -825,6 +847,7 @@
 				48A309BC2BF5041900F1733C /* AppIconPickerView.swift in Sources */,
 				48A309972BF5041900F1733C /* MediaCarouselView.swift in Sources */,
 				48A309C22BF5041900F1733C /* SettingsView.swift in Sources */,
+				4846E8742BF8C49700D7ADAB /* GenericCrew.swift in Sources */,
 				48A309E52BF5044400F1733C /* LocalStorage.swift in Sources */,
 				48A309A62BF5041900F1733C /* GenreCarouselView.swift in Sources */,
 				48A309EE2BF5044400F1733C /* MediaList.swift in Sources */,
@@ -833,6 +856,7 @@
 				48A309B12BF5041900F1733C /* MediaDetail+ViewModel.swift in Sources */,
 				48A309F42BF5044400F1733C /* Review.swift in Sources */,
 				48A309A92BF5041900F1733C /* ImageCarouselView.swift in Sources */,
+				4846E8702BF8C11F00D7ADAB /* SeasonsCarouselView.swift in Sources */,
 				48A309AF2BF5041900F1733C /* LinksCarouselView.swift in Sources */,
 				48A3099B2BF5041900F1733C /* GridPlaceholderView.swift in Sources */,
 				48A309A82BF5041900F1733C /* ImageCarouselCellView.swift in Sources */,

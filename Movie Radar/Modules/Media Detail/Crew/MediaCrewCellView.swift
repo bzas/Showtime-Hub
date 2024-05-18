@@ -9,8 +9,8 @@ import SwiftUI
 
 struct MediaCrewCellView: View {
     @State var name: String?
-    @State var role: String?
     @State var image: URL?
+    @State var role: String
 
     var body: some View {
         HStack(spacing: 18) {
@@ -31,7 +31,7 @@ struct MediaCrewCellView: View {
                 }
 
                 HStack {
-                    Text(role ?? "")
+                    Text(role)
                         .font(.system(size: 14, weight: .light))
                     Spacer()
                 }
@@ -40,8 +40,4 @@ struct MediaCrewCellView: View {
         }
         .padding(.bottom)
     }
-}
-
-#Preview {
-    MediaCrewCellView()
 }

@@ -15,7 +15,6 @@ extension MediaDetailView {
         @Published var media: Media
         @Published var imageList = ImageList()
         @Published var mediaActors: [Cast] = []
-        @Published var director: Cast?
         @Published var recommendationsList = MediaList()
         @Published var reviewList = ReviewList()
         @Published var linkList: LinkList?
@@ -47,6 +46,8 @@ extension MediaDetailView {
                 showDetailReview.toggle()
             }
         }
+        
+        @Published var productionCrew: [GenericCrew] = []
 
         init(
             apiService: APIService,
@@ -67,9 +68,17 @@ extension MediaDetailView {
         }
 
         func fetchDetail() async {
-            if let movieDetail = await apiService.getDetail(type: type, id: media.id) {
+            if let mediaDetail = await apiService.getDetail(type: type, id: media.id) {
                 await MainActor.run {
-                    media = movieDetail
+                    media = mediaDetail
+                    mediaDetail.creators?.forEach { creator in
+                        productionCrew.append(
+                            GenericCrew(
+                                name: creator.name,
+                                imageUrl: creator.imageUrl
+                            )
+                        )
+                    }
                 }
             }
         }
@@ -78,7 +87,12 @@ extension MediaDetailView {
             if let movieCredits = await apiService.getMediaActors(type: type, id: media.id) {
                 await MainActor.run {
                     mediaActors = movieCredits.actors
-                    director = movieCredits.director
+                    productionCrew = [
+                        GenericCrew(
+                            name: movieCredits.director?.name,
+                            imageUrl: movieCredits.director?.imageUrl
+                        )
+                    ]
                 }
             }
         }

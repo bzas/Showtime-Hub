@@ -12,28 +12,20 @@ struct MediaCrewView: View {
     @EnvironmentObject var viewModel: MediaDetailView.ViewModel
     
     var body: some View {
-        if type.isMovie {
-            MediaCrewCellView(
-                name: viewModel.director?.name,
-                role: "Director",
-                image: viewModel.director?.imageUrl
-            )
-        } else {
-            ScrollView(.horizontal) {
-                LazyHStack(spacing: 8) {
-                    ForEach(viewModel.media.creators ?? [], id: \.self) { creator in
-                        MediaCrewCellView(
-                            name: creator.name,
-                            role: "Creator",
-                            image: creator.imageUrl
-                        )
-                    }
+        ScrollView(.horizontal) {
+            LazyHStack(spacing: 8) {
+                ForEach(viewModel.productionCrew, id: \.self) { crew in
+                    MediaCrewCellView(
+                        name: crew.name,
+                        image: crew.imageUrl,
+                        role: viewModel.type.isMovie ? "Director" : "Creator"
+                    )
                 }
-                .scrollTargetLayout()
             }
-            .scrollIndicators(.hidden)
-            .scrollTargetBehavior(.paging)
+            .scrollTargetLayout()
         }
+        .scrollIndicators(.hidden)
+        .scrollTargetBehavior(.paging)
     }
 }
 
