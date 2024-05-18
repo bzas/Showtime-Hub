@@ -12,9 +12,21 @@ extension SavedMediaView {
         var apiService: APIService
         @Published var selectedPickerItem = MediaType.all
         @Published var selectedDisplayMode = GridDisplayMode.fullScreen
+        @Published var movieItems: [Media] = []
+        @Published var seriesItems: [Media] = []
+        @Published var showDetailMedia = false
+        @Published var detailMediaToShow: Media? {
+            didSet {
+                showDetailMedia.toggle()
+            }
+        }
 
         init(apiService: APIService) {
             self.apiService = apiService
+        }
+        
+        func items(type: SavedType) -> [Media] {
+            []
         }
     }
 }

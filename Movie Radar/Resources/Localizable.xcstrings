@@ -31,6 +31,9 @@
     "Display mode" : {
 
     },
+    "Hello, World!" : {
+
+    },
     "Home" : {
 
     },
@@ -43,7 +46,10 @@
     "Mark as viewed" : {
 
     },
-    "No movies were found" : {
+    "No items saved yet" : {
+
+    },
+    "No items were found" : {
 
     },
     "No profile data" : {
@@ -71,9 +77,6 @@
 
     },
     "Saved" : {
-
-    },
-    "Saved media" : {
 
     },
     "Search..." : {

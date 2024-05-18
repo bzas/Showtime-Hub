@@ -23,5 +23,9 @@ struct MediaPickerItemView: View {
                     selectedMediaType = mediaType
                 }
             }
+            .sensoryFeedback(
+                .impact(flexibility: .soft, intensity: 1),
+                trigger: selectedMediaType
+            )
     }
 }

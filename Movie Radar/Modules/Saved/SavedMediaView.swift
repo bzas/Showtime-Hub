@@ -18,10 +18,10 @@ struct SavedMediaView: View {
                     .environmentObject(viewModel)
 
                 TabView(selection: $selectedTab) {
-                    SavedListView()
+                    SavedMediaGridView(type: .favorites)
                         .environmentObject(viewModel)
                         .tag(0)
-                    SavedListView()
+                    SavedMediaGridView(type: .viewed)
                         .environmentObject(viewModel)
                         .tag(1)
                 }
@@ -35,6 +35,17 @@ struct SavedMediaView: View {
                 secondTitle: SavedType.viewed.title
             )
         }
+//        .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
+//            if let detailMediaToShow = viewModel.detailMediaToShow {
+//                MediaDetailView(
+//                    viewModel: .init(
+//                        apiService: viewModel.apiService,
+//                        media: detailMediaToShow,
+//                        type: viewModel.type
+//                    )
+//                )
+//            }
+//        }
     }
 }
 

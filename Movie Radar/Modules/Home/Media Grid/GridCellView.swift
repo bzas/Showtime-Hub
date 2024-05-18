@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct GridCellView: View {
-    @State var movie: Media
+    @State var media: Media
 
     var body: some View {
-        AsyncImage(url: movie.posterImageUrl) { image in
+        AsyncImage(url: media.posterImageUrl) { image in
             image
                 .resizable()
                 .scaledToFill()
@@ -23,7 +23,7 @@ struct GridCellView: View {
         .overlay {
             VStack {
                 HStack {
-                    Text(movie.publicName)
+                    Text(media.publicName)
                         .font(.system(size: 14))
                         .foregroundStyle(.white)
                         .shadow(radius: 1)

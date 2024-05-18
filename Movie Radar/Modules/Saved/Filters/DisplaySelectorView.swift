@@ -12,7 +12,7 @@ struct DisplaySelectorView: View {
     @State private var triggerHapticFeedback = false
 
     var body: some View {
-        VStack {
+        VStack(spacing: 2) {
             Text("Display mode")
                 .font(.system(size: 12, weight: .light))
 

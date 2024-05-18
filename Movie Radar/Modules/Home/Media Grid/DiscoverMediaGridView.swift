@@ -17,19 +17,19 @@ struct DiscoverMediaGridView: View {
     var body: some View {
         if viewModel.gridItems.isEmpty {
             VStack {
-                Text("No movies were found")
+                Text("No items were found")
                     .padding()
                 Spacer()
             }
         } else {
             LazyVGrid(columns: columns, spacing: 8) {
-                ForEach(viewModel.gridItems, id: \.self) { movie in
-                    GridCellView(movie: movie)
+                ForEach(viewModel.gridItems, id: \.self) { media in
+                    GridCellView(media: media)
                         .onAppear {
-                            viewModel.continueFetchIfNeeded(lastMoviePresented: movie)
+                            viewModel.continueFetchIfNeeded(lastMoviePresented: media)
                         }
                         .onTapGesture {
-                            viewModel.detailMediaToShow = movie
+                            viewModel.detailMediaToShow = media
                         }
                         .contextMenu {
                             MediaContextMenu()
