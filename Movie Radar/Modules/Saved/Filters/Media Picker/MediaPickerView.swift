@@ -14,17 +14,17 @@ struct MediaPickerView: View {
         HStack(spacing: 0) {
             MediaPickerItemView(
                 mediaType: .all,
-                selectedMediaType: $viewModel.selectedPickerItem
+                selectedMediaType: $viewModel.selectedMediaType
             )
             
             MediaPickerItemView(
                 mediaType: .movie,
-                selectedMediaType: $viewModel.selectedPickerItem
+                selectedMediaType: $viewModel.selectedMediaType
             )
             
             MediaPickerItemView(
                 mediaType: .tv,
-                selectedMediaType: $viewModel.selectedPickerItem
+                selectedMediaType: $viewModel.selectedMediaType
             )
         }
     }

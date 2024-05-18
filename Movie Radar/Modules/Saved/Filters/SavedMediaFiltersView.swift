@@ -21,7 +21,6 @@ struct SavedMediaFiltersView: View {
                     .environmentObject(viewModel)
             }
             .padding(.horizontal)
-            Spacer()
         }
         .padding(.top, 50)
     }

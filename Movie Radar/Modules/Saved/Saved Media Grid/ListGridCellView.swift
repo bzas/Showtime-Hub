@@ -18,7 +18,7 @@ struct ListGridCellView: View {
         } placeholder: {
             PlaceholderView()
         }
-        .frame(height: 100)
+        .frame(height: 185)
         .clipped()
     }
 }

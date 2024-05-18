@@ -12,7 +12,7 @@ extension SavedMediaView {
     class ViewModel: ObservableObject {
         var apiService: APIService
         var localStorage: LocalStorage
-        @Published var selectedPickerItem = MediaType.all
+        @Published var selectedMediaType = MediaType.all
         @Published var selectedDisplayMode = GridDisplayMode.fullScreen
         @Published var movieItems: [Media] = []
         @Published var seriesItems: [Media] = []
@@ -28,8 +28,14 @@ extension SavedMediaView {
             self.localStorage = LocalStorage(modelContext: modelContext)
         }
         
-        func items(type: SavedType) -> [Media] {
-            []
+        func items(items: [SavedMedia], savedType: SavedType) -> [SavedMedia] {
+            items
+                .filter {
+                    selectedMediaType == .all ? true : $0.type == selectedMediaType
+                }
+                .filter {
+                    $0.savedType == savedType
+                }
         }
     }
 }

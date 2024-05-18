@@ -21,36 +21,38 @@ struct SavedMediaGridView: View {
     let listColumns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
-        GridItem(.flexible()),
         GridItem(.flexible())
     ]
 
     var body: some View {
-        if mediaItems.isEmpty {
+        let filteredItems = viewModel.items(items: mediaItems, savedType: type)
+
+        if filteredItems.isEmpty {
             VStack {
                 Text("No items saved yet")
                     .foregroundStyle(.gray)
                     .padding()
-                Spacer()
             }
         } else {
-            let columns = viewModel.selectedDisplayMode == .list ? listColumns : fullScreenColumns
-            LazyVGrid(columns: columns, spacing: 8) {
-                ForEach(mediaItems, id: \.self) { media in
-                    switch viewModel.selectedDisplayMode {
-                    case .list:
-                        ListGridCellView(media: media.detail)
-                            .onTapGesture {
-                                viewModel.detailMediaToShow = media
-                            }
-                            .contextMenu {
-                                MediaContextMenu(
-                                    media: media.detail,
-                                    mediaType: viewModel.selectedPickerItem
-                                )
-                            }
-                    case .fullScreen:
-                        FullScreenGridCellView(media: media.detail)
+            ScrollView {
+                let columns = viewModel.selectedDisplayMode == .list ? listColumns : fullScreenColumns
+                LazyVGrid(columns: columns, spacing: 8) {
+                    ForEach(filteredItems, id: \.self) { media in
+                        switch viewModel.selectedDisplayMode {
+                        case .list:
+                            ListGridCellView(media: media.detail)
+                                .onTapGesture {
+                                    viewModel.detailMediaToShow = media
+                                }
+                                .contextMenu {
+                                    MediaContextMenu(
+                                        media: media.detail,
+                                        mediaType: viewModel.selectedMediaType
+                                    )
+                                }
+                        case .fullScreen:
+                            FullScreenGridCellView(media: media.detail)
+                        }
                     }
                 }
             }

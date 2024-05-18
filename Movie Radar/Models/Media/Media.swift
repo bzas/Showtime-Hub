@@ -23,13 +23,8 @@ class Media: Codable, Hashable {
     let budget: Int?
     let revenue: Int?
     let genres: [Genre]?
-    let homepage: String?
     let id: Int
-    let imdbID: String?
-    let originCountry: [String]?
-    let originalLanguage: String?
     let overview: String?
-    let originalTitle: String?
     let popularity: Double?
     let posterPath: String?
     let runtime: Int?
@@ -85,17 +80,31 @@ class Media: Codable, Hashable {
         )
     }
     
+    enum CodingKeys: String, CodingKey {
+        case backdropPath = "backdrop_path"
+        case budget
+        case genres
+        case id
+        case overview, popularity
+        case posterPath = "poster_path"
+        case releaseDate = "release_date"
+        case revenue, runtime
+        case voteAverage = "vote_average"
+        case title
+        case name
+        case airDate = "first_air_date"
+        case creators = "created_by"
+        case seasons
+        case seasonNumber = "number_of_seasons"
+        case episodeNumber = "number_of_episodes"
+    }
+    
     convenience init(id: Int) {
         self.init(
             backdropPath: nil,
             budget: nil,
             genres: nil,
-            homepage: nil,
             id: id,
-            imdbID: nil,
-            originCountry: nil,
-            originalLanguage: nil,
-            originalTitle: nil,
             overview: nil,
             popularity: nil,
             posterPath: nil,
@@ -117,12 +126,7 @@ class Media: Codable, Hashable {
         backdropPath: String?,
         budget: Int?,
         genres: [Genre]?,
-        homepage: String?,
         id: Int,
-        imdbID: String?,
-        originCountry: [String]?,
-        originalLanguage: String?,
-        originalTitle: String?,
         overview: String?,
         popularity: Double?,
         posterPath: String?,
@@ -141,12 +145,7 @@ class Media: Codable, Hashable {
         self.backdropPath = backdropPath
         self.budget = budget
         self.genres = genres
-        self.homepage = homepage
         self.id = id
-        self.imdbID = imdbID
-        self.originCountry = originCountry
-        self.originalLanguage = originalLanguage
-        self.originalTitle = originalTitle
         self.overview = overview
         self.popularity = popularity
         self.posterPath = posterPath
@@ -162,25 +161,48 @@ class Media: Codable, Hashable {
         self.seasonNumber = seasonNumber
         self.episodeNumber = episodeNumber
     }
-
-    enum CodingKeys: String, CodingKey {
-        case backdropPath = "backdrop_path"
-        case budget, genres, homepage, id
-        case imdbID = "imdb_id"
-        case originCountry = "origin_country"
-        case originalLanguage = "original_language"
-        case originalTitle = "original_title"
-        case overview, popularity
-        case posterPath = "poster_path"
-        case releaseDate = "release_date"
-        case revenue, runtime
-        case voteAverage = "vote_average"
-        case title
-        case name
-        case airDate = "first_air_date"
-        case creators = "created_by"
-        case seasons
-        case seasonNumber = "number_of_seasons"
-        case episodeNumber = "number_of_episodes"
+    
+    required init(from decoder: Decoder) throws {
+        let container = try? decoder.container(keyedBy: CodingKeys.self)
+        self.backdropPath = try? container?.decode(String.self, forKey: .backdropPath)
+        self.budget = try? container?.decode(Int.self, forKey: .budget)
+        self.genres = try? container?.decode([Genre].self, forKey: .genres)
+        self.id = try container?.decode(Int.self, forKey: .id) ?? 0
+        self.overview = try? container?.decode(String.self, forKey: .overview)
+        self.popularity = try? container?.decode(Double.self, forKey: .popularity)
+        self.posterPath = try? container?.decode(String.self, forKey: .posterPath)
+        self.releaseDate = try? container?.decode(String.self, forKey: .releaseDate)
+        self.airDate = try? container?.decode(String.self, forKey: .airDate)
+        self.revenue = try? container?.decode(Int.self, forKey: .revenue)
+        self.runtime = try? container?.decode(Int.self, forKey: .runtime)
+        self.title = try? container?.decode(String.self, forKey: .title)
+        self.voteAverage = try? container?.decode(Double.self, forKey: .voteAverage)
+        self.name = try? container?.decode(String.self, forKey: .name)
+        self.creators = try? container?.decode([Person].self, forKey: .creators)
+        self.seasons = try? container?.decode([Season].self, forKey: .seasons)
+        self.seasonNumber = try? container?.decode(Int.self, forKey: .seasonNumber)
+        self.episodeNumber = try? container?.decode(Int.self, forKey: .episodeNumber)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try? container.encode(backdropPath, forKey: .backdropPath)
+        try? container.encode(budget, forKey: .budget)
+        try? container.encode(genres, forKey: .genres)
+        try? container.encode(id, forKey: .id)
+        try? container.encode(overview, forKey: .overview)
+        try? container.encode(popularity, forKey: .popularity)
+        try? container.encode(posterPath, forKey: .posterPath)
+        try? container.encode(releaseDate, forKey: .releaseDate)
+        try? container.encode(airDate, forKey: .airDate)
+        try? container.encode(revenue, forKey: .revenue)
+        try? container.encode(runtime, forKey: .runtime)
+        try? container.encode(title, forKey: .title)
+        try? container.encode(voteAverage, forKey: .voteAverage)
+        try? container.encode(name, forKey: .name)
+        try? container.encode(creators, forKey: .creators)
+        try? container.encode(seasons, forKey: .seasons)
+        try? container.encode(seasonNumber, forKey: .seasonNumber)
+        try? container.encode(episodeNumber, forKey: .episodeNumber)
     }
 }
