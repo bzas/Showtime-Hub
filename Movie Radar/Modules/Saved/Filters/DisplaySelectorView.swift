@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct DisplaySelectorView: View {
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @EnvironmentObject var viewModel: SavedMediaView.ViewModel
     @State private var triggerHapticFeedback = false
 
@@ -31,6 +32,7 @@ struct DisplaySelectorView: View {
                         Text(viewModel.selectedDisplayMode.title)
                         Image(systemName: "chevron.down")
                     }
+                    .foregroundStyle(appGradient.value)
                 }
             }
             .sensoryFeedback(

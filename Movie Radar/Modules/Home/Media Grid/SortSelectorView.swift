@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SortSelectorView: View {
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @EnvironmentObject var viewModel: HomeContentView.ViewModel
     @State private var triggerHapticFeedback = false
 
@@ -27,6 +28,7 @@ struct SortSelectorView: View {
                     Text(viewModel.sortTitle)
                     Image(systemName: "chevron.down")
                 }
+                .foregroundStyle(appGradient.value)
             }
             .sensoryFeedback(
                 .impact(flexibility: .soft, intensity: 0.5),

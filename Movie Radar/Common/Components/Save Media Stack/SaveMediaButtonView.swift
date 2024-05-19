@@ -21,21 +21,9 @@ struct SaveMediaButtonView: View {
         }
     }
     
-    let clearGradient = LinearGradient(
-        gradient: Gradient(colors: [.clear]),
-        startPoint: .topLeading,
-        endPoint: .bottomTrailing
-    )
-    
-    let blackGradient = LinearGradient(
-        gradient: Gradient(colors: [.black]),
-        startPoint: .topLeading,
-        endPoint: .bottomTrailing
-    )
-    
     var body: some View {
         Image(systemName: imageName)
-            .foregroundStyle(isSaved ? blackGradient : appGradient.value)
+            .foregroundStyle(isSaved ? LinearGradient.black : appGradient.value)
         .frame(width: 50, height: 50)
         .clipShape(Circle())
         .background(
@@ -44,9 +32,10 @@ struct SaveMediaButtonView: View {
                     appGradient.value,
                     lineWidth: 1
                 )
-                .fill(isSaved ? appGradient.value : clearGradient)
+                .fill(isSaved ? appGradient.value : LinearGradient.clear)
                 .padding(2)
         )
+        .shadow(radius: 1)
     }
 }
 

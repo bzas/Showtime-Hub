@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MediaPickerItemView: View {
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
+
     var mediaType: MediaType
     @Binding var selectedMediaType: MediaType
     
@@ -15,9 +17,9 @@ struct MediaPickerItemView: View {
         Text(mediaType.title)
             .padding(8)
             .padding(.horizontal, 6)
-            .border(.white)
+            .border(appGradient.value)
             .foregroundStyle(selectedMediaType == mediaType ? .black : .white)
-            .background(selectedMediaType == mediaType ? .white : .black)
+            .background(selectedMediaType == mediaType ? appGradient.value : LinearGradient.black)
             .onTapGesture {
                 withAnimation {
                     selectedMediaType = mediaType
