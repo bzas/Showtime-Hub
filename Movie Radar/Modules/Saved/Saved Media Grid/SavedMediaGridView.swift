@@ -31,9 +31,11 @@ struct SavedMediaGridView: View {
             
             if filteredItems.isEmpty {
                 VStack {
+                    Spacer()
                     Text("No items saved yet")
                         .foregroundStyle(.gray)
-                        .padding()
+                        .frame(maxWidth: .infinity)
+                    Spacer()
                 }
             } else {
                 ScrollView {
@@ -50,7 +52,7 @@ struct SavedMediaGridView: View {
                                     .contextMenu {
                                         MediaContextMenu(
                                             media: media.detail,
-                                            mediaType: viewModel.selectedMediaType
+                                            mediaType: media.type
                                         )
                                     }
                             case .fullScreen:

@@ -13,24 +13,39 @@ struct MediaContextMenu: View {
     let mediaType: MediaType
     
     @Environment(\.modelContext) var modelContext
+    @Query(sort: \SavedMedia.detail.popularity, order: .forward) var mediaItems: [SavedMedia]
 
     var body: some View {
         Button {
-            insert(savedType: .favorites)
+            if isSaved(type: .favorites) {
+                remove(savedType: .favorites)
+            } else {
+                insert(savedType: .favorites)
+            }
         } label: {
             HStack {
-                Image(systemName: "heart")
-                Text("Add to Favorites")
+                Image(systemName: isSaved(type: .favorites) ? "heart.fill" : "heart")
+                Text(isSaved(type: .favorites) ? "Remove from Favorites" : "Add to Favorites")
             }
         }
 
         Button {
-            insert(savedType: .viewed)
+            if isSaved(type: .viewed) {
+                remove(savedType: .viewed)
+            } else {
+                insert(savedType: .viewed)
+            }
         } label: {
             HStack {
-                Image(systemName: "checkmark.square")
-                Text("Mark as viewed")
+                Image(systemName: isSaved(type: .viewed) ? "checkmark.square.fill" : "checkmark.square")
+                Text(isSaved(type: .viewed) ? "Remove from viewed" : "Mark as viewed")
             }
+        }
+    }
+    
+    func isSaved(type: SavedType) -> Bool {
+        mediaItems.contains {
+            $0.detail.id == media.id && $0.savedType == type
         }
     }
     
@@ -40,6 +55,16 @@ struct MediaContextMenu: View {
             media: media,
             type: mediaType,
             savedType: savedType
+        )
+    }
+    
+    func remove(savedType: SavedType) {
+        let storage = LocalStorage(modelContext: modelContext)
+        storage.delete(
+            media: media,
+            mediaType: mediaType,
+            savedType: savedType,
+            list: mediaItems
         )
     }
 }
