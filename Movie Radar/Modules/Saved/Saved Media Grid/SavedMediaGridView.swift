@@ -23,38 +23,51 @@ struct SavedMediaGridView: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
-
+    
     var body: some View {
         let filteredItems = viewModel.items(items: mediaItems, savedType: type)
-
-        if filteredItems.isEmpty {
-            VStack {
-                Text("No items saved yet")
-                    .foregroundStyle(.gray)
-                    .padding()
-            }
-        } else {
-            ScrollView {
-                let columns = viewModel.selectedDisplayMode == .list ? listColumns : fullScreenColumns
-                LazyVGrid(columns: columns, spacing: 8) {
-                    ForEach(filteredItems, id: \.self) { media in
-                        switch viewModel.selectedDisplayMode {
-                        case .list:
-                            ListGridCellView(media: media.detail)
-                                .onTapGesture {
-                                    viewModel.detailMediaToShow = media
-                                }
-                                .contextMenu {
-                                    MediaContextMenu(
-                                        media: media.detail,
-                                        mediaType: viewModel.selectedMediaType
-                                    )
-                                }
-                        case .fullScreen:
-                            FullScreenGridCellView(media: media.detail)
+        
+        GeometryReader { proxy in
+            
+            if filteredItems.isEmpty {
+                VStack {
+                    Text("No items saved yet")
+                        .foregroundStyle(.gray)
+                        .padding()
+                }
+            } else {
+                ScrollView {
+                    let columns = viewModel.selectedDisplayMode == .list ? listColumns : fullScreenColumns
+                    let spacing = viewModel.selectedDisplayMode == .list ? 8.0 : 0.0
+                    LazyVGrid(columns: columns, spacing: spacing) {
+                        ForEach(filteredItems, id: \.self) { media in
+                            switch viewModel.selectedDisplayMode {
+                            case .list:
+                                ListGridCellView(media: media.detail)
+                                    .onTapGesture {
+                                        viewModel.detailMediaToShow = media
+                                    }
+                                    .contextMenu {
+                                        MediaContextMenu(
+                                            media: media.detail,
+                                            mediaType: viewModel.selectedMediaType
+                                        )
+                                    }
+                            case .fullScreen:
+                                FullScreenGridCellView(
+                                    media: media,
+                                    proxy: proxy
+                                )
+                                .environmentObject(viewModel)
+                            }
                         }
                     }
+                    .if(viewModel.selectedDisplayMode == .fullScreen) {
+                        $0.scrollTargetLayout()
+                    }
                 }
+                .scrollIndicators(.hidden)
+                .scrollTargetBehavior(.paging)
             }
         }
     }

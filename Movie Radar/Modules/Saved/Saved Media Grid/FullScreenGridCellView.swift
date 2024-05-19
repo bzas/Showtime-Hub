@@ -8,9 +8,60 @@
 import SwiftUI
 
 struct FullScreenGridCellView: View {
-    @State var media: Media
+    @EnvironmentObject var viewModel: SavedMediaView.ViewModel
+    @State var media: SavedMedia
+    var proxy: GeometryProxy
 
     var body: some View {
-        Text(media.publicName)
+        ZStack {
+            AsyncImage(url: media.detail.originalImageUrl) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+            } placeholder: {
+                PlaceholderView()
+            }
+            .frame(height: proxy.size.height)
+            .clipped()
+            
+            LinearGradient(
+                stops: [
+                    Gradient.Stop(color: .clear, location: 0.6),
+                    Gradient.Stop(color: Color.black, location: 1)
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Text(media.detail.publicName)
+                        .font(.system(size: 25))
+                        .shadow(radius: 2)
+                    Spacer()
+                }
+                
+                HStack {
+                    Button {
+                        viewModel.detailMediaToShow = media
+                    } label: {
+                        HStack {
+                            Text("See details")
+                            Image(systemName: "chevron.right")
+                        }
+                        .opacity(0.6)
+                    }
+
+                    Spacer()
+                }
+            }
+            .padding(20)
+        }
+        .scrollTransition(.animated.threshold(.visible(0.5))) { content, phase in
+            content
+                .opacity(phase.isIdentity ? 1 : 0.6)
+                .blur(radius: phase.isIdentity ? 0 : 2)
+        }
     }
 }

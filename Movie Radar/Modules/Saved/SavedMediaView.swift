@@ -25,7 +25,7 @@ struct SavedMediaView: View {
                         .environmentObject(viewModel)
                         .tag(1)
                 }
-                .tabViewStyle(.page)
+                .tabViewStyle(.page(indexDisplayMode: .never))
             }
             .padding(.top, 4)
             
