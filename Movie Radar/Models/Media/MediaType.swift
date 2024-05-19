@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum MediaType: String, Codable {
+enum MediaType: String, Codable, CaseIterable {
     case movie, tv, all
 
     var isMovie: Bool {

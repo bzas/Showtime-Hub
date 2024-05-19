@@ -12,15 +12,22 @@ struct SavedMediaItemCount: View {
     @EnvironmentObject var viewModel: SavedMediaView.ViewModel
     @Query(sort: \SavedMedia.detail.popularity, order: .forward) var mediaItems: [SavedMedia]
     @Binding var selectedTab: Int
+    
+    var currentSavedType: SavedType {
+        SavedType.allCases.enumerated().first { (index, savedType) in
+            index == selectedTab
+        }?.element ?? .favorites
+    }
 
     var body: some View {
-        let filteredItemsCount = viewModel.items(
+        let filteredCount = viewModel.items(
             items: mediaItems,
-            savedType: selectedTab == 0 ? .favorites : .viewed
+            savedType: currentSavedType
         ).count
         
         HStack {
-            Text("\(filteredItemsCount) items saved")
+            let displayCount = filteredCount == 1 ? "\(filteredCount) item saved" : "\(filteredCount) items saved"
+            Text(displayCount)
                 .font(.system(size: 14, weight: .light))
                 .animation(.smooth)
             Spacer()

@@ -16,21 +16,15 @@ struct MediaContextMenu: View {
     @Query(sort: \SavedMedia.detail.popularity, order: .forward) var mediaItems: [SavedMedia]
 
     var body: some View {
-        Button {
-            addOrRemove(type: .favorites)
-        } label: {
-            HStack {
-                Image(systemName: isSaved(type: .favorites) ? "heart.fill" : "heart")
-                Text(isSaved(type: .favorites) ? "Remove from Favorites" : "Add to Favorites")
-            }
-        }
-
-        Button {
-            addOrRemove(type: .viewed)
-        } label: {
-            HStack {
-                Image(systemName: isSaved(type: .viewed) ? "eye.fill" : "eye")
-                Text(isSaved(type: .viewed) ? "Remove from viewed" : "Mark as viewed")
+        
+        ForEach(SavedType.allCases, id: \.self) { savedType in
+            Button {
+                addOrRemove(type: savedType)
+            } label: {
+                HStack {
+                    Image(systemName: isSaved(type: savedType) ? savedType.fillImageName : savedType.imageName)
+                    Text(isSaved(type: savedType) ? savedType.removeActionName : savedType.addActionName)
+                }
             }
         }
     }

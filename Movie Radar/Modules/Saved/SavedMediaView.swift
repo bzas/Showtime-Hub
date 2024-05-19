@@ -22,12 +22,11 @@ struct SavedMediaView: View {
                     .environmentObject(viewModel)
                 
                 TabView(selection: $selectedTab) {
-                    SavedMediaGridView(type: .favorites)
-                        .environmentObject(viewModel)
-                        .tag(0)
-                    SavedMediaGridView(type: .viewed)
-                        .environmentObject(viewModel)
-                        .tag(1)
+                    ForEach(Array(SavedType.allCases.enumerated()), id: \.1.self) { (index, savedType) in
+                        SavedMediaGridView(type: savedType)
+                            .environmentObject(viewModel)
+                            .tag(index)
+                    }
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
             }
@@ -35,8 +34,7 @@ struct SavedMediaView: View {
             
             TabViewHeader(
                 selectedTab: $selectedTab,
-                firstTitle: SavedType.favorites.title,
-                secondTitle: SavedType.viewed.title
+                titles: SavedType.allCases.map { $0.title }
             )
         }
         .fullScreenCover(isPresented: $viewModel.showDetailMedia) {

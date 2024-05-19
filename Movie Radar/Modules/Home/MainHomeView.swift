@@ -24,8 +24,7 @@ struct MainHomeView: View {
             
             TabViewHeader(
                 selectedTab: $selectedTab,
-                firstTitle: MediaType.movie.title,
-                secondTitle: MediaType.tv.title
+                titles: [MediaType.movie, MediaType.tv].map { $0.title }
             )
         }
     }

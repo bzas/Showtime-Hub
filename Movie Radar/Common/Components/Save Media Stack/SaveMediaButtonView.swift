@@ -12,17 +12,8 @@ struct SaveMediaButtonView: View {
     var type: SavedType
     var isSaved: Bool
     
-    var imageName: String {
-        switch type {
-        case .favorites:
-            "heart.fill"
-        case .viewed:
-            "eye.fill"
-        }
-    }
-    
     var body: some View {
-        Image(systemName: imageName)
+        Image(systemName: type.fillImageName)
             .foregroundStyle(isSaved ? LinearGradient.black : appGradient.value)
         .frame(width: 50, height: 50)
         .clipShape(Circle())

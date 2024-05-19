@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%lld items saved" : {
-
-    },
     "%lld min" : {
 
     },
@@ -11,9 +8,6 @@
 
     },
     "About" : {
-
-    },
-    "Add to Favorites" : {
 
     },
     "App icon" : {
@@ -43,9 +37,6 @@
     "Links" : {
 
     },
-    "Mark as viewed" : {
-
-    },
     "No items saved yet" : {
 
     },
@@ -65,12 +56,6 @@
 
     },
     "Release " : {
-
-    },
-    "Remove from Favorites" : {
-
-    },
-    "Remove from viewed" : {
 
     },
     "Revenue" : {

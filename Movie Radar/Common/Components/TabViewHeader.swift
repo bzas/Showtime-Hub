@@ -11,34 +11,23 @@ struct TabViewHeader: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @Binding var selectedTab: Int
     
-    var firstTitle: String
-    var secondTitle: String
+    var titles: [String]
 
     var body: some View {
         VStack {
             HStack {
-                Button {
-                    selectedTab = 0
-                } label: {
-                    Text(firstTitle)
-                        .font(.system(
-                            size: selectedTab == 0 ? 25 : 16)
-                        )
-                        .foregroundStyle(appGradient.value)
-                        .opacity(selectedTab == 0 ? 0.8 : 0.4)
-                        .shadow(radius: 1)
-                }
-                
-                Button {
-                    selectedTab = 1
-                } label: {
-                    Text(secondTitle)
-                        .font(.system(
-                            size: selectedTab == 1 ? 25 : 16)
-                        )
-                        .foregroundStyle(appGradient.value)
-                        .opacity(selectedTab == 1 ? 0.8 : 0.4)
-                        .shadow(radius: 1)
+                ForEach(Array(titles.enumerated()), id: \.1.self) { (index, title) in
+                    Button {
+                        selectedTab = index
+                    } label: {
+                        Text(title)
+                            .font(.system(
+                                size: selectedTab == index ? 25 : 16)
+                            )
+                            .foregroundStyle(appGradient.value)
+                            .opacity(selectedTab == index ? 0.8 : 0.4)
+                            .shadow(radius: 1)
+                    }
                 }
             }
             .sensoryFeedback(.success, trigger: selectedTab)

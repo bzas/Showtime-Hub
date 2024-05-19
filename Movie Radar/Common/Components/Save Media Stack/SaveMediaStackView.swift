@@ -39,22 +39,16 @@ struct SaveMediaStackView: View {
     }
     
     @ViewBuilder func content() -> some View {
-        Button {
-            addOrRemove(type: .favorites)
-        } label: {
-            SaveMediaButtonView(
-                type: .favorites,
-                isSaved: isSaved(type: .favorites)
-            )
-        }
         
-        Button {
-            addOrRemove(type: .viewed)
-        } label: {
-            SaveMediaButtonView(
-                type: .viewed,
-                isSaved: isSaved(type: .viewed)
-            )
+        ForEach(SavedType.allCases, id: \.self) { savedType in
+            Button {
+                addOrRemove(type: savedType)
+            } label: {
+                SaveMediaButtonView(
+                    type: savedType,
+                    isSaved: isSaved(type: savedType)
+                )
+            }
         }
     }
     
