@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SavedMediaView: View {
     @StateObject var viewModel: ViewModel
@@ -14,6 +15,9 @@ struct SavedMediaView: View {
     var body: some View {
         ZStack {
             VStack {
+                SavedMediaItemCount(selectedTab: $selectedTab)
+                    .environmentObject(viewModel)
+
                 SavedMediaFiltersView()
                     .environmentObject(viewModel)
                 
@@ -27,7 +31,7 @@ struct SavedMediaView: View {
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
             }
-            .padding(.top, 4)
+            .padding(.top, 40)
             
             TabViewHeader(
                 selectedTab: $selectedTab,

@@ -10,19 +10,16 @@ import SwiftData
 
 struct SavedMediaFiltersView: View {
     @EnvironmentObject var viewModel: SavedMediaView.ViewModel
-
+    
     var body: some View {
-        VStack {
-            HStack {
-                MediaPickerView()
-                    .environmentObject(viewModel)
-                Spacer()
-                DisplaySelectorView()
-                    .environmentObject(viewModel)
-            }
-            .padding(.horizontal)
+        HStack {
+            MediaPickerView()
+                .environmentObject(viewModel)
+            Spacer()
+            DisplaySelectorView()
+                .environmentObject(viewModel)
         }
-        .padding(.top, 50)
+        .padding(.horizontal)
     }
 }
 
