@@ -51,6 +51,15 @@ struct MediaDetailHeaderView: View {
 
                 Spacer()
                 HStack {
+                    SaveMediaStackView(
+                        media: viewModel.media,
+                        mediaType: viewModel.type, 
+                        axis: .horizontal
+                    )
+                    Spacer()
+                }
+                
+                HStack {
                     Text(viewModel.media.publicName)
                         .font(.system(size: 30, weight: .light))
                         .lineLimit(6)

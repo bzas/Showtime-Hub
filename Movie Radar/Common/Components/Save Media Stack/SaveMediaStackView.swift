@@ -1,37 +1,60 @@
 //
-//  MediaContextMenu.swift
+//  SaveMediaStackView.swift
 //  Movie Radar
 //
-//  Created by Alfonso Boizas Crespo on 17/5/24.
+//  Created by Alfonso Boizas Crespo on 19/5/24.
 //
 
 import SwiftUI
 import SwiftData
 
-struct MediaContextMenu: View {
+struct SaveMediaStackView: View {
     let media: Media
     let mediaType: MediaType
+    let axis: Axis
+    @State var triggerHapticFeedback = false
     
     @Environment(\.modelContext) var modelContext
     @Query(sort: \SavedMedia.detail.popularity, order: .forward) var mediaItems: [SavedMedia]
-
+    
     var body: some View {
+        
+        if axis == .vertical {
+            VStack {
+                content()
+            }
+            .sensoryFeedback(
+                .impact(flexibility: .soft, intensity: 1),
+                trigger: triggerHapticFeedback
+            )
+        } else {
+            HStack {
+                content()
+            }
+            .sensoryFeedback(
+                .impact(flexibility: .soft, intensity: 1),
+                trigger: triggerHapticFeedback
+            )
+        }
+    }
+    
+    @ViewBuilder func content() -> some View {
         Button {
             addOrRemove(type: .favorites)
         } label: {
-            HStack {
-                Image(systemName: isSaved(type: .favorites) ? "heart.fill" : "heart")
-                Text(isSaved(type: .favorites) ? "Remove from Favorites" : "Add to Favorites")
-            }
+            SaveMediaButtonView(
+                type: .favorites,
+                isSaved: isSaved(type: .favorites)
+            )
         }
-
+        
         Button {
             addOrRemove(type: .viewed)
         } label: {
-            HStack {
-                Image(systemName: isSaved(type: .viewed) ? "eye.fill" : "eye")
-                Text(isSaved(type: .viewed) ? "Remove from viewed" : "Mark as viewed")
-            }
+            SaveMediaButtonView(
+                type: .viewed,
+                isSaved: isSaved(type: .viewed)
+            )
         }
     }
     
@@ -41,6 +64,8 @@ struct MediaContextMenu: View {
         } else {
             insert(savedType: type)
         }
+        
+        triggerHapticFeedback.toggle()
     }
     
     func isSaved(type: SavedType) -> Bool {

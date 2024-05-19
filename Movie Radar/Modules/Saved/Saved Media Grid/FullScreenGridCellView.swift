@@ -41,6 +41,7 @@ struct FullScreenGridCellView: View {
                         .shadow(radius: 2)
                     Spacer()
                 }
+                .padding(.trailing, 40)
                 
                 HStack {
                     Button {
@@ -54,6 +55,19 @@ struct FullScreenGridCellView: View {
                     }
 
                     Spacer()
+                }
+            }
+            .padding(20)
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    SaveMediaStackView(
+                        media: media.detail,
+                        mediaType: media.type, 
+                        axis: .vertical
+                    )
                 }
             }
             .padding(20)

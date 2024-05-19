@@ -20,6 +20,8 @@
 		4846E87C2BF8F31200D7ADAB /* SavedMediaGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E87B2BF8F31200D7ADAB /* SavedMediaGridView.swift */; };
 		4846E8802BF8F4CE00D7ADAB /* SavedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E87F2BF8F4CE00D7ADAB /* SavedType.swift */; };
 		4846E8822BF8F5CE00D7ADAB /* MediaPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E8812BF8F5CE00D7ADAB /* MediaPickerView.swift */; };
+		488A644F2BFA409C00C5471A /* SaveMediaStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A644E2BFA409C00C5471A /* SaveMediaStackView.swift */; };
+		488A64522BFA40DB00C5471A /* SaveMediaButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A64512BFA40DB00C5471A /* SaveMediaButtonView.swift */; };
 		48A309132BF503C900F1733C /* Movie_RadarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309122BF503C900F1733C /* Movie_RadarApp.swift */; };
 		48A309172BF503CB00F1733C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48A309162BF503CB00F1733C /* Assets.xcassets */; };
 		48A3091A2BF503CB00F1733C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48A309192BF503CB00F1733C /* Preview Assets.xcassets */; };
@@ -147,6 +149,8 @@
 		4846E87B2BF8F31200D7ADAB /* SavedMediaGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMediaGridView.swift; sourceTree = "<group>"; };
 		4846E87F2BF8F4CE00D7ADAB /* SavedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedType.swift; sourceTree = "<group>"; };
 		4846E8812BF8F5CE00D7ADAB /* MediaPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPickerView.swift; sourceTree = "<group>"; };
+		488A644E2BFA409C00C5471A /* SaveMediaStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMediaStackView.swift; sourceTree = "<group>"; };
+		488A64512BFA40DB00C5471A /* SaveMediaButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMediaButtonView.swift; sourceTree = "<group>"; };
 		48A3090F2BF503C900F1733C /* Movie Radar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Radar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		48A309122BF503C900F1733C /* Movie_RadarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie_RadarApp.swift; sourceTree = "<group>"; };
 		48A309162BF503CB00F1733C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -297,6 +301,15 @@
 			path = "Seasons Carousel";
 			sourceTree = "<group>";
 		};
+		488A64502BFA40A800C5471A /* Save Media Stack */ = {
+			isa = PBXGroup;
+			children = (
+				488A644E2BFA409C00C5471A /* SaveMediaStackView.swift */,
+				488A64512BFA40DB00C5471A /* SaveMediaButtonView.swift */,
+			);
+			path = "Save Media Stack";
+			sourceTree = "<group>";
+		};
 		48A309062BF503C900F1733C = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +380,7 @@
 				48A309412BF5040700F1733C /* PlaceholderView.swift */,
 				4846E86A2BF7A31000D7ADAB /* MediaContextMenu.swift */,
 				4846E8772BF8F14C00D7ADAB /* TabViewHeader.swift */,
+				488A64502BFA40A800C5471A /* Save Media Stack */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -931,9 +945,11 @@
 				48A3099E2BF5041900F1733C /* SearchBar.swift in Sources */,
 				48A309BD2BF5041900F1733C /* AppThemePickerView.swift in Sources */,
 				48A3099F2BF5041900F1733C /* SortSelectorView.swift in Sources */,
+				488A64522BFA40DB00C5471A /* SaveMediaButtonView.swift in Sources */,
 				48A309C12BF5041900F1733C /* Settings+ViewModel.swift in Sources */,
 				48A3094C2BF5040700F1733C /* PlaceholderView.swift in Sources */,
 				48B8B2C62BF9221F002276C7 /* ListGridCellView.swift in Sources */,
+				488A644F2BFA409C00C5471A /* SaveMediaStackView.swift in Sources */,
 				48A309EA2BF5044400F1733C /* Link.swift in Sources */,
 				48A309C02BF5041900F1733C /* RateView.swift in Sources */,
 				48A309AA2BF5041900F1733C /* RecommendationsCarouselCellView.swift in Sources */,
