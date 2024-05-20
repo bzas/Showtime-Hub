@@ -30,27 +30,40 @@ struct MediaDescriptionView: View {
             .font(.system(size: 14))
             .foregroundStyle(.yellow)
             
-            HStack(spacing: 25) {
-                let budget = viewModel.media.budget ?? 0
-                infoItem(
-                    title: "Budget",
-                    textToDisplay: budget > 0 ? "\(budget)" : nil
-                )
-                
-                let revenue = viewModel.media.revenue ?? 0
-                infoItem(
-                    title: "Revenue",
-                    textToDisplay: revenue > 0 ? "\(revenue)" : nil
-                )
-                
-                infoItem(
-                    title: "Release",
-                    textToDisplay: viewModel.media.date
-                )
-                
-                Spacer()
+            if viewModel.type.isMovie {
+                HStack(spacing: 8) {
+                    let budget = viewModel.media.budget ?? 0
+                    infoItem(
+                        title: "Budget",
+                        textToDisplay: budget > 0 ? "\(budget)" : nil
+                    )
+                    
+                    Spacer()
+                    
+                    let revenue = viewModel.media.revenue ?? 0
+                    infoItem(
+                        title: "Revenue",
+                        textToDisplay: revenue > 0 ? "\(revenue)" : nil
+                    )
+                    
+                    Spacer()
+                    
+                    infoItem(
+                        title: "Release",
+                        textToDisplay: viewModel.media.date
+                    )
+                }
+                .padding(.top)
+                .padding(.horizontal)
+            } else {
+                HStack(spacing: 12) {
+                    Text("Release")
+                        .font(.system(size: 12, weight: .bold))
+                    Text(viewModel.media.date ?? "No information")
+                        .font(.system(size: 14, weight: .light))
+                    Spacer()
+                }
             }
-            .padding(.top)
 
             Text(viewModel.media.overview ?? "")
                 .multilineTextAlignment(.leading)
@@ -66,16 +79,11 @@ struct MediaDescriptionView: View {
     ) -> some View {
         if let textToDisplay {
             VStack {
-                HStack {
-                    Text(title)
-                        .font(.system(size: 12, weight: .bold))
-                    Spacer()
-                }
-                HStack {
-                    Text(textToDisplay)
-                        .font(.system(size: 14, weight: .light))
-                    Spacer()
-                }
+                Text(title)
+                    .font(.system(size: 12, weight: .bold))
+                
+                Text(textToDisplay)
+                    .font(.system(size: 14, weight: .light))
             }
         }
     }

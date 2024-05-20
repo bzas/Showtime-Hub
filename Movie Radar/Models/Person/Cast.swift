@@ -16,6 +16,7 @@ struct Cast: Codable, Hashable {
     let profilePath: String?
     let character: String?
     let creditId: String?
+    let job: String?
 
     var imageUrl: URL? {
         guard let profilePath else { return nil }
@@ -36,5 +37,6 @@ struct Cast: Codable, Hashable {
         case popularity
         case profilePath = "profile_path"
         case character
+        case job
     }
 }

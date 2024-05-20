@@ -95,12 +95,12 @@ extension MediaDetailView {
                 await MainActor.run {
                     mediaActors = movieCredits.actors
                     if type.isMovie {
-                        productionCrew = [
+                        productionCrew = movieCredits.directors.map {
                             GenericCrew(
-                                name: movieCredits.director?.name,
-                                imageUrl: movieCredits.director?.imageUrl
+                                name: $0.name,
+                                imageUrl: $0.imageUrl
                             )
-                        ]
+                        }
                     }
                 }
             }

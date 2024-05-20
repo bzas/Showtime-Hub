@@ -17,13 +17,13 @@ struct Credits: Codable {
         }
     }
 
-    var director: Cast? {
+    var directors: [Cast] {
         crew
             .filter {
-                $0.knownForDepartment == "Directing"
+                $0.job == "Director"
             }
             .sorted {
                 $0.popularity > $1.popularity
-            }.first
+            }
     }
 }
