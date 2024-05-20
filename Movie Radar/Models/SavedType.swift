@@ -5,7 +5,7 @@
 //  Created by Alfonso Boizas Crespo on 18/5/24.
 //
 
-import Foundation
+import SwiftUI
 
 enum SavedType: String, Codable, CaseIterable {
     case favorites, viewed, pending
@@ -48,7 +48,7 @@ enum SavedType: String, Codable, CaseIterable {
         case .favorites:
             "Add to Favorites"
         case .viewed:
-            "Add to Viewed"
+            "Mark as Viewed"
         case .pending:
             "Add to Pending"
         }
@@ -62,6 +62,17 @@ enum SavedType: String, Codable, CaseIterable {
             "Remove from Viewed"
         case .pending:
             "Remove from Pending"
+        }
+    }
+    
+    var color: Color {
+        switch self {
+        case .favorites:
+            .red
+        case .viewed:
+            .blue
+        case .pending:
+            .orange
         }
     }
 }

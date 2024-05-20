@@ -8,7 +8,7 @@
 import Foundation
 
 enum GridDisplayMode: CaseIterable {
-    case fullScreen, list
+    case list, fullScreen
     
     var title: String {
         switch self {

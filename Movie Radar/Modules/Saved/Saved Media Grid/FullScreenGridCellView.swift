@@ -41,7 +41,7 @@ struct FullScreenGridCellView: View {
                         .shadow(radius: 2)
                     Spacer()
                 }
-                .padding(.trailing, 40)
+                .padding(.trailing, 50)
                 
                 HStack {
                     Button {

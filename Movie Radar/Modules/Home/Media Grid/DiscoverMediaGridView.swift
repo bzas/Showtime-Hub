@@ -18,6 +18,7 @@ struct DiscoverMediaGridView: View {
         if viewModel.gridItems.isEmpty {
             VStack {
                 Text("No items were found")
+                    .foregroundStyle(.gray)
                     .padding()
                 Spacer()
             }

@@ -13,13 +13,19 @@ struct MediaPickerItemView: View {
     var mediaType: MediaType
     @Binding var selectedMediaType: MediaType
     
+    let blackGradient = LinearGradient(
+        gradient: Gradient(colors: [.black]),
+        startPoint: .topLeading,
+        endPoint: .bottomTrailing
+    )
+    
     var body: some View {
         Text(mediaType.title)
             .padding(8)
             .padding(.horizontal, 6)
             .border(appGradient.value)
             .foregroundStyle(selectedMediaType == mediaType ? .black : .white)
-            .background(selectedMediaType == mediaType ? appGradient.value : LinearGradient.black)
+            .background(selectedMediaType == mediaType ? appGradient.value : blackGradient)
             .onTapGesture {
                 withAnimation {
                     selectedMediaType = mediaType

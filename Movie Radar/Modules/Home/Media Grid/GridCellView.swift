@@ -11,15 +11,26 @@ struct GridCellView: View {
     @State var media: Media
 
     var body: some View {
-        AsyncImage(url: media.posterImageUrl) { image in
-            image
-                .resizable()
-                .scaledToFill()
-        } placeholder: {
-            PlaceholderView()
+        ZStack {
+            AsyncImage(url: media.posterImageUrl) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+            } placeholder: {
+                PlaceholderView()
+            }
+            .frame(height: 275)
+            .clipped()
+            
+            LinearGradient(
+                stops: [
+                    .init(color: .black.opacity(0.5), location: 0),
+                    .init(color: .clear, location: 0.2)
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
         }
-        .frame(height: 275)
-        .clipped()
         .overlay {
             VStack {
                 HStack {

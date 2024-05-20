@@ -17,6 +17,7 @@ struct SearchBar: View {
             TextField("Search...", text: $viewModel.searchText)
                 .padding(7)
                 .padding(.horizontal, 12)
+                .padding(.trailing, 30)
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
                 .focused($isEditing)
@@ -25,8 +26,23 @@ struct SearchBar: View {
                         viewModel.updateVisibility(isEditingSearch: isEditing)
                     }
                 }
+                .overlay {
+                    if !viewModel.searchText.isEmpty {
+                        HStack {
+                            Spacer()
+                            Button {
+                                viewModel.searchText = ""
+                            } label: {
+                                Image(systemName: "xmark.circle.fill")
+                                    .frame(width: 35, height: 35)
+                                    .background(.clear)
+                            }
+                        }
+                        .opacity(0.4)
+                    }
+                }
 
-            if isEditing || !viewModel.searchText.isEmpty {
+            if isEditing {
                 Button(action: {
                     withAnimation {
                         isEditing = false

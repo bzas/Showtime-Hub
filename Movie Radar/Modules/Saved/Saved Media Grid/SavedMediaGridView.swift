@@ -69,7 +69,9 @@ struct SavedMediaGridView: View {
                     }
                 }
                 .scrollIndicators(.hidden)
-                .scrollTargetBehavior(.paging)
+                .if(viewModel.selectedDisplayMode == .fullScreen) {
+                    $0.scrollTargetBehavior(.paging)
+                }
             }
         }
     }

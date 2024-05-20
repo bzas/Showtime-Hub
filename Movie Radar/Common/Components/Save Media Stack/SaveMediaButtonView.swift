@@ -14,19 +14,19 @@ struct SaveMediaButtonView: View {
     
     var body: some View {
         Image(systemName: type.fillImageName)
-            .foregroundStyle(isSaved ? LinearGradient.black : appGradient.value)
-        .frame(width: 50, height: 50)
-        .clipShape(Circle())
-        .background(
-            Circle()
-                .stroke(
-                    appGradient.value,
-                    lineWidth: 1
-                )
-                .fill(isSaved ? appGradient.value : LinearGradient.clear)
-                .padding(2)
-        )
-        .shadow(radius: 1)
+            .foregroundStyle(isSaved ? type.color : .white)
+            .frame(width: 50, height: 50)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(
+                        .white,
+                        lineWidth: 1
+                    )
+                    .fill(isSaved ? .white : .clear)
+                    .padding(2)
+            )
+            .shadow(radius: 1)
     }
 }
 

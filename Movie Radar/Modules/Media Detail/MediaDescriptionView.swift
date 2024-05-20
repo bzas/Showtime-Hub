@@ -12,47 +12,72 @@ struct MediaDescriptionView: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            if let voteAverage = viewModel.media.voteAverage {
-                HStack {
-                    Image(systemName: "star.fill")
-                        .resizable()
-                        .frame(width: 10, height: 10)
+            HStack {
+                Image(systemName: "star.fill")
+                    .resizable()
+                    .frame(width: 10, height: 10)
+                
+                if let voteAverage = viewModel.media.totalVoteAverage {
                     Text(String(format: "%.1f / 10", voteAverage))
-                        .font(.system(size: 15))
-                    Spacer()
+                } else {
+                    Text("- / 10")
                 }
-                .foregroundStyle(.yellow)
+                
+                Text(String(format: "(%d votes)", viewModel.media.voteCount ?? 0))
+                    .opacity(0.6)
+                Spacer()
             }
-
-            if let budget = viewModel.media.budget,
-               budget > 0 {
-                HStack {
-                    Text("Budget")
-                        .bold()
-                    Text("\(budget)$")
-                        .fontWeight(.light)
-                    Spacer()
-                }
-                .font(.system(size: 14))
+            .font(.system(size: 14))
+            .foregroundStyle(.yellow)
+            
+            HStack(spacing: 25) {
+                let budget = viewModel.media.budget ?? 0
+                infoItem(
+                    title: "Budget",
+                    textToDisplay: budget > 0 ? "\(budget)" : nil
+                )
+                
+                let revenue = viewModel.media.revenue ?? 0
+                infoItem(
+                    title: "Revenue",
+                    textToDisplay: revenue > 0 ? "\(revenue)" : nil
+                )
+                
+                infoItem(
+                    title: "Release",
+                    textToDisplay: viewModel.media.date
+                )
+                
+                Spacer()
             }
-
-            if let revenue = viewModel.media.revenue,
-               revenue > 0 {
-                HStack {
-                    Text("Revenue")
-                        .bold()
-                    Text("\(revenue)$")
-                        .fontWeight(.light)
-                    Spacer()
-                }
-                .font(.system(size: 14))
-            }
+            .padding(.top)
 
             Text(viewModel.media.overview ?? "")
                 .multilineTextAlignment(.leading)
                 .font(.system(size: 14))
         }
         .padding(.bottom)
+    }
+    
+    @ViewBuilder
+    func infoItem(
+        title: String,
+        textToDisplay: String?
+    ) -> some View {
+        if let textToDisplay {
+            VStack {
+                HStack {
+                    Text(title)
+                        .font(.system(size: 12, weight: .bold))
+                    Spacer()
+                }
+                HStack {
+                    Text(textToDisplay)
+                        .font(.system(size: 14, weight: .light))
+                    Spacer()
+                }
+            }
+        }
     }
 }
 

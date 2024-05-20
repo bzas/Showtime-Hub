@@ -1,19 +1,16 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%lld min" : {
+    "- / 10" : {
 
     },
-    "%lld$" : {
+    "%lld min" : {
 
     },
     "About" : {
 
     },
     "App icon" : {
-
-    },
-    "Budget" : {
 
     },
     "Cancel" : {
@@ -56,9 +53,6 @@
 
     },
     "Release " : {
-
-    },
-    "Revenue" : {
 
     },
     "Reviews" : {
