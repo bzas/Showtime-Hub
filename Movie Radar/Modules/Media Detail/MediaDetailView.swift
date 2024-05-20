@@ -41,12 +41,7 @@ struct MediaDetailView: View {
                 )
             }
         }
-        .sheet(isPresented: $viewModel.showDetailReview) {
-            if let detailReview = viewModel.detailReviewToShow {
-                ReviewDetailView(review: detailReview)
-            }
-        }
-        .blur(radius: (viewModel.showDetailImage || viewModel.showDetailSeason) ? 10 : 0)
+        .blur(radius: (viewModel.showDetailImage || viewModel.showDetailSeason || viewModel.showDetailReview) ? 10 : 0)
         .opacity((viewModel.showDetailImage || viewModel.showDetailSeason) ? 0.6 : 1)
         .overlay {
             if viewModel.showDetailImage {
@@ -63,6 +58,14 @@ struct MediaDetailView: View {
                         seasons: viewModel.media.seasons ?? [],
                         startingIndex: viewModel.seasonIndexToShow,
                         showDetail: $viewModel.showDetailSeason
+                    )
+                )
+            } else if viewModel.showDetailReview {
+                ReviewDetailView(
+                    viewModel: .init(
+                        reviewList: viewModel.reviewList,
+                        startingIndex: viewModel.reviewIndexToShow,
+                        showDetail: $viewModel.showDetailReview
                     )
                 )
             }

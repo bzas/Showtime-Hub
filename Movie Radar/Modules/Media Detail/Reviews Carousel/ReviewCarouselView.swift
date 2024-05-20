@@ -28,10 +28,10 @@ struct ReviewCarouselView: View {
             } else {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 12) {
-                        ForEach(viewModel.reviewList.reviews, id: \.self) { review in
+                        ForEach(Array(viewModel.reviewList.reviews.enumerated()), id: \.1.self) { (index, review) in
                             ReviewCarouselCellView(review: review)
                                 .onTapGesture {
-                                    viewModel.detailReviewToShow = review
+                                    viewModel.reviewIndexToShow = index
                                 }
                         }
                     }

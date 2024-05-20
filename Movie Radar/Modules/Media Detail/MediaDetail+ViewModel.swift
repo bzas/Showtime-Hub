@@ -48,7 +48,7 @@ extension MediaDetailView {
         }
 
         @Published var showDetailReview = false
-        @Published var detailReviewToShow: Review? {
+        @Published var reviewIndexToShow: Int? {
             didSet {
                 showDetailReview.toggle()
             }
