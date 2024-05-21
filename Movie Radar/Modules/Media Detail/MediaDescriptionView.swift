@@ -30,9 +30,10 @@ struct MediaDescriptionView: View {
             .font(.system(size: 14))
             .foregroundStyle(.yellow)
             
-            if viewModel.type.isMovie {
+            let budget = viewModel.media.budget ?? 0
+            let revenue = viewModel.media.revenue ?? 0
+            if budget > 0 || revenue > 0 {
                 HStack(spacing: 8) {
-                    let budget = viewModel.media.budget ?? 0
                     infoItem(
                         title: "Budget",
                         textToDisplay: budget > 0 ? "\(budget)" : nil
@@ -40,7 +41,6 @@ struct MediaDescriptionView: View {
                     
                     Spacer()
                     
-                    let revenue = viewModel.media.revenue ?? 0
                     infoItem(
                         title: "Revenue",
                         textToDisplay: revenue > 0 ? "\(revenue)" : nil

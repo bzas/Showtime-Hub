@@ -20,13 +20,22 @@ struct TabViewHeader: View {
                     Button {
                         selectedTab = index
                     } label: {
-                        Text(title)
-                            .font(.system(
-                                size: selectedTab == index ? 25 : 16)
-                            )
-                            .foregroundStyle(appGradient.value)
-                            .opacity(selectedTab == index ? 0.8 : 0.4)
-                            .shadow(radius: 1)
+                        VStack(spacing: 2) {
+                            Text(title)
+                                .font(.system(
+                                    size: selectedTab == index ? 20 : 15)
+                                )
+                                .foregroundStyle(.white)
+                                .opacity(selectedTab == index ? 1 : 0.5)
+                                .shadow(radius: 1)
+                            
+                            if selectedTab == index {
+                                appGradient.value
+                                    .frame(width: 20, height: 2)
+                                    .shadow(radius: 1)
+                                    .transition(.scale)
+                            }
+                        }
                     }
                 }
             }
@@ -40,7 +49,7 @@ struct TabViewHeader: View {
             .background(
                 LinearGradient(
                     stops: [
-                        .init(color: .black, location: 0.3),
+                        .init(color: .black, location: 0.35),
                         .init(color: .clear, location: 1)
                     ],
                     startPoint: .top,

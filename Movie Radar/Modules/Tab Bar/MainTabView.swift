@@ -43,7 +43,7 @@ struct MainTabView: View {
                     )
                 }
         }
-        .tint(appGradient.plainColor)
+        .tint(.white)
     }
 }
 

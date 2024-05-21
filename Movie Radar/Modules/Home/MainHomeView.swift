@@ -20,7 +20,7 @@ struct MainHomeView: View {
                     .tag(1)
             }
             .tabViewStyle(.page)
-            .padding(.top, 4)
+            .padding(.top, 8)
             
             TabViewHeader(
                 selectedTab: $selectedTab,

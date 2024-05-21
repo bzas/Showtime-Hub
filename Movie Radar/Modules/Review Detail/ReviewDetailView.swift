@@ -26,12 +26,12 @@ struct ReviewDetailView: View {
                                         .font(.system(size: 18, weight: .semibold))
                                     ScrollView {
                                         Text(review.content ?? "")
-                                            .font(.system(size: 14))
+                                            .font(.system(size: 14, weight: .light))
                                     }
                                 }
                                 .padding()
                                 .frame(
-                                    width: proxy.size.width / 1.5,
+                                    width: proxy.size.width / 1.25,
                                     height: proxy.size.height / 1.75
                                 )
                                 .background(UIColor.systemGray5.color)
@@ -44,7 +44,7 @@ struct ReviewDetailView: View {
                             }
                         }
                     }
-                    .padding(.horizontal, (proxy.size.width - (proxy.size.width / 1.5)) / 2)
+                    .padding(.horizontal, (proxy.size.width - (proxy.size.width / 1.25)) / 2)
                     .scrollTargetLayout()
                 }
                 .scrollTargetBehavior(.viewAligned)

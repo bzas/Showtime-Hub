@@ -17,15 +17,15 @@ struct MediaCarouselView: View {
 
     var body: some View {
         ScrollView(.horizontal) {
-            LazyHGrid(rows: rows, spacing: 0) {
-                let movies = viewModel.upcomingList.results
-                if movies.isEmpty {
-                    PlaceholderView()
-                        .frame(
-                            width: UIScreen.main.bounds.width,
-                            height: UIScreen.main.bounds.width / 1.778
-                        )
-                } else {
+            let movies = viewModel.upcomingList.results
+            if movies.isEmpty {
+                PlaceholderView()
+                    .frame(
+                        width: UIScreen.main.bounds.width,
+                        height: UIScreen.main.bounds.width / 1.778
+                    )
+            } else {
+                LazyHGrid(rows: rows, spacing: 0) {
                     ForEach(movies, id: \.self) { media in
                         MediaCarouselCellView(media: media)
                             .onTapGesture {
@@ -39,8 +39,8 @@ struct MediaCarouselView: View {
                             }
                     }
                 }
+                .scrollTargetLayout()
             }
-            .scrollTargetLayout()
         }
         .scrollTargetBehavior(.paging)
         .scrollIndicators(.hidden)
