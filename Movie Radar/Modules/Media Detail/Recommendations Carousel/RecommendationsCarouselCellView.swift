@@ -23,7 +23,7 @@ struct RecommendationsCarouselCellView: View {
             .frame(width: maxWidth, height: maxWidth * 0.66)
             .clipped()
 
-            Text(movie.publicName)
+            Text(movie.name)
                 .font(.system(size: 12, weight: .light))
                 .lineLimit(2)
                 .frame(maxWidth: maxWidth - 8, alignment: .topLeading)

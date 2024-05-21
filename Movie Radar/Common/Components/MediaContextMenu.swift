@@ -13,10 +13,11 @@ struct MediaContextMenu: View {
     let mediaType: MediaType
     
     @Environment(\.modelContext) var modelContext
-    @Query(sort: \SavedMedia.detail.popularity, order: .forward) var mediaItems: [SavedMedia]
-
+    @Query(sort: [
+        SortDescriptor(\SavedMedia.detail.name)
+    ]) var mediaItems: [SavedMedia]
+    
     var body: some View {
-        
         ForEach(SavedType.allCases, id: \.self) { savedType in
             Button {
                 addOrRemove(type: savedType)

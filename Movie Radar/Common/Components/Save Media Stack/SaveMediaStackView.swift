@@ -15,7 +15,9 @@ struct SaveMediaStackView: View {
     @State var triggerHapticFeedback = false
     
     @Environment(\.modelContext) var modelContext
-    @Query(sort: \SavedMedia.detail.popularity, order: .forward) var mediaItems: [SavedMedia]
+    @Query(sort: [
+        SortDescriptor(\SavedMedia.detail.name)
+    ]) var mediaItems: [SavedMedia]
     
     var body: some View {
         

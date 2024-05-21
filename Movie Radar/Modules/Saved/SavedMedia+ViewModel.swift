@@ -36,9 +36,6 @@ extension SavedMediaView {
                 .filter {
                     $0.savedType == savedType
                 }
-                .sorted {
-                    $0.detail.publicName < $1.detail.publicName
-                }
         }
     }
 }

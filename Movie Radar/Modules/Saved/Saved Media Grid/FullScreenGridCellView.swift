@@ -36,7 +36,7 @@ struct FullScreenGridCellView: View {
             VStack {
                 Spacer()
                 HStack {
-                    Text(media.detail.publicName)
+                    Text(media.detail.name)
                         .font(.system(size: 25))
                         .shadow(radius: 2)
                     Spacer()

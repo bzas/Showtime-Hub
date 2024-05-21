@@ -60,7 +60,7 @@ struct MediaDetailHeaderView: View {
                 }
                 
                 HStack {
-                    Text(viewModel.media.publicName)
+                    Text(viewModel.media.name)
                         .font(.system(size: 30, weight: .light))
                         .lineLimit(6)
                         .shadow(color: Color.black, radius: 2)

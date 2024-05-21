@@ -18,7 +18,9 @@ class Media: Codable, Hashable {
         hasher.combine(uniqueId)
     }
     
-    @Attribute(.unique) let uniqueId = UUID()
+    @Attribute(.unique) 
+    let uniqueId = UUID()
+    let name: String
     let backdropPath: String?
     let budget: Int?
     let revenue: Int?
@@ -35,8 +37,6 @@ class Media: Codable, Hashable {
     let episodeNumber: Int?
     private let releaseDate: String?
     private let airDate: String?
-    private let title: String?
-    private let name: String?
     private let voteAverage: Double?
 
     var totalVoteAverage: Double? {
@@ -45,10 +45,6 @@ class Media: Codable, Hashable {
 
     var date: String? {
         releaseDate ?? airDate
-    }
-    
-    var publicName: String {
-        title ?? name ?? ""
     }
     
     var hasInfo: Bool {
@@ -118,7 +114,6 @@ class Media: Codable, Hashable {
             airDate: nil,
             revenue: nil,
             runtime: nil,
-            title: nil,
             voteAverage: nil,
             voteCount: nil,
             name: nil,
@@ -141,7 +136,6 @@ class Media: Codable, Hashable {
         airDate: String?,
         revenue: Int?,
         runtime: Int?,
-        title: String?,
         voteAverage: Double?,
         voteCount: Int?,
         name: String?,
@@ -161,10 +155,9 @@ class Media: Codable, Hashable {
         self.airDate = airDate
         self.revenue = revenue
         self.runtime = runtime
-        self.title = title
         self.voteAverage = voteAverage
         self.voteCount = voteCount
-        self.name = name
+        self.name = name ?? ""
         self.creators = creators
         self.seasons = seasons
         self.seasonNumber = seasonNumber
@@ -184,10 +177,15 @@ class Media: Codable, Hashable {
         self.airDate = try? container?.decode(String.self, forKey: .airDate)
         self.revenue = try? container?.decode(Int.self, forKey: .revenue)
         self.runtime = try? container?.decode(Int.self, forKey: .runtime)
-        self.title = try? container?.decode(String.self, forKey: .title)
         self.voteAverage = try? container?.decode(Double.self, forKey: .voteAverage)
         self.voteCount = try? container?.decode(Int.self, forKey: .voteCount)
-        self.name = try? container?.decode(String.self, forKey: .name)
+        if let name = try? container?.decode(String.self, forKey: .name) {
+            self.name = name
+        } else if let title = try? container?.decode(String.self, forKey: .title) {
+            self.name = title
+        } else {
+            self.name = ""
+        }
         self.creators = try? container?.decode([Person].self, forKey: .creators)
         self.seasons = try? container?.decode([Season].self, forKey: .seasons)
         self.seasonNumber = try? container?.decode(Int.self, forKey: .seasonNumber)
@@ -207,7 +205,6 @@ class Media: Codable, Hashable {
         try? container.encode(airDate, forKey: .airDate)
         try? container.encode(revenue, forKey: .revenue)
         try? container.encode(runtime, forKey: .runtime)
-        try? container.encode(title, forKey: .title)
         try? container.encode(voteAverage, forKey: .voteAverage)
         try? container.encode(voteCount, forKey: .voteCount)
         try? container.encode(name, forKey: .name)

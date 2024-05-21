@@ -10,7 +10,10 @@ import SwiftData
 
 struct SavedMediaGridView: View {
     @EnvironmentObject var viewModel: SavedMediaView.ViewModel
-    @Query(sort: \SavedMedia.detail.popularity, order: .forward) var mediaItems: [SavedMedia]
+    
+    @Query(sort: [
+        SortDescriptor(\SavedMedia.detail.name)
+    ]) var mediaItems: [SavedMedia]
     
     var type: SavedType
     

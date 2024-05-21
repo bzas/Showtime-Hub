@@ -10,8 +10,11 @@ import SwiftData
 
 struct SavedMediaItemCount: View {
     @EnvironmentObject var viewModel: SavedMediaView.ViewModel
-    @Query(sort: \SavedMedia.detail.popularity, order: .forward) var mediaItems: [SavedMedia]
     @Binding var selectedTab: Int
+
+    @Query(sort: [
+        SortDescriptor(\SavedMedia.detail.name)
+    ]) var mediaItems: [SavedMedia]
     
     var currentSavedType: SavedType {
         SavedType.allCases.enumerated().first { (index, savedType) in

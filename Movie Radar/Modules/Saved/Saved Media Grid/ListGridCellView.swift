@@ -34,7 +34,7 @@ struct ListGridCellView: View {
             VStack {
                 Spacer()
                 HStack {
-                    Text(media.publicName)
+                    Text(media.name)
                         .shadow(radius: 4)
                         .font(.system(size: 12))
                         .lineLimit(3)

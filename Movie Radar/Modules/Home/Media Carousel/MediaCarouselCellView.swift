@@ -59,7 +59,7 @@ struct MediaCarouselCellView: View {
 
                 VStack(spacing: 6) {
                     Spacer()
-                        Text(media.publicName)
+                        Text(media.name)
                             .font(.system(size: 20))
                             .frame(maxWidth: 200, alignment: .leading)
                             .lineLimit(3)

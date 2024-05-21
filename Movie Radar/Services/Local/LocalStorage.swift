@@ -17,6 +17,14 @@ class LocalStorage {
         self.modelContext = modelContext
     }
     
+    func fetchItems() -> [SavedMedia] {
+        do {
+            return try modelContext.fetch(FetchDescriptor<SavedMedia>())
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+    
     func insert(media: Media, type: MediaType, savedType: SavedType) {
         let savedMedia = SavedMedia(
             type: type,

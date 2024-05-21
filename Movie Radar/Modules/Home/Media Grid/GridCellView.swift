@@ -34,7 +34,7 @@ struct GridCellView: View {
         .overlay {
             VStack {
                 HStack {
-                    Text(media.publicName)
+                    Text(media.name)
                         .font(.system(size: 14))
                         .foregroundStyle(.white)
                         .shadow(radius: 1)
