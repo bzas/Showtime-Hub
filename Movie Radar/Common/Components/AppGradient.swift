@@ -9,12 +9,15 @@ import SwiftUI
 
 enum AppGradient: String, CaseIterable, Codable {
     case white,
+         yellow,
+         cyan,
+         pink,
+         blue,
+         green,
          bluePurple,
          blueGreen,
          yellowOrange,
-         bluePink,
-         yellow,
-         pink
+         bluePink
 
     var value: LinearGradient {
         switch self {
@@ -60,29 +63,24 @@ enum AppGradient: String, CaseIterable, Codable {
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
-        }
-    }
-
-    var plainColor: Color {
-        switch self {
-        case .bluePurple:
-                .purple
-        case .blueGreen:
-            Color(
-                red: 144 / 255,
-                green: 206 / 255,
-                blue: 161 / 255
+        case .blue:
+            LinearGradient(
+                gradient: Gradient(colors: [.blue]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
             )
-        case .yellowOrange:
-                .yellow
-        case .bluePink:
-                .pink
-        case .yellow:
-                .yellow
-        case .pink:
-                .pink
-        case .white:
-                .white
+        case .green:
+            LinearGradient(
+                gradient: Gradient(colors: [.green]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        case .cyan:
+            LinearGradient(
+                gradient: Gradient(colors: [.cyan]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
         }
     }
 }

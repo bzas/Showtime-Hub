@@ -13,7 +13,6 @@ extension SavedMediaView {
         var apiService: APIService
         var localStorage: LocalStorage
         @Published var selectedMediaType = MediaType.all
-        @Published var selectedDisplayMode = GridDisplayMode.list
         @Published var movieItems: [Media] = []
         @Published var seriesItems: [Media] = []
         @Published var showDetailMedia = false

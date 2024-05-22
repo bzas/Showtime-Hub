@@ -23,11 +23,12 @@ struct TabViewHeader: View {
                         VStack(spacing: 2) {
                             Text(title)
                                 .font(.system(
-                                    size: selectedTab == index ? 20 : 15)
+                                    size: selectedTab == index ? 18 : 14)
                                 )
                                 .foregroundStyle(.white)
                                 .opacity(selectedTab == index ? 1 : 0.5)
                                 .shadow(radius: 1)
+                                .padding(.horizontal, 4)
                             
                             if selectedTab == index {
                                 appGradient.value
@@ -46,17 +47,6 @@ struct TabViewHeader: View {
             )
             .frame(maxWidth: .infinity)
             .padding(.bottom, 8)
-            .background(
-                LinearGradient(
-                    stops: [
-                        .init(color: .black, location: 0.35),
-                        .init(color: .clear, location: 1)
-                    ],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
-            )
-            Spacer()
         }
     }
 }

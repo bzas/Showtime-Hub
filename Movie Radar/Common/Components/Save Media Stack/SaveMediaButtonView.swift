@@ -15,7 +15,7 @@ struct SaveMediaButtonView: View {
     var body: some View {
         Image(systemName: type.fillImageName)
             .foregroundStyle(isSaved ? type.color : .white)
-            .frame(width: 50, height: 50)
+            .frame(width: 45, height: 45)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .background(
                 RoundedRectangle(cornerRadius: 10)

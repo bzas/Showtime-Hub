@@ -14,29 +14,33 @@ struct SavedMediaView: View {
 
     var body: some View {
         ZStack {
-            VStack {
-                SavedMediaItemCount(selectedTab: $selectedTab)
-                    .environmentObject(viewModel)
-
-                SavedMediaFiltersView()
-                    .environmentObject(viewModel)
-                
-                TabView(selection: $selectedTab) {
-                    ForEach(Array(SavedType.allCases.enumerated()), id: \.1.self) { (index, savedType) in
-                        SavedMediaGridView(type: savedType)
-                            .environmentObject(viewModel)
-                            .tag(index)
-                    }
+            TabView(selection: $selectedTab) {
+                ForEach(Array(SavedType.allCases.enumerated()), id: \.1.self) { (index, savedType) in
+                    SavedMediaGridView(type: savedType)
+                        .environmentObject(viewModel)
+                        .tag(index)
                 }
-                .tabViewStyle(.page(indexDisplayMode: .never))
             }
-            .padding(.top, 40)
+            .ignoresSafeArea()
+            .tabViewStyle(.page(indexDisplayMode: .never))
             
-            TabViewHeader(
-                selectedTab: $selectedTab,
-                titles: SavedType.allCases.map { $0.title }
-            )
+            VStack {
+                VStack(spacing: 0) {
+                    TabViewHeader(
+                        selectedTab: $selectedTab,
+                        titles: SavedType.allCases.map { $0.title }
+                    )
+                    .padding(.bottom, 4)
+                    
+                    SavedMediaFiltersView(selectedTab: $selectedTab)
+                        .environmentObject(viewModel)
+                }
+                .background(.ultraThinMaterial)
+
+                Spacer()
+            }
         }
+        .ignoresSafeArea(edges: .bottom)
         .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
             if let detailMediaToShow = viewModel.detailMediaToShow {
                 MediaDetailView(

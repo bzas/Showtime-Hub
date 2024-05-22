@@ -15,12 +15,10 @@ struct MainTabView: View {
     var body: some View {
         TabView {
             MainHomeView(apiService: apiService)
-                .tabItem {
-                    Label(
-                        "Home",
-                        systemImage: "house"
-                    )
-                }
+                .customizeTabItem(
+                    name: "Home",
+                    imageName: "house"
+                )
 
             SavedMediaView(
                 viewModel: .init(
@@ -28,20 +26,16 @@ struct MainTabView: View {
                     modelContext: modelContext
                 )
             )
-            .tabItem {
-                Label(
-                    "Saved",
-                    systemImage: "archivebox"
-                )
-            }
+            .customizeTabItem(
+                name: "Saved",
+                imageName: "archivebox"
+            )
 
             SettingsView(viewModel: .init(apiService: apiService))
-                .tabItem {
-                    Label(
-                        "Settings",
-                        systemImage: "gearshape"
-                    )
-                }
+                .customizeTabItem(
+                    name: "Settings",
+                    imageName: "gearshape"
+                )
         }
         .tint(.white)
     }
@@ -49,4 +43,17 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
+}
+
+private extension View {
+    func customizeTabItem(name: String, imageName: String) -> some View {
+        toolbarBackground(.visible, for: .tabBar)
+            .toolbarBackground(.ultraThinMaterial, for: .tabBar)
+            .tabItem {
+                Label(
+                    name,
+                    systemImage: imageName
+                )
+            }
+    }
 }

@@ -28,13 +28,9 @@ struct SavedMediaItemCount: View {
             savedType: currentSavedType
         ).count
         
-        HStack {
-            let displayCount = filteredCount == 1 ? "\(filteredCount) item saved" : "\(filteredCount) items saved"
-            Text(displayCount)
-                .font(.system(size: 14, weight: .light))
-                .animation(.smooth)
-            Spacer()
-        }
-        .padding(.horizontal)
+        let displayCount = filteredCount == 1 ? "\(filteredCount) item saved" : "\(filteredCount) items saved"
+        Text(displayCount)
+            .font(.system(size: 14, weight: .light))
+            .animation(.smooth)
     }
 }

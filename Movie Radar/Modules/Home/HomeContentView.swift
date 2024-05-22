@@ -22,6 +22,7 @@ struct HomeContentView: View {
                     GridView()
                         .environmentObject(viewModel)
                 }
+                .padding(.top, 25)
             }
             .scrollIndicators(.hidden)
             .fullScreenCover(isPresented: $viewModel.showDetailMedia) {

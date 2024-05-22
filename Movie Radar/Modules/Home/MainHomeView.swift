@@ -20,13 +20,17 @@ struct MainHomeView: View {
                     .tag(1)
             }
             .tabViewStyle(.page)
-            .padding(.top, 8)
             
-            TabViewHeader(
-                selectedTab: $selectedTab,
-                titles: [MediaType.movie, MediaType.tv].map { $0.title }
-            )
+            VStack {
+                TabViewHeader(
+                    selectedTab: $selectedTab,
+                    titles: [MediaType.movie, MediaType.tv].map { $0.title }
+                )
+                .background(.ultraThinMaterial)
+                Spacer()
+            }
         }
+        .ignoresSafeArea(edges: .bottom)
     }
 }
 
