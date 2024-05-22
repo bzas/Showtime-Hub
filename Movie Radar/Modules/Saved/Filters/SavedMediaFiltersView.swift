@@ -23,9 +23,9 @@ struct SavedMediaFiltersView: View {
                 .environmentObject(viewModel)
             
             Button {
-                
+                viewModel.showFilters.toggle()
             } label: {
-                Image(systemName: "line.3.horizontal.decrease.circle")
+                Image(systemName: viewModel.filtersApplied ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
                     .resizable()
                     .scaledToFit()
                     .foregroundStyle(appGradient.value)

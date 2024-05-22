@@ -52,5 +52,11 @@ struct SavedMediaView: View {
                 )
             }
         }
+        .sheet(isPresented: $viewModel.showFilters) {
+            FiltersView(
+                gridSearchText: $viewModel.searchText,
+                filtersApplied: $viewModel.filtersApplied
+            )
+        }
     }
 }

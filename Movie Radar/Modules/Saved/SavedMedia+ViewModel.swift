@@ -15,6 +15,9 @@ extension SavedMediaView {
         @Published var selectedMediaType = MediaType.all
         @Published var movieItems: [Media] = []
         @Published var seriesItems: [Media] = []
+        @Published var showFilters = false
+        @Published var searchText = ""
+        @Published var filtersApplied = false
         @Published var showDetailMedia = false
         @Published var detailMediaToShow: SavedMedia? {
             didSet {
@@ -34,6 +37,9 @@ extension SavedMediaView {
                 }
                 .filter {
                     $0.savedType == savedType
+                }
+                .filter {
+                    searchText.isEmpty ? true : $0.detail.name.contains(searchText)
                 }
         }
     }

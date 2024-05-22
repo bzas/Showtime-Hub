@@ -13,6 +13,9 @@
     "App icon" : {
 
     },
+    "Apply" : {
+
+    },
     "Cancel" : {
 
     },
@@ -52,10 +55,16 @@
     "Release " : {
 
     },
+    "Reset" : {
+
+    },
     "Reviews" : {
 
     },
     "Save on photos" : {
+
+    },
+    "Search keyword" : {
 
     },
     "Search..." : {
@@ -74,6 +83,9 @@
 
     },
     "Version" : {
+
+    },
+    "Write any title..." : {
 
     }
   },

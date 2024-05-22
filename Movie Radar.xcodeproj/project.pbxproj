@@ -10,6 +10,7 @@
 		48289DE32BF5084B00C7F68B /* MainHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48289DE22BF5084B00C7F68B /* MainHomeView.swift */; };
 		483DDF9B2BFBB1A9007677A1 /* ReviewDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483DDF9A2BFBB1A9007677A1 /* ReviewDetailView.swift */; };
 		483DDF9D2BFBB1BA007677A1 /* ReviewDetail+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483DDF9C2BFBB1BA007677A1 /* ReviewDetail+ViewModel.swift */; };
+		483DDFA42BFE47B4007677A1 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483DDFA32BFE47B4007677A1 /* FiltersView.swift */; };
 		4846E8662BF7968300D7ADAB /* MediaCrewCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E8652BF7968300D7ADAB /* MediaCrewCellView.swift */; };
 		4846E8692BF7986100D7ADAB /* MediaCrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E8682BF7986100D7ADAB /* MediaCrewView.swift */; };
 		4846E86B2BF7A31000D7ADAB /* MediaContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E86A2BF7A31000D7ADAB /* MediaContextMenu.swift */; };
@@ -138,6 +139,7 @@
 		48289DE22BF5084B00C7F68B /* MainHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeView.swift; sourceTree = "<group>"; };
 		483DDF9A2BFBB1A9007677A1 /* ReviewDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailView.swift; sourceTree = "<group>"; };
 		483DDF9C2BFBB1BA007677A1 /* ReviewDetail+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReviewDetail+ViewModel.swift"; sourceTree = "<group>"; };
+		483DDFA32BFE47B4007677A1 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 		4846E8652BF7968300D7ADAB /* MediaCrewCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCrewCellView.swift; sourceTree = "<group>"; };
 		4846E8682BF7986100D7ADAB /* MediaCrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaCrewView.swift; sourceTree = "<group>"; };
 		4846E86A2BF7A31000D7ADAB /* MediaContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaContextMenu.swift; sourceTree = "<group>"; };
@@ -282,6 +284,14 @@
 			path = "Review Detail";
 			sourceTree = "<group>";
 		};
+		483DDFA22BFE478F007677A1 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				483DDFA32BFE47B4007677A1 /* FiltersView.swift */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
 		4846E8672BF7982400D7ADAB /* Crew */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,7 +417,6 @@
 			children = (
 				48A309502BF5041900F1733C /* SavedMediaView.swift */,
 				48A3094F2BF5041900F1733C /* SavedMedia+ViewModel.swift */,
-				488CBB412BFA6C6A00512D39 /* SavedMediaItemCount.swift */,
 				48B8B2BE2BF920F2002276C7 /* Filters */,
 				48B8B2BF2BF92168002276C7 /* Saved Media Grid */,
 			);
@@ -587,6 +596,7 @@
 				483DDF992BFBB194007677A1 /* Review Detail */,
 				48A309842BF5041900F1733C /* Person Detail */,
 				48A309512BF5041900F1733C /* Saved */,
+				483DDFA22BFE478F007677A1 /* Filters */,
 				48A3098F2BF5041900F1733C /* Settings */,
 			);
 			path = Modules;
@@ -719,6 +729,7 @@
 		48B8B2BE2BF920F2002276C7 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
+				488CBB412BFA6C6A00512D39 /* SavedMediaItemCount.swift */,
 				48B8B2BC2BF8FE11002276C7 /* SavedMediaFiltersView.swift */,
 				48B8B2B62BF8FABC002276C7 /* Media Picker */,
 			);
@@ -876,6 +887,7 @@
 				483DDF9D2BFBB1BA007677A1 /* ReviewDetail+ViewModel.swift in Sources */,
 				48A309F12BF5044400F1733C /* Person.swift in Sources */,
 				48A309132BF503C900F1733C /* Movie_RadarApp.swift in Sources */,
+				483DDFA42BFE47B4007677A1 /* FiltersView.swift in Sources */,
 				4846E86D2BF8C0B700D7ADAB /* Season.swift in Sources */,
 				48A309B62BF5041900F1733C /* PersonDetail+ViewModel.swift in Sources */,
 				4846E8782BF8F14C00D7ADAB /* TabViewHeader.swift in Sources */,
