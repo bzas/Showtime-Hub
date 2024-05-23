@@ -14,22 +14,25 @@ struct SavedMediaFiltersView: View {
     @Binding var selectedTab: Int
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 0) {
             MediaPickerView()
                 .environmentObject(viewModel)
+            
             Spacer()
 
-            SavedMediaItemCount(selectedTab: $selectedTab)
-                .environmentObject(viewModel)
-            
-            Button {
-                viewModel.showFilters.toggle()
-            } label: {
-                Image(systemName: viewModel.filtersApplied ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundStyle(appGradient.value)
-                    .frame(width: 20, height: 20)
+            HStack(spacing: 12) {
+                SavedMediaItemCount(selectedTab: $selectedTab)
+                    .environmentObject(viewModel)
+                
+                Button {
+                    viewModel.showFilters.toggle()
+                } label: {
+                    Image(systemName: viewModel.filtersApplied ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundStyle(appGradient.value)
+                        .frame(width: 20, height: 20)
+                }
             }
         }
         .padding(.horizontal)

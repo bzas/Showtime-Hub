@@ -50,7 +50,7 @@ struct MediaDescriptionView: View {
                     
                     infoItem(
                         title: "Release",
-                        textToDisplay: viewModel.media.date
+                        textToDisplay: viewModel.media.dateString
                     )
                 }
                 .padding(.top)
@@ -59,7 +59,7 @@ struct MediaDescriptionView: View {
                 HStack(spacing: 12) {
                     Text("Release")
                         .font(.system(size: 12, weight: .bold))
-                    Text(viewModel.media.date ?? "No information")
+                    Text(viewModel.media.dateString ?? "No information")
                         .font(.system(size: 14, weight: .light))
                     Spacer()
                 }

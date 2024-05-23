@@ -55,7 +55,9 @@ struct SavedMediaView: View {
         .sheet(isPresented: $viewModel.showFilters) {
             FiltersView(
                 gridSearchText: $viewModel.searchText,
-                filtersApplied: $viewModel.filtersApplied
+                filtersApplied: $viewModel.filtersApplied,
+                startDate: $viewModel.startDate,
+                endDate: $viewModel.endDate
             )
         }
     }

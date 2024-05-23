@@ -43,8 +43,15 @@ class Media: Codable, Hashable {
         (voteCount ?? 0) > 0 ? voteAverage : nil
     }
 
-    var date: String? {
+    var dateString: String? {
         releaseDate ?? airDate
+    }
+    
+    var date: Date? {
+        guard let dateString else { return nil }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd"
+        return formatter.date(from: dateString)
     }
     
     var hasInfo: Bool {

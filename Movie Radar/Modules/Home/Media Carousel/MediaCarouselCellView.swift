@@ -66,7 +66,7 @@ struct MediaCarouselCellView: View {
                             .multilineTextAlignment(.leading)
                             .shadow(radius: 2)
 
-                    if let releaseDate = media.date {
+                    if let releaseDate = media.dateString {
                         HStack(spacing: 0) {
                             Text("Release ")
                                 .fontWeight(.bold)
@@ -80,12 +80,6 @@ struct MediaCarouselCellView: View {
                 Spacer()
             }
             .padding()
-            .scrollTransition(.animated.threshold(.visible(0.6))) { content, phase in
-                content
-                    .opacity(phase.isIdentity ? 1 : 0.4)
-                    .scaleEffect(phase.isIdentity ? 1 : 0.9)
-                    .blur(radius: phase.isIdentity ? 0 : 2)
-            }
         }
     }
 }
