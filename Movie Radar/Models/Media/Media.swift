@@ -47,11 +47,11 @@ class Media: Codable, Hashable {
         releaseDate ?? airDate
     }
     
-    var date: Date? {
-        guard let dateString else { return nil }
+    var date: Date {
+        guard let dateString else { return Date() }
         let formatter = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd"
-        return formatter.date(from: dateString)
+        return formatter.date(from: dateString) ?? Date()
     }
     
     var hasInfo: Bool {

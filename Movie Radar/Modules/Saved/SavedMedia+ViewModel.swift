@@ -18,8 +18,8 @@ extension SavedMediaView {
         @Published var showFilters = false
         @Published var searchText = ""
         @Published var filtersApplied = false
-        @Published var startDate: Date?
-        @Published var endDate: Date?
+        @Published var startDate = LocalStorage.defaultDate
+        @Published var endDate = LocalStorage.defaultEndDate
 
         @Published var showDetailMedia = false
         @Published var detailMediaToShow: SavedMedia? {
@@ -45,12 +45,7 @@ extension SavedMediaView {
                     searchText.isEmpty ? true : $0.detail.name.contains(searchText)
                 }
                 .filter {
-                    if let date = $0.detail.date,
-                       let startDate,
-                       let endDate {
-                        return date > startDate && date < endDate
-                    }
-                    return true
+                    $0.detail.date > startDate && $0.detail.date < endDate
                 }
         }
     }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FiltersView: View {
+struct FiltersView: View {    
     @Environment(\.dismiss) var dismiss
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
 
@@ -20,22 +20,22 @@ struct FiltersView: View {
     
     var gridSearchText: Binding<String>
     var filtersApplied: Binding<Bool>
-    var gridStartDate: Binding<Date?>
-    var gridEndDate: Binding<Date?>
+    var gridStartDate: Binding<Date>
+    var gridEndDate: Binding<Date>
 
     init(
         gridSearchText: Binding<String>,
         filtersApplied: Binding<Bool>,
-        startDate: Binding<Date?>,
-        endDate: Binding<Date?>
+        startDate: Binding<Date>,
+        endDate: Binding<Date>
     ) {
         self.searchText = gridSearchText.wrappedValue
         self.gridSearchText = gridSearchText
         self.filtersApplied = filtersApplied
         self.gridStartDate = startDate
         self.gridEndDate = endDate
-        self.startDate = startDate.wrappedValue ?? Date(timeIntervalSince1970: -2208950000)
-        self.endDate = endDate.wrappedValue ?? Date.now
+        self.startDate = startDate.wrappedValue
+        self.endDate = endDate.wrappedValue
     }
 
     var body: some View {
@@ -126,8 +126,8 @@ struct FiltersView: View {
     
     func applyFilters(
         searchText: String = "",
-        startDate: Date? = nil,
-        endDate: Date? = nil
+        startDate: Date = LocalStorage.defaultDate,
+        endDate: Date = LocalStorage.defaultEndDate
     ) {
         gridSearchText.wrappedValue = searchText
         gridStartDate.wrappedValue = startDate
@@ -138,7 +138,7 @@ struct FiltersView: View {
     
     func updateApplied() {
         filtersApplied.wrappedValue = !gridSearchText.wrappedValue.isEmpty ||
-        gridStartDate.wrappedValue != nil ||
-        gridEndDate.wrappedValue != nil
+        gridStartDate.wrappedValue != LocalStorage.defaultDate ||
+        gridEndDate.wrappedValue != LocalStorage.defaultEndDate
     }
 }
