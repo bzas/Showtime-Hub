@@ -19,6 +19,24 @@ class LocalStorage {
         self.modelContext = modelContext
     }
     
+    static func buildFilterPredicate(
+        mediaType: MediaType,
+        savedType: SavedType,
+        searchText: String,
+        startDate: Date,
+        endDate: Date
+    ) -> Predicate<SavedMedia> {
+        let allMedia = MediaType.all.rawValue
+        let savedTypeString = savedType.rawValue
+        let mediaTypeString = mediaType.rawValue
+        return #Predicate<SavedMedia> {
+            $0._savedType == savedTypeString &&
+            (mediaTypeString == allMedia ? true : $0._type == mediaTypeString) &&
+            (searchText.isEmpty ? true : $0.detail.name.contains(searchText)) &&
+            $0.detail.date > startDate && $0.detail.date < endDate
+        }
+    }
+    
     func fetchItems() -> [SavedMedia] {
         do {
             return try modelContext.fetch(FetchDescriptor<SavedMedia>())

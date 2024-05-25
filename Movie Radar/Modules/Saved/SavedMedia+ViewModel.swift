@@ -13,40 +13,41 @@ extension SavedMediaView {
         var apiService: APIService
         var localStorage: LocalStorage
         @Published var selectedMediaType = MediaType.all
-        @Published var movieItems: [Media] = []
-        @Published var seriesItems: [Media] = []
+        @Published var selectedTab = 0
         @Published var showFilters = false
         @Published var searchText = ""
         @Published var filtersApplied = false
         @Published var startDate = LocalStorage.defaultDate
         @Published var endDate = LocalStorage.defaultEndDate
-
         @Published var showDetailMedia = false
         @Published var detailMediaToShow: SavedMedia? {
             didSet {
                 showDetailMedia.toggle()
             }
         }
+        
+        var currentSavedType: SavedType {
+            SavedType.allCases.enumerated().first { (index, savedType) in
+                index == selectedTab
+            }?.element ?? .favorites
+        }
 
-        init(apiService: APIService, modelContext: ModelContext) {
+        init(
+            apiService: APIService,
+            modelContext: ModelContext
+        ) {
             self.apiService = apiService
             self.localStorage = LocalStorage(modelContext: modelContext)
         }
         
-        func items(items: [SavedMedia], savedType: SavedType) -> [SavedMedia] {
-            items
-                .filter {
-                    selectedMediaType == .all ? true : $0.type == selectedMediaType
-                }
-                .filter {
-                    $0.savedType == savedType
-                }
-                .filter {
-                    searchText.isEmpty ? true : $0.detail.name.contains(searchText)
-                }
-                .filter {
-                    $0.detail.date > startDate && $0.detail.date < endDate
-                }
+        func filtersPredicate(savedType: SavedType) -> Predicate<SavedMedia>? {
+            LocalStorage.buildFilterPredicate(
+                mediaType: selectedMediaType,
+                savedType: savedType,
+                searchText: searchText,
+                startDate: startDate,
+                endDate: endDate
+            )
         }
     }
 }

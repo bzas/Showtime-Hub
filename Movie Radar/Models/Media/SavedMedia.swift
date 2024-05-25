@@ -12,8 +12,18 @@ import SwiftData
 class SavedMedia {
     @Attribute(.unique) var id: String = UUID().uuidString
 
-    var type: MediaType
-    var savedType: SavedType
+    var _type: String
+    @Transient var type: MediaType {
+        get { MediaType(rawValue: _type)! }
+        set { _type = newValue.rawValue }
+    }
+    
+    var _savedType: String
+    @Transient var savedType: SavedType {
+        get { SavedType(rawValue: _savedType)! }
+        set { _savedType = newValue.rawValue }
+    }
+    
     var detail: Media
     
     init(
@@ -21,8 +31,8 @@ class SavedMedia {
         savedType: SavedType,
         detail: Media
     ) {
-        self.type = type
-        self.savedType = savedType
+        self._type = type.rawValue
+        self._savedType = savedType.rawValue
         self.detail = detail
     }
 }

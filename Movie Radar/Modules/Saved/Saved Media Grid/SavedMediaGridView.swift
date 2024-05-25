@@ -9,11 +9,9 @@ import SwiftUI
 import SwiftData
 
 struct SavedMediaGridView: View {
-    @EnvironmentObject var viewModel: SavedMediaView.ViewModel
+    var viewModel: SavedMediaView.ViewModel
     
-    @Query(sort: [
-        SortDescriptor(\SavedMedia.detail.name)
-    ]) var mediaItems: [SavedMedia]
+    @Query var mediaItems: [SavedMedia]
     
     var type: SavedType
     let listColumns = [
@@ -22,11 +20,18 @@ struct SavedMediaGridView: View {
         GridItem(.flexible())
     ]
     
+    init(viewModel: SavedMediaView.ViewModel, type: SavedType) {
+        self.viewModel = viewModel
+        self.type = type
+        _mediaItems = Query(
+            filter: viewModel.filtersPredicate(savedType: type),
+            sort: \SavedMedia.detail.name
+        )
+    }
+    
     var body: some View {
-        let filteredItems = viewModel.items(items: mediaItems, savedType: type)
-        
         GeometryReader { proxy in
-            if filteredItems.isEmpty {
+            if mediaItems.isEmpty {
                 VStack {
                     Spacer()
                     Text("No items saved yet")
@@ -37,8 +42,11 @@ struct SavedMediaGridView: View {
             } else {
                 ScrollView {
                     LazyVGrid(columns: listColumns, spacing: 8) {
-                        ForEach(filteredItems, id: \.self) { media in
+                        ForEach(mediaItems, id: \.self) { media in
                             ListGridCellView(media: media.detail)
+                                .onAppear(perform: {
+                                    print(media.detail.date)
+                                })
                                 .onTapGesture {
                                     viewModel.detailMediaToShow = media
                                 }
@@ -57,8 +65,4 @@ struct SavedMediaGridView: View {
             }
         }
     }
-}
-
-#Preview {
-    SavedMediaGridView(type: .favorites)
 }

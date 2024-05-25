@@ -9,25 +9,19 @@ import SwiftUI
 import SwiftData
 
 struct SavedMediaItemCount: View {
-    @EnvironmentObject var viewModel: SavedMediaView.ViewModel
-    @Binding var selectedTab: Int
-
-    @Query(sort: [
-        SortDescriptor(\SavedMedia.detail.name)
-    ]) var mediaItems: [SavedMedia]
+    var viewModel: SavedMediaView.ViewModel
+    @Query var mediaItems: [SavedMedia]
     
-    var currentSavedType: SavedType {
-        SavedType.allCases.enumerated().first { (index, savedType) in
-            index == selectedTab
-        }?.element ?? .favorites
+    init(viewModel: SavedMediaView.ViewModel, selectedTab: Binding<Int>) {
+        self.viewModel = viewModel
+        _mediaItems = Query(
+            filter: viewModel.filtersPredicate(savedType: viewModel.currentSavedType),
+            sort: \SavedMedia.detail.name
+        )
     }
 
     var body: some View {
-        let filteredCount = viewModel.items(
-            items: mediaItems,
-            savedType: currentSavedType
-        ).count
-        
+        let filteredCount = mediaItems.count
         let displayCount = filteredCount == 1 ? "\(filteredCount) item" : "\(filteredCount) items"
         Text(displayCount)
             .font(.system(size: 14, weight: .light))

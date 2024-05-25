@@ -10,15 +10,16 @@ import SwiftData
 
 struct SavedMediaView: View {
     @StateObject var viewModel: ViewModel
-    @State var selectedTab = 0
 
     var body: some View {
         ZStack {
-            TabView(selection: $selectedTab) {
+            TabView(selection: $viewModel.selectedTab) {
                 ForEach(Array(SavedType.allCases.enumerated()), id: \.1.self) { (index, savedType) in
-                    SavedMediaGridView(type: savedType)
-                        .environmentObject(viewModel)
-                        .tag(index)
+                    SavedMediaGridView(
+                        viewModel: viewModel,
+                        type: savedType
+                    )
+                    .tag(index)
                 }
             }
             .ignoresSafeArea()
@@ -27,12 +28,12 @@ struct SavedMediaView: View {
             VStack {
                 VStack(spacing: 0) {
                     TabViewHeader(
-                        selectedTab: $selectedTab,
+                        selectedTab: $viewModel.selectedTab,
                         titles: SavedType.allCases.map { $0.title }
                     )
                     .padding(.bottom, 4)
                     
-                    SavedMediaFiltersView(selectedTab: $selectedTab)
+                    SavedMediaFiltersView(selectedTab: $viewModel.selectedTab)
                         .environmentObject(viewModel)
                 }
                 .background(.ultraThinMaterial)

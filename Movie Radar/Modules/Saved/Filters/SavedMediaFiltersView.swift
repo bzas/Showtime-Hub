@@ -21,8 +21,10 @@ struct SavedMediaFiltersView: View {
             Spacer()
 
             HStack(spacing: 12) {
-                SavedMediaItemCount(selectedTab: $selectedTab)
-                    .environmentObject(viewModel)
+                SavedMediaItemCount(
+                    viewModel: viewModel,
+                    selectedTab: $selectedTab
+                )
                 
                 Button {
                     viewModel.showFilters.toggle()

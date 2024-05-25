@@ -35,6 +35,7 @@ class Media: Codable, Hashable {
     let seasons: [Season]?
     let seasonNumber: Int?
     let episodeNumber: Int?
+    let date: Date
     private let releaseDate: String?
     private let airDate: String?
     private let voteAverage: Double?
@@ -45,13 +46,6 @@ class Media: Codable, Hashable {
 
     var dateString: String? {
         releaseDate ?? airDate
-    }
-    
-    var date: Date {
-        guard let dateString else { return Date() }
-        let formatter = DateFormatter()
-        formatter.dateFormat = "YYYY-MM-dd"
-        return formatter.date(from: dateString) ?? Date()
     }
     
     var hasInfo: Bool {
@@ -106,6 +100,7 @@ class Media: Codable, Hashable {
         case seasons
         case seasonNumber = "number_of_seasons"
         case episodeNumber = "number_of_episodes"
+        case date
     }
     
     convenience init(id: Int) {
@@ -127,7 +122,8 @@ class Media: Codable, Hashable {
             creators: nil,
             seasons: nil, 
             seasonNumber: nil,
-            episodeNumber: nil
+            episodeNumber: nil,
+            date: Date()
         )
     }
 
@@ -149,7 +145,8 @@ class Media: Codable, Hashable {
         creators: [Person]?,
         seasons: [Season]?, 
         seasonNumber: Int?,
-        episodeNumber: Int?
+        episodeNumber: Int?,
+        date: Date
     ) {
         self.backdropPath = backdropPath
         self.budget = budget
@@ -169,6 +166,7 @@ class Media: Codable, Hashable {
         self.seasons = seasons
         self.seasonNumber = seasonNumber
         self.episodeNumber = episodeNumber
+        self.date = date
     }
     
     required init(from decoder: Decoder) throws {
@@ -180,8 +178,6 @@ class Media: Codable, Hashable {
         self.overview = try? container?.decode(String.self, forKey: .overview)
         self.popularity = try? container?.decode(Double.self, forKey: .popularity)
         self.posterPath = try? container?.decode(String.self, forKey: .posterPath)
-        self.releaseDate = try? container?.decode(String.self, forKey: .releaseDate)
-        self.airDate = try? container?.decode(String.self, forKey: .airDate)
         self.revenue = try? container?.decode(Int.self, forKey: .revenue)
         self.runtime = try? container?.decode(Int.self, forKey: .runtime)
         self.voteAverage = try? container?.decode(Double.self, forKey: .voteAverage)
@@ -197,6 +193,20 @@ class Media: Codable, Hashable {
         self.seasons = try? container?.decode([Season].self, forKey: .seasons)
         self.seasonNumber = try? container?.decode(Int.self, forKey: .seasonNumber)
         self.episodeNumber = try? container?.decode(Int.self, forKey: .episodeNumber)
+        
+        let releaseDate = try? container?.decode(String.self, forKey: .releaseDate)
+        self.releaseDate = releaseDate
+        
+        let airDate = try? container?.decode(String.self, forKey: .airDate)
+        self.airDate = airDate
+        
+        if let dateString = releaseDate ?? airDate {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "YYYY-MM-dd"
+            self.date = formatter.date(from: dateString) ?? Date()
+        } else {
+            self.date = Date()
+        }
     }
     
     func encode(to encoder: Encoder) throws {
@@ -219,5 +229,6 @@ class Media: Codable, Hashable {
         try? container.encode(seasons, forKey: .seasons)
         try? container.encode(seasonNumber, forKey: .seasonNumber)
         try? container.encode(episodeNumber, forKey: .episodeNumber)
+        try? container.encode(date, forKey: .date)
     }
 }
