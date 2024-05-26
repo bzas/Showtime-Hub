@@ -36,7 +36,6 @@ struct MediaCarouselCellView: View {
                 )
             }
             .padding(.bottom, 66)
-            .padding(.top, 8)
             .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
                 content
                     .opacity(phase.isIdentity ? 1 : 0.6)

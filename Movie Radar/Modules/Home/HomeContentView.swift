@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeContentView: View {
+    var headerHeight: Binding<CGFloat>
     @StateObject var viewModel: ViewModel
 
     var body: some View {
@@ -22,7 +23,7 @@ struct HomeContentView: View {
                     GridView()
                         .environmentObject(viewModel)
                 }
-                .padding(.top, 25)
+                .padding(.vertical, headerHeight.wrappedValue)
             }
             .scrollIndicators(.hidden)
             .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
@@ -45,13 +46,4 @@ struct HomeContentView: View {
             }
         }
     }
-}
-
-#Preview {
-    HomeContentView(
-        viewModel: .init(
-            apiService: APIServiceMock(),
-            type: .movie
-        )
-    )
 }

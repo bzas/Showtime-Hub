@@ -10,6 +10,7 @@ import SwiftData
 
 struct SavedMediaView: View {
     @StateObject var viewModel: ViewModel
+    @State var headerHeight: CGFloat = 0
 
     var body: some View {
         ZStack {
@@ -17,7 +18,8 @@ struct SavedMediaView: View {
                 ForEach(Array(SavedType.allCases.enumerated()), id: \.1.self) { (index, savedType) in
                     SavedMediaGridView(
                         viewModel: viewModel,
-                        type: savedType
+                        type: savedType,
+                        headerHeight: $headerHeight
                     )
                     .tag(index)
                 }
@@ -37,11 +39,18 @@ struct SavedMediaView: View {
                         .environmentObject(viewModel)
                 }
                 .background(.ultraThinMaterial)
+                .background(
+                    GeometryReader { proxy in
+                        Color.clear
+                            .onAppear {
+                                headerHeight = proxy.size.height
+                            }
+                    }
+                )
 
                 Spacer()
             }
         }
-        .ignoresSafeArea(edges: .bottom)
         .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
             if let detailMediaToShow = viewModel.detailMediaToShow {
                 MediaDetailView(

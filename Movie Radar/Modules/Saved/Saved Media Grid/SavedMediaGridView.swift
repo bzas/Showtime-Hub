@@ -11,6 +11,7 @@ import SwiftData
 struct SavedMediaGridView: View {
     var viewModel: SavedMediaView.ViewModel
     
+    var headerHeight: Binding<CGFloat>
     @Query var mediaItems: [SavedMedia]
     
     var type: SavedType
@@ -20,9 +21,10 @@ struct SavedMediaGridView: View {
         GridItem(.flexible())
     ]
     
-    init(viewModel: SavedMediaView.ViewModel, type: SavedType) {
+    init(viewModel: SavedMediaView.ViewModel, type: SavedType, headerHeight: Binding<CGFloat>) {
         self.viewModel = viewModel
         self.type = type
+        self.headerHeight = headerHeight
         _mediaItems = Query(
             filter: viewModel.filtersPredicate(savedType: type),
             sort: \SavedMedia.detail.name
@@ -30,39 +32,33 @@ struct SavedMediaGridView: View {
     }
     
     var body: some View {
-        GeometryReader { proxy in
-            if mediaItems.isEmpty {
-                VStack {
-                    Spacer()
-                    Text("No items saved yet")
-                        .foregroundStyle(.gray)
-                        .frame(maxWidth: .infinity)
-                    Spacer()
-                }
-            } else {
-                ScrollView {
-                    LazyVGrid(columns: listColumns, spacing: 8) {
-                        ForEach(mediaItems, id: \.self) { media in
-                            ListGridCellView(media: media.detail)
-                                .onAppear(perform: {
-                                    print(media.detail.date)
-                                })
-                                .onTapGesture {
-                                    viewModel.detailMediaToShow = media
-                                }
-                                .contextMenu {
-                                    MediaContextMenu(
-                                        media: media.detail,
-                                        mediaType: media.type
-                                    )
-                                }
-                        }
-                    }
-                    .padding(.top, 147)
-                }
-                .ignoresSafeArea()
-                .scrollIndicators(.hidden)
+        if mediaItems.isEmpty {
+            VStack {
+                Spacer()
+                Text("No items saved yet")
+                    .foregroundStyle(.gray)
+                    .frame(maxWidth: .infinity)
+                Spacer()
             }
+        } else {
+            ScrollView {
+                LazyVGrid(columns: listColumns, spacing: 8) {
+                    ForEach(mediaItems, id: \.self) { media in
+                        ListGridCellView(media: media.detail)
+                            .onTapGesture {
+                                viewModel.detailMediaToShow = media
+                            }
+                            .contextMenu {
+                                MediaContextMenu(
+                                    media: media.detail,
+                                    mediaType: media.type
+                                )
+                            }
+                    }
+                }
+                .padding(.vertical, headerHeight.wrappedValue)
+            }
+            .scrollIndicators(.hidden)
         }
     }
 }

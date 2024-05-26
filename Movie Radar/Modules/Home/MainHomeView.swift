@@ -10,15 +10,24 @@ import SwiftUI
 struct MainHomeView: View {
     var apiService: APIService
     @State private var selectedTab = 0
+    @State var headerHeight: CGFloat = 0
     
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
-                HomeContentView(viewModel: .init(apiService: apiService, type: .movie))
-                    .tag(0)
-                HomeContentView(viewModel: .init(apiService: apiService, type: .tv))
-                    .tag(1)
+                HomeContentView(
+                    headerHeight: $headerHeight,
+                    viewModel: .init(apiService: apiService, type: .movie)
+                )
+                .tag(0)
+                
+                HomeContentView(
+                    headerHeight: $headerHeight,
+                    viewModel: .init(apiService: apiService, type: .tv)
+                )
+                .tag(1)
             }
+            .ignoresSafeArea()
             .tabViewStyle(.page)
             
             VStack {
@@ -27,10 +36,17 @@ struct MainHomeView: View {
                     titles: [MediaType.movie, MediaType.tv].map { $0.title }
                 )
                 .background(.ultraThinMaterial)
+                .background(
+                    GeometryReader { proxy in
+                        Color.clear
+                            .onAppear {
+                                headerHeight = proxy.size.height
+                            }
+                    }
+                )
                 Spacer()
             }
         }
-        .ignoresSafeArea(edges: .bottom)
     }
 }
 
