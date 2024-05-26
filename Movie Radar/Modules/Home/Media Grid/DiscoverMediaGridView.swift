@@ -6,9 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct DiscoverMediaGridView: View {
     @EnvironmentObject var viewModel: HomeContentView.ViewModel
+    @Query(sort: [
+        SortDescriptor(\SavedMedia.detail.name)
+    ]) var savedItems: [SavedMedia]
+    
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -35,7 +40,8 @@ struct DiscoverMediaGridView: View {
                         .contextMenu {
                             MediaContextMenu(
                                 media: media,
-                                mediaType: viewModel.type
+                                mediaType: viewModel.type, 
+                                mediaItems: savedItems
                             )
                         }
                 }

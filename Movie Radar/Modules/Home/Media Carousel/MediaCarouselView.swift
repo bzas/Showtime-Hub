@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MediaCarouselView: View {
     @EnvironmentObject var viewModel: HomeContentView.ViewModel
     let type: MediaCarouselType
+    
+    @Query(sort: [
+        SortDescriptor(\SavedMedia.detail.name)
+    ]) var savedItems: [SavedMedia]
 
     let rows = [
         GridItem(.flexible())
@@ -34,7 +39,8 @@ struct MediaCarouselView: View {
                             .contextMenu {
                                 MediaContextMenu(
                                     media: media,
-                                    mediaType: viewModel.type
+                                    mediaType: viewModel.type,
+                                    mediaItems: savedItems
                                 )
                             }
                     }
@@ -46,8 +52,4 @@ struct MediaCarouselView: View {
         .scrollIndicators(.hidden)
         .padding(.bottom)
     }
-}
-
-#Preview {
-    MediaCarouselView(type: .popular)
 }

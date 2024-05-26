@@ -11,6 +11,10 @@ import SwiftData
 struct SavedMediaGridView: View {
     var viewModel: SavedMediaView.ViewModel
     
+    @Query(sort: [
+        SortDescriptor(\SavedMedia.detail.name)
+    ]) var savedItems: [SavedMedia]
+    
     var headerHeight: Binding<CGFloat>
     @Query var mediaItems: [SavedMedia]
     
@@ -51,7 +55,8 @@ struct SavedMediaGridView: View {
                             .contextMenu {
                                 MediaContextMenu(
                                     media: media.detail,
-                                    mediaType: media.type
+                                    mediaType: media.type,
+                                    mediaItems: savedItems
                                 )
                             }
                     }
