@@ -23,11 +23,11 @@ struct MediaPickerItemView: View {
         Text(mediaType.title)
             .font(
                 .system(
-                    size: 14,
+                    size: 16,
                     weight: selectedMediaType == mediaType ? .semibold : .light
                 )
             )
-            .padding(.vertical, 8)
+            .padding(.vertical)
             .frame(maxWidth: .infinity)
             .border(appGradient.value)
             .foregroundStyle(selectedMediaType == mediaType ? .black : .white)

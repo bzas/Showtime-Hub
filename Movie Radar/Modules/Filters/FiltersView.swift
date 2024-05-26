@@ -8,41 +8,10 @@
 import SwiftUI
 
 struct FiltersView: View {    
+    @StateObject var viewModel: ViewModel
     @Environment(\.dismiss) var dismiss
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
-
-    @State var searchText: String
-    @State var startDate: Date
-    @State var endDate: Date
-    @State var selectedMediaType: MediaType
     @FocusState var searchFocused: Bool
-    
-    var dateFilterApplied = false
-    
-    var gridSearchText: Binding<String>
-    var filtersApplied: Binding<Bool>
-    var gridStartDate: Binding<Date>
-    var gridEndDate: Binding<Date>
-    var gridSelectedMediaType: Binding<MediaType>
-
-    init(
-        gridSearchText: Binding<String>,
-        filtersApplied: Binding<Bool>,
-        startDate: Binding<Date>,
-        endDate: Binding<Date>,
-        selectedMediaType: Binding<MediaType>
-    ) {
-        self.searchText = gridSearchText.wrappedValue
-        self.startDate = startDate.wrappedValue
-        self.endDate = endDate.wrappedValue
-        self.selectedMediaType = selectedMediaType.wrappedValue
-        
-        self.gridSearchText = gridSearchText
-        self.filtersApplied = filtersApplied
-        self.gridStartDate = startDate
-        self.gridEndDate = endDate
-        self.gridSelectedMediaType = selectedMediaType
-    }
 
     var body: some View {
         VStack {
@@ -50,7 +19,8 @@ struct FiltersView: View {
                 HeaderText(text: "Filters")
                 
                 Button {
-                    applyFilters()
+                    viewModel.applyFilters(reset: true)
+                    dismiss()
                 } label: {
                     Text("Reset")
                         .padding(8)
@@ -59,16 +29,12 @@ struct FiltersView: View {
                         .font(.system(size: 14))
                         .cornerRadius(10)
                 }
-                .disabled(!filtersApplied.wrappedValue)
-                .opacity(filtersApplied.wrappedValue ? 1 : 0)
+                .disabled(!viewModel.filtersApplied.wrappedValue)
+                .opacity(viewModel.filtersApplied.wrappedValue ? 1 : 0)
                 
                 Button {
-                    applyFilters(
-                        searchText: searchText,
-                        startDate: startDate,
-                        endDate: endDate,
-                        selectedMediaType: selectedMediaType
-                    )
+                    viewModel.applyFilters()
+                    dismiss()
                 } label: {
                     Text("Apply")
                         .font(.system(size: 14))
@@ -77,7 +43,7 @@ struct FiltersView: View {
             }
             
             VStack(spacing: 20) {
-                MediaPickerView(selectedMediaType: $selectedMediaType)
+                MediaPickerView(selectedMediaType: $viewModel.selectedMediaType)
                 
                 VStack(spacing: 6) {
                     HStack {
@@ -85,7 +51,7 @@ struct FiltersView: View {
                         Spacer()
                     }
                     
-                    TextField("Write any title...", text: $searchText)
+                    TextField("Write any title...", text: $viewModel.searchText)
                         .padding(10)
                         .background(UIColor.systemGray5.color)
                         .cornerRadius(10)
@@ -103,7 +69,7 @@ struct FiltersView: View {
                     
                     HStack(spacing: 6) {
                         DatePicker(
-                            selection: $startDate,
+                            selection: $viewModel.startDate,
                             in: ...Date.now,
                             displayedComponents: .date
                         ) {}
@@ -114,7 +80,7 @@ struct FiltersView: View {
                             .font(.system(size: 14))
                         
                         DatePicker(
-                            selection: $endDate,
+                            selection: $viewModel.endDate,
                             in: ...Date.now,
                             displayedComponents: .date
                         ) {}
@@ -131,26 +97,5 @@ struct FiltersView: View {
         }
         .padding()
         .presentationDetents([.medium])
-    }
-    
-    func applyFilters(
-        searchText: String = "",
-        startDate: Date = LocalStorage.defaultDate,
-        endDate: Date = LocalStorage.defaultEndDate,
-        selectedMediaType: MediaType = .all
-    ) {
-        gridSearchText.wrappedValue = searchText
-        gridStartDate.wrappedValue = startDate
-        gridEndDate.wrappedValue = endDate
-        gridSelectedMediaType.wrappedValue = selectedMediaType
-        updateApplied()
-        dismiss()
-    }
-    
-    func updateApplied() {
-        filtersApplied.wrappedValue = !gridSearchText.wrappedValue.isEmpty ||
-        gridStartDate.wrappedValue != LocalStorage.defaultDate ||
-        gridEndDate.wrappedValue != LocalStorage.defaultEndDate ||
-        gridSelectedMediaType.wrappedValue != .all
     }
 }

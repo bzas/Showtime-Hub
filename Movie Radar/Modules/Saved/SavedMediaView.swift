@@ -79,11 +79,13 @@ struct SavedMediaView: View {
         }
         .sheet(isPresented: $viewModel.showFilters) {
             FiltersView(
-                gridSearchText: $viewModel.searchText,
-                filtersApplied: $viewModel.filtersApplied,
-                startDate: $viewModel.startDate,
-                endDate: $viewModel.endDate,
-                selectedMediaType: $viewModel.selectedMediaType
+                viewModel: .init(
+                    gridSearchText: $viewModel.searchText,
+                    filtersApplied: $viewModel.filtersApplied,
+                    startDate: $viewModel.startDate,
+                    endDate: $viewModel.endDate,
+                    selectedMediaType: $viewModel.selectedMediaType
+                )
             )
         }
     }
