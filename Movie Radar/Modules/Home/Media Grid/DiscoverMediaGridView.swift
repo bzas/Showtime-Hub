@@ -17,11 +17,13 @@ struct DiscoverMediaGridView: View {
     var body: some View {
         if viewModel.gridItems.isEmpty {
             VStack {
-                Text("No items were found")
+                Text(viewModel.isLoading ? "Loading..." : "No items were found")
                     .foregroundStyle(.gray)
                     .padding()
+                    .padding(.vertical)
                 Spacer()
             }
+            .frame(height: 500)
         } else {
             LazyVGrid(columns: columns, spacing: 8) {
                 ForEach(viewModel.gridItems, id: \.self) { media in

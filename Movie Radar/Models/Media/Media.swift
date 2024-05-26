@@ -47,10 +47,6 @@ class Media: Codable, Hashable {
     var dateString: String? {
         releaseDate ?? airDate
     }
-    
-    var hasInfo: Bool {
-        backdropPath != nil && overview != nil
-    }
 
     var posterImageUrl: URL? {
         guard let backdropPath else { return nil }

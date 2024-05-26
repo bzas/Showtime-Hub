@@ -14,26 +14,20 @@ struct GridView: View {
         VStack {
             HStack {
                 Spacer()
-
                 VStack {
                     Spacer()
                     SortSelectorView()
                         .environmentObject(viewModel)
                 }
             }
-            .id("HomeHeader")
 
             SearchBar()
 
             GenreSelectorView()
                 .environmentObject(viewModel)
 
-            if !viewModel.discoverList.results.isEmpty {
-                DiscoverMediaGridView()
-                    .environmentObject(viewModel)
-            } else {
-                GridPlaceholderView()
-            }
+            DiscoverMediaGridView()
+                .environmentObject(viewModel)
         }
         .padding(.horizontal, 6)
         .padding(.bottom, 48)

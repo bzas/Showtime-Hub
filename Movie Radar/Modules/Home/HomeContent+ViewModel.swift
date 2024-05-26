@@ -11,6 +11,8 @@ extension HomeContentView {
     class ViewModel: ObservableObject {
         var apiService: APIService
         var type: MediaType
+        
+        @Published var isLoading = true
 
         @Published var upcomingList = MediaList()
         @Published var searchList = MediaList()
@@ -69,6 +71,9 @@ extension HomeContentView {
         }
 
         func refreshGrid() {
+            Task {
+                await updateLoading(true)
+            }
             discoverList = MediaList()
             Task {
                 await getDiscoverContent()
@@ -92,6 +97,7 @@ extension HomeContentView {
         }
 
         func getDiscoverContent() async {
+            await updateLoading(true)
             if let mediaList = await apiService.discoverMedia(
                 type: type,
                 genreId: selectedGenre?.id,
@@ -101,14 +107,17 @@ extension HomeContentView {
                 await MainActor.run {
                     discoverList.append(mediaList)
                 }
+                await updateLoading(false)
             }
         }
 
         func searchMedia() async {
+            await updateLoading(true)
             guard !searchText.isEmpty else {
                 await MainActor.run {
                     searchList = MediaList()
                 }
+                await updateLoading(false)
                 return
             }
 
@@ -119,6 +128,7 @@ extension HomeContentView {
                 await MainActor.run {
                     searchList = movieList
                 }
+                await updateLoading(false)
             }
         }
 
@@ -129,10 +139,7 @@ extension HomeContentView {
                 selectedGenre = genre
             }
 
-            discoverList = MediaList()
-            Task {
-                await getDiscoverContent()
-            }
+            refreshGrid()
         }
 
         func isSelected(genre: Genre) -> Bool {
@@ -150,6 +157,12 @@ extension HomeContentView {
 
         func updateVisibility(isEditingSearch: Bool) {
             isSearching = isEditingSearch || !searchText.isEmpty
+        }
+        
+        func updateLoading(_ value: Bool) async {
+            await MainActor.run {
+                isLoading = value
+            }
         }
     }
 }
