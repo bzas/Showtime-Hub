@@ -9,11 +9,13 @@ import SwiftUI
 import SwiftData
 
 struct MediaContextMenu: View {
-    @Environment(\.modelContext) var modelContext
-
     let media: Media
     let mediaType: MediaType
-    let mediaItems: [SavedMedia]
+    
+    @Environment(\.modelContext) var modelContext
+    @Query(sort: [
+        SortDescriptor(\SavedMedia.detail.name)
+    ]) var mediaItems: [SavedMedia]
     
     var body: some View {
         ForEach(SavedType.allCases, id: \.self) { savedType in
