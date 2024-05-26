@@ -32,6 +32,7 @@ struct SearchBar: View {
                             Spacer()
                             Button {
                                 viewModel.searchText = ""
+                                viewModel.updateVisibility(isEditingSearch: isEditing)
                             } label: {
                                 Image(systemName: "xmark.circle.fill")
                                     .frame(width: 35, height: 35)

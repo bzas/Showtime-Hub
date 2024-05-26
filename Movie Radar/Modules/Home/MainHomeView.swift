@@ -33,8 +33,10 @@ struct MainHomeView: View {
             VStack {
                 TabViewHeader(
                     selectedTab: $selectedTab,
+                    headerType: .home,
                     titles: [MediaType.movie, MediaType.tv].map { $0.title }
                 )
+                .padding(.vertical, 5)
                 .background(.ultraThinMaterial)
                 .background(
                     GeometryReader { proxy in

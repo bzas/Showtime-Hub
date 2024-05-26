@@ -7,14 +7,28 @@
 
 import SwiftUI
 
+enum HeaderType {
+    case home, saved
+    
+    var spacing: CGFloat {
+        switch self {
+        case .home:
+            12
+        case .saved:
+            0
+        }
+    }
+}
+
 struct TabViewHeader: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @Binding var selectedTab: Int
+    var headerType: HeaderType
     
     var titles: [String]
     
     var body: some View {
-        HStack {
+        HStack(spacing: headerType.spacing) {
             ForEach(Array(titles.enumerated()), id: \.1.self) { (index, title) in
                 Button {
                     selectedTab = index
@@ -37,6 +51,10 @@ struct TabViewHeader: View {
                         }
                     }
                 }
+            }
+            
+            if headerType == .saved {
+                Spacer()
             }
         }
         .sensoryFeedback(.success, trigger: selectedTab)

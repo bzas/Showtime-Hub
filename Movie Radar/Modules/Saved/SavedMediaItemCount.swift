@@ -12,7 +12,7 @@ struct SavedMediaItemCount: View {
     var viewModel: SavedMediaView.ViewModel
     @Query var mediaItems: [SavedMedia]
     
-    init(viewModel: SavedMediaView.ViewModel, selectedTab: Binding<Int>) {
+    init(viewModel: SavedMediaView.ViewModel) {
         self.viewModel = viewModel
         _mediaItems = Query(
             filter: viewModel.filtersPredicate(savedType: viewModel.currentSavedType),

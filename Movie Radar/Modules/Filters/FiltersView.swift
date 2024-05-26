@@ -14,6 +14,7 @@ struct FiltersView: View {
     @State var searchText: String
     @State var startDate: Date
     @State var endDate: Date
+    @State var selectedMediaType: MediaType
     @FocusState var searchFocused: Bool
     
     var dateFilterApplied = false
@@ -22,20 +23,25 @@ struct FiltersView: View {
     var filtersApplied: Binding<Bool>
     var gridStartDate: Binding<Date>
     var gridEndDate: Binding<Date>
+    var gridSelectedMediaType: Binding<MediaType>
 
     init(
         gridSearchText: Binding<String>,
         filtersApplied: Binding<Bool>,
         startDate: Binding<Date>,
-        endDate: Binding<Date>
+        endDate: Binding<Date>,
+        selectedMediaType: Binding<MediaType>
     ) {
         self.searchText = gridSearchText.wrappedValue
+        self.startDate = startDate.wrappedValue
+        self.endDate = endDate.wrappedValue
+        self.selectedMediaType = selectedMediaType.wrappedValue
+        
         self.gridSearchText = gridSearchText
         self.filtersApplied = filtersApplied
         self.gridStartDate = startDate
         self.gridEndDate = endDate
-        self.startDate = startDate.wrappedValue
-        self.endDate = endDate.wrappedValue
+        self.gridSelectedMediaType = selectedMediaType
     }
 
     var body: some View {
@@ -60,7 +66,8 @@ struct FiltersView: View {
                     applyFilters(
                         searchText: searchText,
                         startDate: startDate,
-                        endDate: endDate
+                        endDate: endDate,
+                        selectedMediaType: selectedMediaType
                     )
                 } label: {
                     Text("Apply")
@@ -70,6 +77,8 @@ struct FiltersView: View {
             }
             
             VStack(spacing: 20) {
+                MediaPickerView(selectedMediaType: $selectedMediaType)
+                
                 VStack(spacing: 6) {
                     HStack {
                         Text("Search keyword")
@@ -85,7 +94,6 @@ struct FiltersView: View {
                             searchFocused = true
                         }
                 }
-                .padding(.top)
                 
                 VStack(spacing: 6) {
                     HStack {
@@ -117,6 +125,7 @@ struct FiltersView: View {
                     }
                 }
             }
+            .padding(.top)
 
             Spacer()
         }
@@ -127,11 +136,13 @@ struct FiltersView: View {
     func applyFilters(
         searchText: String = "",
         startDate: Date = LocalStorage.defaultDate,
-        endDate: Date = LocalStorage.defaultEndDate
+        endDate: Date = LocalStorage.defaultEndDate,
+        selectedMediaType: MediaType = .all
     ) {
         gridSearchText.wrappedValue = searchText
         gridStartDate.wrappedValue = startDate
         gridEndDate.wrappedValue = endDate
+        gridSelectedMediaType.wrappedValue = selectedMediaType
         updateApplied()
         dismiss()
     }
@@ -139,6 +150,7 @@ struct FiltersView: View {
     func updateApplied() {
         filtersApplied.wrappedValue = !gridSearchText.wrappedValue.isEmpty ||
         gridStartDate.wrappedValue != LocalStorage.defaultDate ||
-        gridEndDate.wrappedValue != LocalStorage.defaultEndDate
+        gridEndDate.wrappedValue != LocalStorage.defaultEndDate ||
+        gridSelectedMediaType.wrappedValue != .all
     }
 }

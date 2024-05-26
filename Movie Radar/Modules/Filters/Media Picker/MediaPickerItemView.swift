@@ -21,16 +21,19 @@ struct MediaPickerItemView: View {
     
     var body: some View {
         Text(mediaType.title)
-            .font(.system(size: 14, weight: .light))
-            .padding(6)
-            .padding(.horizontal, 6)
+            .font(
+                .system(
+                    size: 14,
+                    weight: selectedMediaType == mediaType ? .semibold : .light
+                )
+            )
+            .padding(.vertical, 8)
+            .frame(maxWidth: .infinity)
             .border(appGradient.value)
             .foregroundStyle(selectedMediaType == mediaType ? .black : .white)
             .background(selectedMediaType == mediaType ? appGradient.value : clearGradient)
             .onTapGesture {
-                withAnimation {
-                    selectedMediaType = mediaType
-                }
+                selectedMediaType = mediaType
             }
             .sensoryFeedback(
                 .impact(flexibility: .soft, intensity: 1),

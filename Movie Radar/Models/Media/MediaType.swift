@@ -8,7 +8,7 @@
 import Foundation
 
 enum MediaType: String, Codable, CaseIterable {
-    case movie, tv, all
+    case all, movie, tv
 
     var isMovie: Bool {
         self == .movie

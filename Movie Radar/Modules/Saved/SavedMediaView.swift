@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct SavedMediaView: View {
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @StateObject var viewModel: ViewModel
     @State var headerHeight: CGFloat = 0
 
@@ -28,16 +29,30 @@ struct SavedMediaView: View {
             .tabViewStyle(.page(indexDisplayMode: .never))
             
             VStack {
-                VStack(spacing: 0) {
+                HStack(spacing: 0) {
                     TabViewHeader(
                         selectedTab: $viewModel.selectedTab,
+                        headerType: .saved, 
                         titles: SavedType.allCases.map { $0.title }
                     )
-                    .padding(.bottom, 4)
                     
-                    SavedMediaFiltersView(selectedTab: $viewModel.selectedTab)
-                        .environmentObject(viewModel)
+                    HStack(spacing: 12) {
+                        SavedMediaItemCount(viewModel: viewModel)
+                        
+                        Button {
+                            viewModel.showFilters.toggle()
+                        } label: {
+                            Image(systemName: viewModel.filtersApplied ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundStyle(appGradient.value)
+                                .frame(width: 20, height: 20)
+                        }
+                    }
+                    .padding(.bottom, 8)
                 }
+                .padding(.vertical, 5)
+                .padding(.horizontal)
                 .background(.ultraThinMaterial)
                 .background(
                     GeometryReader { proxy in
@@ -67,7 +82,8 @@ struct SavedMediaView: View {
                 gridSearchText: $viewModel.searchText,
                 filtersApplied: $viewModel.filtersApplied,
                 startDate: $viewModel.startDate,
-                endDate: $viewModel.endDate
+                endDate: $viewModel.endDate,
+                selectedMediaType: $viewModel.selectedMediaType
             )
         }
     }
