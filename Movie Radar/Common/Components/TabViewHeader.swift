@@ -63,6 +63,5 @@ struct TabViewHeader: View {
             value: selectedTab
         )
         .frame(maxWidth: .infinity)
-        .padding(.bottom, 8)
     }
 }

@@ -49,9 +49,8 @@ struct SavedMediaView: View {
                                 .frame(width: 20, height: 20)
                         }
                     }
-                    .padding(.bottom, 8)
                 }
-                .padding(.vertical, 5)
+                .padding(.vertical, 10)
                 .padding(.horizontal)
                 .background(.ultraThinMaterial)
                 .background(

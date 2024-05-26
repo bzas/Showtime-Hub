@@ -24,7 +24,7 @@ struct SavedMediaItemCount: View {
         let filteredCount = mediaItems.count
         let displayCount = filteredCount == 1 ? "\(filteredCount) item" : "\(filteredCount) items"
         Text(displayCount)
-            .font(.system(size: 14, weight: .light))
+            .font(.system(size: 12, weight: .light))
             .animation(.smooth)
     }
 }

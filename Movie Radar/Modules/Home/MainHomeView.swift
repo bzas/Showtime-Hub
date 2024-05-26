@@ -36,7 +36,7 @@ struct MainHomeView: View {
                     headerType: .home,
                     titles: [MediaType.movie, MediaType.tv].map { $0.title }
                 )
-                .padding(.vertical, 5)
+                .padding(.vertical, 10)
                 .background(.ultraThinMaterial)
                 .background(
                     GeometryReader { proxy in
