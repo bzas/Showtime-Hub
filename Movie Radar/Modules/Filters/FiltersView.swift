@@ -42,12 +42,18 @@ struct FiltersView: View {
                 }
             }
             
-            VStack(spacing: 20) {
-                MediaPickerView(selectedMediaType: $viewModel.selectedMediaType)
-                
+            VStack(spacing: 25) {
+                Picker("", selection: $viewModel.selectedMediaType) {
+                    ForEach(MediaType.allCases, id: \.self) { mediaType in
+                        Text(mediaType.title)
+                    }
+                }
+                .pickerStyle(.segmented)
+                                
                 VStack(spacing: 6) {
                     HStack {
                         Text("Search keyword")
+                            .font(.system(size: 14))
                         Spacer()
                     }
                     
@@ -64,6 +70,7 @@ struct FiltersView: View {
                 VStack(spacing: 6) {
                     HStack {
                         Text("Released between")
+                            .font(.system(size: 14))
                         Spacer()
                     }
                     

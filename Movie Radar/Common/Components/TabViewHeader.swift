@@ -9,15 +9,6 @@ import SwiftUI
 
 enum HeaderType {
     case home, saved
-    
-    var spacing: CGFloat {
-        switch self {
-        case .home:
-            12
-        case .saved:
-            0
-        }
-    }
 }
 
 struct TabViewHeader: View {
@@ -28,7 +19,7 @@ struct TabViewHeader: View {
     var titles: [String]
     
     var body: some View {
-        HStack(spacing: headerType.spacing) {
+        HStack(spacing: 10) {
             ForEach(Array(titles.enumerated()), id: \.1.self) { (index, title) in
                 Button {
                     selectedTab = index
