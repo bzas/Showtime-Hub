@@ -40,20 +40,3 @@ struct MainTabView: View {
         .tint(.white)
     }
 }
-
-#Preview {
-    MainTabView()
-}
-
-private extension View {
-    func customizeTabItem(name: String, imageName: String) -> some View {
-        toolbarBackground(.visible, for: .tabBar)
-            .toolbarBackground(.ultraThinMaterial, for: .tabBar)
-            .tabItem {
-                Label(
-                    name,
-                    systemImage: imageName
-                )
-            }
-    }
-}

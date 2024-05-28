@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension HomeContentView {
     class ViewModel: ObservableObject {
@@ -13,7 +14,13 @@ extension HomeContentView {
         var type: MediaType
         
         @Published var isLoading = true
-
+        @Published var showToast = false
+        @Published var toastInfo: ToastInfo? {
+            didSet {
+                showToast.toggle()
+            }
+        }
+        
         @Published var upcomingList = MediaList()
         @Published var searchList = MediaList()
         @Published var searchText = "" {
@@ -56,7 +63,10 @@ extension HomeContentView {
             return searchList.results
         }
 
-        init(apiService: APIService, type: MediaType) {
+        init(
+            apiService: APIService,
+            type: MediaType
+        ) {
             self.apiService = apiService
             self.type = type
             Task {

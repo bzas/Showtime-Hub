@@ -26,6 +26,13 @@ extension SavedMediaView {
             }
         }
         
+        @Published var showToast = false
+        @Published var toastInfo: ToastInfo? {
+            didSet {
+                showToast.toggle()
+            }
+        }
+        
         var currentSavedType: SavedType {
             SavedType.allCases.enumerated().first { (index, savedType) in
                 index == selectedTab

@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct SavedMediaGridView: View {
-    var viewModel: SavedMediaView.ViewModel
+    @State var viewModel: SavedMediaView.ViewModel
     
     var headerHeight: Binding<CGFloat>
     @Query var mediaItems: [SavedMedia]
@@ -51,7 +51,8 @@ struct SavedMediaGridView: View {
                             .contextMenu {
                                 MediaContextMenu(
                                     media: media.detail,
-                                    mediaType: media.type
+                                    mediaType: media.type, 
+                                    toastInfo: $viewModel.toastInfo
                                 )
                             }
                     }

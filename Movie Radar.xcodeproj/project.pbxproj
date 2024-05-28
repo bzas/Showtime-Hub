@@ -22,6 +22,8 @@
 		4846E8782BF8F14C00D7ADAB /* TabViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E8772BF8F14C00D7ADAB /* TabViewHeader.swift */; };
 		4846E87C2BF8F31200D7ADAB /* SavedMediaGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E87B2BF8F31200D7ADAB /* SavedMediaGridView.swift */; };
 		4846E8802BF8F4CE00D7ADAB /* SavedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E87F2BF8F4CE00D7ADAB /* SavedType.swift */; };
+		486AB34D2C06138500F80289 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 486AB34C2C06138500F80289 /* AlertToast */; };
+		486AB3512C062D8100F80289 /* ToastInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486AB3502C062D8100F80289 /* ToastInfo.swift */; };
 		488A644F2BFA409C00C5471A /* SaveMediaStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A644E2BFA409C00C5471A /* SaveMediaStackView.swift */; };
 		488A64522BFA40DB00C5471A /* SaveMediaButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A64512BFA40DB00C5471A /* SaveMediaButtonView.swift */; };
 		488CBB422BFA6C6A00512D39 /* SavedMediaItemCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488CBB412BFA6C6A00512D39 /* SavedMediaItemCount.swift */; };
@@ -149,6 +151,7 @@
 		4846E8772BF8F14C00D7ADAB /* TabViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeader.swift; sourceTree = "<group>"; };
 		4846E87B2BF8F31200D7ADAB /* SavedMediaGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMediaGridView.swift; sourceTree = "<group>"; };
 		4846E87F2BF8F4CE00D7ADAB /* SavedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedType.swift; sourceTree = "<group>"; };
+		486AB3502C062D8100F80289 /* ToastInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastInfo.swift; sourceTree = "<group>"; };
 		488A644E2BFA409C00C5471A /* SaveMediaStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMediaStackView.swift; sourceTree = "<group>"; };
 		488A64512BFA40DB00C5471A /* SaveMediaButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMediaButtonView.swift; sourceTree = "<group>"; };
 		488CBB412BFA6C6A00512D39 /* SavedMediaItemCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMediaItemCount.swift; sourceTree = "<group>"; };
@@ -251,6 +254,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				486AB34D2C06138500F80289 /* AlertToast in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +390,7 @@
 				48A309412BF5040700F1733C /* PlaceholderView.swift */,
 				4846E86A2BF7A31000D7ADAB /* MediaContextMenu.swift */,
 				4846E8772BF8F14C00D7ADAB /* TabViewHeader.swift */,
+				486AB3502C062D8100F80289 /* ToastInfo.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -739,6 +744,9 @@
 			dependencies = (
 			);
 			name = "Movie Radar";
+			packageProductDependencies = (
+				486AB34C2C06138500F80289 /* AlertToast */,
+			);
 			productName = "Movie Radar";
 			productReference = 48A3090F2BF503C900F1733C /* Movie Radar.app */;
 			productType = "com.apple.product-type.application";
@@ -811,6 +819,9 @@
 				Base,
 			);
 			mainGroup = 48A309062BF503C900F1733C;
+			packageReferences = (
+				486AB34B2C06138500F80289 /* XCRemoteSwiftPackageReference "AlertToast" */,
+			);
 			productRefGroup = 48A309102BF503C900F1733C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -855,6 +866,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4846E86B2BF7A31000D7ADAB /* MediaContextMenu.swift in Sources */,
+				486AB3512C062D8100F80289 /* ToastInfo.swift in Sources */,
 				48A309EC2BF5044400F1733C /* MovieGridSortType.swift in Sources */,
 				48A309A22BF5041900F1733C /* ImageDetail+ViewModel.swift in Sources */,
 				48A309EF2BF5044400F1733C /* Cast.swift in Sources */,
@@ -1290,6 +1302,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		486AB34B2C06138500F80289 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/elai950/AlertToast.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.3.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		486AB34C2C06138500F80289 /* AlertToast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 486AB34B2C06138500F80289 /* XCRemoteSwiftPackageReference "AlertToast" */;
+			productName = AlertToast;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 48A309072BF503C900F1733C /* Project object */;
 }

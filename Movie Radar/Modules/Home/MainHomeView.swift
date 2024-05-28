@@ -17,13 +17,19 @@ struct MainHomeView: View {
             TabView(selection: $selectedTab) {
                 HomeContentView(
                     headerHeight: $headerHeight,
-                    viewModel: .init(apiService: apiService, type: .movie)
+                    viewModel: .init(
+                        apiService: apiService,
+                        type: .movie
+                    )
                 )
                 .tag(0)
                 
                 HomeContentView(
                     headerHeight: $headerHeight,
-                    viewModel: .init(apiService: apiService, type: .tv)
+                    viewModel: .init(
+                        apiService: apiService,
+                        type: .tv
+                    )
                 )
                 .tag(1)
             }
@@ -50,8 +56,4 @@ struct MainHomeView: View {
             }
         }
     }
-}
-
-#Preview {
-    MainHomeView(apiService: APIServiceMock())
 }

@@ -34,7 +34,8 @@ struct MediaCarouselView: View {
                             .contextMenu {
                                 MediaContextMenu(
                                     media: media,
-                                    mediaType: viewModel.type
+                                    mediaType: viewModel.type,
+                                    toastInfo: $viewModel.toastInfo
                                 )
                             }
                     }

@@ -17,6 +17,8 @@ struct MediaContextMenu: View {
         SortDescriptor(\SavedMedia.detail.name)
     ]) var mediaItems: [SavedMedia]
     
+    @Binding var toastInfo: ToastInfo?
+    
     var body: some View {
         ForEach(SavedType.allCases, id: \.self) { savedType in
             Button(role: buttonRole(type: savedType)) {
@@ -35,10 +37,19 @@ struct MediaContextMenu: View {
     }
     
     func addOrRemove(type: SavedType) {
-        if isSaved(type: type) {
+        let isSaved = isSaved(type: type)
+        if isSaved {
             remove(savedType: type)
         } else {
             insert(savedType: type)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            toastInfo = .init(
+                text: isSaved ? "Removed" : "Added",
+                imageName: isSaved ? "trash.square" : "checkmark.square",
+                color: isSaved ? .red.opacity(0.5) : .green.opacity(0.5)
+            )
         }
     }
     

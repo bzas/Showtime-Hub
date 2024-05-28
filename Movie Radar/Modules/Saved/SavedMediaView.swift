@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import AlertToast
 
 struct SavedMediaView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
@@ -86,6 +87,19 @@ struct SavedMediaView: View {
                     selectedMediaType: $viewModel.selectedMediaType
                 )
             )
+        }
+        .toast(isPresenting: $viewModel.showToast, duration: 1) {
+            if let toastInfo = viewModel.toastInfo {
+                AlertToast(
+                    type: .systemImage(toastInfo.imageName, toastInfo.color),
+                    title: toastInfo.text
+                )
+            } else {
+                AlertToast(
+                    type: .error(.white),
+                    title: "An error occurred"
+                )
+            }
         }
     }
 }

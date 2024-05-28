@@ -25,7 +25,7 @@ struct DiscoverMediaGridView: View {
             }
             .frame(height: 500)
         } else {
-            LazyVGrid(columns: columns, spacing: 8) {
+            LazyVGrid(columns: columns, spacing: 8) {                
                 ForEach(viewModel.gridItems, id: \.self) { media in
                     GridCellView(media: media)
                         .onAppear {
@@ -37,7 +37,8 @@ struct DiscoverMediaGridView: View {
                         .contextMenu {
                             MediaContextMenu(
                                 media: media,
-                                mediaType: viewModel.type
+                                mediaType: viewModel.type,
+                                toastInfo: $viewModel.toastInfo
                             )
                         }
                 }
