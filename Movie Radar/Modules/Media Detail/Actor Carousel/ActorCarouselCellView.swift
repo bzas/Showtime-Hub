@@ -33,8 +33,12 @@ struct ActorCarouselCellView: View {
                     .lineLimit(2)
                 Spacer()
             }
-            .frame(height: 80)
+            .frame(height: 60)
             .frame(maxWidth: 90)
+        }
+        .scrollTransition(.animated.threshold(.visible(0.5))) { content, phase in
+            content
+                .scaleEffect(phase.isIdentity ? 1 : 0.5)
         }
     }
 }

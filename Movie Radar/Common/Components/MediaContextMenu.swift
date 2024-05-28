@@ -19,15 +19,19 @@ struct MediaContextMenu: View {
     
     var body: some View {
         ForEach(SavedType.allCases, id: \.self) { savedType in
-            Button {
+            Button(role: buttonRole(type: savedType)) {
                 addOrRemove(type: savedType)
             } label: {
-                HStack {
-                    Image(systemName: isSaved(type: savedType) ? savedType.fillImageName : savedType.imageName)
-                    Text(isSaved(type: savedType) ? savedType.removeActionName : savedType.addActionName)
-                }
+                Label(
+                    isSaved(type: savedType) ? savedType.removeActionName : savedType.addActionName,
+                    systemImage: isSaved(type: savedType) ? savedType.fillImageName : savedType.imageName
+                )
             }
         }
+    }
+    
+    func buttonRole(type: SavedType) -> ButtonRole? {
+        isSaved(type: type) ? .destructive : nil
     }
     
     func addOrRemove(type: SavedType) {

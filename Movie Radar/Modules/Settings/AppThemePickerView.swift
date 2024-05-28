@@ -42,6 +42,7 @@ struct AppThemePickerView: View {
             }
             .scrollIndicators(.hidden)
         }
+        .padding(.top, 4)
     }
 }
 

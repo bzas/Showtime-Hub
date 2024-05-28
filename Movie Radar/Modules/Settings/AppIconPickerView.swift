@@ -45,6 +45,7 @@ struct AppIconPickerView: View {
             }
             .scrollIndicators(.hidden)
         }
+        .padding(.top, 4)
     }
 }
 

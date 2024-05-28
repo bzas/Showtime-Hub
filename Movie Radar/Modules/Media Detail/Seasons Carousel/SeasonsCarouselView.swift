@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct SeasonsCarouselView: View {
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @EnvironmentObject var viewModel: MediaDetailView.ViewModel
     
     var body: some View {
         let seasons = Array((viewModel.media.seasons ?? []).enumerated())
         if !seasons.isEmpty {
             VStack {
-                HeaderText(text: "Seasons")
+                HStack {
+                    Text("Seasons")
+                        .foregroundStyle(appGradient.value)
+                        .font(.system(size: 20))
+                    Spacer()
+                }
                 
                 ScrollView(.horizontal) {
                     LazyHStack(spacing: 12) {
@@ -32,6 +38,7 @@ struct SeasonsCarouselView: View {
                 .scrollIndicators(.hidden)
                 .scrollTargetBehavior(.paging)
             }
+            .padding(.bottom)
         }
     }
 }

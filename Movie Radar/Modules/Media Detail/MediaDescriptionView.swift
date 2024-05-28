@@ -13,21 +13,27 @@ struct MediaDescriptionView: View {
     var body: some View {
         VStack(spacing: 12) {
             HStack {
+                if let voteAverage = viewModel.media.totalVoteAverage {
+                    HStack(spacing: 0) {
+                        Text(String(format: "%.1f", voteAverage))
+                            .font(.system(size: 25, weight: .semibold))
+                        Text(" / 10")
+                            .font(.system(size: 14))
+                    }
+                } else {
+                    Text("- / 10")
+                        .font(.system(size: 14))
+                }
+                
                 Image(systemName: "star.fill")
                     .resizable()
                     .frame(width: 10, height: 10)
                 
-                if let voteAverage = viewModel.media.totalVoteAverage {
-                    Text(String(format: "%.1f / 10", voteAverage))
-                } else {
-                    Text("- / 10")
-                }
-                
                 Text(String(format: "(%d votes)", viewModel.media.voteCount ?? 0))
                     .opacity(0.6)
+                    .font(.system(size: 14))
                 Spacer()
             }
-            .font(.system(size: 14))
             .foregroundStyle(.yellow)
             
             let budget = viewModel.media.budget ?? 0
