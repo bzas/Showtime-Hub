@@ -18,8 +18,8 @@ struct ListGridCellView: View {
                     .scaledToFill()
             } placeholder: {
                 PlaceholderView()
+                    .aspectRatio(0.6666666667, contentMode: .fill)
             }
-            .frame(height: 185)
             .clipped()
             
             LinearGradient(

@@ -16,10 +16,11 @@ struct GridCellView: View {
                 image
                     .resizable()
                     .scaledToFill()
+                    .clipped()
             } placeholder: {
                 PlaceholderView()
+                    .aspectRatio(0.6666666667, contentMode: .fill)
             }
-            .frame(height: 275)
             .clipped()
             
             LinearGradient(
