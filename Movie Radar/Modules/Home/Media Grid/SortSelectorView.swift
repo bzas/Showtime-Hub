@@ -62,7 +62,12 @@ struct SortSelectorView: View {
                     viewModel.movieSortType = type
                 }
             }, label: {
-                Text(type.title)
+                HStack {
+                    Text(type.title)
+                    if viewModel.movieSortType == type {
+                        Image(systemName: "checkmark")
+                    }
+                }
             })
         }
     }
@@ -75,7 +80,12 @@ struct SortSelectorView: View {
                     viewModel.seriesSortType = type
                 }
             }, label: {
-                Text(type.title)
+                HStack {
+                    Text(type.title)
+                    if viewModel.seriesSortType == type {
+                        Image(systemName: "checkmark")
+                    }
+                }
             })
         }
     }

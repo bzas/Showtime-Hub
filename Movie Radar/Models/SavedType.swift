@@ -13,11 +13,11 @@ enum SavedType: String, Codable, CaseIterable {
     var title: String {
         switch self {
         case .favorites:
-            "Favorites"
+            NSLocalizedString("Favorites", comment: "")
         case .viewed:
-            "Viewed"
+            NSLocalizedString("Viewed", comment: "")
         case .pending:
-            "Pending"
+            NSLocalizedString("Pending", comment: "")
         }
     }
     

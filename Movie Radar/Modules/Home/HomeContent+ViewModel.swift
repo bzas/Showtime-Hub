@@ -40,7 +40,7 @@ extension HomeContentView {
             }
         }
 
-        @Published var sortTitle: String = "Popularity"
+        @Published var sortTitle: String = MovieGridSortType.popularityDesc.title
         @Published var selectedGenre: Genre?
         @Published var movieSortType: MovieGridSortType = .popularityDesc {
             didSet {

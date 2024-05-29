@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct SavedMediaGridView: View {
-    @State var viewModel: SavedMediaView.ViewModel
+    @ObservedObject var viewModel: SavedMediaView.ViewModel
     
     var headerHeight: Binding<CGFloat>
     @Query var mediaItems: [SavedMedia]

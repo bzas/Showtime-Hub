@@ -16,7 +16,7 @@ struct FiltersView: View {
     var body: some View {
         VStack {
             HStack(spacing: 12) {
-                HeaderText(text: "Filters")
+                HeaderText(text: NSLocalizedString("Filters", comment: ""))
                 
                 Button {
                     viewModel.applyFilters(reset: true)

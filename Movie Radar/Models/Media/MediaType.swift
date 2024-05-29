@@ -17,11 +17,11 @@ enum MediaType: String, Codable, CaseIterable {
     var title: String {
         switch self {
         case .movie:
-            "Movies"
+            NSLocalizedString("Movies", comment: "")
         case .tv:
-            "Series"
+            NSLocalizedString("Series", comment: "")
         case .all:
-            "All"
+            NSLocalizedString("All", comment: "")
         }
     }
 }

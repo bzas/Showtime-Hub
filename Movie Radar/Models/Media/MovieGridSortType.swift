@@ -32,15 +32,15 @@ enum MovieGridSortType: CaseIterable {
     var title: String {
         switch self {
         case .popularityDesc:
-            "Popularity"
+            NSLocalizedString("Popularity", comment: "")
         case .name:
-            "Name"
+            NSLocalizedString("Name", comment: "")
         case .releaseDateDesc:
-            "Newest"
+            NSLocalizedString("Newest", comment: "")
         case .releaseDateAsc:
-            "Oldest"
+            NSLocalizedString("Oldest", comment: "")
         case .revenue:
-            "Revenue"
+            NSLocalizedString("Revenue", comment: "")
         }
     }
 }
