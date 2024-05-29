@@ -36,7 +36,7 @@ struct SeasonsCarouselView: View {
                     .scrollTargetLayout()
                 }
                 .scrollIndicators(.hidden)
-                .scrollTargetBehavior(.paging)
+                .scrollTargetBehavior(.viewAligned)
             }
             .padding(.bottom)
         }

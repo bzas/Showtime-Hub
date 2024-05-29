@@ -121,6 +121,16 @@
         }
       }
     },
+    "Discover" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descubrir"
+          }
+        }
+      }
+    },
     "Favorites" : {
       "localizations" : {
         "es" : {
@@ -296,17 +306,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lanzamiento"
-          }
-        }
-      }
-    },
-    "Release " : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lanzamiento"
+            "value" : "Lanzamiento "
           }
         }
       }
@@ -361,6 +361,16 @@
         }
       }
     },
+    "Saved" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardados"
+          }
+        }
+      }
+    },
     "Search keyword" : {
       "localizations" : {
         "es" : {
@@ -397,6 +407,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Series"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración"
           }
         }
       }

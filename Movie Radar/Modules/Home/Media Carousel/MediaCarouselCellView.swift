@@ -66,8 +66,8 @@ struct MediaCarouselCellView: View {
                             .shadow(radius: 2)
 
                     if let releaseDate = media.dateString {
-                        HStack(spacing: 0) {
-                            Text("Release ")
+                        HStack(spacing: 2) {
+                            Text("Release")
                                 .fontWeight(.bold)
                             Text(releaseDate)
                         }

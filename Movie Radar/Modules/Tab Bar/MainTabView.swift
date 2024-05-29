@@ -16,7 +16,7 @@ struct MainTabView: View {
         TabView {
             MainHomeView(apiService: apiService)
                 .customizeTabItem(
-                    name: "Home",
+                    name: NSLocalizedString("Discover", comment: ""),
                     imageName: "house"
                 )
 
@@ -27,13 +27,13 @@ struct MainTabView: View {
                 )
             )
             .customizeTabItem(
-                name: "Saved",
+                name: NSLocalizedString("Saved", comment: ""),
                 imageName: "archivebox"
             )
 
             SettingsView(viewModel: .init(apiService: apiService))
                 .customizeTabItem(
-                    name: "Settings",
+                    name: NSLocalizedString("Settings", comment: ""),
                     imageName: "gearshape"
                 )
         }

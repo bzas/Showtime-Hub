@@ -29,6 +29,7 @@ struct GenreSelectorView: View {
             .scrollIndicators(.hidden)
         }
         .padding(.horizontal, 2)
+        .padding(.bottom, 4)
         .disabled(viewModel.isSearching)
         .opacity(viewModel.isSearching ? 0.5 : 1)
         .sensoryFeedback(

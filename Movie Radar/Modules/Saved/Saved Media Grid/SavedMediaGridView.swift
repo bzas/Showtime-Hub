@@ -58,6 +58,7 @@ struct SavedMediaGridView: View {
                     }
                 }
                 .padding(.vertical, headerHeight.wrappedValue)
+                .padding(.top, 6)
             }
             .scrollIndicators(.hidden)
         }
