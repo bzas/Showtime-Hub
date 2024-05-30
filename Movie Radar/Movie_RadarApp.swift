@@ -10,11 +10,13 @@ import SwiftData
 
 @main
 struct Movie_RadarApp: App {
+    @StateObject var networkMonitor = NetworkMonitor()
     let container: ModelContainer
 
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .environmentObject(networkMonitor)
         }
         .modelContainer(container)
     }

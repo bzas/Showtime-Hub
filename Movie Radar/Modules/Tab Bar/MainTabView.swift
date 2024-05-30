@@ -8,35 +8,42 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     @Environment(\.modelContext) var modelContext
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     private var apiService = APIService()
 
     var body: some View {
-        TabView {
-            MainHomeView(apiService: apiService)
+        ZStack {
+            TabView {
+                MainHomeView(apiService: apiService)
+                    .customizeTabItem(
+                        name: NSLocalizedString("Discover", comment: ""),
+                        imageName: "house"
+                    )
+
+                SavedMediaView(
+                    viewModel: .init(
+                        apiService: apiService,
+                        modelContext: modelContext
+                    )
+                )
                 .customizeTabItem(
-                    name: NSLocalizedString("Discover", comment: ""),
-                    imageName: "house"
+                    name: NSLocalizedString("Saved", comment: ""),
+                    imageName: "archivebox"
                 )
 
-            SavedMediaView(
-                viewModel: .init(
-                    apiService: apiService,
-                    modelContext: modelContext
-                )
-            )
-            .customizeTabItem(
-                name: NSLocalizedString("Saved", comment: ""),
-                imageName: "archivebox"
-            )
-
-            SettingsView(viewModel: .init(apiService: apiService))
-                .customizeTabItem(
-                    name: NSLocalizedString("Settings", comment: ""),
-                    imageName: "gearshape"
-                )
+                SettingsView(viewModel: .init(apiService: apiService))
+                    .customizeTabItem(
+                        name: NSLocalizedString("Settings", comment: ""),
+                        imageName: "gearshape"
+                    )
+            }
+            .tint(.white)
+            
+            if networkMonitor.isDisconnected {
+                NoInternetPopUpView()
+            }
         }
-        .tint(.white)
     }
 }

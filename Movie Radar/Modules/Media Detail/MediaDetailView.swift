@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MediaDetailView: View {
+    @EnvironmentObject var networkMonitor: NetworkMonitor
     @StateObject var viewModel: ViewModel
 
     var body: some View {
@@ -44,7 +45,9 @@ struct MediaDetailView: View {
         .blur(radius: (viewModel.showDetailImage || viewModel.showDetailSeason || viewModel.showDetailReview) ? 10 : 0)
         .opacity((viewModel.showDetailImage || viewModel.showDetailSeason) ? 0.6 : 1)
         .overlay {
-            if viewModel.showDetailImage {
+            if networkMonitor.isDisconnected {
+                NoInternetPopUpView()
+            } else if viewModel.showDetailImage {
                 ImageDetailView(
                     viewModel: .init(
                         imageList: viewModel.imageList,

@@ -211,6 +211,16 @@
         }
       }
     },
+    "No internet connection" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sin conexión a internet"
+          }
+        }
+      }
+    },
     "No items saved yet" : {
       "localizations" : {
         "es" : {
@@ -267,6 +277,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Personalización"
+          }
+        }
+      }
+    },
+    "Please make sure you are connected to the internet for being able to use the app" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, asegúrese de estar conectado a internet para poder usar la app"
           }
         }
       }
