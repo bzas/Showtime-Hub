@@ -38,7 +38,14 @@ struct SavedMediaView: View {
                     )
                     
                     HStack(spacing: 12) {
-                        SavedMediaItemCount(viewModel: viewModel)
+                        Button {
+                            // TO DO
+                        } label: {
+                            Image(systemName: "books.vertical.circle")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 25, height: 25)
+                        }
                         
                         Button {
                             viewModel.showFilters.toggle()
@@ -46,10 +53,11 @@ struct SavedMediaView: View {
                             Image(systemName: viewModel.filtersApplied ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
                                 .resizable()
                                 .scaledToFit()
-                                .foregroundStyle(appGradient.value)
-                                .frame(width: 20, height: 20)
+                                .frame(width: 25, height: 25)
                         }
                     }
+                    .foregroundStyle(appGradient.value)
+                    .opacity(0.75)
                 }
                 .padding(.vertical, 10)
                 .padding(.horizontal)
