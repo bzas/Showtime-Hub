@@ -121,6 +121,9 @@
         }
       }
     },
+    "Default" : {
+
+    },
     "Discover" : {
       "localizations" : {
         "es" : {
@@ -191,6 +194,9 @@
         }
       }
     },
+    "My lists" : {
+
+    },
     "Name" : {
       "localizations" : {
         "es" : {
@@ -200,6 +206,9 @@
           }
         }
       }
+    },
+    "New" : {
+
     },
     "Newest" : {
       "localizations" : {
@@ -240,6 +249,9 @@
           }
         }
       }
+    },
+    "No lists created yet" : {
+
     },
     "No profile data" : {
       "localizations" : {

@@ -13,6 +13,9 @@ struct SavedMediaView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @StateObject var viewModel: ViewModel
     @State var headerHeight: CGFloat = 0
+    @Query(sort: [
+        SortDescriptor(\UserList.index)
+    ]) var userLists: [UserList]
 
     var body: some View {
         ZStack {
@@ -26,20 +29,21 @@ struct SavedMediaView: View {
                     .tag(index)
                 }
             }
-            .ignoresSafeArea()
             .tabViewStyle(.page(indexDisplayMode: .never))
-            
+
             VStack {
                 HStack(spacing: 0) {
                     TabViewHeader(
                         selectedTab: $viewModel.selectedTab,
                         headerType: .saved, 
-                        titles: SavedType.allCases.map { $0.title }
+                        titles: userLists.compactMap { $0.title }
                     )
                     
                     HStack(spacing: 12) {
                         Button {
-                            // TO DO
+                            withAnimation(.spring) {
+                                viewModel.showUserLists.toggle()
+                            }
                         } label: {
                             Image(systemName: "books.vertical.circle")
                                 .resizable()
@@ -72,6 +76,15 @@ struct SavedMediaView: View {
                 )
 
                 Spacer()
+            }
+        }
+        .blur(radius: viewModel.showUserLists ? 10 : 0)
+        .overlay {
+            if viewModel.showUserLists {
+                UserListsView(
+                    showDetail: $viewModel.showUserLists,
+                    selectedListIndex: $viewModel.selectedTab
+                )
             }
         }
         .fullScreenCover(isPresented: $viewModel.showDetailMedia) {

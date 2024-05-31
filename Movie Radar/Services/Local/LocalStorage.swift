@@ -12,7 +12,7 @@ class LocalStorage {
     static let defaultDate = Date(timeIntervalSince1970: -2208950000)
     static let defaultEndDate = Date()
     static let appGradientKey = "AppGradient"
-    
+
     var modelContext: ModelContext
 
     init(modelContext: ModelContext) {
