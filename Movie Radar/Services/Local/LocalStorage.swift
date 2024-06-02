@@ -66,4 +66,8 @@ class LocalStorage {
             modelContext.delete(itemToRemove)
         }
     }
+    
+    func insert(list: UserList) {
+        modelContext.insert(list)
+    }
 }

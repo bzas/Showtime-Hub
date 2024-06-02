@@ -15,9 +15,10 @@ enum SavedType: String, Codable, CaseIterable {
     var userList: UserList {
         UserList(
             title: title,
-            imageName: imageName,
+            imageName: fillImageName,
             index: index,
-            listType: .defaultList
+            listType: .defaultList,
+            colorInfo: ColorInfo(color: color)
         )
     }
     

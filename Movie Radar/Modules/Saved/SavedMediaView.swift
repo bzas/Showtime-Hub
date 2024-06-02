@@ -13,6 +13,7 @@ struct SavedMediaView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @StateObject var viewModel: ViewModel
     @State var headerHeight: CGFloat = 0
+    @Environment(\.modelContext) var modelContext
     @Query(sort: [
         SortDescriptor(\UserList.index)
     ]) var userLists: [UserList]
@@ -90,8 +91,11 @@ struct SavedMediaView: View {
         .overlay {
             if viewModel.showUserLists {
                 UserListsView(
-                    showDetail: $viewModel.showUserLists,
-                    selectedListIndex: $viewModel.selectedTab
+                    viewModel: .init(
+                        showDetail: $viewModel.showUserLists,
+                        selectedListIndex: $viewModel.selectedTab,
+                        modelContext: modelContext
+                    )
                 )
             }
         }

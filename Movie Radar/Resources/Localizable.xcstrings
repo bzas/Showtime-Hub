@@ -111,6 +111,9 @@
         }
       }
     },
+    "Color" : {
+
+    },
     "Contact us" : {
       "localizations" : {
         "es" : {
@@ -120,6 +123,12 @@
           }
         }
       }
+    },
+    "Create" : {
+
+    },
+    "Create a new list" : {
+
     },
     "Default" : {
 
@@ -153,6 +162,9 @@
           }
         }
       }
+    },
+    "Icon" : {
+
     },
     "Images" : {
       "localizations" : {

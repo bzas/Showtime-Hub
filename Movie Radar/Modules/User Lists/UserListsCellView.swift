@@ -21,7 +21,8 @@ struct UserListsCellView: View {
                 Image(systemName: imageName)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 20, height: 20)
+                    .frame(maxWidth: 25, maxHeight: 25)
+                    .foregroundStyle(userList.colorInfo?.color ?? .white)
             }
         }
         .padding()
