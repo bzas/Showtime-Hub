@@ -42,6 +42,7 @@ struct MainHomeView: View {
                     headerType: .home,
                     titles: [MediaType.movie, MediaType.tv].map { $0.title }
                 )
+                .padding(.horizontal)
                 .padding(.vertical, 10)
                 .background(.ultraThinMaterial)
                 .background(

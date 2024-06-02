@@ -50,7 +50,7 @@ struct UserListsView: View {
                             .resizable()
                             .frame(width: 20, height: 20)
                             .foregroundStyle(.white)
-                            .padding()
+                            .padding(12)
                     })
                     Spacer()
                 }

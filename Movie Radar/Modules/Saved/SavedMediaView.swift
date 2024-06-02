@@ -32,10 +32,10 @@ struct SavedMediaView: View {
             .tabViewStyle(.page(indexDisplayMode: .never))
 
             VStack {
-                HStack(spacing: 0) {
+                HStack(spacing: 12) {
                     TabViewHeader(
                         selectedTab: $viewModel.selectedTab,
-                        headerType: .saved, 
+                        headerType: .saved,
                         titles: userLists.compactMap { $0.title }
                     )
                     
@@ -45,10 +45,18 @@ struct SavedMediaView: View {
                                 viewModel.showUserLists.toggle()
                             }
                         } label: {
-                            Image(systemName: "books.vertical.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 25, height: 25)
+                            Text("My lists")
+                                .font(.system(size: 12))
+                                .frame(height: 25)
+                                .padding(.horizontal, 8)
+                                .clipShape(Capsule())
+                                .background(
+                                    Capsule()
+                                        .stroke(
+                                            appGradient.value,
+                                            lineWidth: 2
+                                        )
+                                )
                         }
                         
                         Button {
