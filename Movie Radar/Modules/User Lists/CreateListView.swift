@@ -23,8 +23,11 @@ struct CreateListView: View {
                     Spacer()
                 }
                 VStack(spacing: 2) {
-                    TextField("Name", text: $viewModel.listName)
+                    TextField("", text: $viewModel.listName)
                         .focused($isEditing)
+                        .modifier(PlaceholderStyle(showPlaceHolder: viewModel.listName.isEmpty,
+                                                   placeholder: NSLocalizedString("Name", comment: "")))
+                    
                     Color.white.opacity(0.5)
                         .frame(height: 1)
                 }
@@ -62,6 +65,7 @@ struct CreateListView: View {
                     Spacer()
                     Button(action: {
                         withAnimation {
+                            isEditing = false
                             viewModel.tabIndex = 0
                         }
                     }, label: {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		48181E352C0CBCFF0067D5CB /* ColorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48181E342C0CBCFF0067D5CB /* ColorInfo.swift */; };
+		48181E372C0CD9940067D5CB /* PlaceholderStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48181E362C0CD9940067D5CB /* PlaceholderStyle.swift */; };
 		4823935B2C09AD9F00E7DB24 /* UserListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4823935A2C09AD9F00E7DB24 /* UserListsView.swift */; };
 		4823935D2C09AE3A00E7DB24 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4823935C2C09AE3A00E7DB24 /* UserList.swift */; };
 		4823935F2C09B67800E7DB24 /* UserListsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4823935E2C09B67800E7DB24 /* UserListsCellView.swift */; };
@@ -148,6 +149,7 @@
 
 /* Begin PBXFileReference section */
 		48181E342C0CBCFF0067D5CB /* ColorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInfo.swift; sourceTree = "<group>"; };
+		48181E362C0CD9940067D5CB /* PlaceholderStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderStyle.swift; sourceTree = "<group>"; };
 		4823935A2C09AD9F00E7DB24 /* UserListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListsView.swift; sourceTree = "<group>"; };
 		4823935C2C09AE3A00E7DB24 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
 		4823935E2C09B67800E7DB24 /* UserListsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListsCellView.swift; sourceTree = "<group>"; };
@@ -303,8 +305,8 @@
 				4823935A2C09AD9F00E7DB24 /* UserListsView.swift */,
 				48C544DB2C0C818D00AE6517 /* UserLists+ViewModel.swift */,
 				48C544D72C0C55D700AE6517 /* ListsView.swift */,
-				48C544D92C0C7EAB00AE6517 /* CreateListView.swift */,
 				4823935E2C09B67800E7DB24 /* UserListsCellView.swift */,
+				48C544D92C0C7EAB00AE6517 /* CreateListView.swift */,
 			);
 			path = "User Lists";
 			sourceTree = "<group>";
@@ -425,6 +427,7 @@
 				4846E86A2BF7A31000D7ADAB /* MediaContextMenu.swift */,
 				4846E8772BF8F14C00D7ADAB /* TabViewHeader.swift */,
 				486AB3502C062D8100F80289 /* ToastInfo.swift */,
+				48181E362C0CD9940067D5CB /* PlaceholderStyle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -964,6 +967,7 @@
 				48A309B02BF5041900F1733C /* MediaDescriptionView.swift in Sources */,
 				48A309BC2BF5041900F1733C /* AppIconPickerView.swift in Sources */,
 				48A309972BF5041900F1733C /* MediaCarouselView.swift in Sources */,
+				48181E372C0CD9940067D5CB /* PlaceholderStyle.swift in Sources */,
 				48A309C22BF5041900F1733C /* SettingsView.swift in Sources */,
 				4846E8742BF8C49700D7ADAB /* GenericCrew.swift in Sources */,
 				48A309E52BF5044400F1733C /* LocalStorage.swift in Sources */,
