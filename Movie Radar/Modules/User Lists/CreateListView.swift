@@ -11,7 +11,7 @@ import SwiftData
 
 struct CreateListView: View {
     @EnvironmentObject var viewModel: UserListsView.ViewModel
-    @Query var currenLists: [UserList]
+    @Query var currentLists: [UserList]
     @FocusState var isEditing: Bool
 
     var body: some View {
@@ -75,11 +75,12 @@ struct CreateListView: View {
                     })
                     Button(action: {
                         isEditing = false
-                        viewModel.createList(index: currenLists.count)
+                        viewModel.createList(currentLists: currentLists)
                         withAnimation {
                             viewModel.tabIndex = 0
                         }
-                    }, label: {
+                    },
+                           label: {
                         Text("Create")
                             .foregroundStyle(.black)
                             .padding()

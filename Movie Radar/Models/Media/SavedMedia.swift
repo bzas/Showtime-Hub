@@ -24,6 +24,7 @@ class SavedMedia {
         set { _savedType = newValue.rawValue }
     }
     
+    var userList: UserList?
     var detail: Media
     
     init(

@@ -21,16 +21,15 @@ class LocalStorage {
     
     static func buildFilterPredicate(
         mediaType: MediaType,
-        savedType: SavedType,
+        userList: UserList,
         searchText: String,
         startDate: Date,
         endDate: Date
     ) -> Predicate<SavedMedia> {
         let allMedia = MediaType.all.rawValue
-        let savedTypeString = savedType.rawValue
         let mediaTypeString = mediaType.rawValue
         return #Predicate<SavedMedia> {
-            $0._savedType == savedTypeString &&
+            ($0.userList?.id ?? "") == userList.id &&
             (mediaTypeString == allMedia ? true : $0._type == mediaTypeString) &&
             (searchText.isEmpty ? true : $0.detail.name.contains(searchText)) &&
             $0.detail.date > startDate && $0.detail.date < endDate

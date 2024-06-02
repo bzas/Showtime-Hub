@@ -10,7 +10,7 @@ import SwiftUI
 enum SavedType: String, Codable, CaseIterable {
     case favorites, viewed, pending
     
-    static let defaultList: [UserList] = Self.allCases.map { $0.userList }
+    static let defaultLists: [UserList] = Self.allCases.map { $0.userList }
     
     var userList: UserList {
         UserList(

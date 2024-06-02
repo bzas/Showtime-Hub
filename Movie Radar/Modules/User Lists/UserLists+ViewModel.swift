@@ -38,11 +38,15 @@ extension UserListsView {
             self.localStorage = LocalStorage(modelContext: modelContext)
         }
         
-        func createList(index: Int) {
+        func createList(currentLists: [UserList]) {
+            guard currentLists.contains(where: { $0.title == listName }) else { 
+                return
+            }
+            
             let userList = UserList(
                 title: listName,
                 imageName: listIcon,
-                index: index,
+                index: currentLists.count,
                 listType: .myLists,
                 colorInfo: .init(color: listColor)
             )

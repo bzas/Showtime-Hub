@@ -21,10 +21,10 @@ struct SavedMediaView: View {
     var body: some View {
         ZStack {
             TabView(selection: $viewModel.selectedTab) {
-                ForEach(Array(SavedType.allCases.enumerated()), id: \.1.self) { (index, savedType) in
+                ForEach(Array(userLists.enumerated()), id: \.1.self) { (index, userList) in
                     SavedMediaGridView(
                         viewModel: viewModel,
-                        type: savedType,
+                        userList: userList,
                         headerHeight: $headerHeight
                     )
                     .tag(index)

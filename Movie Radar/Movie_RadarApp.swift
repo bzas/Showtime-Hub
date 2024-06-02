@@ -28,10 +28,18 @@ struct Movie_RadarApp: App {
                 UserList.self
             )
             
-            let itemFetchDescriptor = FetchDescriptor<UserList>()
-            if try container.mainContext.fetch(itemFetchDescriptor).isEmpty {
-                SavedType.defaultList.forEach {
+            let listsFetchDescriptor = FetchDescriptor<UserList>()
+            let mediaFetchDescriptor = FetchDescriptor<SavedMedia>()
+            if try container.mainContext.fetch(listsFetchDescriptor).isEmpty {
+                SavedType.defaultLists.forEach {
                     container.mainContext.insert($0)
+                }
+                    
+                (try? container.mainContext.fetch(mediaFetchDescriptor))?.forEach {
+                    savedMedia in
+                    if let list = (try? container.mainContext.fetch(listsFetchDescriptor))?.first(where: { $0.index == savedMedia.savedType.index }) {
+                        savedMedia.userList = list
+                    }
                 }
             }
         } catch {
