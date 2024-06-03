@@ -39,7 +39,6 @@ struct MainHomeView: View {
             VStack {
                 TabViewHeader(
                     selectedTab: $selectedTab,
-                    headerType: .home,
                     titles: [MediaType.movie, MediaType.tv].map { $0.title }
                 )
                 .padding(.horizontal)

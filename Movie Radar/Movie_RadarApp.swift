@@ -37,7 +37,7 @@ struct Movie_RadarApp: App {
                     
                 (try? container.mainContext.fetch(mediaFetchDescriptor))?.forEach {
                     savedMedia in
-                    if let list = (try? container.mainContext.fetch(listsFetchDescriptor))?.first(where: { $0.index == savedMedia.savedType.index }) {
+                    if let list = (try? container.mainContext.fetch(listsFetchDescriptor))?.first(where: { $0.index == savedMedia.savedType?.index }) {
                         savedMedia.userList = list
                     }
                 }

@@ -51,6 +51,9 @@
         }
       }
     },
+    "Add to %@" : {
+
+    },
     "All" : {
       "localizations" : {
         "es" : {
@@ -364,6 +367,9 @@
           }
         }
       }
+    },
+    "Remove from %@" : {
+
     },
     "Reset" : {
       "localizations" : {

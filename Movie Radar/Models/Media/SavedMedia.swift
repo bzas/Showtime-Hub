@@ -18,10 +18,15 @@ class SavedMedia {
         set { _type = newValue.rawValue }
     }
     
-    var _savedType: String
-    @Transient var savedType: SavedType {
-        get { SavedType(rawValue: _savedType)! }
-        set { _savedType = newValue.rawValue }
+    var _savedType: String?
+    @Transient var savedType: SavedType? {
+        get {
+            if let _savedType {
+                return SavedType(rawValue: _savedType)
+            }
+            return nil
+        }
+        set { _savedType = newValue?.rawValue }
     }
     
     var userList: UserList?
@@ -29,11 +34,11 @@ class SavedMedia {
     
     init(
         type: MediaType,
-        savedType: SavedType,
+        userList: UserList,
         detail: Media
     ) {
         self._type = type.rawValue
-        self._savedType = savedType.rawValue
+        self.userList = userList
         self.detail = detail
     }
 }

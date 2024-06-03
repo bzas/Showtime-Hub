@@ -39,7 +39,7 @@ extension UserListsView {
         }
         
         func createList(currentLists: [UserList]) {
-            guard currentLists.contains(where: { $0.title == listName }) else { 
+            guard !currentLists.contains(where: { $0.title == listName }) else {
                 return
             }
             

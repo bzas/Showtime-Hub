@@ -34,11 +34,26 @@ struct SavedMediaView: View {
 
             VStack {
                 HStack(spacing: 12) {
-                    TabViewHeader(
-                        selectedTab: $viewModel.selectedTab,
-                        headerType: .saved,
-                        titles: userLists.compactMap { $0.title }
-                    )
+                    Menu {
+                        ForEach(userLists, id: \.self) { list in
+                            Button(action: {
+                                viewModel.selectedTab = list.index
+                            }, label: {
+                                Text(list.title ?? "")
+                            })
+                        }
+                    } label: {
+                        HStack {
+                            Text(userLists.first(where: { $0.index == viewModel.selectedTab })?.title ?? "")
+                                .font(.system(size: 25, weight: .light))
+                            Image(systemName: "chevron.down")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 10, height: 10)
+                        }
+                    }
+                    
+                    Spacer()
                     
                     HStack(spacing: 12) {
                         Button {
@@ -87,6 +102,7 @@ struct SavedMediaView: View {
                 Spacer()
             }
         }
+        .sensoryFeedback(.success, trigger: viewModel.selectedTab)
         .blur(radius: viewModel.showUserLists ? 10 : 0)
         .overlay {
             if viewModel.showUserLists {

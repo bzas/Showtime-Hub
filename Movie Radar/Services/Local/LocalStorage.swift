@@ -44,10 +44,10 @@ class LocalStorage {
         }
     }
     
-    func insert(media: Media, type: MediaType, savedType: SavedType) {
+    func insert(media: Media, type: MediaType, userList: UserList) {
         let savedMedia = SavedMedia(
             type: type,
-            savedType: savedType,
+            userList: userList,
             detail: media
         )
         modelContext.insert(savedMedia)
@@ -56,11 +56,11 @@ class LocalStorage {
     func delete(
         media: Media,
         mediaType: MediaType,
-        savedType: SavedType,
+        userList: UserList,
         list: [SavedMedia]
     ) {
         if let itemToRemove = list.first(where: {
-            $0.detail.id == media.id && $0.type == mediaType && $0.savedType == savedType
+            $0.detail.id == media.id && $0.type == mediaType && $0.userList == userList
         }) {
             modelContext.delete(itemToRemove)
         }

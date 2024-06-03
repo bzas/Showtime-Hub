@@ -53,8 +53,7 @@ struct MediaDetailHeaderView: View {
                 HStack {
                     SaveMediaStackView(
                         media: viewModel.media,
-                        mediaType: viewModel.type, 
-                        axis: .horizontal
+                        mediaType: viewModel.type
                     )
                     Spacer()
                 }

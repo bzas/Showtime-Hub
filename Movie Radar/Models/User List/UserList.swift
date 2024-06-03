@@ -22,6 +22,14 @@ class UserList: Codable {
         set { _listType = newValue.rawValue }
     }
     
+    var addActionText: String {
+        String(format: NSLocalizedString("Add to %@", comment: ""), title ?? "")
+    }
+    
+    var removeActionText: String {
+        String(format: NSLocalizedString("Remove from %@", comment: ""), title ?? "")
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id,
              title,
@@ -65,5 +73,9 @@ class UserList: Codable {
         try? container.encode(index, forKey: .index)
         try? container.encode(_listType, forKey: ._listType)
         try? container.encode(colorInfo, forKey: .colorInfo)
+    }
+    
+    func actionTitle(isSaved: Bool) -> String {
+        isSaved ? removeActionText : addActionText
     }
 }
