@@ -11,37 +11,84 @@ import SwiftData
 struct MediaContextMenu: View {
     let media: Media
     let mediaType: MediaType
-    
+    @Binding var toastInfo: ToastInfo?
+
     @Environment(\.modelContext) var modelContext
+    
     @Query(sort: [
         SortDescriptor(\SavedMedia.detail.name)
     ]) var mediaItems: [SavedMedia]
     
-    @Binding var toastInfo: ToastInfo?
+    @Query var defaultLists: [UserList]
+    @Query var userLists: [UserList]
+
+    init(media: Media, mediaType: MediaType, toastInfo: Binding<ToastInfo?>) {
+        self.media = media
+        self.mediaType = mediaType
+        self._toastInfo = toastInfo
+        
+        let defaultListTypeString = UserListType.defaultList.rawValue
+        _defaultLists = Query(
+            filter: #Predicate<UserList> {
+                $0._listType == defaultListTypeString
+            },
+            sort: [
+                SortDescriptor(\UserList.index)
+            ]
+        )
+        
+        let userListTypeString = UserListType.myLists.rawValue
+        _userLists = Query(
+            filter: #Predicate<UserList> {
+                $0._listType == userListTypeString
+            },
+            sort: [
+                SortDescriptor(\UserList.index)
+            ]
+        )
+    }
     
     var body: some View {
-        ForEach(SavedType.allCases, id: \.self) { savedType in
-            Button(role: buttonRole(type: savedType)) {
-                addOrRemove(type: savedType)
-            } label: {
+        ForEach(defaultLists, id: \.self) { userList in
+            menuButton(userList)
+        }
+        
+        Menu("My lists") {
+            ForEach(userLists, id: \.self) { userList in
+                menuButton(userList)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    func menuButton(_ userList: UserList) -> some View {
+        Button(role: buttonRole(userList: userList)) {
+            addOrRemove(userList: userList)
+        } label: {
+            if let associatedType = SavedType.allCases.first(where: { $0.index == userList.index }) {
                 Label(
-                    isSaved(type: savedType) ? savedType.removeActionName : savedType.addActionName,
-                    systemImage: isSaved(type: savedType) ? savedType.fillImageName : savedType.imageName
+                    isSaved(userList: userList) ? associatedType.removeActionName : associatedType.addActionName,
+                    systemImage: isSaved(userList: userList) ? associatedType.fillImageName : associatedType.imageName
+                )
+            } else {
+                Label(
+                    userList.actionTitle(isSaved: isSaved(userList: userList)),
+                    systemImage: userList.imageName ?? ""
                 )
             }
         }
     }
     
-    func buttonRole(type: SavedType) -> ButtonRole? {
-        isSaved(type: type) ? .destructive : nil
+    func buttonRole(userList: UserList) -> ButtonRole? {
+        isSaved(userList: userList) ? .destructive : nil
     }
     
-    func addOrRemove(type: SavedType) {
-        let isSaved = isSaved(type: type)
+    func addOrRemove(userList: UserList) {
+        let isSaved = isSaved(userList: userList)
         if isSaved {
-            remove(savedType: type)
+            remove(userList: userList)
         } else {
-            insert(savedType: type)
+            insert(userList: userList)
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
@@ -53,27 +100,27 @@ struct MediaContextMenu: View {
         }
     }
     
-    func isSaved(type: SavedType) -> Bool {
+    func isSaved(userList: UserList) -> Bool {
         mediaItems.contains {
-            $0.detail.id == media.id && $0.savedType == type
+            $0.detail.id == media.id && $0.userList == userList
         }
     }
     
-    func insert(savedType: SavedType) {
+    func insert(userList: UserList) {
         let storage = LocalStorage(modelContext: modelContext)
         storage.insert(
             media: media,
             type: mediaType,
-            savedType: savedType
+            userList: userList
         )
     }
     
-    func remove(savedType: SavedType) {
+    func remove(userList: UserList) {
         let storage = LocalStorage(modelContext: modelContext)
         storage.delete(
             media: media,
             mediaType: mediaType,
-            savedType: savedType,
+            userList: userList,
             list: mediaItems
         )
     }

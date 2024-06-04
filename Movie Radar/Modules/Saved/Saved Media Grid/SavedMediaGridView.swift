@@ -14,19 +14,23 @@ struct SavedMediaGridView: View {
     var headerHeight: Binding<CGFloat>
     @Query var mediaItems: [SavedMedia]
     
-    var type: SavedType
+    var userList: UserList
     let listColumns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
     
-    init(viewModel: SavedMediaView.ViewModel, type: SavedType, headerHeight: Binding<CGFloat>) {
+    init(
+        viewModel: SavedMediaView.ViewModel,
+        userList: UserList,
+        headerHeight: Binding<CGFloat>
+    ) {
         self.viewModel = viewModel
-        self.type = type
+        self.userList = userList
         self.headerHeight = headerHeight
         _mediaItems = Query(
-            filter: viewModel.filtersPredicate(savedType: type),
+            filter: viewModel.filtersPredicate(userList: userList),
             sort: \SavedMedia.detail.name
         )
     }

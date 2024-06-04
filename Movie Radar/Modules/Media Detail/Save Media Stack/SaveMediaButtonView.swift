@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SaveMediaButtonView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
-    var type: SavedType
+    var userList: UserList
     var isSaved: Bool
     
     var body: some View {
-        Image(systemName: type.fillImageName)
-            .foregroundStyle(isSaved ? type.color : .white)
+        Image(systemName: userList.imageName ?? "")
+            .foregroundStyle(isSaved ? userList.colorInfo?.color ?? .white : .white)
             .frame(width: 45, height: 45)
             .clipShape(RoundedRectangle(cornerRadius: 10))
             .background(
@@ -28,11 +28,4 @@ struct SaveMediaButtonView: View {
             )
             .shadow(radius: 1)
     }
-}
-
-#Preview {
-    SaveMediaButtonView(
-        type: .favorites,
-        isSaved: true
-    )
 }

@@ -13,32 +13,81 @@ struct SavedMediaView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @StateObject var viewModel: ViewModel
     @State var headerHeight: CGFloat = 0
+    @Environment(\.modelContext) var modelContext
+    @Query(sort: [
+        SortDescriptor(\UserList.index)
+    ]) var userLists: [UserList]
 
     var body: some View {
         ZStack {
             TabView(selection: $viewModel.selectedTab) {
-                ForEach(Array(SavedType.allCases.enumerated()), id: \.1.self) { (index, savedType) in
+                ForEach(Array(userLists.enumerated()), id: \.1.self) { (index, userList) in
                     SavedMediaGridView(
                         viewModel: viewModel,
-                        type: savedType,
+                        userList: userList,
                         headerHeight: $headerHeight
                     )
                     .tag(index)
                 }
             }
-            .ignoresSafeArea()
             .tabViewStyle(.page(indexDisplayMode: .never))
-            
+
             VStack {
-                HStack(spacing: 0) {
-                    TabViewHeader(
-                        selectedTab: $viewModel.selectedTab,
-                        headerType: .saved, 
-                        titles: SavedType.allCases.map { $0.title }
-                    )
+                HStack(spacing: 12) {
+                    Menu {
+                        ForEach(userLists, id: \.self) { list in
+                            Button(action: {
+                                viewModel.selectedTab = list.index
+                            }, label: {
+                                HStack {
+                                    Label(
+                                        list.title ?? "",
+                                        systemImage: list.imageName ?? ""
+                                    )
+                                }
+                            })
+                        }
+                    } label: {
+                        let list = userLists.enumerated().first { index, list in
+                            index == viewModel.selectedTab
+                        }?.element
+                        HStack {
+                            Image(systemName: list?.imageName ?? "")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundStyle(list?.colorInfo?.color ?? .white)
+                                .frame(width: 20, height: 20)
+                            Text(list?.title ?? "")
+                                .font(.system(size: 25, weight: .light))
+                                .lineLimit(1)
+                            Image(systemName: "chevron.down")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 10, height: 10)
+                            Spacer()
+                        }
+                        .frame(height: 30)
+                    }
                     
                     HStack(spacing: 12) {
-                        SavedMediaItemCount(viewModel: viewModel)
+                        Button {
+                            withAnimation(.spring) {
+                                viewModel.showUserLists.toggle()
+                            }
+                        } label: {
+                            Text("My lists")
+                                .font(.system(size: 12))
+                                .frame(height: 25)
+                                .padding(.horizontal, 8)
+                                .clipShape(Capsule())
+                                .background(
+                                    Capsule()
+                                        .stroke(
+                                            appGradient.value,
+                                            lineWidth: 2
+                                        )
+                                )
+                        }
                         
                         Button {
                             viewModel.showFilters.toggle()
@@ -46,11 +95,13 @@ struct SavedMediaView: View {
                             Image(systemName: viewModel.filtersApplied ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
                                 .resizable()
                                 .scaledToFit()
-                                .foregroundStyle(appGradient.value)
-                                .frame(width: 20, height: 20)
+                                .frame(width: 25, height: 25)
                         }
                     }
+                    .foregroundStyle(appGradient.value)
+                    .opacity(0.75)
                 }
+                .disabled(viewModel.showUserLists)
                 .padding(.vertical, 10)
                 .padding(.horizontal)
                 .background(.ultraThinMaterial)
@@ -64,6 +115,19 @@ struct SavedMediaView: View {
                 )
 
                 Spacer()
+            }
+        }
+        .sensoryFeedback(.success, trigger: viewModel.selectedTab)
+        .blur(radius: viewModel.showUserLists ? 10 : 0)
+        .overlay {
+            if viewModel.showUserLists {
+                UserListsView(
+                    viewModel: .init(
+                        showDetail: $viewModel.showUserLists,
+                        selectedListIndex: $viewModel.selectedTab,
+                        modelContext: modelContext
+                    )
+                )
             }
         }
         .fullScreenCover(isPresented: $viewModel.showDetailMedia) {

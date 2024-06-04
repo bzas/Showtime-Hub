@@ -23,7 +23,25 @@ struct Movie_RadarApp: App {
     
     init() {
         do {
-            container = try ModelContainer(for: SavedMedia.self)
+            container = try ModelContainer(
+                for: SavedMedia.self,
+                UserList.self
+            )
+            
+            let listsFetchDescriptor = FetchDescriptor<UserList>()
+            let mediaFetchDescriptor = FetchDescriptor<SavedMedia>()
+            if try container.mainContext.fetch(listsFetchDescriptor).isEmpty {
+                SavedType.defaultLists.forEach {
+                    container.mainContext.insert($0)
+                }
+                    
+                (try? container.mainContext.fetch(mediaFetchDescriptor))?.forEach {
+                    savedMedia in
+                    if let list = (try? container.mainContext.fetch(listsFetchDescriptor))?.first(where: { $0.index == savedMedia.savedType?.index }) {
+                        savedMedia.userList = list
+                    }
+                }
+            }
         } catch {
             fatalError("Failed to create ModelContainer")
         }

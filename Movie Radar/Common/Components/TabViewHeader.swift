@@ -7,14 +7,9 @@
 
 import SwiftUI
 
-enum HeaderType {
-    case home, saved
-}
-
 struct TabViewHeader: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @Binding var selectedTab: Int
-    var headerType: HeaderType
     
     var titles: [String]
     
@@ -42,10 +37,6 @@ struct TabViewHeader: View {
                         }
                     }
                 }
-            }
-            
-            if headerType == .saved {
-                Spacer()
             }
         }
         .sensoryFeedback(.success, trigger: selectedTab)

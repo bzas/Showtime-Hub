@@ -51,6 +51,16 @@
         }
       }
     },
+    "Add to %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir a %@"
+          }
+        }
+      }
+    },
     "All" : {
       "localizations" : {
         "es" : {
@@ -111,6 +121,16 @@
         }
       }
     },
+    "Color" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color"
+          }
+        }
+      }
+    },
     "Contact us" : {
       "localizations" : {
         "es" : {
@@ -121,12 +141,62 @@
         }
       }
     },
+    "Create" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cear"
+          }
+        }
+      }
+    },
+    "Create a new list" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear lista"
+          }
+        }
+      }
+    },
+    "Default" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Predeterminadas"
+          }
+        }
+      }
+    },
     "Discover" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Descubrir"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hecho"
+          }
+        }
+      }
+    },
+    "Edit" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar"
           }
         }
       }
@@ -147,6 +217,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filtros"
+          }
+        }
+      }
+    },
+    "Icon" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icono"
           }
         }
       }
@@ -191,12 +271,32 @@
         }
       }
     },
+    "My lists" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mis listas"
+          }
+        }
+      }
+    },
     "Name" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nombre"
+          }
+        }
+      }
+    },
+    "New" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nueva"
           }
         }
       }
@@ -237,6 +337,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sin resultados"
+          }
+        }
+      }
+    },
+    "No lists created yet" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todavía no tienes listas creadas"
           }
         }
       }
@@ -301,12 +411,12 @@
         }
       }
     },
-    "Powered by The Movie Database" : {
+    "Powered by" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Datos proporcionados por The Movie Database"
+            "value" : "Con la ayuda de"
           }
         }
       }
@@ -337,6 +447,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Publicada entre"
+          }
+        }
+      }
+    },
+    "Remove from %@" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar de %@"
           }
         }
       }
@@ -477,6 +597,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tema"
+          }
+        }
+      }
+    },
+    "This list already exists" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta lista ya existe"
           }
         }
       }

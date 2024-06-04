@@ -30,7 +30,7 @@ struct MainTabView: View {
                 )
                 .customizeTabItem(
                     name: NSLocalizedString("Saved", comment: ""),
-                    imageName: "archivebox"
+                    imageName: "books.vertical"
                 )
 
                 SettingsView(viewModel: .init(apiService: apiService))

@@ -11,80 +11,119 @@ import SwiftData
 struct SaveMediaStackView: View {
     let media: Media
     let mediaType: MediaType
-    let axis: Axis
     @State var triggerHapticFeedback = false
     
     @Environment(\.modelContext) var modelContext
     @Query(sort: [
         SortDescriptor(\SavedMedia.detail.name)
     ]) var mediaItems: [SavedMedia]
+    @Query var defaultLists: [UserList]
+    @Query var userLists: [UserList]
+
+    init(media: Media, mediaType: MediaType) {
+        self.media = media
+        self.mediaType = mediaType
+        
+        let defaultListTypeString = UserListType.defaultList.rawValue
+        _defaultLists = Query(
+            filter: #Predicate<UserList> {
+                $0._listType == defaultListTypeString
+            },
+            sort: [
+                SortDescriptor(\UserList.index)
+            ]
+        )
+        
+        let userListTypeString = UserListType.myLists.rawValue
+        _userLists = Query(
+            filter: #Predicate<UserList> {
+                $0._listType == userListTypeString
+            },
+            sort: [
+                SortDescriptor(\UserList.title)
+            ]
+        )
+    }
+    
     
     var body: some View {
-        
-        if axis == .vertical {
-            VStack {
-                content()
-            }
-            .sensoryFeedback(
-                .impact(flexibility: .soft, intensity: 1),
-                trigger: triggerHapticFeedback
-            )
-        } else {
-            HStack {
-                content()
-            }
-            .sensoryFeedback(
-                .impact(flexibility: .soft, intensity: 1),
-                trigger: triggerHapticFeedback
-            )
+        HStack {
+            content()
         }
+        .sensoryFeedback(
+            .impact(flexibility: .soft, intensity: 1),
+            trigger: triggerHapticFeedback
+        )
     }
     
     @ViewBuilder func content() -> some View {
-        
-        ForEach(SavedType.allCases, id: \.self) { savedType in
+        ForEach(defaultLists, id: \.self) { list in
             Button {
-                addOrRemove(type: savedType)
+                addOrRemove(list: list)
             } label: {
                 SaveMediaButtonView(
-                    type: savedType,
-                    isSaved: isSaved(type: savedType)
+                    userList: list,
+                    isSaved: isSaved(userList: list)
                 )
             }
         }
+        
+        Menu {
+            ForEach(userLists, id: \.self) { list in
+                Button(role: buttonRole(userList: list)) {
+                    addOrRemove(list: list)
+                } label: {
+                    Label(
+                        list.actionTitle(isSaved: isSaved(userList: list)),
+                        systemImage: list.imageName ?? ""
+                    )
+                }
+            }
+        } label: {
+            Image(systemName: "plus")
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(.white)
+                .frame(width: 30, height: 30)
+                .shadow(radius: 1)
+        }
     }
     
-    func addOrRemove(type: SavedType) {
-        if isSaved(type: type) {
-            remove(savedType: type)
+    func buttonRole(userList: UserList) -> ButtonRole? {
+        isSaved(userList: userList) ? .destructive : nil
+    }
+    
+    func addOrRemove(list: UserList) {
+        if isSaved(userList: list) {
+            remove(userList: list)
         } else {
-            insert(savedType: type)
+            insert(userList: list)
         }
         
         triggerHapticFeedback.toggle()
     }
     
-    func isSaved(type: SavedType) -> Bool {
+    func isSaved(userList: UserList) -> Bool {
         mediaItems.contains {
-            $0.detail.id == media.id && $0.savedType == type
+            $0.detail.id == media.id && $0.userList == userList
         }
     }
     
-    func insert(savedType: SavedType) {
+    func insert(userList: UserList) {
         let storage = LocalStorage(modelContext: modelContext)
         storage.insert(
             media: media,
             type: mediaType,
-            savedType: savedType
+            userList: userList
         )
     }
     
-    func remove(savedType: SavedType) {
+    func remove(userList: UserList) {
         let storage = LocalStorage(modelContext: modelContext)
         storage.delete(
             media: media,
             mediaType: mediaType,
-            savedType: savedType,
+            userList: userList,
             list: mediaItems
         )
     }

@@ -12,7 +12,7 @@ class LocalStorage {
     static let defaultDate = Date(timeIntervalSince1970: -2208950000)
     static let defaultEndDate = Date()
     static let appGradientKey = "AppGradient"
-    
+
     var modelContext: ModelContext
 
     init(modelContext: ModelContext) {
@@ -21,16 +21,15 @@ class LocalStorage {
     
     static func buildFilterPredicate(
         mediaType: MediaType,
-        savedType: SavedType,
+        userList: UserList,
         searchText: String,
         startDate: Date,
         endDate: Date
     ) -> Predicate<SavedMedia> {
         let allMedia = MediaType.all.rawValue
-        let savedTypeString = savedType.rawValue
         let mediaTypeString = mediaType.rawValue
         return #Predicate<SavedMedia> {
-            $0._savedType == savedTypeString &&
+            ($0.userList?.id ?? "") == userList.id &&
             (mediaTypeString == allMedia ? true : $0._type == mediaTypeString) &&
             (searchText.isEmpty ? true : $0.detail.name.contains(searchText)) &&
             $0.detail.date > startDate && $0.detail.date < endDate
@@ -45,10 +44,10 @@ class LocalStorage {
         }
     }
     
-    func insert(media: Media, type: MediaType, savedType: SavedType) {
+    func insert(media: Media, type: MediaType, userList: UserList) {
         let savedMedia = SavedMedia(
             type: type,
-            savedType: savedType,
+            userList: userList,
             detail: media
         )
         modelContext.insert(savedMedia)
@@ -57,13 +56,32 @@ class LocalStorage {
     func delete(
         media: Media,
         mediaType: MediaType,
-        savedType: SavedType,
+        userList: UserList,
         list: [SavedMedia]
     ) {
         if let itemToRemove = list.first(where: {
-            $0.detail.id == media.id && $0.type == mediaType && $0.savedType == savedType
+            $0.detail.id == media.id && $0.type == mediaType && $0.userList == userList
         }) {
             modelContext.delete(itemToRemove)
         }
+    }
+    
+    func insert(list: UserList) {
+        modelContext.insert(list)
+    }
+    
+    func delete(
+        list: UserList,
+        mediaItems: [SavedMedia]
+    ) {
+        mediaItems
+            .filter {
+                $0.userList == list
+            }
+            .forEach {
+                modelContext.delete($0)
+            }
+        
+        modelContext.delete(list)
     }
 }

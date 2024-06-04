@@ -15,6 +15,7 @@ extension SavedMediaView {
         @Published var selectedMediaType = MediaType.all
         @Published var selectedTab = 0
         @Published var showFilters = false
+        @Published var showUserLists = false
         @Published var searchText = ""
         @Published var filtersApplied = false
         @Published var startDate = LocalStorage.defaultDate
@@ -32,12 +33,6 @@ extension SavedMediaView {
                 showToast.toggle()
             }
         }
-        
-        var currentSavedType: SavedType {
-            SavedType.allCases.enumerated().first { (index, savedType) in
-                index == selectedTab
-            }?.element ?? .favorites
-        }
 
         init(
             apiService: APIService,
@@ -47,10 +42,10 @@ extension SavedMediaView {
             self.localStorage = LocalStorage(modelContext: modelContext)
         }
         
-        func filtersPredicate(savedType: SavedType) -> Predicate<SavedMedia>? {
+        func filtersPredicate(userList: UserList) -> Predicate<SavedMedia>? {
             LocalStorage.buildFilterPredicate(
                 mediaType: selectedMediaType,
-                savedType: savedType,
+                userList: userList,
                 searchText: searchText,
                 startDate: startDate,
                 endDate: endDate
