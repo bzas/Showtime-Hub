@@ -59,13 +59,15 @@ struct ListsView: View {
                     Text(UserListType.myLists.title)
                         .font(.system(size: 30, weight: .light))
                     Spacer()
-                    Button(viewModel.isEditing ? "Done" : "Edit") {
-                        withAnimation {
-                            viewModel.isEditing.toggle()
+                    if !userLists.isEmpty {
+                        Button(viewModel.isEditing ? "Done" : "Edit") {
+                            withAnimation {
+                                viewModel.isEditing.toggle()
+                            }
                         }
-                    }
-                    .padding(.top, 6)
-                    .padding(.trailing, 6)
+                        .padding(.top, 6)
+                        .padding(.trailing, 6)
+                    }                    
                 }
                 .padding(.top, 30)
                 

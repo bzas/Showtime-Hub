@@ -74,5 +74,10 @@ extension UserListsView {
                 showDetail.wrappedValue = false
             }
         }
+        
+        func isNameInUse(lists: [UserList]) -> Bool {
+            let currentListNames = lists.compactMap { $0.title?.lowercased() }
+            return currentListNames.contains(listName.lowercased())
+        }
     }
 }
