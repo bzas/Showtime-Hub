@@ -39,21 +39,35 @@ struct SavedMediaView: View {
                             Button(action: {
                                 viewModel.selectedTab = list.index
                             }, label: {
-                                Text(list.title ?? "")
+                                HStack {
+                                    Label(
+                                        list.title ?? "",
+                                        systemImage: list.imageName ?? ""
+                                    )
+                                }
                             })
                         }
                     } label: {
+                        let list = userLists.enumerated().first { index, list in
+                            index == viewModel.selectedTab
+                        }?.element
                         HStack {
-                            Text(userLists.first(where: { $0.index == viewModel.selectedTab })?.title ?? "")
+                            Image(systemName: list?.imageName ?? "")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundStyle(list?.colorInfo?.color ?? .white)
+                                .frame(width: 20, height: 20)
+                            Text(list?.title ?? "")
                                 .font(.system(size: 25, weight: .light))
+                                .lineLimit(1)
                             Image(systemName: "chevron.down")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 10, height: 10)
+                            Spacer()
                         }
+                        .frame(height: 30)
                     }
-                    
-                    Spacer()
                     
                     HStack(spacing: 12) {
                         Button {
@@ -87,6 +101,7 @@ struct SavedMediaView: View {
                     .foregroundStyle(appGradient.value)
                     .opacity(0.75)
                 }
+                .disabled(viewModel.showUserLists)
                 .padding(.vertical, 10)
                 .padding(.horizontal)
                 .background(.ultraThinMaterial)

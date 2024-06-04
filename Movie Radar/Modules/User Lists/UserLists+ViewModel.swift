@@ -15,6 +15,7 @@ extension UserListsView {
         @Published var listName = ""
         @Published var listColor = Color.white
         @Published var isSelectingNewIcon = false
+        @Published var isEditing = false
 
         var localStorage: LocalStorage
         var showDetail: Binding<Bool>
@@ -46,7 +47,7 @@ extension UserListsView {
             let userList = UserList(
                 title: listName,
                 imageName: listIcon,
-                index: currentLists.count,
+                index: (currentLists.last?.index ?? 0) + 1,
                 listType: .myLists,
                 colorInfo: .init(color: listColor)
             )
@@ -56,6 +57,16 @@ extension UserListsView {
             listName = ""
             listIcon = "star.fill"
             listColor = .white
+        }
+        
+        func deleteList(
+            _ list: UserList,
+            mediaItems: [SavedMedia]
+        ) {
+            localStorage.delete(
+                list: list,
+                mediaItems: mediaItems
+            )
         }
         
         func dismiss() {

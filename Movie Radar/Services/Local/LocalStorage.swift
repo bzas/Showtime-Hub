@@ -69,4 +69,19 @@ class LocalStorage {
     func insert(list: UserList) {
         modelContext.insert(list)
     }
+    
+    func delete(
+        list: UserList,
+        mediaItems: [SavedMedia]
+    ) {
+        mediaItems
+            .filter {
+                $0.userList == list
+            }
+            .forEach {
+                modelContext.delete($0)
+            }
+        
+        modelContext.delete(list)
+    }
 }

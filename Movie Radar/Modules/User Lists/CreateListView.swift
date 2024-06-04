@@ -11,7 +11,9 @@ import SwiftData
 
 struct CreateListView: View {
     @EnvironmentObject var viewModel: UserListsView.ViewModel
-    @Query var currentLists: [UserList]
+    @Query(sort: [
+        SortDescriptor(\UserList.index)
+    ]) var currentLists: [UserList]
     @FocusState var isEditing: Bool
 
     var body: some View {

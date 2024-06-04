@@ -12,6 +12,7 @@ struct ListsView: View {
     @EnvironmentObject var viewModel: UserListsView.ViewModel
     @Query var defaultLists: [UserList]
     @Query var userLists: [UserList]
+    @Query var mediaItems: [SavedMedia]
 
     init() {
         let defaultListTypeString = UserListType.defaultList.rawValue
@@ -30,7 +31,7 @@ struct ListsView: View {
                 $0._listType == userListTypeString
             },
             sort: [
-                SortDescriptor(\UserList.title)
+                SortDescriptor(\UserList.index)
             ]
         )
     }
@@ -58,6 +59,13 @@ struct ListsView: View {
                     Text(UserListType.myLists.title)
                         .font(.system(size: 30, weight: .light))
                     Spacer()
+                    Button(viewModel.isEditing ? "Done" : "Edit") {
+                        withAnimation {
+                            viewModel.isEditing.toggle()
+                        }
+                    }
+                    .padding(.top, 6)
+                    .padding(.trailing, 6)
                 }
                 .padding(.top, 30)
                 
@@ -66,14 +74,34 @@ struct ListsView: View {
                         .foregroundStyle(.white)
                         .padding()
                 } else {
-                    ForEach(userLists, id: \.self) { userList in
-                        UserListsCellView(
-                            userList: userList,
-                            isSelected: viewModel.selectedListIndex.wrappedValue == userList.index
-                        )
-                        .onTapGesture {
-                            viewModel.selectedListIndex.wrappedValue = userList.index
-                            viewModel.dismiss()
+                    ForEach(Array(userLists.enumerated()), id: \.1.self) { index, userList in
+                        let correctedIndex = index + defaultLists.count
+                        HStack {
+                            if viewModel.isEditing {
+                                Button(action: {
+                                    viewModel.deleteList(
+                                        userList,
+                                        mediaItems: mediaItems
+                                    )
+                                }, label: {
+                                    Image(systemName: "trash")
+                                        .scaledToFit()
+                                        .frame(width: 30, height: 30)
+                                        .background(.red)
+                                        .clipShape(Circle())
+                                })
+                            }
+                            
+                            UserListsCellView(
+                                userList: userList,
+                                isSelected: viewModel.selectedListIndex.wrappedValue == correctedIndex
+                            )
+                            .onTapGesture {
+                                if !viewModel.isEditing {
+                                    viewModel.selectedListIndex.wrappedValue = correctedIndex
+                                    viewModel.dismiss()
+                                }
+                            }
                         }
                     }
                 }
@@ -96,12 +124,18 @@ struct ListsView: View {
                     .clipShape(Capsule())
                 })
                 .padding()
+                .padding(.bottom)
             }
         }
         .scrollIndicators(.hidden)
-        .padding(25)
+        .padding(.horizontal, 25)
+        .padding(.top, 40)
         .onTapGesture {
             viewModel.dismiss()
         }
+    }
+    
+    func delete(at offsets: IndexSet) {
+//            users.remove(atOffsets: offsets)
     }
 }
