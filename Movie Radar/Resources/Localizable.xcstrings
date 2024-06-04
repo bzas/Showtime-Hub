@@ -52,7 +52,14 @@
       }
     },
     "Add to %@" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir a %@"
+          }
+        }
+      }
     },
     "All" : {
       "localizations" : {
@@ -115,7 +122,14 @@
       }
     },
     "Color" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color"
+          }
+        }
+      }
     },
     "Contact us" : {
       "localizations" : {
@@ -128,13 +142,34 @@
       }
     },
     "Create" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cear"
+          }
+        }
+      }
     },
     "Create a new list" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crear lista"
+          }
+        }
+      }
     },
     "Default" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Predeterminadas"
+          }
+        }
+      }
     },
     "Discover" : {
       "localizations" : {
@@ -147,10 +182,24 @@
       }
     },
     "Done" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hecho"
+          }
+        }
+      }
     },
     "Edit" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar"
+          }
+        }
+      }
     },
     "Favorites" : {
       "localizations" : {
@@ -173,7 +222,14 @@
       }
     },
     "Icon" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icono"
+          }
+        }
+      }
     },
     "Images" : {
       "localizations" : {
@@ -216,7 +272,14 @@
       }
     },
     "My lists" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mis listas"
+          }
+        }
+      }
     },
     "Name" : {
       "localizations" : {
@@ -229,7 +292,14 @@
       }
     },
     "New" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nueva"
+          }
+        }
+      }
     },
     "Newest" : {
       "localizations" : {
@@ -272,7 +342,14 @@
       }
     },
     "No lists created yet" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todavía no tienes listas creadas"
+          }
+        }
+      }
     },
     "No profile data" : {
       "localizations" : {
@@ -334,12 +411,12 @@
         }
       }
     },
-    "Powered by The Movie Database" : {
+    "Powered by" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Datos proporcionados por The Movie Database"
+            "value" : "Con la ayuda de"
           }
         }
       }
@@ -375,7 +452,14 @@
       }
     },
     "Remove from %@" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar de %@"
+          }
+        }
+      }
     },
     "Reset" : {
       "localizations" : {
@@ -518,7 +602,14 @@
       }
     },
     "This list already exists" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta lista ya existe"
+          }
+        }
+      }
     },
     "Version" : {
       "localizations" : {

@@ -27,7 +27,7 @@ struct SettingsView: View {
                 AppVersionView(appVersion: viewModel.appVersion)
             }
 
-            Section(header: Text("Powered by The Movie Database")) {
+            Section(header: Text("Powered by")) {
                 TmdbPromotionView()
                     .environmentObject(viewModel)
             }
