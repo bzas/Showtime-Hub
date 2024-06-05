@@ -28,7 +28,7 @@ struct SettingsView: View {
             }
 
             Section(header: Text("Powered by")) {
-                TmdbPromotionView()
+                DataProvidersView()
                     .environmentObject(viewModel)
             }
         }

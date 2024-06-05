@@ -37,6 +37,9 @@ struct MediaDetailBodyView: View {
 
             SimilarMoviesCarouselView()
                 .environmentObject(viewModel)
+            
+            ProviderCarouselView()
+                .environmentObject(viewModel)
 
             LinksCarouselView()
                 .environmentObject(viewModel)

@@ -18,6 +18,7 @@ extension MediaDetailView {
         @Published var recommendationsList = MediaList()
         @Published var reviewList = ReviewList()
         @Published var linkList: LinkList?
+        @Published var watchInfo: WatchInfo?
 
         @Published var showDetailImage = false
         @Published var imageIndexToShow: Int? {
@@ -71,6 +72,7 @@ extension MediaDetailView {
                 await fetchSimilar()
                 await fetchReviews()
                 await fetchLinks()
+                await fetchWatchProviders()
             }
         }
 
@@ -137,6 +139,14 @@ extension MediaDetailView {
             if let imageList = await apiService.getImages(type: type, id: media.id) {
                 await MainActor.run {
                     self.imageList = imageList
+                }
+            }
+        }
+        
+        func fetchWatchProviders() async {
+            if let watchProviderList = await apiService.getWatchProviders(type: type, id: media.id) {
+                await MainActor.run {
+                    self.watchInfo = watchProviderList.countryResults
                 }
             }
         }

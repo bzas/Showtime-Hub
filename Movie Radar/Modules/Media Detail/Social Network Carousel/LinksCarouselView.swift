@@ -30,7 +30,7 @@ struct LinksCarouselView: View {
                 )
             }
             if links.isEmpty {
-                NoDataAvailableView(title: "No links available")
+                NoDataAvailableView(title: NSLocalizedString("No links available", comment: ""))
             } else {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 25) {

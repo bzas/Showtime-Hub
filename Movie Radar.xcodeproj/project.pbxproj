@@ -29,6 +29,12 @@
 		4846E87C2BF8F31200D7ADAB /* SavedMediaGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E87B2BF8F31200D7ADAB /* SavedMediaGridView.swift */; };
 		4846E8802BF8F4CE00D7ADAB /* SavedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E87F2BF8F4CE00D7ADAB /* SavedType.swift */; };
 		485E800A2C08CFD20042ED4C /* NoInternetPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485E80092C08CFD20042ED4C /* NoInternetPopUpView.swift */; };
+		48609A0E2C0FAB3D00289E35 /* WatchProviderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A0D2C0FAB3D00289E35 /* WatchProviderList.swift */; };
+		48609A102C0FAC8200289E35 /* ProviderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A0F2C0FAC8200289E35 /* ProviderInfo.swift */; };
+		48609A122C0FAC8C00289E35 /* WatchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A112C0FAC8C00289E35 /* WatchInfo.swift */; };
+		48609A152C10A92A00289E35 /* ProviderCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A142C10A92A00289E35 /* ProviderCarouselView.swift */; };
+		48609A172C10A93300289E35 /* ProviderCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A162C10A93300289E35 /* ProviderCarouselCellView.swift */; };
+		48609A192C10AAFE00289E35 /* ProviderDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A182C10AAFE00289E35 /* ProviderDatabase.swift */; };
 		486AB34D2C06138500F80289 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 486AB34C2C06138500F80289 /* AlertToast */; };
 		486AB3512C062D8100F80289 /* ToastInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486AB3502C062D8100F80289 /* ToastInfo.swift */; };
 		488A644F2BFA409C00C5471A /* SaveMediaStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A644E2BFA409C00C5471A /* SaveMediaStackView.swift */; };
@@ -93,7 +99,7 @@
 		48A309C02BF5041900F1733C /* RateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3098B2BF5041900F1733C /* RateView.swift */; };
 		48A309C12BF5041900F1733C /* Settings+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3098C2BF5041900F1733C /* Settings+ViewModel.swift */; };
 		48A309C22BF5041900F1733C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3098D2BF5041900F1733C /* SettingsView.swift */; };
-		48A309C32BF5041900F1733C /* TmdbPromotionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3098E2BF5041900F1733C /* TmdbPromotionView.swift */; };
+		48A309C32BF5041900F1733C /* DataProvidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3098E2BF5041900F1733C /* DataProvidersView.swift */; };
 		48A309C42BF5041900F1733C /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309902BF5041900F1733C /* MainTabView.swift */; };
 		48A309E52BF5044400F1733C /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309C52BF5044400F1733C /* LocalStorage.swift */; };
 		48A309E62BF5044400F1733C /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309C72BF5044400F1733C /* Genre.swift */; };
@@ -169,6 +175,12 @@
 		4846E87B2BF8F31200D7ADAB /* SavedMediaGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMediaGridView.swift; sourceTree = "<group>"; };
 		4846E87F2BF8F4CE00D7ADAB /* SavedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedType.swift; sourceTree = "<group>"; };
 		485E80092C08CFD20042ED4C /* NoInternetPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetPopUpView.swift; sourceTree = "<group>"; };
+		48609A0D2C0FAB3D00289E35 /* WatchProviderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProviderList.swift; sourceTree = "<group>"; };
+		48609A0F2C0FAC8200289E35 /* ProviderInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderInfo.swift; sourceTree = "<group>"; };
+		48609A112C0FAC8C00289E35 /* WatchInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchInfo.swift; sourceTree = "<group>"; };
+		48609A142C10A92A00289E35 /* ProviderCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderCarouselView.swift; sourceTree = "<group>"; };
+		48609A162C10A93300289E35 /* ProviderCarouselCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderCarouselCellView.swift; sourceTree = "<group>"; };
+		48609A182C10AAFE00289E35 /* ProviderDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderDatabase.swift; sourceTree = "<group>"; };
 		486AB3502C062D8100F80289 /* ToastInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastInfo.swift; sourceTree = "<group>"; };
 		488A644E2BFA409C00C5471A /* SaveMediaStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMediaStackView.swift; sourceTree = "<group>"; };
 		488A64512BFA40DB00C5471A /* SaveMediaButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMediaButtonView.swift; sourceTree = "<group>"; };
@@ -235,7 +247,7 @@
 		48A3098B2BF5041900F1733C /* RateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateView.swift; sourceTree = "<group>"; };
 		48A3098C2BF5041900F1733C /* Settings+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Settings+ViewModel.swift"; sourceTree = "<group>"; };
 		48A3098D2BF5041900F1733C /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		48A3098E2BF5041900F1733C /* TmdbPromotionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TmdbPromotionView.swift; sourceTree = "<group>"; };
+		48A3098E2BF5041900F1733C /* DataProvidersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvidersView.swift; sourceTree = "<group>"; };
 		48A309902BF5041900F1733C /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		48A309C52BF5044400F1733C /* LocalStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		48A309C72BF5044400F1733C /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
@@ -343,6 +355,26 @@
 				4846E8712BF8C12B00D7ADAB /* SeasonCellView.swift */,
 			);
 			path = "Seasons Carousel";
+			sourceTree = "<group>";
+		};
+		48609A0C2C0FAB2B00289E35 /* Watch Providers */ = {
+			isa = PBXGroup;
+			children = (
+				48609A0D2C0FAB3D00289E35 /* WatchProviderList.swift */,
+				48609A112C0FAC8C00289E35 /* WatchInfo.swift */,
+				48609A0F2C0FAC8200289E35 /* ProviderInfo.swift */,
+				48609A182C10AAFE00289E35 /* ProviderDatabase.swift */,
+			);
+			path = "Watch Providers";
+			sourceTree = "<group>";
+		};
+		48609A132C10A90B00289E35 /* Provider Carousel */ = {
+			isa = PBXGroup;
+			children = (
+				48609A142C10A92A00289E35 /* ProviderCarouselView.swift */,
+				48609A162C10A93300289E35 /* ProviderCarouselCellView.swift */,
+			);
+			path = "Provider Carousel";
 			sourceTree = "<group>";
 		};
 		488A64502BFA40A800C5471A /* Save Media Stack */ = {
@@ -581,6 +613,7 @@
 				48A3096E2BF5041900F1733C /* Image Carousel */,
 				48A309712BF5041900F1733C /* Recommendations Carousel */,
 				48A309742BF5041900F1733C /* Reviews Carousel */,
+				48609A132C10A90B00289E35 /* Provider Carousel */,
 				48A309772BF5041900F1733C /* Social Network Carousel */,
 				4846E8672BF7982400D7ADAB /* Crew */,
 			);
@@ -609,7 +642,7 @@
 				48A3098B2BF5041900F1733C /* RateView.swift */,
 				48A3098C2BF5041900F1733C /* Settings+ViewModel.swift */,
 				48A3098D2BF5041900F1733C /* SettingsView.swift */,
-				48A3098E2BF5041900F1733C /* TmdbPromotionView.swift */,
+				48A3098E2BF5041900F1733C /* DataProvidersView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -720,6 +753,7 @@
 				48A309C92BF5044400F1733C /* Genre */,
 				48A309CC2BF5044400F1733C /* Images */,
 				48A309CF2BF5044400F1733C /* Link */,
+				48609A0C2C0FAB2B00289E35 /* Watch Providers */,
 				48A309D32BF5044400F1733C /* Media */,
 				48A309D92BF5044400F1733C /* Person */,
 				48A309DC2BF5044400F1733C /* Review */,
@@ -940,6 +974,7 @@
 				48181E352C0CBCFF0067D5CB /* ColorInfo.swift in Sources */,
 				48C544DC2C0C818D00AE6517 /* UserLists+ViewModel.swift in Sources */,
 				48A309492BF5040700F1733C /* AppIcon.swift in Sources */,
+				48609A172C10A93300289E35 /* ProviderCarouselCellView.swift in Sources */,
 				48A309F62BF5044400F1733C /* APIService.swift in Sources */,
 				48A3099A2BF5041900F1733C /* DiscoverMediaGridView.swift in Sources */,
 				48A309ED2BF5044400F1733C /* Media.swift in Sources */,
@@ -952,7 +987,7 @@
 				48A309E92BF5044400F1733C /* MediaImage.swift in Sources */,
 				48F38C022BF69A96003F0CD0 /* SeriesGridSortType.swift in Sources */,
 				48289DE32BF5084B00C7F68B /* MainHomeView.swift in Sources */,
-				48A309C32BF5041900F1733C /* TmdbPromotionView.swift in Sources */,
+				48A309C32BF5041900F1733C /* DataProvidersView.swift in Sources */,
 				485E800A2C08CFD20042ED4C /* NoInternetPopUpView.swift in Sources */,
 				48A309E72BF5044400F1733C /* GenreList.swift in Sources */,
 				48A309932BF5041900F1733C /* SavedMedia+ViewModel.swift in Sources */,
@@ -962,6 +997,7 @@
 				4846E8802BF8F4CE00D7ADAB /* SavedType.swift in Sources */,
 				48B8B2CA2BF927FE002276C7 /* SavedMedia.swift in Sources */,
 				48A309B02BF5041900F1733C /* MediaDescriptionView.swift in Sources */,
+				48609A192C10AAFE00289E35 /* ProviderDatabase.swift in Sources */,
 				48A309BC2BF5041900F1733C /* AppIconPickerView.swift in Sources */,
 				48A309972BF5041900F1733C /* MediaCarouselView.swift in Sources */,
 				48181E372C0CD9940067D5CB /* PlaceholderStyle.swift in Sources */,
@@ -971,6 +1007,7 @@
 				48A309A62BF5041900F1733C /* GenreCarouselView.swift in Sources */,
 				48A309EE2BF5044400F1733C /* MediaList.swift in Sources */,
 				48A3094B2BF5040700F1733C /* NoDataAvailableView.swift in Sources */,
+				48609A102C0FAC8200289E35 /* ProviderInfo.swift in Sources */,
 				48A3099C2BF5041900F1733C /* GridCellView.swift in Sources */,
 				48A309B12BF5041900F1733C /* MediaDetail+ViewModel.swift in Sources */,
 				48A309F42BF5044400F1733C /* Review.swift in Sources */,
@@ -980,6 +1017,7 @@
 				48A3099B2BF5041900F1733C /* GridPlaceholderView.swift in Sources */,
 				48A309A82BF5041900F1733C /* ImageCarouselCellView.swift in Sources */,
 				48A3094E2BF5040700F1733C /* View.swift in Sources */,
+				48609A152C10A92A00289E35 /* ProviderCarouselView.swift in Sources */,
 				48A309B92BF5041900F1733C /* PersonCarouselView.swift in Sources */,
 				48A309A42BF5041900F1733C /* ActorCarouselCellView.swift in Sources */,
 				4846E8662BF7968300D7ADAB /* MediaCrewCellView.swift in Sources */,
@@ -1000,6 +1038,7 @@
 				48C544D82C0C55D700AE6517 /* ListsView.swift in Sources */,
 				48A3099D2BF5041900F1733C /* GridView.swift in Sources */,
 				48A309B22BF5041900F1733C /* MediaDetailBodyView.swift in Sources */,
+				48609A0E2C0FAB3D00289E35 /* WatchProviderList.swift in Sources */,
 				48A309F22BF5044400F1733C /* PersonMedia.swift in Sources */,
 				4823935D2C09AE3A00E7DB24 /* UserList.swift in Sources */,
 				48A49B392C09C2C600E94E3B /* UserListType.swift in Sources */,
@@ -1007,6 +1046,7 @@
 				48A309BE2BF5041900F1733C /* AppVersionView.swift in Sources */,
 				48A309A52BF5041900F1733C /* ActorCarouselView.swift in Sources */,
 				48A309B72BF5041900F1733C /* PersonDetailView.swift in Sources */,
+				48609A122C0FAC8C00289E35 /* WatchInfo.swift in Sources */,
 				48A309F92BF5044400F1733C /* PathBuilder.swift in Sources */,
 				48A309982BF5041900F1733C /* GenreSelectorCellView.swift in Sources */,
 				48A309B82BF5041900F1733C /* PersonCarouselCellView.swift in Sources */,
@@ -1190,7 +1230,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"Movie Radar/Preview Content\"";
 				DEVELOPMENT_TEAM = 3BFY9G26SK;
 				ENABLE_PREVIEWS = YES;
@@ -1209,7 +1249,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Boizas.Showtime-Hub";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1225,7 +1265,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"Movie Radar/Preview Content\"";
 				DEVELOPMENT_TEAM = 3BFY9G26SK;
 				ENABLE_PREVIEWS = YES;
@@ -1244,7 +1284,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.0;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "Boizas.Showtime-Hub";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
