@@ -9,7 +9,12 @@ import Foundation
 
 struct WatchInfo: Codable {
     let link: String
-    let buy, flatRate, free, rent: [ProviderInfo]?
+    private let buy, flatRate, free, rent: [ProviderInfo]?
+    
+    var all: [ProviderInfo] {
+        let list = (buy ?? []) + (flatRate ?? []) + (free ?? []) + (rent ?? [])
+        return Array(Set(list))
+    }
     
     enum CodingKeys: String, CodingKey {
         case link, buy, free, rent

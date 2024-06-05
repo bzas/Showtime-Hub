@@ -8,6 +8,13 @@
 import Foundation
 
 struct WatchProviderList: Codable {
-    let id: Int
-    let results: [String: WatchInfo]
+    private let id: Int
+    private let results: [String: WatchInfo]
+    
+    var countryResults: WatchInfo? {
+        if let countryCode = Locale.current.language.region?.identifier.uppercased() {
+            return results[countryCode]
+        }
+        return nil
+    }
 }

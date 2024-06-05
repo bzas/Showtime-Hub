@@ -11,7 +11,6 @@ import UIKit
 extension SettingsView {
     class ViewModel: ObservableObject {
         var apiService: APIService
-        let databaseUrl = "https://www.themoviedb.org"
         let contactMail = "mailto:bzas.developer@gmail.com"
 
         @Published var selectedIcon: AppIcon {

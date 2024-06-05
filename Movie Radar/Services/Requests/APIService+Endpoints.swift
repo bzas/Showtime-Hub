@@ -206,7 +206,7 @@ extension APIService {
     }
     
     // MARK: - /{type}/{media_id}/watch/providers
-    func getWatchProviders(type: MediaType, id: Int) async -> GenreList? {
+    func getWatchProviders(type: MediaType, id: Int) async -> WatchProviderList? {
         guard let request = PathBuilder.request(
             type.isMovie ? .watchProviders : .watchProvidersTv,
             queryItems: defaultQueryItems,

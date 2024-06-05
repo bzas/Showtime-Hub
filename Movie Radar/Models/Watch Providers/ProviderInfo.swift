@@ -7,11 +7,15 @@
 
 import Foundation
 
-struct ProviderInfo: Codable {
-    let logoPath: String
+struct ProviderInfo: Codable, Hashable {
+    let logoPath: String?
     let providerId: Int
-    let providerName: String
-    let displayPriority: Int
+    let providerName: String?
+    let displayPriority: Int?
+    
+    var imagePath: String? {
+        ProviderDatabase.providers[providerId]
+    }
 
     enum CodingKeys: String, CodingKey {
         case logoPath = "logo_path"
