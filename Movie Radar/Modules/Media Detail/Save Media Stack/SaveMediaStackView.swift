@@ -40,7 +40,7 @@ struct SaveMediaStackView: View {
                 $0._listType == userListTypeString
             },
             sort: [
-                SortDescriptor(\UserList.title)
+                SortDescriptor(\UserList.index)
             ]
         )
     }

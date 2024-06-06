@@ -31,13 +31,14 @@ struct SavedMediaView: View {
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
+            .ignoresSafeArea(edges: .bottom)
 
             VStack {
                 HStack(spacing: 12) {
                     Menu {
-                        ForEach(userLists, id: \.self) { list in
+                        ForEach(Array(userLists.enumerated()), id: \.1.self) { index, list in
                             Button(action: {
-                                viewModel.selectedTab = list.index
+                                viewModel.selectedTab = index
                             }, label: {
                                 HStack {
                                     Label(
@@ -66,7 +67,7 @@ struct SavedMediaView: View {
                                 .frame(width: 10, height: 10)
                             Spacer()
                         }
-                        .frame(height: 30)
+                        .frame(height: 35)
                     }
                     
                     HStack(spacing: 12) {
@@ -76,7 +77,7 @@ struct SavedMediaView: View {
                             }
                         } label: {
                             Text("My lists")
-                                .font(.system(size: 12))
+                                .font(.system(size: 12, weight: .bold))
                                 .frame(height: 25)
                                 .padding(.horizontal, 8)
                                 .clipShape(Capsule())
