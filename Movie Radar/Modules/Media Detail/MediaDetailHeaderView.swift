@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MediaDetailHeaderView: View {
+    @Environment(\.safeAreaInsets) private var safeAreaInsets
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: MediaDetailView.ViewModel
 
@@ -25,8 +26,6 @@ struct MediaDetailHeaderView: View {
 
             LinearGradient(
                 stops: [
-                    Gradient.Stop(color: Color.black, location: 0.025),
-                    Gradient.Stop(color: Color.black.opacity(0.5), location: 0.1),
                     Gradient.Stop(color: .clear, location: 0.6),
                     Gradient.Stop(color: Color.black, location: 0.95)
                 ],
@@ -41,22 +40,24 @@ struct MediaDetailHeaderView: View {
                     } label: {
                         Image(systemName: "xmark")
                             .resizable()
-                            .frame(width: 20, height: 20)
-                            .foregroundStyle(.white.opacity(0.3))
-                            .padding(4)
-                            .padding(.top)
+                            .frame(width: 15, height: 15)
+                            .foregroundStyle(.black)
+                            .padding(10)
+                            .background(.white.opacity(0.5))
+                            .clipShape(Circle())
+                            .shadow(color: .black, radius: 4)
                     }
+                    
                     Spacer()
-                }
-
-                Spacer()
-                HStack {
+                    
                     SaveMediaStackView(
                         media: viewModel.media,
                         mediaType: viewModel.type
                     )
-                    Spacer()
                 }
+                .padding(.top, safeAreaInsets.top + 10)
+
+                Spacer()
                 
                 HStack {
                     Text(viewModel.media.name)

@@ -20,6 +20,7 @@ struct MediaDetailView: View {
                     .environmentObject(viewModel)
             }
         }
+        .ignoresSafeArea()
         .scrollIndicators(.hidden)
         .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
             if let detailMediaToShow = viewModel.detailMediaToShow {

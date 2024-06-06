@@ -45,7 +45,6 @@ struct SaveMediaStackView: View {
         )
     }
     
-    
     var body: some View {
         HStack {
             content()
@@ -57,17 +56,6 @@ struct SaveMediaStackView: View {
     }
     
     @ViewBuilder func content() -> some View {
-        ForEach(defaultLists, id: \.self) { list in
-            Button {
-                addOrRemove(list: list)
-            } label: {
-                SaveMediaButtonView(
-                    userList: list,
-                    isSaved: isSaved(userList: list)
-                )
-            }
-        }
-        
         Menu {
             ForEach(userLists, id: \.self) { list in
                 Button(role: buttonRole(userList: list)) {
@@ -77,16 +65,38 @@ struct SaveMediaStackView: View {
                         list.actionTitle(isSaved: isSaved(userList: list)),
                         systemImage: list.imageName ?? ""
                     )
+                    .shadow(color: .black, radius: 4)
                 }
             }
         } label: {
             Image(systemName: "plus")
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(.white)
-                .frame(width: 30, height: 30)
-                .shadow(radius: 1)
+                .foregroundStyle(.black)
+                .frame(width: 20, height: 20)
+                .padding(8)
+                .background(.white.opacity(0.5))
+                .clipShape(Circle())
+                .shadow(color: .black, radius: 4)
         }
+        
+        HStack {
+            ForEach(defaultLists, id: \.self) { list in
+                Button {
+                    addOrRemove(list: list)
+                } label: {
+                    SaveMediaButtonView(
+                        userList: list,
+                        isSaved: isSaved(userList: list)
+                    )
+                }
+            }
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 8)
+        .background(.white.opacity(0.5))
+        .clipShape(Capsule())
+        .shadow(color: .black, radius: 4)
     }
     
     func buttonRole(userList: UserList) -> ButtonRole? {

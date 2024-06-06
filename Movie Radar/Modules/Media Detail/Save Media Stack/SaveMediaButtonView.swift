@@ -14,18 +14,10 @@ struct SaveMediaButtonView: View {
     
     var body: some View {
         Image(systemName: userList.imageName ?? "")
-            .foregroundStyle(isSaved ? userList.colorInfo?.color ?? .white : .white)
-            .frame(width: 45, height: 45)
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(
-                        .white,
-                        lineWidth: 1
-                    )
-                    .fill(isSaved ? .white : .clear)
-                    .padding(2)
-            )
-            .shadow(radius: 1)
+            .resizable()
+            .scaledToFit()
+            .foregroundStyle(isSaved ? userList.colorInfo?.color ?? .black.opacity(0.5) : .black.opacity(0.5))
+            .frame(width: 20, height: 20)
+            .padding(.horizontal, 2)
     }
 }
