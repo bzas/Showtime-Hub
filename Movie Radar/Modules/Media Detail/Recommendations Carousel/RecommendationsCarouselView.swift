@@ -24,7 +24,7 @@ struct SimilarMoviesCarouselView: View {
             }
 
             if viewModel.recommendationsList.results.isEmpty {
-                NoDataAvailableView(title: "No recommendations available")
+                NoDataAvailableView(title: NSLocalizedString("No recommendations available", comment: ""))
             } else {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 16) {

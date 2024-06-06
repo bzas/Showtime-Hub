@@ -31,6 +31,16 @@
         }
       }
     },
+    "(%d votes)" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(%d votos)"
+          }
+        }
+      }
+    },
     "%lld min" : {
       "localizations" : {
         "es" : {
@@ -101,8 +111,25 @@
         }
       }
     },
+    "Budget" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Presupuesto"
+          }
+        }
+      }
+    },
     "Buy" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comprar"
+          }
+        }
+      }
     },
     "Cancel" : {
       "localizations" : {
@@ -225,7 +252,14 @@
       }
     },
     "Free" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gratis"
+          }
+        }
+      }
     },
     "Icon" : {
       "localizations" : {
@@ -317,6 +351,36 @@
         }
       }
     },
+    "No cast info available" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay información del reparto"
+          }
+        }
+      }
+    },
+    "No images available" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay imágenes disponibles"
+          }
+        }
+      }
+    },
+    "No information available" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay información disponible"
+          }
+        }
+      }
+    },
     "No internet connection" : {
       "localizations" : {
         "es" : {
@@ -348,7 +412,14 @@
       }
     },
     "No links available" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay links disponibles"
+          }
+        }
+      }
     },
     "No lists created yet" : {
       "localizations" : {
@@ -371,7 +442,34 @@
       }
     },
     "No providers available" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No disponible"
+          }
+        }
+      }
+    },
+    "No recommendations available" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay recomendaciones disponibles"
+          }
+        }
+      }
+    },
+    "No reviews available" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No hay reviews disponibles"
+          }
+        }
+      }
     },
     "Oldest" : {
       "localizations" : {
@@ -474,7 +572,14 @@
       }
     },
     "Rent" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alquilar"
+          }
+        }
+      }
     },
     "Reset" : {
       "localizations" : {
@@ -607,7 +712,14 @@
       }
     },
     "Streaming" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Streaming"
+          }
+        }
+      }
     },
     "Theme" : {
       "localizations" : {
@@ -650,7 +762,14 @@
       }
     },
     "Watch now" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver ahora"
+          }
+        }
+      }
     },
     "Write any title..." : {
       "localizations" : {

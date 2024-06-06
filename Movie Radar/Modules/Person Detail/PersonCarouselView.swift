@@ -26,7 +26,7 @@ struct PersonCarouselView: View {
 
             let mediaList = type.isMovie ? viewModel.movies : viewModel.series
             if mediaList.isEmpty {
-                NoDataAvailableView(title: "No information available")
+                NoDataAvailableView(title: NSLocalizedString("No information available", comment: ""))
             } else {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 16) {

@@ -24,7 +24,7 @@ struct ReviewCarouselView: View {
             }
 
             if viewModel.reviewList.reviews.isEmpty {
-                NoDataAvailableView(title: "No reviews available")
+                NoDataAvailableView(title: NSLocalizedString("No reviews available", comment: ""))
             } else {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 12) {

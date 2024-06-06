@@ -29,7 +29,12 @@ struct MediaDescriptionView: View {
                     .resizable()
                     .frame(width: 10, height: 10)
                 
-                Text(String(format: "(%d votes)", viewModel.media.voteCount ?? 0))
+                Text(
+                    String(
+                        format: NSLocalizedString("(%d votes)", comment: ""),
+                        viewModel.media.voteCount ?? 0
+                    )
+                )
                     .opacity(0.6)
                     .font(.system(size: 14))
                 Spacer()
@@ -41,17 +46,17 @@ struct MediaDescriptionView: View {
             if budget > 0 || revenue > 0 {
                 HStack(spacing: 12) {
                     infoItem(
-                        title: "Budget",
+                        title: NSLocalizedString("Budget", comment: ""),
                         textToDisplay: budget > 0 ? "\(budget)$" : nil
                     )
                                         
                     infoItem(
-                        title: "Revenue",
+                        title: NSLocalizedString("Revenue", comment: ""),
                         textToDisplay: revenue > 0 ? "\(revenue)$" : nil
                     )
                                         
                     infoItem(
-                        title: "Release",
+                        title: NSLocalizedString("Release", comment: ""),
                         textToDisplay: viewModel.media.dateString
                     )
                 }

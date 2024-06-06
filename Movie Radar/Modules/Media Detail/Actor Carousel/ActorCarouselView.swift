@@ -25,7 +25,7 @@ struct ActorCarouselView: View {
             }
 
             if viewModel.mediaActors.isEmpty {
-                NoDataAvailableView(title: "No cast info available")
+                NoDataAvailableView(title: NSLocalizedString("No cast info available", comment: ""))
             } else {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 20) {
