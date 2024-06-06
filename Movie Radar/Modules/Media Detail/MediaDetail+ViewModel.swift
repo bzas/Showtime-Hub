@@ -18,7 +18,18 @@ extension MediaDetailView {
         @Published var recommendationsList = MediaList()
         @Published var reviewList = ReviewList()
         @Published var linkList: LinkList?
-        @Published var watchInfo: WatchInfo?
+        
+        private var watchInfo: WatchInfo? {
+            didSet {
+                selectedWatchProviders = watchInfo?.providerList(type: selectedProviderType) ?? []
+            }
+        }
+        @Published var selectedWatchProviders: [ProviderInfo] = []
+        @Published var selectedProviderType: ProviderType = .streaming {
+            didSet {
+                selectedWatchProviders = watchInfo?.providerList(type: selectedProviderType) ?? []
+            }
+        }
 
         @Published var showDetailImage = false
         @Published var imageIndexToShow: Int? {

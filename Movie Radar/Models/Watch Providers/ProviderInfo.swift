@@ -13,8 +13,14 @@ struct ProviderInfo: Codable, Hashable {
     let providerName: String?
     let displayPriority: Int?
     
-    var imagePath: String? {
-        ProviderDatabase.providers[providerId]
+    var imageUrl: URL? {
+        guard let logoPath else { return nil }
+        return URL(
+            string: PathBuilder.image(
+                type: .original,
+                imagePath: logoPath
+            )
+        )
     }
 
     enum CodingKeys: String, CodingKey {

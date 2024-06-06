@@ -11,9 +11,17 @@ struct WatchInfo: Codable {
     let link: String
     private let buy, flatRate, free, rent: [ProviderInfo]?
     
-    var all: [ProviderInfo] {
-        let list = (buy ?? []) + (flatRate ?? []) + (free ?? []) + (rent ?? [])
-        return Array(Set(list))
+    func providerList(type: ProviderType) -> [ProviderInfo] {
+        switch type {
+        case .streaming:
+            flatRate ?? []
+        case .buy:
+            buy ?? []
+        case .rent:
+            rent ?? []
+        case .free:
+            free ?? []
+        }
     }
     
     enum CodingKeys: String, CodingKey {

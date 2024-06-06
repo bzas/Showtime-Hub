@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		48181E352C0CBCFF0067D5CB /* ColorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48181E342C0CBCFF0067D5CB /* ColorInfo.swift */; };
 		48181E372C0CD9940067D5CB /* PlaceholderStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48181E362C0CD9940067D5CB /* PlaceholderStyle.swift */; };
+		481B4EC72C11B801003D1DEB /* ProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B4EC62C11B801003D1DEB /* ProviderType.swift */; };
 		4823935B2C09AD9F00E7DB24 /* UserListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4823935A2C09AD9F00E7DB24 /* UserListsView.swift */; };
 		4823935D2C09AE3A00E7DB24 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4823935C2C09AE3A00E7DB24 /* UserList.swift */; };
 		4823935F2C09B67800E7DB24 /* UserListsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4823935E2C09B67800E7DB24 /* UserListsCellView.swift */; };
@@ -34,7 +35,6 @@
 		48609A122C0FAC8C00289E35 /* WatchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A112C0FAC8C00289E35 /* WatchInfo.swift */; };
 		48609A152C10A92A00289E35 /* ProviderCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A142C10A92A00289E35 /* ProviderCarouselView.swift */; };
 		48609A172C10A93300289E35 /* ProviderCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A162C10A93300289E35 /* ProviderCarouselCellView.swift */; };
-		48609A192C10AAFE00289E35 /* ProviderDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A182C10AAFE00289E35 /* ProviderDatabase.swift */; };
 		486AB34D2C06138500F80289 /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 486AB34C2C06138500F80289 /* AlertToast */; };
 		486AB3512C062D8100F80289 /* ToastInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486AB3502C062D8100F80289 /* ToastInfo.swift */; };
 		488A644F2BFA409C00C5471A /* SaveMediaStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A644E2BFA409C00C5471A /* SaveMediaStackView.swift */; };
@@ -155,6 +155,7 @@
 /* Begin PBXFileReference section */
 		48181E342C0CBCFF0067D5CB /* ColorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorInfo.swift; sourceTree = "<group>"; };
 		48181E362C0CD9940067D5CB /* PlaceholderStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderStyle.swift; sourceTree = "<group>"; };
+		481B4EC62C11B801003D1DEB /* ProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderType.swift; sourceTree = "<group>"; };
 		4823935A2C09AD9F00E7DB24 /* UserListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListsView.swift; sourceTree = "<group>"; };
 		4823935C2C09AE3A00E7DB24 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
 		4823935E2C09B67800E7DB24 /* UserListsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListsCellView.swift; sourceTree = "<group>"; };
@@ -180,7 +181,6 @@
 		48609A112C0FAC8C00289E35 /* WatchInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchInfo.swift; sourceTree = "<group>"; };
 		48609A142C10A92A00289E35 /* ProviderCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderCarouselView.swift; sourceTree = "<group>"; };
 		48609A162C10A93300289E35 /* ProviderCarouselCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderCarouselCellView.swift; sourceTree = "<group>"; };
-		48609A182C10AAFE00289E35 /* ProviderDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderDatabase.swift; sourceTree = "<group>"; };
 		486AB3502C062D8100F80289 /* ToastInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastInfo.swift; sourceTree = "<group>"; };
 		488A644E2BFA409C00C5471A /* SaveMediaStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMediaStackView.swift; sourceTree = "<group>"; };
 		488A64512BFA40DB00C5471A /* SaveMediaButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMediaButtonView.swift; sourceTree = "<group>"; };
@@ -360,10 +360,10 @@
 		48609A0C2C0FAB2B00289E35 /* Watch Providers */ = {
 			isa = PBXGroup;
 			children = (
+				481B4EC62C11B801003D1DEB /* ProviderType.swift */,
 				48609A0D2C0FAB3D00289E35 /* WatchProviderList.swift */,
 				48609A112C0FAC8C00289E35 /* WatchInfo.swift */,
 				48609A0F2C0FAC8200289E35 /* ProviderInfo.swift */,
-				48609A182C10AAFE00289E35 /* ProviderDatabase.swift */,
 			);
 			path = "Watch Providers";
 			sourceTree = "<group>";
@@ -997,13 +997,13 @@
 				4846E8802BF8F4CE00D7ADAB /* SavedType.swift in Sources */,
 				48B8B2CA2BF927FE002276C7 /* SavedMedia.swift in Sources */,
 				48A309B02BF5041900F1733C /* MediaDescriptionView.swift in Sources */,
-				48609A192C10AAFE00289E35 /* ProviderDatabase.swift in Sources */,
 				48A309BC2BF5041900F1733C /* AppIconPickerView.swift in Sources */,
 				48A309972BF5041900F1733C /* MediaCarouselView.swift in Sources */,
 				48181E372C0CD9940067D5CB /* PlaceholderStyle.swift in Sources */,
 				48A309C22BF5041900F1733C /* SettingsView.swift in Sources */,
 				4846E8742BF8C49700D7ADAB /* GenericCrew.swift in Sources */,
 				48A309E52BF5044400F1733C /* LocalStorage.swift in Sources */,
+				481B4EC72C11B801003D1DEB /* ProviderType.swift in Sources */,
 				48A309A62BF5041900F1733C /* GenreCarouselView.swift in Sources */,
 				48A309EE2BF5044400F1733C /* MediaList.swift in Sources */,
 				48A3094B2BF5040700F1733C /* NoDataAvailableView.swift in Sources */,

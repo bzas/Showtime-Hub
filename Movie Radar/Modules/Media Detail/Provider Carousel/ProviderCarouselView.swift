@@ -10,37 +10,43 @@ import SwiftUI
 struct ProviderCarouselView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @EnvironmentObject var viewModel: MediaDetailView.ViewModel
-    let rows = [
-        GridItem(.flexible())
-    ]
     
     var body: some View {
         VStack {
             HStack {
-                Text("Watch on")
+                Text("Watch now")
                     .foregroundStyle(appGradient.value)
                     .font(.system(size: 20))
                 Spacer()
             }
-
-            let providerImageList = (viewModel.watchInfo?.all ?? [])
-                .sorted { ($0.displayPriority ?? 0) < ($1.displayPriority ?? 0) }
-                .compactMap { $0.imagePath }
-            let providerImageListFiltered = Array(Set(providerImageList))
             
-            if providerImageListFiltered.isEmpty {
+            HStack {
+                Picker("", selection: $viewModel.selectedProviderType) {
+                    ForEach(ProviderType.allCases, id: \.self) { providerType in
+                        Text(providerType.title)
+                    }
+                }
+                .pickerStyle(.segmented)
+                Spacer()
+            }
+            .padding(.bottom, 6)
+            
+            let providerImageList = viewModel.selectedWatchProviders.compactMap { $0.imageUrl }
+            if providerImageList.isEmpty {
                 NoDataAvailableView(title: NSLocalizedString("No providers available", comment: ""))
+                    .frame(height: 50)
             } else {
                 ScrollView(.horizontal) {
-                    LazyHGrid(rows: rows, spacing: 25) {
-                        ForEach(providerImageListFiltered, id: \.self) { providerImage in
-                            ProviderCarouselCellView(imagePath: providerImage)
+                    HStack(spacing: 25) {
+                        ForEach(providerImageList, id: \.self) { providerImageUrl in
+                            ProviderCarouselCellView(imageUrl: providerImageUrl)
                         }
                     }
                 }
             }
         }
-        .padding(.top)
+        .padding(.vertical)
+        .padding(.bottom, 8)
     }
 }
 

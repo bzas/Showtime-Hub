@@ -8,16 +8,25 @@
 import SwiftUI
 
 struct ProviderCarouselCellView: View {
-    let imagePath: String
+    let imageUrl: URL?
     
     var body: some View {
-        Image(imagePath)
-            .resizable()
-            .scaledToFill()
-            .frame(
-                width: 50,
-                height: 50
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 10))
+        AsyncImage(url: imageUrl, content: { image in
+            image
+                .resizable()
+                .scaledToFill()
+                .frame(
+                    width: 50,
+                    height: 50
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+        }, placeholder: {
+            Color.gray
+                .frame(
+                    width: 50,
+                    height: 50
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+        })
     }
 }

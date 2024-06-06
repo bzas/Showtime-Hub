@@ -101,6 +101,9 @@
         }
       }
     },
+    "Buy" : {
+
+    },
     "Cancel" : {
       "localizations" : {
         "es" : {
@@ -220,6 +223,9 @@
           }
         }
       }
+    },
+    "Free" : {
+
     },
     "Icon" : {
       "localizations" : {
@@ -467,6 +473,9 @@
         }
       }
     },
+    "Rent" : {
+
+    },
     "Reset" : {
       "localizations" : {
         "es" : {
@@ -597,6 +606,9 @@
         }
       }
     },
+    "Streaming" : {
+
+    },
     "Theme" : {
       "localizations" : {
         "es" : {
@@ -637,7 +649,7 @@
         }
       }
     },
-    "Watch on" : {
+    "Watch now" : {
 
     },
     "Write any title..." : {

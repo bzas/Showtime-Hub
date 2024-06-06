@@ -15,13 +15,11 @@ struct MediaDetailBodyView: View {
             MediaDescriptionView()
                 .environmentObject(viewModel)
 
-            if viewModel.type.isMovie {
-                MediaCrewView(type: .movie)
-                    .environmentObject(viewModel)
-            } else {
-                MediaCrewView(type: .tv)
-                    .environmentObject(viewModel)
-            }
+            MediaCrewView(type: viewModel.type)
+                .environmentObject(viewModel)
+            
+            ProviderCarouselView()
+                .environmentObject(viewModel)
 
             ImageCarouselView()
                 .environmentObject(viewModel)
@@ -36,9 +34,6 @@ struct MediaDetailBodyView: View {
                 .environmentObject(viewModel)
 
             SimilarMoviesCarouselView()
-                .environmentObject(viewModel)
-            
-            ProviderCarouselView()
                 .environmentObject(viewModel)
 
             LinksCarouselView()
