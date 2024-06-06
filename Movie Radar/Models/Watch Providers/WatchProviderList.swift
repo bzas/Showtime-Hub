@@ -12,7 +12,7 @@ struct WatchProviderList: Codable {
     private let results: [String: WatchInfo]
     
     var countryResults: WatchInfo? {
-        if let countryCode = Locale.current.language.region?.identifier.uppercased() {
+        if let countryCode = Locale.current.region?.identifier.uppercased() {
             return results[countryCode]
         }
         return nil

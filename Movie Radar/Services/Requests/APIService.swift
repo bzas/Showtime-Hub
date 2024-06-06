@@ -14,7 +14,7 @@ class APIService {
     )
     var languageQueryItem = URLQueryItem(
         name: "language",
-        value: Locale.current.language.region?.identifier.localizedLowercase
+        value: Locale.current.region?.identifier.localizedLowercase
     )
 
     var defaultQueryItems: [URLQueryItem] {
