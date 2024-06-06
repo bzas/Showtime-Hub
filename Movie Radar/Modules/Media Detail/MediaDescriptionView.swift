@@ -39,34 +39,42 @@ struct MediaDescriptionView: View {
             let budget = viewModel.media.budget ?? 0
             let revenue = viewModel.media.revenue ?? 0
             if budget > 0 || revenue > 0 {
-                HStack(spacing: 8) {
+                HStack(spacing: 12) {
                     infoItem(
                         title: "Budget",
-                        textToDisplay: budget > 0 ? "\(budget)" : nil
+                        textToDisplay: budget > 0 ? "\(budget)$" : nil
                     )
-                    
-                    Spacer()
-                    
+                                        
                     infoItem(
                         title: "Revenue",
-                        textToDisplay: revenue > 0 ? "\(revenue)" : nil
+                        textToDisplay: revenue > 0 ? "\(revenue)$" : nil
                     )
-                    
-                    Spacer()
-                    
+                                        
                     infoItem(
                         title: "Release",
                         textToDisplay: viewModel.media.dateString
                     )
                 }
                 .padding(.top)
-                .padding(.horizontal)
             } else {
-                HStack(spacing: 12) {
-                    Text("Release")
-                        .font(.system(size: 12, weight: .bold))
-                    Text(viewModel.media.dateString ?? "No information")
-                        .font(.system(size: 14, weight: .light))
+                HStack {
+                    HStack(spacing: 0) {
+                        Text("Release")
+                            .font(.system(size: 12, weight: .bold))
+                            .padding(6)
+                            .padding(.horizontal, 6)
+                            .frame(maxHeight: .infinity)
+                            .background(UIColor.systemGray6.color)
+                        
+                        Text(viewModel.media.dateString ?? "No information")
+                            .font(.system(size: 14, weight: .light))
+                            .padding(6)
+                            .padding(.horizontal, 6)
+                            .frame(maxHeight: .infinity)
+                            .background(UIColor.systemGray4.color)
+                    }
+                    .frame(height: 35)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                     Spacer()
                 }
             }
@@ -84,13 +92,20 @@ struct MediaDescriptionView: View {
         textToDisplay: String?
     ) -> some View {
         if let textToDisplay {
-            VStack {
+            VStack(spacing: 0) {
                 Text(title)
-                    .font(.system(size: 12, weight: .bold))
+                    .font(.system(size: 12, weight: .semibold))
+                    .padding(8)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(UIColor.systemGray6.color)
                 
                 Text(textToDisplay)
                     .font(.system(size: 14, weight: .light))
+                    .padding(6)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(UIColor.systemGray4.color)
             }
+            .clipShape(RoundedRectangle(cornerRadius: 10))
         }
     }
 }

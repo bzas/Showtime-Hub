@@ -65,19 +65,21 @@ struct SaveMediaStackView: View {
                         list.actionTitle(isSaved: isSaved(userList: list)),
                         systemImage: list.imageName ?? ""
                     )
-                    .shadow(color: .black, radius: 4)
                 }
             }
         } label: {
             Image(systemName: "plus")
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(.black)
+                .foregroundStyle(.black.opacity(0.5))
                 .frame(width: 20, height: 20)
                 .padding(8)
                 .background(.white.opacity(0.5))
                 .clipShape(Circle())
-                .shadow(color: .black, radius: 4)
+                .shadow(
+                    color: .black.opacity(0.5),
+                    radius: 2
+                )
         }
         
         HStack {
@@ -96,7 +98,10 @@ struct SaveMediaStackView: View {
         .padding(.vertical, 8)
         .background(.white.opacity(0.5))
         .clipShape(Capsule())
-        .shadow(color: .black, radius: 4)
+        .shadow(
+            color: .black.opacity(0.5),
+            radius: 2
+        )
     }
     
     func buttonRole(userList: UserList) -> ButtonRole? {

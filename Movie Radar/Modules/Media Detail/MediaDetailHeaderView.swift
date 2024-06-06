@@ -41,11 +41,14 @@ struct MediaDetailHeaderView: View {
                         Image(systemName: "xmark")
                             .resizable()
                             .frame(width: 15, height: 15)
-                            .foregroundStyle(.black)
+                            .foregroundStyle(.black.opacity(0.5))
                             .padding(10)
                             .background(.white.opacity(0.5))
                             .clipShape(Circle())
-                            .shadow(color: .black, radius: 4)
+                            .shadow(
+                                color: .black.opacity(0.5),
+                                radius: 2
+                            )
                     }
                     
                     Spacer()
