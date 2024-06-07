@@ -56,30 +56,32 @@ struct SaveMediaStackView: View {
     }
     
     @ViewBuilder func content() -> some View {
-        Menu {
-            ForEach(userLists, id: \.self) { list in
-                Button(role: buttonRole(userList: list)) {
-                    addOrRemove(list: list)
-                } label: {
-                    Label(
-                        list.actionTitle(isSaved: isSaved(userList: list)),
-                        systemImage: list.imageName ?? ""
-                    )
+        if !userLists.isEmpty {
+            Menu {
+                ForEach(userLists, id: \.self) { list in
+                    Button(role: buttonRole(userList: list)) {
+                        addOrRemove(list: list)
+                    } label: {
+                        Label(
+                            list.actionTitle(isSaved: isSaved(userList: list)),
+                            systemImage: list.imageName ?? ""
+                        )
+                    }
                 }
+            } label: {
+                Image(systemName: "plus")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(.black.opacity(0.75))
+                    .frame(width: 20, height: 20)
+                    .padding(8)
+                    .background(.white.opacity(0.75))
+                    .clipShape(Circle())
+                    .shadow(
+                        color: .black.opacity(0.75),
+                        radius: 2
+                    )
             }
-        } label: {
-            Image(systemName: "plus")
-                .resizable()
-                .scaledToFit()
-                .foregroundStyle(.black.opacity(0.5))
-                .frame(width: 20, height: 20)
-                .padding(8)
-                .background(.white.opacity(0.5))
-                .clipShape(Circle())
-                .shadow(
-                    color: .black.opacity(0.5),
-                    radius: 2
-                )
         }
         
         HStack {
@@ -96,10 +98,10 @@ struct SaveMediaStackView: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 8)
-        .background(.white.opacity(0.5))
+        .background(.white.opacity(0.75))
         .clipShape(Capsule())
         .shadow(
-            color: .black.opacity(0.5),
+            color: .black.opacity(0.75),
             radius: 2
         )
     }

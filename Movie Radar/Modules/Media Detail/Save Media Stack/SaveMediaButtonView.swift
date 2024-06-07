@@ -19,5 +19,6 @@ struct SaveMediaButtonView: View {
             .foregroundStyle(isSaved ? userList.colorInfo?.color ?? .black.opacity(0.5) : .black.opacity(0.5))
             .frame(width: 20, height: 20)
             .padding(.horizontal, 2)
+            .shadow(color: .black.opacity(0.5), radius: 1)
     }
 }

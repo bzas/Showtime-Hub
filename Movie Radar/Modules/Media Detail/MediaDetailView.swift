@@ -20,6 +20,7 @@ struct MediaDetailView: View {
                     .environmentObject(viewModel)
             }
         }
+        .padding(.bottom, 48)
         .ignoresSafeArea()
         .scrollIndicators(.hidden)
         .fullScreenCover(isPresented: $viewModel.showDetailMedia) {

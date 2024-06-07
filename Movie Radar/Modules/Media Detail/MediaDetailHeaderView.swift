@@ -43,10 +43,10 @@ struct MediaDetailHeaderView: View {
                             .frame(width: 15, height: 15)
                             .foregroundStyle(.black.opacity(0.5))
                             .padding(10)
-                            .background(.white.opacity(0.5))
+                            .background(.white.opacity(0.75))
                             .clipShape(Circle())
                             .shadow(
-                                color: .black.opacity(0.5),
+                                color: .black.opacity(0.75),
                                 radius: 2
                             )
                     }
