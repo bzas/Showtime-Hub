@@ -32,7 +32,8 @@ class LocalStorage {
             ($0.userList?.id ?? "") == userList.id &&
             (mediaTypeString == allMedia ? true : $0._type == mediaTypeString) &&
             (searchText.isEmpty ? true : $0.detail.name.contains(searchText)) &&
-            $0.detail.date > startDate && $0.detail.date < endDate
+            ((startDate != defaultDate) ? ($0.detail.date > startDate) : true) &&
+            ((endDate != defaultEndDate) ? ($0.detail.date < endDate) : true)
         }
     }
     

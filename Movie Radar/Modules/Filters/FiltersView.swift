@@ -77,7 +77,6 @@ struct FiltersView: View {
                     HStack(spacing: 6) {
                         DatePicker(
                             selection: $viewModel.startDate,
-                            in: ...Date.now,
                             displayedComponents: .date
                         ) {}
                             .labelsHidden()
@@ -88,7 +87,6 @@ struct FiltersView: View {
                         
                         DatePicker(
                             selection: $viewModel.endDate,
-                            in: ...Date.now,
                             displayedComponents: .date
                         ) {}
                             .labelsHidden()
