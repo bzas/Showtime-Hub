@@ -23,6 +23,10 @@ struct MediaDetailView: View {
         .padding(.bottom, 48)
         .ignoresSafeArea()
         .scrollIndicators(.hidden)
+        .toast(
+            show: $viewModel.showToast,
+            toastInfo: viewModel.toastInfo
+        )
         .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
             if let detailMediaToShow = viewModel.detailMediaToShow {
                 MediaDetailView(

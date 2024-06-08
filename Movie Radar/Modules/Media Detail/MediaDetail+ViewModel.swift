@@ -5,7 +5,7 @@
 //  Created by Alfonso Boizas Crespo on 24/4/24.
 //
 
-import Foundation
+import SwiftUI
 
 extension MediaDetailView {
     class ViewModel: ObservableObject {
@@ -18,6 +18,15 @@ extension MediaDetailView {
         @Published var recommendationsList = MediaList()
         @Published var reviewList = ReviewList()
         @Published var linkList: LinkList?
+        
+        @Published var showToast = false
+        @Published var toastInfo: ToastInfo? {
+            didSet {
+                withAnimation(.spring) {
+                    showToast.toggle()
+                }
+            }
+        }
         
         private var watchInfo: WatchInfo? {
             didSet {

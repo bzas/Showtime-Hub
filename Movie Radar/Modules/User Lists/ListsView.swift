@@ -126,7 +126,9 @@ struct ListsView: View {
                     .clipShape(Capsule())
                 })
                 .padding()
-                .padding(.bottom)
+                .padding(.bottom, 48)
+                
+                Spacer()
             }
         }
         .scrollIndicators(.hidden)
@@ -135,9 +137,5 @@ struct ListsView: View {
         .onTapGesture {
             viewModel.dismiss()
         }
-    }
-    
-    func delete(at offsets: IndexSet) {
-//            users.remove(atOffsets: offsets)
     }
 }

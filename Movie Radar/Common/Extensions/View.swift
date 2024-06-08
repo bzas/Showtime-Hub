@@ -30,4 +30,16 @@ extension View {
                 )
             }
     }
+    
+    func toast(show: Binding<Bool>, toastInfo: ToastInfo?) -> some View {
+        overlay {
+            if show.wrappedValue,
+               let toastInfo {
+                Toast(
+                    toastInfo: toastInfo,
+                    show: show
+                )
+            }
+        }
+    }
 }

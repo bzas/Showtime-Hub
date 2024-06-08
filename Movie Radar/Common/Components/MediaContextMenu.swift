@@ -91,11 +91,10 @@ struct MediaContextMenu: View {
             insert(userList: userList)
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             toastInfo = .init(
-                text: isSaved ? "Removed" : "Added",
-                imageName: isSaved ? "trash.square" : "checkmark.square",
-                color: isSaved ? .red.opacity(0.5) : .green.opacity(0.5)
+                isSaved: isSaved,
+                userList: userList
             )
         }
     }

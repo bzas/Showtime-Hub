@@ -71,6 +71,9 @@
         }
       }
     },
+    "Added to %@" : {
+
+    },
     "All" : {
       "localizations" : {
         "es" : {
@@ -290,6 +293,12 @@
           }
         }
       }
+    },
+    "List added" : {
+
+    },
+    "List Removed" : {
+
     },
     "Loading..." : {
       "localizations" : {
@@ -570,6 +579,9 @@
           }
         }
       }
+    },
+    "Removed from %@" : {
+
     },
     "Rent" : {
       "localizations" : {

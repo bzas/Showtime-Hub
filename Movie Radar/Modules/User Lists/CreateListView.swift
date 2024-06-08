@@ -14,7 +14,7 @@ struct CreateListView: View {
     @Query(sort: [
         SortDescriptor(\UserList.index)
     ]) var currentLists: [UserList]
-    @FocusState var isEditing: Bool
+    @FocusState var isEditingField: Bool
     
     var body: some View {
         ScrollView {
@@ -28,7 +28,7 @@ struct CreateListView: View {
                 HStack {
                     VStack(spacing: 2) {
                         TextField("", text: $viewModel.listName)
-                            .focused($isEditing)
+                            .focused($isEditingField)
                             .modifier(
                                 PlaceholderStyle(
                                     showPlaceHolder: viewModel.listName.isEmpty,
@@ -53,11 +53,9 @@ struct CreateListView: View {
                         }
                     }
                     
-                    if isEditing {
+                    if isEditingField {
                         Button(action: {
-                            withAnimation {
-                                isEditing = false
-                            }
+                            isEditingField = false
                         }, label: {
                             Text("Done")
                                 .foregroundStyle(.white)
@@ -99,7 +97,6 @@ struct CreateListView: View {
                     Spacer()
                     Button(action: {
                         withAnimation {
-                            isEditing = false
                             viewModel.tabIndex = 0
                         }
                     }, label: {
@@ -108,13 +105,11 @@ struct CreateListView: View {
                             .padding()
                     })
                     Button(action: {
-                        isEditing = false
                         viewModel.createList(currentLists: currentLists)
                         withAnimation {
                             viewModel.tabIndex = 0
                         }
-                    },
-                           label: {
+                    }, label: {
                         let shouldDisableButton = viewModel.listName.isEmpty || viewModel.isNameInUse(lists: currentLists)
                         Text("Create")
                             .foregroundStyle(.black)
@@ -137,5 +132,15 @@ struct CreateListView: View {
                 autoDismiss: true
             )
         }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                isEditingField = true
+            }
+        }
+        .onChange(of: viewModel.tabIndex, { _, newValue in
+            if newValue == 0 {
+                isEditingField = false
+            }
+        })
     }
 }

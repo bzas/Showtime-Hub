@@ -23,12 +23,15 @@ struct MediaList: Codable {
         results = []
         totalPages = 1
     }
-
-    mutating func append(_ movieList: MediaList) {
-        page = movieList.page + 1
-        let filteredMovies = movieList.results.filter {
+    
+    func filteredList(_ movieList: MediaList) -> [Media] {
+        movieList.results.filter {
             !results.contains($0)
         }
-        results.append(contentsOf: filteredMovies)
+    }
+
+    mutating func append(_ newResults: [Media]) {
+        page += 1
+        results.append(contentsOf: newResults)
     }
 }

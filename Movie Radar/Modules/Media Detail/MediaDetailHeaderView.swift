@@ -55,7 +55,8 @@ struct MediaDetailHeaderView: View {
                     
                     SaveMediaStackView(
                         media: viewModel.media,
-                        mediaType: viewModel.type
+                        mediaType: viewModel.type,
+                        toastInfo: $viewModel.toastInfo
                     )
                 }
                 .padding(.top, safeAreaInsets.top + 10)

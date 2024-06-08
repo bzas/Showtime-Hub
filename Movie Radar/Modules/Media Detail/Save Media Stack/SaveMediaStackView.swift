@@ -19,10 +19,17 @@ struct SaveMediaStackView: View {
     ]) var mediaItems: [SavedMedia]
     @Query var defaultLists: [UserList]
     @Query var userLists: [UserList]
+    
+    @Binding var toastInfo: ToastInfo?
 
-    init(media: Media, mediaType: MediaType) {
+    init(
+        media: Media,
+        mediaType: MediaType,
+        toastInfo: Binding<ToastInfo?>
+    ) {
         self.media = media
         self.mediaType = mediaType
+        self._toastInfo = toastInfo
         
         let defaultListTypeString = UserListType.defaultList.rawValue
         _defaultLists = Query(
@@ -111,13 +118,20 @@ struct SaveMediaStackView: View {
     }
     
     func addOrRemove(list: UserList) {
-        if isSaved(userList: list) {
+        let isSaved = isSaved(userList: list)
+        if isSaved {
             remove(userList: list)
         } else {
             insert(userList: list)
         }
         
         triggerHapticFeedback.toggle()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            toastInfo = .init(
+                isSaved: isSaved,
+                userList: list
+            )
+        }
     }
     
     func isSaved(userList: UserList) -> Bool {

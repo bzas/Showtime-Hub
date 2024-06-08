@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import AlertToast
 
 struct HomeContentView: View {
     var headerHeight: Binding<CGFloat>
@@ -38,19 +37,10 @@ struct HomeContentView: View {
                     )
                 }
             }
-            .toast(isPresenting: $viewModel.showToast, duration: 1) {
-                if let toastInfo = viewModel.toastInfo {
-                    AlertToast(
-                        type: .systemImage(toastInfo.imageName, toastInfo.color),
-                        title: toastInfo.text
-                    )
-                } else {
-                    AlertToast(
-                        type: .error(.white),
-                        title: "An error occurred"
-                    )
-                }
-            }
+            .toast(
+                show: $viewModel.showToast,
+                toastInfo: viewModel.toastInfo
+            )
         }
     }
 }

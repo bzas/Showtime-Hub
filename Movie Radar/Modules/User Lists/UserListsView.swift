@@ -48,6 +48,10 @@ struct UserListsView: View {
                 removal: .scale(scale: 0.01)
             )
         )
+        .toast(
+            show: $viewModel.showToast,
+            toastInfo: viewModel.toastInfo
+        )
     }
     
     func dismiss() {

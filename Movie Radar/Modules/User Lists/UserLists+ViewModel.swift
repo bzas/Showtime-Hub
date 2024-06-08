@@ -21,6 +21,15 @@ extension UserListsView {
         var showDetail: Binding<Bool>
         var selectedListIndex: Binding<Int>
         
+        @Published var showToast = false
+        @Published var toastInfo: ToastInfo? {
+            didSet {
+                withAnimation(.spring) {
+                    showToast.toggle()
+                }
+            }
+        }
+        
         init(
             tabIndex: Int = 0,
             newListIcon: String = "star.fill",
@@ -57,6 +66,7 @@ extension UserListsView {
             listName = ""
             listIcon = "star.fill"
             listColor = .white
+            toastInfo = .init(isRemoved: false)
         }
         
         func deleteList(
@@ -67,6 +77,10 @@ extension UserListsView {
                 list: list,
                 mediaItems: mediaItems
             )
+            withAnimation {
+                isEditing = false
+            }
+            toastInfo = .init(isRemoved: true)
         }
         
         func dismiss() {

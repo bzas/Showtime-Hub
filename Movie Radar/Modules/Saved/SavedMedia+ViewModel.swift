@@ -5,7 +5,7 @@
 //  Created by Alfonso Boizas Crespo on 24/4/24.
 //
 
-import Foundation
+import SwiftUI
 import SwiftData
 
 extension SavedMediaView {
@@ -30,7 +30,9 @@ extension SavedMediaView {
         @Published var showToast = false
         @Published var toastInfo: ToastInfo? {
             didSet {
-                showToast.toggle()
+                withAnimation(.spring) {
+                    showToast.toggle()
+                }
             }
         }
 

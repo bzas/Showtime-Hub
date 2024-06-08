@@ -17,7 +17,9 @@ extension HomeContentView {
         @Published var showToast = false
         @Published var toastInfo: ToastInfo? {
             didSet {
-                showToast.toggle()
+                withAnimation(.spring) {
+                    showToast.toggle()
+                }
             }
         }
         
@@ -92,8 +94,9 @@ extension HomeContentView {
 
         func getUpcoming() async {
             if let movieList = await apiService.getUpcomingMovies(page: upcomingList.page) {
+                let itemsToAdd = upcomingList.filteredList(movieList)
                 await MainActor.run {
-                    upcomingList.append(movieList)
+                    upcomingList.append(itemsToAdd)
                 }
             }
         }
@@ -114,8 +117,9 @@ extension HomeContentView {
                 sortType: type.isMovie ? movieSortType.requestKey : seriesSortType.requestKey,
                 page: discoverList.page
             ) {
+                let itemsToAdd = discoverList.filteredList(mediaList)
                 await MainActor.run {
-                    discoverList.append(mediaList)
+                    discoverList.append(itemsToAdd)
                 }
                 await updateLoading(false)
             }
