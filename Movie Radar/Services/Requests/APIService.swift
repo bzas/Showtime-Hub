@@ -8,10 +8,9 @@
 import Foundation
 
 class APIService {
-    var apiKeyQueryItem = URLQueryItem(
-        name: "api_key",
-        value: "9a6438f6c6ac059b769cbf8f5e4a2b9c"
-    )
+    static let apiKeyPath = "api_key"
+    
+    var apiKeyQueryItem: URLQueryItem!
     var languageQueryItem = URLQueryItem(
         name: "language",
         value: Locale.current.region?.identifier.localizedLowercase
@@ -22,6 +21,28 @@ class APIService {
             apiKeyQueryItem,
             languageQueryItem
         ]
+    }
+    
+    var currentApiKey: String? {
+        guard let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
+                let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
+            return nil
+        }
+        
+        let plistData = try? PropertyListSerialization.propertyList(from: data, options: [], format: nil)
+        let dict = plistData as? [String: Any]
+        return dict?[Self.apiKeyPath] as? String
+    }
+    
+    init() {
+        guard let currentApiKey else {
+            fatalError("No API key provided")
+        }
+        
+        apiKeyQueryItem = URLQueryItem(
+            name: Self.apiKeyPath,
+            value: currentApiKey
+        )
     }
 
     func perform<T: Decodable>(request: URLRequest) async -> T? {
