@@ -47,10 +47,10 @@ struct ListsView: View {
                 ForEach(defaultLists, id: \.self) { userList in
                     UserListsCellView(
                         userList: userList,
-                        isSelected: viewModel.selectedListIndex.wrappedValue == userList.index
+                        isSelected: viewModel.selectedListIndex == userList.index
                     )
                     .onTapGesture {
-                        viewModel.selectedListIndex.wrappedValue = userList.index
+                        viewModel.selectedListIndex = userList.index
                         viewModel.dismiss()
                     }
                 }
@@ -96,11 +96,11 @@ struct ListsView: View {
                             
                             UserListsCellView(
                                 userList: userList,
-                                isSelected: viewModel.selectedListIndex.wrappedValue == correctedIndex
+                                isSelected: viewModel.selectedListIndex == correctedIndex
                             )
                             .onTapGesture {
                                 if !viewModel.isEditing {
-                                    viewModel.selectedListIndex.wrappedValue = correctedIndex
+                                    viewModel.selectedListIndex = correctedIndex
                                     viewModel.dismiss()
                                 }
                             }

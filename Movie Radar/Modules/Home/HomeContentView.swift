@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeContentView: View {
-    var headerHeight: Binding<CGFloat>
+    @Binding var headerHeight: CGFloat
     @StateObject var viewModel: ViewModel
 
     var body: some View {
@@ -23,7 +23,7 @@ struct HomeContentView: View {
                     GridView()
                         .environmentObject(viewModel)
                 }
-                .padding(.vertical, headerHeight.wrappedValue)
+                .padding(.vertical, headerHeight)
             }
             .scrollIndicators(.hidden)
             .fullScreenCover(isPresented: $viewModel.showDetailMedia) {

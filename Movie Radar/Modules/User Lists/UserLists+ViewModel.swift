@@ -10,17 +10,15 @@ import SwiftData
 
 extension UserListsView {
     class ViewModel: ObservableObject {
+        @Binding var showDetail: Bool
+        @Binding var selectedListIndex: Int
+        
         @Published var tabIndex = 0
         @Published var listIcon = "star.fill"
         @Published var listName = ""
         @Published var listColor = Color.white
         @Published var isSelectingNewIcon = false
         @Published var isEditing = false
-
-        var localStorage: LocalStorage
-        var showDetail: Binding<Bool>
-        var selectedListIndex: Binding<Int>
-        
         @Published var showToast = false
         @Published var toastInfo: ToastInfo? {
             didSet {
@@ -29,6 +27,8 @@ extension UserListsView {
                 }
             }
         }
+        
+        var localStorage: LocalStorage
         
         init(
             tabIndex: Int = 0,
@@ -43,8 +43,8 @@ extension UserListsView {
             self.listIcon = newListIcon
             self.listName = newListName
             self.isSelectingNewIcon = isSelectingNewIcon
-            self.showDetail = showDetail
-            self.selectedListIndex = selectedListIndex
+            self._showDetail = showDetail
+            self._selectedListIndex = selectedListIndex
             self.localStorage = LocalStorage(modelContext: modelContext)
         }
         
@@ -85,7 +85,7 @@ extension UserListsView {
         
         func dismiss() {
             withAnimation(.bouncy(duration: 0.3)) {
-                showDetail.wrappedValue = false
+                showDetail = false
             }
         }
         

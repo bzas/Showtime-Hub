@@ -56,7 +56,7 @@ struct UserListsView: View {
     
     func dismiss() {
         withAnimation(.bouncy(duration: 0.3)) {
-            viewModel.showDetail.wrappedValue = false
+            viewModel.showDetail = false
         }
     }
 }

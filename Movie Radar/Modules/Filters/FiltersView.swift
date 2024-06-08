@@ -29,8 +29,8 @@ struct FiltersView: View {
                         .font(.system(size: 14))
                         .cornerRadius(10)
                 }
-                .disabled(!viewModel.filtersApplied.wrappedValue)
-                .opacity(viewModel.filtersApplied.wrappedValue ? 1 : 0)
+                .disabled(!viewModel.filtersApplied)
+                .opacity(viewModel.filtersApplied ? 1 : 0)
                 
                 Button {
                     viewModel.applyFilters()

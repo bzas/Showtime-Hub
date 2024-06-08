@@ -16,11 +16,11 @@ extension FiltersView {
         
         var dateFilterApplied = false
         
-        var gridSearchText: Binding<String>
-        var filtersApplied: Binding<Bool>
-        var gridStartDate: Binding<Date>
-        var gridEndDate: Binding<Date>
-        var gridSelectedMediaType: Binding<MediaType>
+        @Binding var gridSearchText: String
+        @Binding var filtersApplied: Bool
+        @Binding var gridStartDate: Date
+        @Binding var gridEndDate: Date
+        @Binding var gridSelectedMediaType: MediaType
 
         init(
             gridSearchText: Binding<String>,
@@ -34,33 +34,33 @@ extension FiltersView {
             self.endDate = endDate.wrappedValue
             self.selectedMediaType = selectedMediaType.wrappedValue
             
-            self.gridSearchText = gridSearchText
-            self.filtersApplied = filtersApplied
-            self.gridStartDate = startDate
-            self.gridEndDate = endDate
-            self.gridSelectedMediaType = selectedMediaType
+            self._gridSearchText = gridSearchText
+            self._filtersApplied = filtersApplied
+            self._gridStartDate = startDate
+            self._gridEndDate = endDate
+            self._gridSelectedMediaType = selectedMediaType
         }
         
         func applyFilters(reset: Bool = false) {
             if reset {
-                gridSearchText.wrappedValue = ""
-                gridStartDate.wrappedValue = LocalStorage.defaultDate
-                gridEndDate.wrappedValue = LocalStorage.defaultEndDate
-                gridSelectedMediaType.wrappedValue = .all
+                gridSearchText = ""
+                gridStartDate = LocalStorage.defaultDate
+                gridEndDate = LocalStorage.defaultEndDate
+                gridSelectedMediaType = .all
             } else {
-                gridSearchText.wrappedValue = searchText
-                gridStartDate.wrappedValue = startDate
-                gridEndDate.wrappedValue = endDate
-                gridSelectedMediaType.wrappedValue = selectedMediaType
+                gridSearchText = searchText
+                gridStartDate = startDate
+                gridEndDate = endDate
+                gridSelectedMediaType = selectedMediaType
             }
             updateApplied()
         }
         
         func updateApplied() {
-            filtersApplied.wrappedValue = !gridSearchText.wrappedValue.isEmpty ||
-            gridStartDate.wrappedValue != LocalStorage.defaultDate ||
-            gridEndDate.wrappedValue != LocalStorage.defaultEndDate ||
-            gridSelectedMediaType.wrappedValue != .all
+            filtersApplied = !gridSearchText.isEmpty ||
+            gridStartDate != LocalStorage.defaultDate ||
+            gridEndDate != LocalStorage.defaultEndDate ||
+            gridSelectedMediaType != .all
         }
     }
 }

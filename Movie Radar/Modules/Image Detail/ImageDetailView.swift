@@ -100,7 +100,7 @@ struct ImageDetailView: View {
                 }
             }
             .onTapGesture {
-                viewModel.showDetail.wrappedValue = false
+                viewModel.showDetail = false
             }
         }
     }

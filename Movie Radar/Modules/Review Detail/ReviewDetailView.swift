@@ -53,7 +53,7 @@ struct ReviewDetailView: View {
             }
             .background(.clear)
             .onTapGesture {
-                viewModel.showDetail.wrappedValue = false
+                viewModel.showDetail = false
             }
         }
     }

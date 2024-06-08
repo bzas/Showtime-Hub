@@ -9,8 +9,7 @@ import SwiftUI
 
 extension ReviewDetailView {
     class ViewModel: ObservableObject {
-        var showDetail: Binding<Bool>
-
+        @Binding var showDetail: Bool
         @Published var reviews = [Review]()
 
         init(
@@ -19,7 +18,7 @@ extension ReviewDetailView {
             showDetail: Binding<Bool>
         ) {
             self.reviews = reviewList.transform(startIn: startingIndex ?? 0)
-            self.showDetail = showDetail
+            self._showDetail = showDetail
         }
     }
 }

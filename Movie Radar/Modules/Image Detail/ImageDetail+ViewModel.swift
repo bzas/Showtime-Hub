@@ -9,7 +9,7 @@ import SwiftUI
 
 extension ImageDetailView {
     class ViewModel: ObservableObject {
-        var showDetail: Binding<Bool>
+        @Binding var showDetail: Bool
 
         @Published var images = [ImageData]()
         @Published var isBigImage: Bool
@@ -29,7 +29,7 @@ extension ImageDetailView {
                 images: imageList.posters,
                 startIndex: startingIndex ?? 0
             )
-            self.showDetail = showDetail
+            self._showDetail = showDetail
             self.isBigImage = true
         }
         
@@ -42,7 +42,7 @@ extension ImageDetailView {
                 seasons: seasons,
                 startIndex: startingIndex ?? 0
             )
-            self.showDetail = showDetail
+            self._showDetail = showDetail
             self.isBigImage = false
         }
 

@@ -11,7 +11,7 @@ import SwiftData
 struct SavedMediaGridView: View {
     @ObservedObject var viewModel: SavedMediaView.ViewModel
     
-    var headerHeight: Binding<CGFloat>
+    @Binding var headerHeight: CGFloat
     @Query var mediaItems: [SavedMedia]
     
     var userList: UserList
@@ -28,7 +28,7 @@ struct SavedMediaGridView: View {
     ) {
         self.viewModel = viewModel
         self.userList = userList
-        self.headerHeight = headerHeight
+        self._headerHeight = headerHeight
         _mediaItems = Query(
             filter: viewModel.filtersPredicate(userList: userList),
             sort: \SavedMedia.detail.name
@@ -61,7 +61,7 @@ struct SavedMediaGridView: View {
                             }
                     }
                 }
-                .padding(.vertical, headerHeight.wrappedValue)
+                .padding(.vertical, headerHeight)
                 .padding(.top, 6)
             }
             .scrollIndicators(.hidden)
