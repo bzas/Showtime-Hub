@@ -71,7 +71,9 @@ extension MediaDetailView {
         @Published var showDetailReview = false
         @Published var reviewIndexToShow: Int? {
             didSet {
-                showDetailReview.toggle()
+                withAnimation(.spring) {
+                    showDetailReview.toggle()
+                }
             }
         }
         

@@ -100,8 +100,16 @@ struct ImageDetailView: View {
                 }
             }
             .onTapGesture {
-                viewModel.showDetail = false
+                withAnimation(.spring(duration: 0.25)) {
+                    viewModel.showDetail = false
+                }
             }
         }
+        .transition(
+            .asymmetric(
+                insertion: .scale(scale: 0.01),
+                removal: .scale(scale: 0.01)
+            )
+        )
     }
 }
