@@ -134,6 +134,7 @@
 		48C544DC2C0C818D00AE6517 /* UserLists+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C544DB2C0C818D00AE6517 /* UserLists+ViewModel.swift */; };
 		48F38C002BF6868A003F0CD0 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F38BFF2BF6868A003F0CD0 /* MediaType.swift */; };
 		48F38C022BF69A96003F0CD0 /* SeriesGridSortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F38C012BF69A96003F0CD0 /* SeriesGridSortType.swift */; };
+		48F562D22C14D8BE0019DF20 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F562D12C14D8BE0019DF20 /* Int.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -283,6 +284,7 @@
 		48C544DB2C0C818D00AE6517 /* UserLists+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserLists+ViewModel.swift"; sourceTree = "<group>"; };
 		48F38BFF2BF6868A003F0CD0 /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
 		48F38C012BF69A96003F0CD0 /* SeriesGridSortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesGridSortType.swift; sourceTree = "<group>"; };
+		48F562D12C14D8BE0019DF20 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,6 +480,7 @@
 			children = (
 				48A309432BF5040700F1733C /* Colors.swift */,
 				48A309442BF5040700F1733C /* View.swift */,
+				48F562D12C14D8BE0019DF20 /* Int.swift */,
 				481B4EC82C11F139003D1DEB /* SafeArea.swift */,
 			);
 			path = Extensions;
@@ -1023,6 +1026,7 @@
 				48A309B12BF5041900F1733C /* MediaDetail+ViewModel.swift in Sources */,
 				48A309F42BF5044400F1733C /* Review.swift in Sources */,
 				48A309A92BF5041900F1733C /* ImageCarouselView.swift in Sources */,
+				48F562D22C14D8BE0019DF20 /* Int.swift in Sources */,
 				4846E8702BF8C11F00D7ADAB /* SeasonsCarouselView.swift in Sources */,
 				48A309AF2BF5041900F1733C /* LinksCarouselView.swift in Sources */,
 				48A3099B2BF5041900F1733C /* GridPlaceholderView.swift in Sources */,

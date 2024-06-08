@@ -41,6 +41,12 @@
         }
       }
     },
+    "%.1fB" : {
+
+    },
+    "%.1fM" : {
+
+    },
     "%lld min" : {
       "localizations" : {
         "es" : {

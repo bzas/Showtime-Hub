@@ -47,12 +47,12 @@ struct MediaDescriptionView: View {
                 HStack(spacing: 12) {
                     infoItem(
                         title: NSLocalizedString("Budget", comment: ""),
-                        textToDisplay: budget > 0 ? "\(budget)$" : nil
+                        textToDisplay: budget.money
                     )
                                         
                     infoItem(
                         title: NSLocalizedString("Revenue", comment: ""),
-                        textToDisplay: revenue > 0 ? "\(revenue)$" : nil
+                        textToDisplay: revenue.money
                     )
                                         
                     infoItem(
