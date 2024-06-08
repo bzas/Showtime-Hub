@@ -14,12 +14,9 @@ struct SaveMediaStackView: View {
     @State var triggerHapticFeedback = false
     
     @Environment(\.modelContext) var modelContext
-    @Query(sort: [
-        SortDescriptor(\SavedMedia.detail.name)
-    ]) var mediaItems: [SavedMedia]
+    @Query var mediaItems: [SavedMedia]
     @Query var defaultLists: [UserList]
     @Query var userLists: [UserList]
-    
     @Binding var toastInfo: ToastInfo?
 
     init(
@@ -30,6 +27,15 @@ struct SaveMediaStackView: View {
         self.media = media
         self.mediaType = mediaType
         self._toastInfo = toastInfo
+        
+        _mediaItems = Query(
+            filter: #Predicate<SavedMedia> {
+                $0.detail.id == media.id
+            },
+            sort: [
+                SortDescriptor(\SavedMedia.detail.name)
+            ]
+        )
         
         let defaultListTypeString = UserListType.defaultList.rawValue
         _defaultLists = Query(

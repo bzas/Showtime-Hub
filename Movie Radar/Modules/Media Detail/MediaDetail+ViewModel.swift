@@ -98,31 +98,31 @@ extension MediaDetailView {
 
         func fetchDetail() async {
             if let mediaDetail = await apiService.getDetail(type: type, id: media.id) {
+                let crew = mediaDetail.creators?.map {
+                    GenericCrew(
+                        name: $0.name,
+                        imageUrl: $0.imageUrl
+                    )
+                } ?? []
                 await MainActor.run {
                     media = mediaDetail
-                    mediaDetail.creators?.forEach { creator in
-                        productionCrew.append(
-                            GenericCrew(
-                                name: creator.name,
-                                imageUrl: creator.imageUrl
-                            )
-                        )
-                    }
+                    productionCrew.append(contentsOf: crew)
                 }
             }
         }
 
         func fetchMediaActors() async {
             if let movieCredits = await apiService.getMediaActors(type: type, id: media.id) {
+                let crew = movieCredits.directors.map {
+                    GenericCrew(
+                        name: $0.name,
+                        imageUrl: $0.imageUrl
+                    )
+                }
                 await MainActor.run {
                     mediaActors = movieCredits.actors
                     if type.isMovie {
-                        productionCrew = movieCredits.directors.map {
-                            GenericCrew(
-                                name: $0.name,
-                                imageUrl: $0.imageUrl
-                            )
-                        }
+                        productionCrew = crew
                     }
                 }
             }

@@ -15,7 +15,7 @@ class ToastInfo: Equatable {
     
     init(isRemoved: Bool) {
         self.id = UUID().uuidString
-        text = isRemoved ? NSLocalizedString("List Removed", comment: "") : NSLocalizedString("List added", comment: "")
+        text = isRemoved ? NSLocalizedString("List removed", comment: "") : NSLocalizedString("List added", comment: "")
         imageName = isRemoved ? "trash.circle.fill" : "checkmark.circle.fill"
         color = isRemoved ? .red.opacity(0.75) : .green.opacity(0.75)
     }
