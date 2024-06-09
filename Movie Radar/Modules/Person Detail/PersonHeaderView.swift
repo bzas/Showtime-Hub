@@ -10,22 +10,33 @@ import SwiftUI
 struct PersonMovieHeaderView: View {
     @EnvironmentObject var viewModel: PersonDetailView.ViewModel
     var proxy: GeometryProxy
-
+    
     var body: some View {
         ZStack {
-            AsyncImage(url: viewModel.person?.imageUrl) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-            } placeholder: {
-                PlaceholderView()
-            }
-            .frame(
-                width: proxy.size.width,
-                height: proxy.size.width * 1.33
-            )
-            .clipped()
-
+            AsyncImage(
+                url: viewModel.person?.imageUrl,
+                transaction: Transaction(
+                    animation: .spring(
+                        response: 0.5,
+                        dampingFraction: 0.65,
+                        blendDuration: 0.5)
+                )) { phase in
+                        switch phase {
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .transition(.scale)
+                        default:
+                            PlaceholderView()
+                        }
+                    }
+                    .frame(
+                        width: proxy.size.width,
+                        height: proxy.size.width * 1.33
+                    )
+                    .clipped()
+            
             LinearGradient(
                 stops: [
                     Gradient.Stop(color: .clear, location: 0.6),
@@ -34,7 +45,7 @@ struct PersonMovieHeaderView: View {
                 startPoint: .top,
                 endPoint: .bottom
             )
-
+            
             VStack(spacing: 4) {
                 Spacer()
                 HStack {
@@ -45,12 +56,12 @@ struct PersonMovieHeaderView: View {
                         .shadow(radius: 1)
                     Spacer()
                 }
-
+                
                 if let birthInfo = viewModel.birthInfo {
                     HStack {
                         Text(birthInfo)
                             .font(.system(size: 14))
-
+                        
                         Spacer()
                     }
                     .padding(.top, 2)

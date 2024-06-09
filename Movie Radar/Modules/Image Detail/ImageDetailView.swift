@@ -29,6 +29,7 @@ struct ImageDetailView: View {
                                             image
                                                 .resizable()
                                                 .scaledToFit()
+                                                .transition(.scale)
                                         default:
                                             Color.clear
                                         }

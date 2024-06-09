@@ -12,20 +12,31 @@ struct MediaDetailHeaderView: View {
 
     var body: some View {
         ZStack {
-            AsyncImage(url: viewModel.media.originalImageUrl) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-            } placeholder: {
-                PlaceholderView()
-            }
-            .frame(height: 560)
-            .clipped()
-            .onTapGesture {
-                withAnimation(.linear(duration: 0.25)) {
-                    viewModel.showMainImage.toggle()
+            AsyncImage(
+                url: viewModel.media.originalImageUrl,
+                transaction: Transaction(
+                    animation: .spring(
+                        response: 0.5,
+                        dampingFraction: 0.65,
+                        blendDuration: 0.5)
+                )) { phase in
+                    switch phase {
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .transition(.scale)
+                    default:
+                        PlaceholderView()
+                    }
                 }
-            }
+                .frame(height: 560)
+                .clipped()
+                .onTapGesture {
+                    withAnimation(.linear(duration: 0.25)) {
+                        viewModel.showMainImage.toggle()
+                    }
+                }
             
             LinearGradient(
                 stops: [
