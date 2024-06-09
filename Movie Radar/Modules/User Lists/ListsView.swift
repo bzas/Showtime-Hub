@@ -83,6 +83,7 @@ struct ListsView: View {
                                 Button(action: {
                                     viewModel.deleteList(
                                         userList,
+                                        index: index,
                                         mediaItems: mediaItems
                                     )
                                 }, label: {

@@ -71,8 +71,13 @@ extension UserListsView {
         
         func deleteList(
             _ list: UserList,
+            index: Int,
             mediaItems: [SavedMedia]
         ) {
+            if index == selectedListIndex {
+                selectedListIndex = 0
+            }
+            
             localStorage.delete(
                 list: list,
                 mediaItems: mediaItems
