@@ -34,6 +34,26 @@ struct MediaDetailHeaderView: View {
             VStack {                
                 Spacer()
                 
+                if let trailerUrl = viewModel.media.videoList?.trailerUrl {
+                    HStack {
+                        Link(destination: trailerUrl) {
+                            HStack {
+                                Image(systemName: "play.fill")
+                                    .resizable()
+                                    .frame(width: 15, height: 15)
+                                    .scaledToFit()
+                                Text("Trailer")
+                            }
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                            .background(.white)
+                            .foregroundStyle(.black)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
+                        Spacer()
+                    }
+                }
+                
                 HStack {
                     Text(viewModel.media.name)
                         .font(.system(size: 30, weight: .light))
@@ -73,8 +93,4 @@ struct MediaDetailHeaderView: View {
             .padding(.horizontal)
         }
     }
-}
-
-#Preview {
-    MediaDetailHeaderView()
 }

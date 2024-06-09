@@ -35,8 +35,9 @@ struct MediaDescriptionView: View {
                         viewModel.media.voteCount ?? 0
                     )
                 )
-                    .opacity(0.6)
-                    .font(.system(size: 14))
+                .opacity(0.6)
+                .font(.system(size: 14))
+                
                 Spacer()
             }
             .foregroundStyle(.yellow)
@@ -49,12 +50,12 @@ struct MediaDescriptionView: View {
                         title: NSLocalizedString("Budget", comment: ""),
                         textToDisplay: budget.money
                     )
-                                        
+                    
                     infoItem(
                         title: NSLocalizedString("Revenue", comment: ""),
                         textToDisplay: revenue.money
                     )
-                                        
+                    
                     infoItem(
                         title: NSLocalizedString("Release", comment: ""),
                         textToDisplay: viewModel.media.dateString
@@ -83,7 +84,7 @@ struct MediaDescriptionView: View {
                     Spacer()
                 }
             }
-
+            
             Text(viewModel.media.overview ?? "")
                 .multilineTextAlignment(.leading)
                 .font(.system(size: 14))
@@ -113,8 +114,4 @@ struct MediaDescriptionView: View {
             .clipShape(RoundedRectangle(cornerRadius: 10))
         }
     }
-}
-
-#Preview {
-    MediaDescriptionView()
 }

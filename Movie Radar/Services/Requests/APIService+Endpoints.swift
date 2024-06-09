@@ -102,10 +102,10 @@ extension APIService {
     }
 
     // MARK: - /{type}/{media_id}
-    func getDetail(type: MediaType, id: Int) async -> Media? {
+    func getDetail(type: MediaType, id: Int) async -> Media? {        
         guard let request = PathBuilder.request(
             type.isMovie ? .detail : .detailTv,
-            queryItems: defaultQueryItems,
+            queryItems: defaultQueryItems(appendingToResponse: ["videos"]),
             pathComponent: "\(id)"
         ) else {
             return nil

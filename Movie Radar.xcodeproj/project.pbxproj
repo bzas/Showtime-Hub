@@ -138,6 +138,7 @@
 		48F562D62C15A6D10019DF20 /* MediaTopMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F562D52C15A6D10019DF20 /* MediaTopMenuView.swift */; };
 		48F562D82C15BC5A0019DF20 /* ScrollOffsetPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F562D72C15BC5A0019DF20 /* ScrollOffsetPreferenceKey.swift */; };
 		48F87F922C15D1C400A3C7A9 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F87F912C15D1C400A3C7A9 /* LaunchView.swift */; };
+		48F87F942C15D43800A3C7A9 /* VideoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F87F932C15D43800A3C7A9 /* VideoList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,6 +292,7 @@
 		48F562D52C15A6D10019DF20 /* MediaTopMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTopMenuView.swift; sourceTree = "<group>"; };
 		48F562D72C15BC5A0019DF20 /* ScrollOffsetPreferenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollOffsetPreferenceKey.swift; sourceTree = "<group>"; };
 		48F87F912C15D1C400A3C7A9 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
+		48F87F932C15D43800A3C7A9 /* VideoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -743,6 +745,7 @@
 				48A309D22BF5044400F1733C /* MediaList.swift */,
 				4846E86C2BF8C0B700D7ADAB /* Season.swift */,
 				4846E8732BF8C49700D7ADAB /* GenericCrew.swift */,
+				48F87F932C15D43800A3C7A9 /* VideoList.swift */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -1100,6 +1103,7 @@
 				48A309E62BF5044400F1733C /* Genre.swift in Sources */,
 				483DDF9B2BFBB1A9007677A1 /* ReviewDetailView.swift in Sources */,
 				48A309F32BF5044400F1733C /* PersonMediaList.swift in Sources */,
+				48F87F942C15D43800A3C7A9 /* VideoList.swift in Sources */,
 				48A309A12BF5041900F1733C /* HomeContentView.swift in Sources */,
 				48A309AE2BF5041900F1733C /* LinksCarouselCellView.swift in Sources */,
 				48A309952BF5041900F1733C /* MediaCarouselCellView.swift in Sources */,

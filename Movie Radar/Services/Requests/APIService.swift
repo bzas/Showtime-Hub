@@ -59,12 +59,22 @@ class APIService {
             return nil
         }
     }
+    
+    func defaultQueryItems(appendingToResponse: [String]) -> [URLQueryItem] {
+        guard !appendingToResponse.isEmpty else { return defaultQueryItems }
+        
+        let appendVideosQueryItem = URLQueryItem(
+            name: "append_to_response",
+            value: appendingToResponse.joined(separator: ",")
+        )
+        
+        return defaultQueryItems + [appendVideosQueryItem]
+    }
 
     func log(response: HTTPURLResponse?) {
         let logSymbol = response?.statusCode == 200 ? "✅" : "❌"
         print("\n\(logSymbol) Request")
         print("Status Code: \(response?.statusCode ?? -1)")
         print(response?.url?.absoluteString ?? "Invalid URL", terminator: "\n\n")
-
     }
 }

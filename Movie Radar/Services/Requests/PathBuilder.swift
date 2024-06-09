@@ -23,7 +23,11 @@ struct PathBuilder {
         imgBaseUrl + type.rawValue + imagePath
     }
 
-    static func request(_ path: Path, queryItems: [URLQueryItem], pathComponent: String = "") -> URLRequest? {
+    static func request(
+        _ path: Path,
+        queryItems: [URLQueryItem],
+        pathComponent: String = ""
+    ) -> URLRequest? {
         let urlString = String(format: baseUrl + "/\(apiVersion)" + path.rawValue, pathComponent)
         var urlComponents = URLComponents(string: urlString)
         urlComponents?.queryItems = queryItems

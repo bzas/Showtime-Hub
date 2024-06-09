@@ -36,6 +36,8 @@ class Media: Codable, Hashable {
     let seasonNumber: Int?
     let episodeNumber: Int?
     let date: Date
+    let videoList: VideoList?
+    
     private let releaseDate: String?
     private let airDate: String?
     private let voteAverage: Double?
@@ -97,6 +99,7 @@ class Media: Codable, Hashable {
         case seasonNumber = "number_of_seasons"
         case episodeNumber = "number_of_episodes"
         case date
+        case videoList = "videos"
     }
     
     convenience init(id: Int) {
@@ -119,7 +122,8 @@ class Media: Codable, Hashable {
             seasons: nil, 
             seasonNumber: nil,
             episodeNumber: nil,
-            date: Date()
+            date: Date(),
+            videoList: VideoList(results: [])
         )
     }
 
@@ -142,7 +146,8 @@ class Media: Codable, Hashable {
         seasons: [Season]?, 
         seasonNumber: Int?,
         episodeNumber: Int?,
-        date: Date
+        date: Date,
+        videoList: VideoList?
     ) {
         self.backdropPath = backdropPath
         self.budget = budget
@@ -163,6 +168,7 @@ class Media: Codable, Hashable {
         self.seasonNumber = seasonNumber
         self.episodeNumber = episodeNumber
         self.date = date
+        self.videoList = videoList
     }
     
     required init(from decoder: Decoder) throws {
@@ -189,7 +195,8 @@ class Media: Codable, Hashable {
         self.seasons = try? container?.decode([Season].self, forKey: .seasons)
         self.seasonNumber = try? container?.decode(Int.self, forKey: .seasonNumber)
         self.episodeNumber = try? container?.decode(Int.self, forKey: .episodeNumber)
-        
+        self.videoList = try? container?.decode(VideoList.self, forKey: .videoList)
+
         let releaseDate = try? container?.decode(String.self, forKey: .releaseDate)
         self.releaseDate = releaseDate
         
@@ -226,5 +233,6 @@ class Media: Codable, Hashable {
         try? container.encode(seasonNumber, forKey: .seasonNumber)
         try? container.encode(episodeNumber, forKey: .episodeNumber)
         try? container.encode(date, forKey: .date)
+        try? container.encode(videoList, forKey: .videoList)
     }
 }
