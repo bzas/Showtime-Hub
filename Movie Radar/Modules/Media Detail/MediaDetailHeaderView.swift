@@ -21,7 +21,12 @@ struct MediaDetailHeaderView: View {
             }
             .frame(height: 560)
             .clipped()
-
+            .onTapGesture {
+                withAnimation(.linear(duration: 0.25)) {
+                    viewModel.showMainImage.toggle()
+                }
+            }
+            
             LinearGradient(
                 stops: [
                     Gradient.Stop(color: .clear, location: 0.6),
@@ -30,6 +35,12 @@ struct MediaDetailHeaderView: View {
                 startPoint: .top,
                 endPoint: .bottom
             )
+            .opacity(viewModel.showMainImage ? 0 : 1)
+            .onTapGesture {
+                withAnimation(.linear(duration: 0.25)) {
+                    viewModel.showMainImage.toggle()
+                }
+            }
 
             VStack {                
                 Spacer()
@@ -91,6 +102,7 @@ struct MediaDetailHeaderView: View {
                     .environmentObject(viewModel)
             }
             .padding(.horizontal)
+            .opacity(viewModel.showMainImage ? 0 : 1)
         }
     }
 }

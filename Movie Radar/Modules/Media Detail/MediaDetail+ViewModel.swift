@@ -40,7 +40,6 @@ extension MediaDetailView {
             }
         }
         
-        @Published var isHeaderHidden = false
         @Published var showDetailImage = false
         @Published var imageIndexToShow: Int? {
             didSet {
@@ -79,7 +78,9 @@ extension MediaDetailView {
         }
         
         @Published var productionCrew: [GenericCrew] = []
-
+        @Published var isHeaderHidden = false
+        @Published var showMainImage = false
+        
         init(
             apiService: APIService,
             media: Media,
