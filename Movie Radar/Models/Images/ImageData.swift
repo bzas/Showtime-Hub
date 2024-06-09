@@ -34,7 +34,7 @@ struct ImageData: Hashable {
             ImageData(
                 imageUrl: $0.imageUrl,
                 name: $0.name,
-                subtitle: "\($0.episodeCount ?? 0) episodes",
+                subtitle: String(format: NSLocalizedString("%d episodes", comment: ""), $0.episodeCount ?? 0),
                 descriptionText: $0.overview
             )
         }

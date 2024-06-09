@@ -118,6 +118,7 @@ struct SavedMediaView: View {
             }
         }
         .sensoryFeedback(.success, trigger: viewModel.selectedTab)
+        .opacity(viewModel.showUserLists ? 0.8 : 1)
         .blur(radius: viewModel.showUserLists ? 10 : 0)
         .overlay {
             if viewModel.showUserLists {

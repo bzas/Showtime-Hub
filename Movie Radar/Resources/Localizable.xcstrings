@@ -47,6 +47,9 @@
     "%.1fM" : {
 
     },
+    "%d episodes" : {
+
+    },
     "%lld min" : {
       "localizations" : {
         "es" : {

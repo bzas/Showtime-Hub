@@ -20,7 +20,7 @@ struct ImageDetailView: View {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows) {
                         ForEach(Array(viewModel.images.enumerated()), id: \.1.self) { (index, imageData) in
-                            VStack {
+                            VStack(spacing: 20) {
                                 AsyncImage(
                                     url: imageData.imageUrl,
                                     transaction: Transaction(animation: .smooth)) { phase in
@@ -34,13 +34,13 @@ struct ImageDetailView: View {
                                         }
                                     }
                                     .id(index)
-                                    .frame(width: proxy.size.width / (viewModel.isBigImage ? 1.25 : 2))
+                                    .frame(width: proxy.size.width / (viewModel.isBigImage ? 1.25 : 2.5))
                                     .clipped()
                                 
                                 VStack {
                                     if let name = imageData.name {
                                         Text(name)
-                                            .font(.system(size: 18, weight: .semibold))
+                                            .font(.system(size: 22, weight: .semibold))
                                     }
                                     
                                     if let subtitle = imageData.subtitle {
@@ -55,10 +55,10 @@ struct ImageDetailView: View {
                                                 .font(.system(size: 12, weight: .light))
                                                 .frame(width: proxy.size.width / 1.25)
                                         }
-                                        .frame(maxHeight: 150)
                                     }
                                 }
                             }
+                            .padding(.vertical, 25)
                             .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
                                 content
                                     .opacity(phase.isIdentity ? 1 : 0.6)
@@ -66,21 +66,23 @@ struct ImageDetailView: View {
                                     .blur(radius: phase.isIdentity ? 0 : 2)
                             }
                             .contextMenu {
-                                Button {
-                                    viewModel.downloadImage(url: imageData.imageUrl)
-                                } label: {
-                                    HStack {
-                                        Image(systemName: "arrow.down.square")
-                                        Text("Save on photos")
+                                if viewModel.isBigImage {
+                                    Button {
+                                        viewModel.downloadImage(url: imageData.imageUrl)
+                                    } label: {
+                                        HStack {
+                                            Image(systemName: "arrow.down.square")
+                                            Text("Save on photos")
+                                        }
                                     }
-                                }
-                                
-                                Button {
-                                    viewModel.urlToShare = imageData.imageUrl
-                                } label: {
-                                    HStack {
-                                        Image(systemName: "square.and.arrow.up")
-                                        Text("Share")
+                                    
+                                    Button {
+                                        viewModel.urlToShare = imageData.imageUrl
+                                    } label: {
+                                        HStack {
+                                            Image(systemName: "square.and.arrow.up")
+                                            Text("Share")
+                                        }
                                     }
                                 }
                             }

@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct MediaDetailHeaderView: View {
-    @Environment(\.safeAreaInsets) private var safeAreaInsets
-    @Environment(\.dismiss) var dismiss
     @EnvironmentObject var viewModel: MediaDetailView.ViewModel
 
     var body: some View {
@@ -33,34 +31,7 @@ struct MediaDetailHeaderView: View {
                 endPoint: .bottom
             )
 
-            VStack {
-                HStack {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "xmark")
-                            .resizable()
-                            .frame(width: 15, height: 15)
-                            .foregroundStyle(.black.opacity(0.5))
-                            .padding(10)
-                            .background(.white.opacity(0.75))
-                            .clipShape(Circle())
-                            .shadow(
-                                color: .black.opacity(0.75),
-                                radius: 2
-                            )
-                    }
-                    
-                    Spacer()
-                    
-                    SaveMediaStackView(
-                        media: viewModel.media,
-                        mediaType: viewModel.type,
-                        toastInfo: $viewModel.toastInfo
-                    )
-                }
-                .padding(.top, safeAreaInsets.top + 10)
-
+            VStack {                
                 Spacer()
                 
                 HStack {
@@ -68,6 +39,21 @@ struct MediaDetailHeaderView: View {
                         .font(.system(size: 30, weight: .light))
                         .lineLimit(6)
                         .shadow(color: Color.black, radius: 2)
+                        .background(
+                            GeometryReader { geometry in
+                                Color.clear
+                                    .preference(
+                                        key: ScrollOffsetPreferenceKey.self,
+                                        value: geometry.frame(in: .named("scroll")).origin
+                                    )
+                            }
+                        )
+                        .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+                            withAnimation(.easeIn(duration: 0.25)) {
+                                viewModel.isHeaderHidden = value.y <= 0
+                            }
+                        }
+                    
                     Spacer()
                 }
                 .padding(.trailing)

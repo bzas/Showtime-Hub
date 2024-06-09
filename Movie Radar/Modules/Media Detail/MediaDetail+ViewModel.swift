@@ -39,7 +39,8 @@ extension MediaDetailView {
                 selectedWatchProviders = watchInfo?.providerList(type: selectedProviderType) ?? []
             }
         }
-
+        
+        @Published var isHeaderHidden = false
         @Published var showDetailImage = false
         @Published var imageIndexToShow: Int? {
             didSet {

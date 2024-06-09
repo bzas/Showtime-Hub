@@ -20,6 +20,7 @@ struct MediaDetailView: View {
                     .environmentObject(viewModel)
             }
         }
+        .coordinateSpace(name: "scroll")
         .padding(.bottom, 48)
         .ignoresSafeArea()
         .scrollIndicators(.hidden)
@@ -49,7 +50,11 @@ struct MediaDetailView: View {
             }
         }
         .blur(radius: (viewModel.showDetailImage || viewModel.showDetailSeason || viewModel.showDetailReview) ? 10 : 0)
-        .opacity((viewModel.showDetailImage || viewModel.showDetailSeason) ? 0.6 : 1)
+        .opacity((viewModel.showDetailImage || viewModel.showDetailSeason || viewModel.showDetailReview) ? 0.8 : 1)
+        .overlay {
+            MediaTopMenuView()
+                .environmentObject(viewModel)
+        }
         .overlay {
             if networkMonitor.isDisconnected {
                 NoInternetPopUpView()
