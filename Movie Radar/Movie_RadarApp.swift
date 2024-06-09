@@ -11,12 +11,18 @@ import SwiftData
 @main
 struct Movie_RadarApp: App {
     @StateObject var networkMonitor = NetworkMonitor()
-    let container: ModelContainer
+    @State private var showLaunchView = true
+    private let container: ModelContainer
 
     var body: some Scene {
         WindowGroup {
             MainTabView()
                 .environmentObject(networkMonitor)
+                .overlay {
+                    if showLaunchView {
+                        LaunchView(show: $showLaunchView)
+                    }
+                }
         }
         .modelContainer(container)
     }
