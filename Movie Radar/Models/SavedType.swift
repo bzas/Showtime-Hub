@@ -68,24 +68,21 @@ enum SavedType: String, Codable, CaseIterable {
     
     var addActionName: String {
         switch self {
-        case .favorites:
-            "Add to Favorites"
         case .viewed:
-            "Mark as Viewed"
-        case .pending:
-            "Add to Pending"
+            NSLocalizedString("Mark as Viewed", comment: "")
+        default:
+            String(
+                format: NSLocalizedString("Add to %@", comment: ""),
+                title
+            )
         }
     }
     
     var removeActionName: String {
-        switch self {
-        case .favorites:
-            "Remove from Favorites"
-        case .viewed:
-            "Remove from Viewed"
-        case .pending:
-            "Remove from Pending"
-        }
+        String(
+            format: NSLocalizedString("Remove from %@", comment: ""),
+            title
+        )
     }
     
     var color: Color {

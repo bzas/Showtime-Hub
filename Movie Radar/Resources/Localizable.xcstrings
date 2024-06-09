@@ -42,13 +42,34 @@
       }
     },
     "%.1fB" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%.1fMM"
+          }
+        }
+      }
     },
     "%.1fM" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%.1fM"
+          }
+        }
+      }
     },
     "%d episodes" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%d episodios"
+          }
+        }
+      }
     },
     "%lld min" : {
       "localizations" : {
@@ -81,7 +102,14 @@
       }
     },
     "Added to %@" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadido a %@"
+          }
+        }
+      }
     },
     "All" : {
       "localizations" : {
@@ -304,10 +332,24 @@
       }
     },
     "List added" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista añadida"
+          }
+        }
+      }
     },
     "List removed" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista eliminada"
+          }
+        }
+      }
     },
     "Loading..." : {
       "localizations" : {
@@ -315,6 +357,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cargando..."
+          }
+        }
+      }
+    },
+    "Mark as Viewed" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marcar como visto"
           }
         }
       }
@@ -590,7 +642,14 @@
       }
     },
     "Removed from %@" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminado de %@"
+          }
+        }
+      }
     },
     "Rent" : {
       "localizations" : {
@@ -763,7 +822,14 @@
       }
     },
     "Trailer" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trailer"
+          }
+        }
+      }
     },
     "Version" : {
       "localizations" : {
