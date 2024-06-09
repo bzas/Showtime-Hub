@@ -12,14 +12,14 @@ struct LaunchView: View {
     
     @State var backgroundOpacity = 1.0
     @State var imageScale = CGSize(
-        width: 1,
-        height: 1
+        width: 0,
+        height: 0
     )
     
     @State var titleOpacity = 1.0
     @State var titleScale = CGSize(
-        width: 1,
-        height: 1
+        width: 0,
+        height: 0
     )
     
     var body: some View {
@@ -49,27 +49,43 @@ struct LaunchView: View {
         .ignoresSafeArea()
         .onAppear {
             Task {
-                try? await Task.sleep(nanoseconds: 750_000_000)
-                
-                withAnimation(.linear(duration: 0.25)) {
-                    titleScale = .init(
-                        width: 0,
-                        height: 0
-                    )
-                } completion: {
-                    titleOpacity = 0
-                }
-                
-                withAnimation(.linear(duration: 1)) {
-                    backgroundOpacity = 0
-                    imageScale = .init(
-                        width: 50,
-                        height: 50
-                    )
-                } completion: {
-                    show = false
-                }
+                appearAnimation()
+                try? await Task.sleep(nanoseconds: 1_250_000_000)
+                disappearAnimation()
             }
+        }
+    }
+    
+    func appearAnimation() {
+        withAnimation(.linear(duration: 0.1)) {
+            titleScale = .init(
+                width: 1,
+                height: 1
+            )
+            imageScale = .init(
+                width: 1,
+                height: 1
+            )
+        }
+    }
+    
+    func disappearAnimation() {
+        withAnimation(.linear(duration: 0.25)) {
+            titleOpacity = 0
+            titleScale = .init(
+                width: 0,
+                height: 0
+            )
+        }
+        
+        withAnimation(.linear(duration: 1)) {
+            backgroundOpacity = 0
+            imageScale = .init(
+                width: 50,
+                height: 50
+            )
+        } completion: {
+            show = false
         }
     }
 }
