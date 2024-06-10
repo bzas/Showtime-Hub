@@ -48,7 +48,3 @@ struct PersonCarouselView: View {
         .padding()
     }
 }
-
-#Preview {
-    PersonCarouselView(type: .movie)
-}

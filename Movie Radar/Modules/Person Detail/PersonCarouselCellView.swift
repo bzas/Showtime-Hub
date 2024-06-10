@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PersonCarouselCellView: View {
     var movie: PersonMedia
-    let maxWidth = 200.0
+    let maxWidth = 150.0
 
     var body: some View {
         VStack(spacing: 2) {

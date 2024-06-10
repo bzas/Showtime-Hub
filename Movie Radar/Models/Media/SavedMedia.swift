@@ -32,6 +32,9 @@ class SavedMedia {
     var userList: UserList?
     var detail: Media
     
+    var savedDate: Date?
+    let fallbackDate = Date(timeIntervalSinceReferenceDate: 739725525)
+    
     init(
         type: MediaType,
         userList: UserList,
@@ -40,5 +43,6 @@ class SavedMedia {
         self._type = type.rawValue
         self.userList = userList
         self.detail = detail
+        self.savedDate = Date()
     }
 }
