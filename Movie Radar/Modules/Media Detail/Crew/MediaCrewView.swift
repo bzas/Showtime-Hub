@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MediaCrewView: View {
-    let type: MediaType
     @EnvironmentObject var viewModel: MediaDetailView.ViewModel
     
     var body: some View {
@@ -27,8 +26,4 @@ struct MediaCrewView: View {
         .scrollIndicators(.hidden)
         .scrollTargetBehavior(.paging)
     }
-}
-
-#Preview {
-    MediaCrewView(type: .movie)
 }

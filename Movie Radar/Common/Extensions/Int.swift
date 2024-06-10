@@ -19,9 +19,12 @@ extension Int {
             formatString = NSLocalizedString("%.1fB", comment: "")
         }
         
-        return String(
-            format: formatString,
-            moneyNumber
-        )
+        if Int(moneyNumber) > 0 {
+            return String(
+                format: formatString,
+                moneyNumber
+            )
+        }
+        return "-"
     }
 }

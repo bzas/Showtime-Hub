@@ -21,6 +21,7 @@ struct ImageDetailView: View {
                     LazyHGrid(rows: rows) {
                         ForEach(Array(viewModel.images.enumerated()), id: \.1.self) { (index, imageData) in
                             VStack(spacing: 20) {
+                                Spacer()
                                 AsyncImage(
                                     url: imageData.imageUrl,
                                     transaction: Transaction(animation: .smooth)) { phase in
@@ -56,6 +57,7 @@ struct ImageDetailView: View {
                                                 .font(.system(size: 12, weight: .light))
                                                 .frame(width: proxy.size.width / 1.25)
                                         }
+                                        .frame(maxHeight: 250)
                                     }
                                 }
                             }

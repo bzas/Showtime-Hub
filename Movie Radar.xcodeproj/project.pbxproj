@@ -516,9 +516,9 @@
 		48A309552BF5041900F1733C /* Media Carousel */ = {
 			isa = PBXGroup;
 			children = (
+				48A309542BF5041900F1733C /* MediaCarouselView.swift */,
 				48A309522BF5041900F1733C /* MediaCarouselCellView.swift */,
 				48A309532BF5041900F1733C /* MediaCarouselType.swift */,
-				48A309542BF5041900F1733C /* MediaCarouselView.swift */,
 			);
 			path = "Media Carousel";
 			sourceTree = "<group>";

@@ -19,9 +19,9 @@ struct MediaDetailView: View {
                 MediaDetailBodyView()
                     .environmentObject(viewModel)
             }
+            .padding(.bottom, 48)
         }
         .coordinateSpace(name: "scroll")
-        .padding(.bottom, 48)
         .ignoresSafeArea()
         .scrollIndicators(.hidden)
         .toast(

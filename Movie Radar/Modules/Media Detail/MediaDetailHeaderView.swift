@@ -12,31 +12,38 @@ struct MediaDetailHeaderView: View {
 
     var body: some View {
         ZStack {
-            AsyncImage(
-                url: viewModel.media.originalImageUrl,
-                transaction: Transaction(
-                    animation: .spring(
-                        response: 0.5,
-                        dampingFraction: 0.65,
-                        blendDuration: 0.5)
-                )) { phase in
-                    switch phase {
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .transition(.scale)
-                    default:
-                        PlaceholderView()
+            GeometryReader { proxy in
+                AsyncImage(
+                    url: viewModel.media.originalImageUrl,
+                    transaction: Transaction(
+                        animation: .spring(
+                            response: 0.5,
+                            dampingFraction: 0.65,
+                            blendDuration: 0.5)
+                    )) { phase in
+                        switch phase {
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .transition(.scale)
+                        default:
+                            PlaceholderView()
+                        }
                     }
-                }
-                .frame(height: 560)
-                .clipped()
-                .onTapGesture {
-                    withAnimation(.linear(duration: 0.25)) {
-                        viewModel.showMainImage.toggle()
+                    .frame(
+                        width: proxy.size.width,
+                        height: proxy.size.height
+                    )
+                    .clipped()
+                    .onTapGesture {
+                        withAnimation(.linear(duration: 0.25)) {
+                            viewModel.showMainImage.toggle()
+                        }
                     }
-                }
+            }
+            .frame(height: 560)
+
             
             LinearGradient(
                 stops: [

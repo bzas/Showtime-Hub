@@ -45,7 +45,7 @@ struct MediaDescriptionView: View {
             let budget = viewModel.media.budget ?? 0
             let revenue = viewModel.media.revenue ?? 0
             if budget > 0 || revenue > 0 {
-                HStack(spacing: 12) {
+                HStack(spacing: 8) {
                     infoItem(
                         title: NSLocalizedString("Budget", comment: ""),
                         textToDisplay: budget.money
@@ -101,13 +101,15 @@ struct MediaDescriptionView: View {
             VStack(spacing: 0) {
                 Text(title)
                     .font(.system(size: 12, weight: .semibold))
-                    .padding(8)
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 6)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(UIColor.systemGray6.color)
                 
                 Text(textToDisplay)
                     .font(.system(size: 14, weight: .light))
-                    .padding(6)
+                    .padding(.vertical, 6)
+                    .padding(.horizontal, 2)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(UIColor.systemGray4.color)
             }

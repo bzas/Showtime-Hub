@@ -15,7 +15,7 @@ struct MediaDetailBodyView: View {
             MediaDescriptionView()
                 .environmentObject(viewModel)
 
-            MediaCrewView(type: viewModel.type)
+            MediaCrewView()
                 .environmentObject(viewModel)
             
             ProviderCarouselView()
