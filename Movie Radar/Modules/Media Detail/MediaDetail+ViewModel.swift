@@ -81,6 +81,7 @@ extension MediaDetailView {
         @Published var isHeaderHidden = false
         @Published var showHeaderInfo = false
         @Published var showHeaderGradient = false
+        @Published var imageZoom = 0.0
 
         init(
             apiService: APIService,

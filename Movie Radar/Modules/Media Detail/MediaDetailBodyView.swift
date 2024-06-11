@@ -42,6 +42,6 @@ struct MediaDetailBodyView: View {
             LinksCarouselView()
                 .environmentObject(viewModel)
         }
-        .padding(.horizontal)
+        .padding()
     }
 }

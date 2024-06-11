@@ -13,15 +13,16 @@ struct MediaDetailView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 25) {
+            VStack(spacing: 0) {
                 MediaDetailHeaderView()
                     .environmentObject(viewModel)
                 MediaDetailBodyView()
                     .environmentObject(viewModel)
+                    .background(.black)
             }
             .padding(.bottom, 48)
         }
-        .coordinateSpace(name: "scroll")
+        .coordinateSpace(name: "MediaDetail")
         .ignoresSafeArea()
         .scrollIndicators(.hidden)
         .toast(

@@ -27,6 +27,8 @@ struct MediaDetailHeaderView: View {
                                 .resizable()
                                 .scaledToFill()
                                 .transition(.scale)
+                                .clipped()
+                                .scaleEffect(viewModel.imageZoom)
                         default:
                             PlaceholderView()
                         }
@@ -35,12 +37,27 @@ struct MediaDetailHeaderView: View {
                         width: proxy.size.width,
                         height: proxy.size.height
                     )
-                    .clipped()
                     .onTapGesture {
                         updateHeaderImageVisibility()
                     }
+                    .background(
+                        GeometryReader { geometry in
+                            Color.clear
+                                .preference(
+                                    key: ScrollOffsetPreferenceKey.self,
+                                    value: geometry.frame(in: .named("MediaDetail")).origin
+                                )
+                        }
+                    )
+                    .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+                        var zoomToAdd = value.y / (UIScreen.main.bounds.height / 4)
+                        if zoomToAdd < 0 {
+                            zoomToAdd = 0
+                        }
+                        viewModel.imageZoom = 1 + zoomToAdd
+                    }
             }
-            .frame(height: 560)
+            .frame(height: 600)
 
             LinearGradient(
                 stops: [
@@ -88,7 +105,7 @@ struct MediaDetailHeaderView: View {
                                     Color.clear
                                         .preference(
                                             key: ScrollOffsetPreferenceKey.self,
-                                            value: geometry.frame(in: .named("scroll")).origin
+                                            value: geometry.frame(in: .named("MediaDetail")).origin
                                         )
                                 }
                             )
