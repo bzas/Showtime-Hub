@@ -21,7 +21,7 @@ struct ProviderCarouselCellView: View {
                 )
                 .clipShape(RoundedRectangle(cornerRadius: 10))
         }, placeholder: {
-            Color.gray
+            PlaceholderView()
                 .frame(
                     width: 50,
                     height: 50

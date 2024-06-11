@@ -42,7 +42,3 @@ struct SeasonsCarouselView: View {
         }
     }
 }
-
-#Preview {
-    SeasonsCarouselView()
-}

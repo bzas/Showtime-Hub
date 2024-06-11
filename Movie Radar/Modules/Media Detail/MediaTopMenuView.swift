@@ -37,13 +37,15 @@ struct MediaTopMenuView: View {
                     mediaType: viewModel.type,
                     toastInfo: $viewModel.toastInfo
                 )
+                .disabled(viewModel.showToast)
             }
+            .disabled(viewModel.showDetailImage || viewModel.showDetailSeason || viewModel.showDetailReview || viewModel.isHeaderHidden)
+            .opacity((viewModel.showDetailImage || viewModel.showDetailSeason || viewModel.showDetailReview) ? 0 : 1)
+            .scaleEffect(viewModel.isHeaderHidden ? 0 : 1)
 
             Spacer()
         }
-        .disabled(viewModel.showDetailImage || viewModel.showDetailSeason || viewModel.showDetailReview || viewModel.isHeaderHidden)
-        .opacity((viewModel.showDetailImage || viewModel.showDetailSeason || viewModel.showDetailReview) ? 0 : 1)
-        .opacity(viewModel.isHeaderHidden ? 0 : 1)
+
         .padding(.top, 6)
         .padding(.horizontal)
     }

@@ -30,9 +30,16 @@ struct Toast: View {
         )
         .task {
             try? await Task.sleep(nanoseconds: 1_000_000_000)
-            withAnimation(.spring(duration: 0.25)) {
-                show = false
-            }
+            dismissToast()
+        }
+        .onTapGesture {
+            dismissToast()
+        }
+    }
+    
+    func dismissToast() {
+        withAnimation(.spring(duration: 0.25)) {
+            show = false
         }
     }
 }

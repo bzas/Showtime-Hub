@@ -44,7 +44,3 @@ struct LinksCarouselView: View {
         .padding(.vertical)
     }
 }
-
-#Preview {
-    LinksCarouselView()
-}

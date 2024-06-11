@@ -42,7 +42,3 @@ struct ActorCarouselView: View {
         }
     }
 }
-
-#Preview {
-    ActorCarouselView()
-}

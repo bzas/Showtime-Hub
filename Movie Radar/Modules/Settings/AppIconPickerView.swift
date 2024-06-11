@@ -48,7 +48,3 @@ struct AppIconPickerView: View {
         .padding(.top, 4)
     }
 }
-
-#Preview {
-    AppIconPickerView()
-}

@@ -46,7 +46,3 @@ struct DiscoverMediaGridView: View {
         }
     }
 }
-
-#Preview {
-    DiscoverMediaGridView()
-}

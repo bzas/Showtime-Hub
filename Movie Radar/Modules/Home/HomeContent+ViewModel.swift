@@ -18,7 +18,7 @@ extension HomeContentView {
         @Published var toastInfo: ToastInfo? {
             didSet {
                 withAnimation(.spring) {
-                    showToast.toggle()
+                    showToast = true
                 }
             }
         }

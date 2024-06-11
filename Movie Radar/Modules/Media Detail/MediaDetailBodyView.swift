@@ -12,6 +12,9 @@ struct MediaDetailBodyView: View {
 
     var body: some View {
         VStack {
+            GenreCarouselView()
+                .environmentObject(viewModel)
+            
             MediaDescriptionView()
                 .environmentObject(viewModel)
 
@@ -41,8 +44,4 @@ struct MediaDetailBodyView: View {
         }
         .padding(.horizontal)
     }
-}
-
-#Preview {
-    MediaDetailBodyView()
 }

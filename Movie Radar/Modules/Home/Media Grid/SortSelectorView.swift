@@ -90,7 +90,3 @@ struct SortSelectorView: View {
         }
     }
 }
-
-#Preview {
-    SortSelectorView()
-}

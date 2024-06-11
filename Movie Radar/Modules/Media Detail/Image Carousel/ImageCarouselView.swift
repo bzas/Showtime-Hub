@@ -45,7 +45,3 @@ struct ImageCarouselView: View {
         .padding(.bottom)
     }
 }
-
-#Preview {
-    ImageCarouselView()
-}

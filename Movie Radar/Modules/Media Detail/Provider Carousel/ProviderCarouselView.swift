@@ -49,7 +49,3 @@ struct ProviderCarouselView: View {
         .padding(.bottom, 8)
     }
 }
-
-#Preview {
-    ProviderCarouselView()
-}

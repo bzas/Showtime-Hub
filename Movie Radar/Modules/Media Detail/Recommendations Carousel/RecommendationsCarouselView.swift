@@ -42,7 +42,3 @@ struct SimilarMoviesCarouselView: View {
         }
     }
 }
-
-#Preview {
-    SimilarMoviesCarouselView()
-}

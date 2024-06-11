@@ -28,12 +28,3 @@ struct GenreCellView: View {
             )
     }
 }
-
-#Preview {
-    GenreCellView(
-        genre: Genre(
-            id: 1,
-            name: "Action"
-        )
-    )
-}

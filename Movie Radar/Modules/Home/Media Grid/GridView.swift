@@ -33,7 +33,3 @@ struct GridView: View {
         .padding(.bottom, 48)
     }
 }
-
-#Preview {
-    GridView()
-}

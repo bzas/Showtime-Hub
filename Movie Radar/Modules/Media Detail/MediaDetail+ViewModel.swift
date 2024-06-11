@@ -23,7 +23,7 @@ extension MediaDetailView {
         @Published var toastInfo: ToastInfo? {
             didSet {
                 withAnimation(.spring) {
-                    showToast.toggle()
+                    showToast = true
                 }
             }
         }
@@ -79,8 +79,9 @@ extension MediaDetailView {
         
         @Published var productionCrew: [GenericCrew] = []
         @Published var isHeaderHidden = false
-        @Published var showMainImage = false
-        
+        @Published var showHeaderInfo = false
+        @Published var showHeaderGradient = false
+
         init(
             apiService: APIService,
             media: Media,

@@ -22,7 +22,3 @@ struct GridPlaceholderView: View {
         }
     }
 }
-
-#Preview {
-    GridPlaceholderView()
-}

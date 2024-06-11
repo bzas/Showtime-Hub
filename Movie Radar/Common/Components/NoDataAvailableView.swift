@@ -18,7 +18,3 @@ struct NoDataAvailableView: View {
             .opacity(0.5)
     }
 }
-
-#Preview {
-    NoDataAvailableView(title: "Test")
-}

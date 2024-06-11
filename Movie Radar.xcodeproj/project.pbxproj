@@ -120,7 +120,6 @@
 		48A309F52BF5044400F1733C /* ReviewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309DB2BF5044400F1733C /* ReviewList.swift */; };
 		48A309F62BF5044400F1733C /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309DE2BF5044400F1733C /* APIService.swift */; };
 		48A309F72BF5044400F1733C /* APIService+Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309DF2BF5044400F1733C /* APIService+Endpoints.swift */; };
-		48A309F82BF5044400F1733C /* APIServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309E02BF5044400F1733C /* APIServiceMock.swift */; };
 		48A309F92BF5044400F1733C /* PathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309E12BF5044400F1733C /* PathBuilder.swift */; };
 		48A309FC2BF5051000F1733C /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 48A309FB2BF5051000F1733C /* Localizable.xcstrings */; };
 		48A49B392C09C2C600E94E3B /* UserListType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A49B382C09C2C600E94E3B /* UserListType.swift */; };
@@ -275,7 +274,6 @@
 		48A309DB2BF5044400F1733C /* ReviewList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewList.swift; sourceTree = "<group>"; };
 		48A309DE2BF5044400F1733C /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		48A309DF2BF5044400F1733C /* APIService+Endpoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIService+Endpoints.swift"; sourceTree = "<group>"; };
-		48A309E02BF5044400F1733C /* APIServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServiceMock.swift; sourceTree = "<group>"; };
 		48A309E12BF5044400F1733C /* PathBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathBuilder.swift; sourceTree = "<group>"; };
 		48A309FB2BF5051000F1733C /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		48A49B382C09C2C600E94E3B /* UserListType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListType.swift; sourceTree = "<group>"; };
@@ -792,7 +790,6 @@
 			children = (
 				48A309DE2BF5044400F1733C /* APIService.swift */,
 				48A309DF2BF5044400F1733C /* APIService+Endpoints.swift */,
-				48A309E02BF5044400F1733C /* APIServiceMock.swift */,
 				48A309E12BF5044400F1733C /* PathBuilder.swift */,
 			);
 			path = Requests;
@@ -1016,7 +1013,6 @@
 				48A3099A2BF5041900F1733C /* DiscoverMediaGridView.swift in Sources */,
 				48A309ED2BF5044400F1733C /* Media.swift in Sources */,
 				4846E8722BF8C12B00D7ADAB /* SeasonCellView.swift in Sources */,
-				48A309F82BF5044400F1733C /* APIServiceMock.swift in Sources */,
 				48A309BA2BF5041900F1733C /* PersonHeaderView.swift in Sources */,
 				48F38C002BF6868A003F0CD0 /* MediaType.swift in Sources */,
 				4846E8762BF8CC8E00D7ADAB /* ImageData.swift in Sources */,

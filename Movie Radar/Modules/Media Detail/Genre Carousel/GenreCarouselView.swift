@@ -26,7 +26,3 @@ struct GenreCarouselView: View {
         .scrollIndicators(.hidden)
     }
 }
-
-#Preview {
-    GenreCarouselView()
-}

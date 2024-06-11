@@ -25,7 +25,3 @@ struct ContactView: View {
         .buttonStyle(PlainButtonStyle())
     }
 }
-
-#Preview {
-    ContactView()
-}

@@ -20,7 +20,3 @@ struct HeaderText: View {
         }
     }
 }
-
-#Preview {
-    HeaderText(text: "Test")
-}

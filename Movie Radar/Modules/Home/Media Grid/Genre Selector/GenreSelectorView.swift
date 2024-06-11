@@ -38,7 +38,3 @@ struct GenreSelectorView: View {
         )
     }
 }
-
-#Preview {
-    GenreSelectorView()
-}

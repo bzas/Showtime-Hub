@@ -27,7 +27,3 @@ struct RateView: View {
         .buttonStyle(PlainButtonStyle())
     }
 }
-
-#Preview {
-    RateView()
-}

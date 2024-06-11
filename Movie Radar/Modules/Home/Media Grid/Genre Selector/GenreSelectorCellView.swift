@@ -42,12 +42,3 @@ struct GenreSelectorCellView: View {
             }
     }
 }
-
-#Preview {
-    GenreSelectorCellView(
-        genre: Genre(
-            id: 1,
-            name: "Action"
-        )
-    )
-}

@@ -12,7 +12,3 @@ struct PlaceholderView: View {
         UIColor.systemGray5.color
     }
 }
-
-#Preview {
-    PlaceholderView()
-}

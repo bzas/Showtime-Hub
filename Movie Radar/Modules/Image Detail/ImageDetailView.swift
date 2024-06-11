@@ -21,7 +21,9 @@ struct ImageDetailView: View {
                     LazyHGrid(rows: rows) {
                         ForEach(Array(viewModel.images.enumerated()), id: \.1.self) { (index, imageData) in
                             VStack(spacing: 20) {
-                                Spacer()
+                                if !viewModel.isBigImage {
+                                    Spacer()
+                                }
                                 AsyncImage(
                                     url: imageData.imageUrl,
                                     transaction: Transaction(animation: .smooth)) { phase in

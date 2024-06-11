@@ -23,7 +23,3 @@ struct AppVersionView: View {
         }
     }
 }
-
-#Preview {
-    AppVersionView(appVersion: "1.0.0")
-}

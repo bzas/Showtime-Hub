@@ -48,7 +48,3 @@ struct MediaCarouselView: View {
         .padding(.bottom)
     }
 }
-
-#Preview {
-    MediaCarouselView(type: .popular)
-}

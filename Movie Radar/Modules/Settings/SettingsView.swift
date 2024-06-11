@@ -34,11 +34,3 @@ struct SettingsView: View {
         }
     }
 }
-
-#Preview {
-    SettingsView(
-        viewModel: .init(
-            apiService: APIServiceMock()
-        )
-    )
-}

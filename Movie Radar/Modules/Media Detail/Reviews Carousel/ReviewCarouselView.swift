@@ -44,7 +44,3 @@ struct ReviewCarouselView: View {
         .padding(.bottom)
     }
 }
-
-#Preview {
-    ReviewCarouselView()
-}

@@ -45,7 +45,3 @@ struct AppThemePickerView: View {
         .padding(.top, 4)
     }
 }
-
-#Preview {
-    AppThemePickerView()
-}
