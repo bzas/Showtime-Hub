@@ -13,7 +13,6 @@ struct ReviewDetailView: View {
         GridItem(.flexible())
     ]
     
-    
     var body: some View {
         GeometryReader { proxy in
             VStack(spacing: 8) {
