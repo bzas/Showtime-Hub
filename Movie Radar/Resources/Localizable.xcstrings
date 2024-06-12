@@ -351,16 +351,6 @@
         }
       }
     },
-    "Loading..." : {
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cargando..."
-          }
-        }
-      }
-    },
     "Mark as Viewed" : {
       "localizations" : {
         "es" : {

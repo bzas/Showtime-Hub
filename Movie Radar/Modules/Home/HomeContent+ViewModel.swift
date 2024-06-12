@@ -58,11 +58,10 @@ extension HomeContentView {
         }
         
         var gridItems: [Media] {
-            if searchText.isEmpty {
-                return discoverList.results
-            }
-
-            return searchList.results
+            let items = searchText.isEmpty ? discoverList.results : searchList.results
+            let totalCount = items.count
+            let correctedCount = totalCount - (items.count % 3)
+            return Array(items[0..<correctedCount])
         }
 
         init(
@@ -108,6 +107,12 @@ extension HomeContentView {
                 }
             }
         }
+        
+        func continueFetchIfNeeded() async {
+            if !isSearching {
+                await getDiscoverContent()
+            }
+        }
 
         func getDiscoverContent() async {
             await updateLoading(true)
@@ -118,6 +123,17 @@ extension HomeContentView {
                 page: discoverList.page
             ) {
                 let itemsToAdd = discoverList.filteredList(mediaList)
+                let cachedItems = mediaList.results.map { mediaItem in
+                    CachedItem(
+                        key: mediaItem.mediaKey(type: type),
+                        media: mediaItem
+                    )
+                }
+                
+                await ImageCache.shared.load(
+                    items: cachedItems
+                )
+                
                 await MainActor.run {
                     discoverList.append(itemsToAdd)
                 }
@@ -158,15 +174,6 @@ extension HomeContentView {
 
         func isSelected(genre: Genre) -> Bool {
             genre == selectedGenre
-        }
-
-        func continueFetchIfNeeded(lastMoviePresented: Media) {
-            guard searchText.isEmpty,
-                  lastMoviePresented == discoverList.results.last else { return }
-
-            Task {
-                await getDiscoverContent()
-            }
         }
 
         func updateVisibility(isEditingSearch: Bool) {

@@ -235,4 +235,8 @@ class Media: Codable, Hashable {
         try? container.encode(date, forKey: .date)
         try? container.encode(videoList, forKey: .videoList)
     }
+    
+    func mediaKey(type: MediaType) -> String {
+        "\(id).\(type.rawValue)"
+    }
 }

@@ -28,8 +28,13 @@ struct GridView: View {
 
             DiscoverMediaGridView()
                 .environmentObject(viewModel)
+            
+            if !viewModel.isSearching {
+                ProgressView()
+                    .frame(height: 75)
+            }
         }
         .padding(.horizontal, 6)
-        .padding(.bottom, 48)
+        .padding(.bottom, 12)
     }
 }

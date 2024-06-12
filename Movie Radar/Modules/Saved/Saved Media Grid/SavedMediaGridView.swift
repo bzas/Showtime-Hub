@@ -48,23 +48,26 @@ struct SavedMediaGridView: View {
             ScrollView {
                 LazyVGrid(columns: listColumns, spacing: 8) {
                     ForEach(mediaItems, id: \.self) { media in
-                        ListGridCellView(media: media.detail)
-                            .onTapGesture {
-                                viewModel.detailMediaToShow = media
-                            }
-                            .contextMenu {
-                                MediaContextMenu(
-                                    media: media.detail,
-                                    mediaType: media.type, 
-                                    toastInfo: $viewModel.toastInfo
-                                )
-                            }
+                        GridCellView(
+                            media: media.detail,
+                            type: media.type
+                        )
+                        .onTapGesture {
+                            viewModel.detailMediaToShow = media
+                        }
+                        .contextMenu {
+                            MediaContextMenu(
+                                media: media.detail,
+                                mediaType: media.type, 
+                                toastInfo: $viewModel.toastInfo
+                            )
+                        }
                     }
                 }
                 .padding(.vertical, headerHeight)
                 .padding(.top, 6)
+                .padding(.horizontal, 6)
             }
-            .scrollIndicators(.hidden)
         }
     }
 }

@@ -10,37 +10,34 @@ import SwiftUI
 struct HomeContentView: View {
     @Binding var headerHeight: CGFloat
     @StateObject var viewModel: ViewModel
-
+    
     var body: some View {
-        ScrollViewReader { proxy in
-            ScrollView {
-                VStack {
-                    if viewModel.type == .movie {                        
-                        MediaCarouselView(type: .popular)
-                            .environmentObject(viewModel)
-                    }
-
-                    GridView()
+        ScrollView {
+            VStack {
+                if viewModel.type == .movie {
+                    MediaCarouselView(type: .popular)
                         .environmentObject(viewModel)
                 }
-                .padding(.vertical, headerHeight)
+                
+                GridView()
+                    .environmentObject(viewModel)
             }
-            .scrollIndicators(.hidden)
-            .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
-                if let detailMediaToShow = viewModel.detailMediaToShow {
-                    MediaDetailView(
-                        viewModel: .init(
-                            apiService: viewModel.apiService,
-                            media: detailMediaToShow,
-                            type: viewModel.type
-                        )
-                    )
-                }
-            }
-            .toast(
-                show: $viewModel.showToast,
-                toastInfo: viewModel.toastInfo
-            )
+            .padding(.vertical, headerHeight)
         }
+        .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
+            if let detailMediaToShow = viewModel.detailMediaToShow {
+                MediaDetailView(
+                    viewModel: .init(
+                        apiService: viewModel.apiService,
+                        media: detailMediaToShow,
+                        type: viewModel.type
+                    )
+                )
+            }
+        }
+        .toast(
+            show: $viewModel.showToast,
+            toastInfo: viewModel.toastInfo
+        )
     }
 }
