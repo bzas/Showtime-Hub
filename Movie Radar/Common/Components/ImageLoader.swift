@@ -9,6 +9,7 @@ import SwiftUI
 
 class ImageLoader: ObservableObject {
     @Published var image: Image?
+    @Published var loadingFailed = false
 
     private var url: URL?
     private var key: String
@@ -26,17 +27,28 @@ class ImageLoader: ObservableObject {
             return
         }
         
-        guard let url else { return }
+        guard let url else {
+            loadingFailed = true
+            return
+        }
 
-        task = URLSession.shared.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-
-            DispatchQueue.main.async { [weak self] in
-                guard let self,
-                      let uiImage = UIImage(data: data) else { return }
+        task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
+            guard let self else { return }
+            
+            guard let data,
+                  error == nil else {
+                loadingFailed = true
+                return
+            }
+            
+            DispatchQueue.main.async {
+                guard let uiImage = UIImage(data: data) else { return }
                 
-                image = Image(uiImage: uiImage)
-                ImageCache.shared.set(uiImage, forKey: key)
+                self.image = Image(uiImage: uiImage)
+                ImageCache.shared.set(
+                    uiImage, 
+                    forKey: self.key
+                )
             }
         }
         task?.resume()

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GridCellView: View {
     @State var mediaName: String
+    @State var opacity = 0.0
     @ObservedObject var imageLoader: ImageLoader
 
     init(media: Media, type: MediaType) {
@@ -47,6 +48,7 @@ struct GridCellView: View {
                 Spacer()
             }
         }
+        .opacity(opacity)
     }
     
     @ViewBuilder
@@ -55,8 +57,24 @@ struct GridCellView: View {
             posterImage
                 .resizable()
                 .scaledToFill()
+                .onAppear {
+                    makeCellVisible()
+                }
+        } else if imageLoader.loadingFailed {
+            PlaceholderView()
+                .onAppear {
+                    makeCellVisible()
+                }
         } else {
             PlaceholderView()
+        }
+    }
+    
+    func makeCellVisible() {
+        Task {
+            withAnimation(.linear(duration: 0.5)) {
+                opacity = 1
+            }
         }
     }
 }
