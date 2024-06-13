@@ -66,7 +66,10 @@ extension UserListsView {
             listName = ""
             listIcon = "star.fill"
             listColor = .white
-            toastInfo = .init(isRemoved: false)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
+                self?.toastInfo = .init(isRemoved: false)
+            }
         }
         
         func deleteList(
@@ -85,7 +88,10 @@ extension UserListsView {
             withAnimation {
                 isEditing = false
             }
-            toastInfo = .init(isRemoved: true)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
+                self?.toastInfo = .init(isRemoved: true)
+            }
         }
         
         func dismiss() {
