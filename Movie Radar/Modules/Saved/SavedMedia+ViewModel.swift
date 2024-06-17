@@ -20,6 +20,7 @@ extension SavedMediaView {
         @Published var filtersApplied = false
         @Published var startDate = LocalStorage.defaultDate
         @Published var endDate = LocalStorage.defaultEndDate
+        @Published var headerHeight: CGFloat = 0
         @Published var showDetailMedia = false
         @Published var detailMediaToShow: SavedMedia? {
             didSet {
@@ -32,6 +33,15 @@ extension SavedMediaView {
             didSet {
                 withAnimation(.spring) {
                     showToast = true
+                }
+            }
+        }
+        
+        @Published var showDetailList = false
+        @Published var detailListToShow: UserList? {
+            didSet {
+                withAnimation(.spring) {
+                    showDetailList = true
                 }
             }
         }

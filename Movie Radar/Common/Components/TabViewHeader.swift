@@ -19,14 +19,14 @@ struct TabViewHeader: View {
                 Button {
                     selectedTab = index
                 } label: {
-                    VStack(spacing: 2) {
+                    VStack(spacing: 1) {
                         Text(title)
                             .font(.system(
-                                size: selectedTab == index ? 18 : 14)
+                                size: selectedTab == index ? 18 : 16)
                             )
                             .foregroundStyle(.white)
                             .opacity(selectedTab == index ? 1 : 0.5)
-                            .shadow(radius: 1)
+                            .shadow(radius: 2)
                             .padding(.horizontal, 4)
                         
                         if selectedTab == index {
@@ -44,6 +44,9 @@ struct TabViewHeader: View {
             .spring(duration: 0.3, bounce: 0),
             value: selectedTab
         )
-        .frame(maxWidth: .infinity)
+        .padding(10)
+        .padding(.horizontal, 12)
+        .background(.ultraThinMaterial)
+        .clipShape(Capsule())
     }
 }

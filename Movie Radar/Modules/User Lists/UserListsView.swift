@@ -14,6 +14,13 @@ struct UserListsView: View {
     
     var body: some View {
         ZStack {
+            LinearGradient(
+                colors: [.clear, .black],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .opacity(viewModel.showGradient ? 1 : 0)
+            
             TabView(selection: $viewModel.tabIndex) {
                 ListsView()
                     .environmentObject(viewModel)
@@ -52,6 +59,14 @@ struct UserListsView: View {
             show: $viewModel.showToast,
             toastInfo: viewModel.toastInfo
         )
+        .onAppear {
+            Task {
+                try? await Task.sleep(nanoseconds: 250_000_000)
+                withAnimation(.spring(duration: 0.75)) {
+                    viewModel.showGradient.toggle()
+                }
+            }
+        }
     }
     
     func dismiss() {

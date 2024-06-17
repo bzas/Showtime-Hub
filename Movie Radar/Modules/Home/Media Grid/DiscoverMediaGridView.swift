@@ -36,7 +36,8 @@ struct DiscoverMediaGridView: View {
                 ForEach(viewModel.gridItems, id: \.self) { media in
                     GridCellView(
                         media: media,
-                        type: viewModel.type
+                        type: viewModel.type,
+                        cornerRadius: 0
                     )
                     .onTapGesture {
                         viewModel.detailMediaToShow = media

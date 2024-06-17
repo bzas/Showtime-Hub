@@ -12,7 +12,7 @@ struct MediaCarouselCellView: View {
     
     var body: some View {
         ZStack {
-            AsyncImage(url: media.wideImageUrl) { image in
+            AsyncImage(url: media.originalImageUrl) { image in
                 image
                     .resizable()
                     .scaledToFill()
@@ -21,7 +21,7 @@ struct MediaCarouselCellView: View {
             }
             .frame(
                 width: UIScreen.main.bounds.width,
-                height: UIScreen.main.bounds.width / 1.778
+                height: UIScreen.main.bounds.width / 0.666666
             )
             .clipped()
             
@@ -41,43 +41,26 @@ struct MediaCarouselCellView: View {
                 .blur(radius: phase.isIdentity ? 0 : 2)
         }
         .overlay {
-            HStack(spacing: 8) {
-                VStack {
-                    Spacer()
-                    AsyncImage(url: media.posterImageUrl) { image in
-                        image
-                            .resizable()
-                            .scaledToFill()
-                    } placeholder: {
-                        PlaceholderView()
-                    }
-                    .frame(width: 100, height: 133)
-                    .clipped()
-                }
-
-                VStack(spacing: 6) {
-                    Spacer()
-                    HStack {
-                        Text(media.name)
-                            .font(.system(size: 20))
-                            .lineLimit(3)
-                            .multilineTextAlignment(.leading)
-                            .shadow(radius: 2)
-                        Spacer()
-                    }
-                    
-                    if let releaseDate = media.dateString {
-                        HStack {
-                            Text(releaseDate)
-                                .font(.system(size: 12, weight: .light))
-                            Spacer()
-                        }
-                    }
-                }
-                .padding(.horizontal)
+            VStack(spacing: 6) {
                 Spacer()
+                
+                Text(media.name)
+                    .font(.system(size: 20))
+                    .lineLimit(3)
+                    .multilineTextAlignment(.leading)
+                    .shadow(radius: 2)
+                
+                Text(media.dateString ?? "")
+                    .font(.system(size: 12, weight: .light))
+                
+                Text(media.overview ?? "")
+                    .font(.system(size: 14))
+                    .lineLimit(6)
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 10)
+
             }
-            .padding()
+            .padding(.horizontal)
         }
     }
 }

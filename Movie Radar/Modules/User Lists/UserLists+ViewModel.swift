@@ -13,6 +13,7 @@ extension UserListsView {
         @Binding var showDetail: Bool
         @Binding var selectedListIndex: Int
         
+        @Published var showGradient = false
         @Published var tabIndex = 0
         @Published var listIcon = "star.fill"
         @Published var listName = ""

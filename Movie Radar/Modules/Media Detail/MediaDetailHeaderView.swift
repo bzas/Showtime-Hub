@@ -45,16 +45,12 @@ struct MediaDetailHeaderView: View {
                             Color.clear
                                 .preference(
                                     key: ScrollOffsetPreferenceKey.self,
-                                    value: geometry.frame(in: .named("MediaDetail")).origin
+                                    value: geometry.frame(in: .named(AppCoordinateSpace.mediaDetail.rawValue)).origin
                                 )
                         }
                     )
                     .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-                        var zoomToAdd = value.y / (UIScreen.main.bounds.height / 4)
-                        if zoomToAdd < 0 {
-                            zoomToAdd = 0
-                        }
-                        viewModel.imageZoom = 1 + zoomToAdd
+                        viewModel.updateZoom(value.y)
                     }
             }
             .frame(height: 600)
@@ -105,7 +101,7 @@ struct MediaDetailHeaderView: View {
                                     Color.clear
                                         .preference(
                                             key: ScrollOffsetPreferenceKey.self,
-                                            value: geometry.frame(in: .named("MediaDetail")).origin
+                                            value: geometry.frame(in: .named(AppCoordinateSpace.mediaDetail.rawValue)).origin
                                         )
                                 }
                             )

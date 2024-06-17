@@ -32,6 +32,9 @@
 		4846E8782BF8F14C00D7ADAB /* TabViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E8772BF8F14C00D7ADAB /* TabViewHeader.swift */; };
 		4846E87C2BF8F31200D7ADAB /* SavedMediaGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E87B2BF8F31200D7ADAB /* SavedMediaGridView.swift */; };
 		4846E8802BF8F4CE00D7ADAB /* SavedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846E87F2BF8F4CE00D7ADAB /* SavedType.swift */; };
+		4850F7202C1F5C6A0061C6AC /* AppCoordinateSpaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4850F71F2C1F5C6A0061C6AC /* AppCoordinateSpaces.swift */; };
+		4850F7222C1F60A20061C6AC /* SavedMediaListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4850F7212C1F60A20061C6AC /* SavedMediaListHeaderView.swift */; };
+		4850F7242C1F699C0061C6AC /* ListBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4850F7232C1F699C0061C6AC /* ListBackground.swift */; };
 		485E800A2C08CFD20042ED4C /* NoInternetPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485E80092C08CFD20042ED4C /* NoInternetPopUpView.swift */; };
 		48609A0E2C0FAB3D00289E35 /* WatchProviderList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A0D2C0FAB3D00289E35 /* WatchProviderList.swift */; };
 		48609A102C0FAC8200289E35 /* ProviderInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A0F2C0FAC8200289E35 /* ProviderInfo.swift */; };
@@ -184,6 +187,9 @@
 		4846E8772BF8F14C00D7ADAB /* TabViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewHeader.swift; sourceTree = "<group>"; };
 		4846E87B2BF8F31200D7ADAB /* SavedMediaGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMediaGridView.swift; sourceTree = "<group>"; };
 		4846E87F2BF8F4CE00D7ADAB /* SavedType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedType.swift; sourceTree = "<group>"; };
+		4850F71F2C1F5C6A0061C6AC /* AppCoordinateSpaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinateSpaces.swift; sourceTree = "<group>"; };
+		4850F7212C1F60A20061C6AC /* SavedMediaListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMediaListHeaderView.swift; sourceTree = "<group>"; };
+		4850F7232C1F699C0061C6AC /* ListBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListBackground.swift; sourceTree = "<group>"; };
 		485E80092C08CFD20042ED4C /* NoInternetPopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetPopUpView.swift; sourceTree = "<group>"; };
 		48609A0D2C0FAB3D00289E35 /* WatchProviderList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchProviderList.swift; sourceTree = "<group>"; };
 		48609A0F2C0FAC8200289E35 /* ProviderInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderInfo.swift; sourceTree = "<group>"; };
@@ -482,6 +488,8 @@
 				48F562D72C15BC5A0019DF20 /* ScrollOffsetPreferenceKey.swift */,
 				481B4ECC2C136170003D1DEB /* Toast */,
 				48181E362C0CD9940067D5CB /* PlaceholderStyle.swift */,
+				4850F71F2C1F5C6A0061C6AC /* AppCoordinateSpaces.swift */,
+				4850F7232C1F699C0061C6AC /* ListBackground.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -510,6 +518,7 @@
 			children = (
 				48A309502BF5041900F1733C /* SavedMediaView.swift */,
 				48A3094F2BF5041900F1733C /* SavedMedia+ViewModel.swift */,
+				4850F7212C1F60A20061C6AC /* SavedMediaListHeaderView.swift */,
 				48B8B2BF2BF92168002276C7 /* Saved Media Grid */,
 			);
 			path = Saved;
@@ -1008,6 +1017,7 @@
 				48A309A32BF5041900F1733C /* ImageDetailView.swift in Sources */,
 				48A3094D2BF5040700F1733C /* Colors.swift in Sources */,
 				48A309472BF5040700F1733C /* ActivityView.swift in Sources */,
+				4850F7242C1F699C0061C6AC /* ListBackground.swift in Sources */,
 				48181E352C0CBCFF0067D5CB /* ColorInfo.swift in Sources */,
 				48C544DC2C0C818D00AE6517 /* UserLists+ViewModel.swift in Sources */,
 				48A309492BF5040700F1733C /* AppIcon.swift in Sources */,
@@ -1050,6 +1060,7 @@
 				48A309B12BF5041900F1733C /* MediaDetail+ViewModel.swift in Sources */,
 				48A309F42BF5044400F1733C /* Review.swift in Sources */,
 				48A309A92BF5041900F1733C /* ImageCarouselView.swift in Sources */,
+				4850F7202C1F5C6A0061C6AC /* AppCoordinateSpaces.swift in Sources */,
 				48F562D22C14D8BE0019DF20 /* Int.swift in Sources */,
 				4846E8702BF8C11F00D7ADAB /* SeasonsCarouselView.swift in Sources */,
 				48A309AF2BF5041900F1733C /* LinksCarouselView.swift in Sources */,
@@ -1058,6 +1069,7 @@
 				48A3094E2BF5040700F1733C /* View.swift in Sources */,
 				48609A152C10A92A00289E35 /* ProviderCarouselView.swift in Sources */,
 				48A309B92BF5041900F1733C /* PersonCarouselView.swift in Sources */,
+				4850F7222C1F60A20061C6AC /* SavedMediaListHeaderView.swift in Sources */,
 				48A309A42BF5041900F1733C /* ActorCarouselCellView.swift in Sources */,
 				4846E8662BF7968300D7ADAB /* MediaCrewCellView.swift in Sources */,
 				48A309B32BF5041900F1733C /* MediaDetailHeaderView.swift in Sources */,

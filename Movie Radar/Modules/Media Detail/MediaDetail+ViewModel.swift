@@ -9,6 +9,7 @@ import SwiftUI
 
 extension MediaDetailView {
     class ViewModel: ObservableObject {
+        private let zoomCorrection = UIScreen.main.bounds.height / 4
         var apiService: APIService
         var type: MediaType
         
@@ -175,6 +176,15 @@ extension MediaDetailView {
                     self.watchInfo = watchProviderList.countryResults
                 }
             }
+        }
+        
+        func updateZoom(_ value: CGFloat) {
+            var zoomToAdd = 0.0
+            if value > 0 {
+                zoomToAdd = value / zoomCorrection
+            }
+            
+            imageZoom = 1 + zoomToAdd
         }
     }
 }

@@ -71,6 +71,9 @@
         }
       }
     },
+    "%d items" : {
+
+    },
     "%lld min" : {
       "localizations" : {
         "es" : {

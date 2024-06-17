@@ -10,13 +10,11 @@ import SwiftUI
 struct MainHomeView: View {
     var apiService: APIService
     @State private var selectedTab = 0
-    @State var headerHeight: CGFloat = 0
     
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
                 HomeContentView(
-                    headerHeight: $headerHeight,
                     viewModel: .init(
                         apiService: apiService,
                         type: .movie
@@ -25,7 +23,6 @@ struct MainHomeView: View {
                 .tag(0)
                 
                 HomeContentView(
-                    headerHeight: $headerHeight,
                     viewModel: .init(
                         apiService: apiService,
                         type: .tv
@@ -37,21 +34,22 @@ struct MainHomeView: View {
             .tabViewStyle(.page)
             
             VStack {
-                TabViewHeader(
-                    selectedTab: $selectedTab,
-                    titles: [MediaType.movie, MediaType.tv].map { $0.title }
-                )
+                HStack {
+                    TabViewHeader(
+                        selectedTab: $selectedTab,
+                        titles: [MediaType.movie, MediaType.tv].map { $0.title }
+                    )
+                    
+                    Button(action: {
+                    }, label: {
+                        Image(systemName: "magnifyingglass")
+                            .padding(13)
+                            .background(.ultraThinMaterial)
+                            .clipShape(Circle())
+                    })
+                }
                 .padding(.horizontal)
                 .padding(.vertical, 10)
-                .background(.ultraThinMaterial)
-                .background(
-                    GeometryReader { proxy in
-                        Color.clear
-                            .onAppear {
-                                headerHeight = proxy.size.height
-                            }
-                    }
-                )
                 Spacer()
             }
         }

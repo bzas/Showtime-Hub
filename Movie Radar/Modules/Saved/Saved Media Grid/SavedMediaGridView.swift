@@ -10,8 +10,6 @@ import SwiftData
 
 struct SavedMediaGridView: View {
     @ObservedObject var viewModel: SavedMediaView.ViewModel
-    
-    @Binding var headerHeight: CGFloat
     @Query var mediaItems: [SavedMedia]
     
     var userList: UserList
@@ -23,12 +21,10 @@ struct SavedMediaGridView: View {
     
     init(
         viewModel: SavedMediaView.ViewModel,
-        userList: UserList,
-        headerHeight: Binding<CGFloat>
+        userList: UserList
     ) {
         self.viewModel = viewModel
         self.userList = userList
-        self._headerHeight = headerHeight
         _mediaItems = Query(
             filter: viewModel.filtersPredicate(userList: userList),
             sort: \SavedMedia.detail.name
@@ -36,38 +32,56 @@ struct SavedMediaGridView: View {
     }
     
     var body: some View {
-        if mediaItems.isEmpty {
-            VStack {
-                Spacer()
-                Text("No items saved yet")
-                    .foregroundStyle(.gray)
-                    .frame(maxWidth: .infinity)
-                Spacer()
-            }
-        } else {
-            ScrollView {
-                LazyVGrid(columns: listColumns, spacing: 8) {
-                    ForEach(mediaItems, id: \.self) { media in
-                        GridCellView(
-                            media: media.detail,
-                            type: media.type
-                        )
-                        .onTapGesture {
-                            viewModel.detailMediaToShow = media
-                        }
-                        .contextMenu {
-                            MediaContextMenu(
+        VStack(spacing: 0) {
+            SavedMediaListHeaderView(
+                userList: userList,
+                mediaItems: mediaItems
+            )
+            .environmentObject(viewModel)
+            
+            if mediaItems.isEmpty {
+                VStack {
+                    Spacer()
+                    Text("No items saved yet")
+                        .shadow(radius: 2)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: UIScreen.main.bounds.height / 2)
+                    Spacer()
+                }
+            } else {
+                ScrollView {
+                    LazyVGrid(columns: listColumns, spacing: 8) {
+                        ForEach(mediaItems, id: \.self) { media in
+                            GridCellView(
                                 media: media.detail,
-                                mediaType: media.type, 
-                                toastInfo: $viewModel.toastInfo
+                                type: media.type,
+                                cornerRadius: 10
                             )
+                            .onTapGesture {
+                                viewModel.detailMediaToShow = media
+                            }
+                            .contextMenu {
+                                MediaContextMenu(
+                                    media: media.detail,
+                                    mediaType: media.type,
+                                    toastInfo: $viewModel.toastInfo
+                                )
+                            }
+                            .scrollTransition(.animated.threshold(.visible(0.5))) { content, phase in
+                                content
+                                    .opacity(phase.isIdentity ? 1 : 0.4)
+                                    .blur(radius: phase.isIdentity ? 0 : 2)
+                                    .scaleEffect(phase.isIdentity ? 1 : 0.8)
+                            }
                         }
                     }
+                    .padding(.top, 16)
+                    .padding(.bottom, 50)
                 }
-                .padding(.vertical, headerHeight)
-                .padding(.top, 6)
-                .padding(.horizontal, 6)
+                .scrollIndicators(.hidden)
             }
         }
+        .padding(.horizontal, 16)
+        .padding(.top, viewModel.headerHeight)
     }
 }

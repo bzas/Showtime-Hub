@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeContentView: View {
-    @Binding var headerHeight: CGFloat
     @StateObject var viewModel: ViewModel
     
     var body: some View {
@@ -22,8 +21,8 @@ struct HomeContentView: View {
                 GridView()
                     .environmentObject(viewModel)
             }
-            .padding(.vertical, headerHeight)
         }
+        .ignoresSafeArea(edges: .top)
         .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
             if let detailMediaToShow = viewModel.detailMediaToShow {
                 MediaDetailView(

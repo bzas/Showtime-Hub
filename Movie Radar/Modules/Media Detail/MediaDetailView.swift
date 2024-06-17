@@ -22,7 +22,7 @@ struct MediaDetailView: View {
             }
             .padding(.bottom, 48)
         }
-        .coordinateSpace(name: "MediaDetail")
+        .coordinateSpace(name: AppCoordinateSpace.mediaDetail.rawValue)
         .ignoresSafeArea()
         .scrollIndicators(.hidden)
         .toast(
