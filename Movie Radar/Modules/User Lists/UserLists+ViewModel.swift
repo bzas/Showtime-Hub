@@ -17,6 +17,8 @@ extension UserListsView {
         @Published var tabIndex = 0
         @Published var listIcon = "star.fill"
         @Published var listName = ""
+        @Published var listBackgroundType = ListBackground.abstract
+        @Published var listBackgroundIndex = 0
         @Published var listColor = Color.white
         @Published var isSelectingNewIcon = false
         @Published var isEditing = false
@@ -59,7 +61,8 @@ extension UserListsView {
                 imageName: listIcon,
                 index: (currentLists.last?.index ?? 0) + 1,
                 listType: .myLists,
-                colorInfo: .init(color: listColor)
+                colorInfo: .init(color: listColor),
+                backgroundPath: listBackgroundType.imagePath(index: listBackgroundIndex + 1)
             )
             
             localStorage.insert(list: userList)
@@ -67,6 +70,8 @@ extension UserListsView {
             listName = ""
             listIcon = "star.fill"
             listColor = .white
+            listBackgroundType = .abstract
+            listBackgroundIndex = 1
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
                 self?.toastInfo = .init(isRemoved: false)

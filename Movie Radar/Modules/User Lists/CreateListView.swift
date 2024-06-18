@@ -10,6 +10,7 @@ import SFSymbolsPicker
 import SwiftData
 
 struct CreateListView: View {
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @EnvironmentObject var viewModel: UserListsView.ViewModel
     @Query(sort: [
         SortDescriptor(\UserList.index)
@@ -18,7 +19,7 @@ struct CreateListView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 40) {
+            VStack(spacing: 20) {
                 HStack {
                     Text("Create a new list")
                         .font(.system(size: 30, weight: .light))
@@ -63,6 +64,7 @@ struct CreateListView: View {
                         .padding(.trailing, 10)
                     }
                 }
+                .padding(.vertical)
                 
                 VStack(spacing: 0) {
                     HStack {
@@ -92,6 +94,46 @@ struct CreateListView: View {
                 }
                 .background(.ultraThinMaterial)
                 .cornerRadius(10)
+                .padding(.vertical)
+                
+                VStack {
+                    HStack{
+                        Text("Background")
+                        Spacer()
+                    }
+                    
+                    Picker("", selection: $viewModel.listBackgroundType) {
+                        ForEach(ListBackground.allCases, id: \.self) { backgroundType in
+                            Text(backgroundType.title)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(Array(viewModel.listBackgroundType.pathItems.enumerated()), id: \.1.self) { index, imagePath in
+                                let isSelected = viewModel.listBackgroundIndex == index
+                                Image(imagePath)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 100, height: 150)
+                                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .padding(6)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(.clear)
+                                            .stroke(
+                                                appGradient.value.opacity(0.5),
+                                                lineWidth: isSelected ? 1 : 0
+                                            )
+                                    )
+                                    .onTapGesture {
+                                        viewModel.listBackgroundIndex = index
+                                    }
+                                    .padding(.vertical, 8)
+                            }
+                        }
+                    }
+                }
                 
                 HStack {
                     Spacer()
@@ -120,22 +162,20 @@ struct CreateListView: View {
                             .opacity(shouldDisableButton ? 0.5 : 1)
                     })
                 }
-                .padding(.vertical)
+                .padding(.bottom)
             }
-            .padding(.top, 40)
+            .padding(.vertical, 40)
+            .padding(.bottom, 40)
         }
+        .padding(.top)
         .padding(.horizontal, 25)
+        .scrollIndicators(.hidden)
         .sheet(isPresented: $viewModel.isSelectingNewIcon) {
             SymbolsPicker(
                 selection: $viewModel.listIcon,
                 title: "Pick a list icon",
                 autoDismiss: true
             )
-        }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                isEditingField = true
-            }
         }
         .onChange(of: viewModel.tabIndex, { _, newValue in
             if newValue == 0 {

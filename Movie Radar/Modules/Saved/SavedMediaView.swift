@@ -17,84 +17,40 @@ struct SavedMediaView: View {
     ]) var userLists: [UserList]
     
     var body: some View {
-        ZStack {
-            TabView(selection: $viewModel.selectedTab) {
-                ForEach(Array(userLists.enumerated()), id: \.1.self) { (index, userList) in
-                    SavedMediaGridView(
-                        viewModel: viewModel,
-                        userList: userList
-                    )
-                    .environmentObject(viewModel)
-                    .tag(index)
-                }
-            }
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            .ignoresSafeArea(edges: .bottom)
-
-            VStack {
-                HStack(spacing: 12) {
-                    Spacer()
-                    Button {
-                        withAnimation(.spring) {
-                            viewModel.showUserLists.toggle()
-                        }
-                    } label: {
-                        Text("My lists")
-                            .font(.system(size: 16))
-                            .frame(height: 40)
-                            .padding(.horizontal)
-                            .clipShape(Capsule())
-                            .background(
-                                Capsule()
-                                    .fill(.ultraThinMaterial)
-                            )
-                    }
-                    
-                    Button {
-                        viewModel.showFilters.toggle()
-                    } label: {
-                        Image(systemName: "line.3.horizontal.decrease")
-                            .scaledToFit()
-                            .frame(width: 40, height: 40)
-                            .background(.ultraThinMaterial)
-                            .clipShape(Circle())
-                    }
-                }
-                .foregroundStyle(appGradient.value)
-                .disabled(viewModel.showUserLists)
-                .padding(.vertical, 10)
-                .padding(.horizontal)
-                .background(
-                    GeometryReader { proxy in
-                        Color.clear
-                            .onAppear {
-                                viewModel.headerHeight = proxy.size.height
-                            }
-                    }
+        TabView(selection: $viewModel.selectedTab) {
+            ForEach(Array(userLists.enumerated()), id: \.1.self) { (index, userList) in
+                SavedMediaGridView(
+                    viewModel: viewModel,
+                    userList: userList
                 )
-                Spacer()
+                .environmentObject(viewModel)
+                .tag(index)
             }
         }
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        .ignoresSafeArea(edges: .bottom)
         .sensoryFeedback(.success, trigger: viewModel.selectedTab)
         .background(
             ZStack {
-                Image(ListBackground.city.imagePath(index: 10))
-                    .resizable()
-                    .scaledToFill()
-                    .clipped()
-                
-                LinearGradient(
-                    stops: [
-                        .init(color: .clear, location: 0.3),
-                        .init(color: .black, location: 1)
-                    ],
-                    startPoint: .top,
-                    endPoint: .bottom
-                )
+                if viewModel.selectedListIndex < userLists.count {
+                    let imagePath = userLists[viewModel.selectedListIndex].backgroundPath ?? ListBackground.abstract.imagePath(index: 1)
+                    Image(imagePath)
+                        .resizable()
+                        .scaledToFill()
+                        .clipped()
+                        .transition(.blurReplace.animation(.default))
+
+                    LinearGradient(
+                        colors: [.clear, .black],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                }
+
             }.ignoresSafeArea(edges: .top)
         )
-        .opacity((viewModel.showUserLists || viewModel.showDetailList) ? 0.8 : 1)
-        .blur(radius: (viewModel.showUserLists || viewModel.showDetailList) ? 10 : 0)
+        .opacity(viewModel.showUserLists ? 0.8 : 1)
+        .blur(radius: viewModel.showUserLists ? 10 : 0)
         .overlay {
             if viewModel.showUserLists {
                 UserListsView(
@@ -104,8 +60,6 @@ struct SavedMediaView: View {
                         modelContext: modelContext
                     )
                 )
-            } else if viewModel.showDetailList {
-                
             }
         }
         .fullScreenCover(isPresented: $viewModel.showDetailMedia) {

@@ -489,7 +489,6 @@
 				481B4ECC2C136170003D1DEB /* Toast */,
 				48181E362C0CD9940067D5CB /* PlaceholderStyle.swift */,
 				4850F71F2C1F5C6A0061C6AC /* AppCoordinateSpaces.swift */,
-				4850F7232C1F699C0061C6AC /* ListBackground.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -834,6 +833,7 @@
 				4823935C2C09AE3A00E7DB24 /* UserList.swift */,
 				48181E342C0CBCFF0067D5CB /* ColorInfo.swift */,
 				48A49B382C09C2C600E94E3B /* UserListType.swift */,
+				4850F7232C1F699C0061C6AC /* ListBackground.swift */,
 			);
 			path = "User List";
 			sourceTree = "<group>";

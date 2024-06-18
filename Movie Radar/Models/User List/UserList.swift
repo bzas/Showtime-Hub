@@ -15,6 +15,7 @@ class UserList: Codable {
     let imageName: String?
     let index: Int
     let colorInfo: ColorInfo?
+    let backgroundPath: String?
     
     var _listType: String?
     @Transient var listType: UserListType {
@@ -37,7 +38,8 @@ class UserList: Codable {
              index,
              listType,
              _listType,
-             colorInfo
+             colorInfo,
+             backgroundPath
     }
     
     init(
@@ -45,13 +47,15 @@ class UserList: Codable {
         imageName: String,
         index: Int,
         listType: UserListType,
-        colorInfo: ColorInfo?
+        colorInfo: ColorInfo?,
+        backgroundPath: String?
     ) {
         self.title = title
         self.imageName = imageName
         self.index = index
         self._listType = listType.rawValue
         self.colorInfo = colorInfo
+        self.backgroundPath = backgroundPath
     }
     
     required init(from decoder: Decoder) throws {
@@ -62,7 +66,7 @@ class UserList: Codable {
         self.index = (try? container?.decode(Int.self, forKey: .index)) ?? 0
         self._listType = try? container?.decode(String.self, forKey: ._listType)
         self.colorInfo = (try? container?.decode(ColorInfo.self, forKey: .colorInfo)) ?? ColorInfo(color: .white)
-
+        self.backgroundPath = (try? container?.decode(String.self, forKey: .backgroundPath))
     }
     
     func encode(to encoder: Encoder) throws {
@@ -73,6 +77,7 @@ class UserList: Codable {
         try? container.encode(index, forKey: .index)
         try? container.encode(_listType, forKey: ._listType)
         try? container.encode(colorInfo, forKey: .colorInfo)
+        try? container.encode(backgroundPath, forKey: .backgroundPath)
     }
     
     func actionTitle(isSaved: Bool) -> String {

@@ -13,14 +13,23 @@ extension SavedMediaView {
         var apiService: APIService
         var localStorage: LocalStorage
         @Published var selectedMediaType = MediaType.all
-        @Published var selectedTab = 0
+        @Published var selectedTab = 0 {
+            didSet {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
+                    guard let self else { return }
+                    withAnimation(.spring(duration: 0.5)) {
+                        self.selectedListIndex = self.selectedTab
+                    }
+                }
+            }
+        }
+        @Published var selectedListIndex = 0
         @Published var showFilters = false
         @Published var showUserLists = false
         @Published var searchText = ""
         @Published var filtersApplied = false
         @Published var startDate = LocalStorage.defaultDate
         @Published var endDate = LocalStorage.defaultEndDate
-        @Published var headerHeight: CGFloat = 0
         @Published var showDetailMedia = false
         @Published var detailMediaToShow: SavedMedia? {
             didSet {
@@ -33,15 +42,6 @@ extension SavedMediaView {
             didSet {
                 withAnimation(.spring) {
                     showToast = true
-                }
-            }
-        }
-        
-        @Published var showDetailList = false
-        @Published var detailListToShow: UserList? {
-            didSet {
-                withAnimation(.spring) {
-                    showDetailList = true
                 }
             }
         }

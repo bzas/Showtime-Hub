@@ -27,13 +27,17 @@ struct UserListsCellView: View {
         }
         .padding()
         .frame(maxWidth: .infinity)
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 10))
+        .padding(isSelected ? 6 : 0)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(.ultraThinMaterial)
+                .fill(.clear)
                 .stroke(
                     appGradient.value.opacity(0.5),
-                    lineWidth: isSelected ? 1 : 0
+                    lineWidth: isSelected ? 2 : 0
                 )
         )
+        .padding(isSelected ? 2 : 0)
     }
 }

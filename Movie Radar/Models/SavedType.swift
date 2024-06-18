@@ -18,7 +18,8 @@ enum SavedType: String, Codable, CaseIterable {
             imageName: fillImageName,
             index: index,
             listType: .defaultList,
-            colorInfo: ColorInfo(color: color)
+            colorInfo: ColorInfo(color: color), 
+            backgroundPath: nil
         )
     }
     

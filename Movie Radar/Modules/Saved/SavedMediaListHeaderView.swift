@@ -46,77 +46,118 @@ struct SavedMediaListHeaderView: View {
     
     var body: some View {
         VStack {
-            let itemCountPlaceholder = NSLocalizedString("%d items", comment: "")
-            let itemCount = String(
-                format: itemCountPlaceholder,
-                mediaItems.count
-            )
-            
             VStack {
+                HStack(spacing: 10) {
+                    Image(systemName: userList.imageName ?? "")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundStyle(userList.colorInfo?.color ?? .white)
+                        .frame(width: 20, height: 20)
+                    Text(userList.title ?? "")
+                        .lineLimit(5)
+                        .font(.system(size: 25, weight: .light))
+                        .shadow(radius: 1)
+                        .multilineTextAlignment(.center)
+                }
+                
+                Button {
+                    withAnimation(.spring) {
+                        viewModel.showUserLists.toggle()
+                    }
+                } label: {
+                    Text("My lists")
+                        .font(.system(size: 16))
+                        .frame(height: 40)
+                        .padding(.horizontal, 20)
+                        .clipShape(Capsule())
+                        .background(
+                            Capsule()
+                                .fill(.regularMaterial)
+                        )
+                }
+                .padding(.bottom, 30)
+                
                 HStack {
-                    Menu {
-                        ForEach(Array(defaultLists.enumerated()), id: \.1.self) { index, list in
-                            Button(action: {
-                                viewModel.selectedTab = index
-                            }, label: {
-                                HStack {
-                                    Label(
-                                        list.title ?? "",
-                                        systemImage: list.imageName ?? ""
-                                    )
-                                }
-                            })
-                        }
-                        
-                        Menu("My lists") {
-                            ForEach(Array(userLists.enumerated()), id: \.1.self) { index, list in
-                                Button(action: {
-                                    viewModel.selectedTab = defaultLists.count + index
-                                }, label: {
-                                    HStack {
-                                        Label(
-                                            list.title ?? "",
-                                            systemImage: list.imageName ?? ""
-                                        )
-                                    }
-                                })
-                            }
-                        }
+                    Text("\(mediaItems.count)")
+                        .font(.system(size: 50, weight: .semibold))
+                        .shadow(radius: 2)
+                    Text(mediaItems.count != 1 ? "items" : "item")
+                        .shadow(radius: 2)
+                }
+                .padding()
+                
+                HStack {
+                    Button {
                     } label: {
-                        HStack(spacing: 10) {
-                            Image(systemName: userList.imageName ?? "")
-                                .resizable()
+                        VStack {
+                            Image(systemName: "trash.fill")
                                 .scaledToFit()
-                                .foregroundStyle(userList.colorInfo?.color ?? .white)
-                                .frame(width: 20, height: 20)
-                            Text(userList.title ?? "")
-                                .lineLimit(1)
-                                .font(.system(size: 20, weight: .light))
-                            Image(systemName: "chevron.down")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 10, height: 10)
+                                .frame(width: 55, height: 55)
+                                .background(.regularMaterial)
+                                .clipShape(Circle())
+                            Text("Delete")
+                                .font(.system(size: 14))
+                                .shadow(radius: 1)
                         }
                     }
                     
                     Spacer()
                     
-                    Button(action: {
-                        viewModel.detailListToShow = userList
-                    }, label: {
-                        Image(systemName: "gearshape")
-                    })
+                    Button {
+                    } label: {
+                        VStack {
+                            Image(systemName: "paintpalette.fill")
+                                .scaledToFit()
+                                .frame(width: 55, height: 55)
+                                .background(.regularMaterial)
+                                .clipShape(Circle())
+                            Text("Appearance")
+                                .font(.system(size: 14))
+                                .shadow(radius: 1)
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    Button {
+                    } label: {
+                        VStack {
+                            Image(systemName: "pencil")
+                                .scaledToFit()
+                                .frame(width: 55, height: 55)
+                                .background(.regularMaterial)
+                                .clipShape(Circle())
+                            Text("Rename")
+                                .font(.system(size: 14))
+                                .shadow(radius: 1)
+                        }
+                    }
+                    
+                    Spacer()
+
+                    Button {
+                        viewModel.showFilters.toggle()
+                    } label: {
+                        VStack {
+                            Image(systemName: "line.3.horizontal.decrease")
+                                .scaledToFit()
+                                .frame(width: 55, height: 55)
+                                .background(.regularMaterial)
+                                .clipShape(Circle())
+                            Text("Filter")
+                                .font(.system(size: 14))
+                                .shadow(radius: 1)
+                        }
+                    }
                 }
-                HStack {
-                    Text(itemCount)
-                        .bold()
-                }
-                .padding()
+                .padding(.horizontal, 12)
             }
-            .padding()
-            .background(.ultraThinMaterial)
+            .padding(.vertical)
             .clipShape(RoundedRectangle(cornerRadius: 15))
+            .padding(.horizontal)
         }
+        .disabled(viewModel.showUserLists)
         .padding(.bottom, 10)
+        .padding(.top)
     }
 }
