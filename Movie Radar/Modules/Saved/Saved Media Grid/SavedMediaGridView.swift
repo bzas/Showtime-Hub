@@ -11,13 +11,7 @@ import SwiftData
 struct SavedMediaGridView: View {
     @ObservedObject var viewModel: SavedMediaView.ViewModel
     @Query var mediaItems: [SavedMedia]
-    
-    var userList: UserList
-    let listColumns = [
-        GridItem(.flexible()),
-        GridItem(.flexible()),
-        GridItem(.flexible())
-    ]
+    @State var userList: UserList
     
     init(
         viewModel: SavedMediaView.ViewModel,
@@ -50,21 +44,19 @@ struct SavedMediaGridView: View {
                         Spacer()
                     }
                 } else {
-                    LazyVGrid(columns: listColumns, spacing: 8) {
+                    LazyVStack(spacing: 16) {
                         ForEach(mediaItems, id: \.self) { media in
-                            GridCellView(
+                            SavedMediaCellView(
                                 media: media.detail,
-                                type: media.type,
-                                cornerRadius: 10
+                                type: media.type
                             )
                             .onTapGesture {
                                 viewModel.detailMediaToShow = media
                             }
                             .contextMenu {
-                                MediaContextMenu(
-                                    media: media.detail,
-                                    mediaType: media.type,
-                                    toastInfo: $viewModel.toastInfo
+                                DeleteItemMenu(
+                                    media: media,
+                                    userList: userList
                                 )
                             }
                         }
@@ -75,5 +67,31 @@ struct SavedMediaGridView: View {
             }
         }
         .scrollIndicators(.hidden)
+        .alert(
+            String(
+                format: NSLocalizedString("Are you sure you want to delete \"%@\" list?", comment: ""),
+                viewModel.listToDelete?.title ?? ""
+            ),
+            isPresented: $viewModel.showDeleteListAlert
+        ) {
+            Button("Cancel", role: .cancel) {
+                viewModel.listToDelete = nil
+            }
+            Button("Delete", role: .destructive) {
+                viewModel.deleteList(mediaItems: mediaItems)
+            }
+        }
+        .alert(
+            "Rename list",
+            isPresented: $viewModel.showRenameAlert
+        ) {
+            TextField("Name", text: $viewModel.listNewName)
+            Button("Cancel", role: .cancel) {
+                viewModel.listNewName = ""
+            }
+            Button("Rename") {
+                viewModel.renameList(userList)
+            }
+        }
     }
 }

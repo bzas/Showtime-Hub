@@ -36,7 +36,7 @@ struct UserListsView: View {
             VStack {
                 HStack(spacing: 30) {
                     Button(action: {
-                        dismiss()
+                        viewModel.dismiss()
                     }, label: {
                         Image(systemName: "xmark")
                             .resizable()
@@ -66,12 +66,6 @@ struct UserListsView: View {
                     viewModel.showGradient.toggle()
                 }
             }
-        }
-    }
-    
-    func dismiss() {
-        withAnimation(.bouncy(duration: 0.3)) {
-            viewModel.showDetail = false
         }
     }
 }

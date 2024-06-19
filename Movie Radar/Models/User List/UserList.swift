@@ -11,11 +11,11 @@ import SwiftData
 @Model
 class UserList: Codable {
     @Attribute(.unique) let id = UUID().uuidString
-    let title: String?
-    let imageName: String?
+    var title: String?
+    var imageName: String?
     let index: Int
-    let colorInfo: ColorInfo?
-    let backgroundPath: String?
+    var colorInfo: ColorInfo?
+    var backgroundPath: String?
     
     var _listType: String?
     @Transient var listType: UserListType {

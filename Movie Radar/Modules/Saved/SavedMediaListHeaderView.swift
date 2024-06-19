@@ -9,40 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct SavedMediaListHeaderView: View {
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @EnvironmentObject var viewModel: SavedMediaView.ViewModel
     var userList: UserList
     var mediaItems: [SavedMedia]
-    
-    @Query var defaultLists: [UserList]
-    @Query var userLists: [UserList]
-        
-    init(
-        userList: UserList,
-        mediaItems: [SavedMedia]
-    ) {
-        self.userList = userList
-        self.mediaItems = mediaItems
-        
-        let defaultListTypeString = UserListType.defaultList.rawValue
-        _defaultLists = Query(
-            filter: #Predicate<UserList> {
-                $0._listType == defaultListTypeString
-            },
-            sort: [
-                SortDescriptor(\UserList.index)
-            ]
-        )
-        
-        let userListTypeString = UserListType.myLists.rawValue
-        _userLists = Query(
-            filter: #Predicate<UserList> {
-                $0._listType == userListTypeString
-            },
-            sort: [
-                SortDescriptor(\UserList.index)
-            ]
-        )
-    }
     
     var body: some View {
         VStack {
@@ -53,10 +23,11 @@ struct SavedMediaListHeaderView: View {
                         .scaledToFit()
                         .foregroundStyle(userList.colorInfo?.color ?? .white)
                         .frame(width: 20, height: 20)
+                        .shadow(radius: 2)
                     Text(userList.title ?? "")
                         .lineLimit(5)
                         .font(.system(size: 25, weight: .light))
-                        .shadow(radius: 1)
+                        .shadow(radius: 2)
                         .multilineTextAlignment(.center)
                 }
                 
@@ -86,11 +57,13 @@ struct SavedMediaListHeaderView: View {
                 }
                 .padding()
                 
+                let isDefaultList = userList.listType == .defaultList
                 HStack {
                     Button {
+                        viewModel.listToDelete = userList
                     } label: {
                         VStack {
-                            Image(systemName: "trash.fill")
+                            Image(systemName: isDefaultList ? "trash.slash.fill" : "trash.fill")
                                 .scaledToFit()
                                 .frame(width: 55, height: 55)
                                 .background(.regularMaterial)
@@ -100,10 +73,45 @@ struct SavedMediaListHeaderView: View {
                                 .shadow(radius: 1)
                         }
                     }
+                    .disabled(isDefaultList)
                     
                     Spacer()
                     
                     Button {
+                        viewModel.listNewName = userList.title ?? ""
+                    } label: {
+                        VStack {
+                            Image(systemName: isDefaultList ? "pencil.slash" : "pencil")
+                                .scaledToFit()
+                                .frame(width: 55, height: 55)
+                                .background(.regularMaterial)
+                                .clipShape(Circle())
+                            Text("Rename")
+                                .font(.system(size: 14))
+                                .shadow(radius: 1)
+                        }
+                    }
+                    .disabled(isDefaultList)
+                    
+                    Spacer()
+                    
+                    Menu {
+                        Button {
+                            
+                        } label: {
+                            Label(
+                                "Icon",
+                                systemImage: "face.dashed"
+                            )
+                        }
+                        Button {
+                            viewModel.backgroundEditionList = userList
+                        } label: {
+                            Label(
+                                "Background",
+                                systemImage: "photo.fill"
+                            )
+                        }
                     } label: {
                         VStack {
                             Image(systemName: "paintpalette.fill")
@@ -112,22 +120,6 @@ struct SavedMediaListHeaderView: View {
                                 .background(.regularMaterial)
                                 .clipShape(Circle())
                             Text("Appearance")
-                                .font(.system(size: 14))
-                                .shadow(radius: 1)
-                        }
-                    }
-                    
-                    Spacer()
-                    
-                    Button {
-                    } label: {
-                        VStack {
-                            Image(systemName: "pencil")
-                                .scaledToFit()
-                                .frame(width: 55, height: 55)
-                                .background(.regularMaterial)
-                                .clipShape(Circle())
-                            Text("Rename")
                                 .font(.system(size: 14))
                                 .shadow(radius: 1)
                         }
@@ -147,6 +139,19 @@ struct SavedMediaListHeaderView: View {
                             Text("Filter")
                                 .font(.system(size: 14))
                                 .shadow(radius: 1)
+                        }
+                        .overlay {
+                            if viewModel.filtersApplied {
+                                HStack {
+                                    Spacer()
+                                    VStack {
+                                        appGradient.value
+                                            .clipShape(Circle())
+                                            .frame(width: 10, height: 10)
+                                        Spacer()
+                                    }
+                                }
+                            }
                         }
                     }
                 }

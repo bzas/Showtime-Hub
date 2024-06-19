@@ -45,6 +45,27 @@ extension SavedMediaView {
                 }
             }
         }
+        
+        @Published var showDeleteListAlert = false
+        @Published var listToDelete: UserList? {
+            didSet {
+                showDeleteListAlert = listToDelete != nil
+            }
+        }
+        
+        @Published var showRenameAlert = false
+        @Published var listNewName = "" {
+            didSet {
+                showRenameAlert = !listNewName.isEmpty
+            }
+        }
+        
+        @Published var showBackgroundEditionView = false
+        @Published var backgroundEditionList: UserList? {
+            didSet {
+                showBackgroundEditionView = backgroundEditionList != nil
+            }
+        }
 
         init(
             apiService: APIService,
@@ -62,6 +83,26 @@ extension SavedMediaView {
                 startDate: startDate,
                 endDate: endDate
             )
+        }
+        
+        func deleteList(mediaItems: [SavedMedia]) {
+            guard let listToDelete else { return }
+            
+            selectedTab -= 1
+            localStorage.delete(
+                list: listToDelete,
+                mediaItems: mediaItems
+            )
+            
+            self.listToDelete = nil
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
+                self?.toastInfo = .init(isRemoved: true)
+            }
+        }
+        
+        func renameList(_ userList: UserList) {
+            userList.title = listNewName
+            listNewName = ""
         }
     }
 }

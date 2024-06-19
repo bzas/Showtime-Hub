@@ -102,37 +102,10 @@ struct CreateListView: View {
                         Spacer()
                     }
                     
-                    Picker("", selection: $viewModel.listBackgroundType) {
-                        ForEach(ListBackground.allCases, id: \.self) { backgroundType in
-                            Text(backgroundType.title)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach(Array(viewModel.listBackgroundType.pathItems.enumerated()), id: \.1.self) { index, imagePath in
-                                let isSelected = viewModel.listBackgroundIndex == index
-                                Image(imagePath)
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 100, height: 150)
-                                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                                    .padding(6)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .fill(.clear)
-                                            .stroke(
-                                                appGradient.value.opacity(0.5),
-                                                lineWidth: isSelected ? 1 : 0
-                                            )
-                                    )
-                                    .onTapGesture {
-                                        viewModel.listBackgroundIndex = index
-                                    }
-                                    .padding(.vertical, 8)
-                            }
-                        }
-                    }
+                    BackgroundPickerView(
+                        listBackgroundType: $viewModel.listBackgroundType,
+                        listBackgroundIndex: $viewModel.listBackgroundIndex
+                    )
                 }
                 
                 HStack {
@@ -148,9 +121,6 @@ struct CreateListView: View {
                     })
                     Button(action: {
                         viewModel.createList(currentLists: currentLists)
-                        withAnimation {
-                            viewModel.tabIndex = 0
-                        }
                     }, label: {
                         let shouldDisableButton = viewModel.listName.isEmpty || viewModel.isNameInUse(lists: currentLists)
                         Text("Create")

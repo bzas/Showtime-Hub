@@ -36,14 +36,14 @@ struct DiscoverMediaGridView: View {
                 ForEach(viewModel.gridItems, id: \.self) { media in
                     GridCellView(
                         media: media,
-                        type: viewModel.type,
-                        cornerRadius: 0
+                        type: viewModel.type
                     )
                     .onTapGesture {
                         viewModel.detailMediaToShow = media
                     }
                     .contextMenu {
                         MediaContextMenu(
+                            apiService: viewModel.apiService,
                             media: media,
                             mediaType: viewModel.type,
                             toastInfo: $viewModel.toastInfo

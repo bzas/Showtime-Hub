@@ -160,6 +160,9 @@
         }
       }
     },
+    "Are you sure you want to delete \"%@\" list?" : {
+
+    },
     "Background" : {
 
     },
@@ -674,6 +677,9 @@
     "Rename" : {
 
     },
+    "Rename list" : {
+
+    },
     "Rent" : {
       "localizations" : {
         "es" : {
@@ -713,6 +719,9 @@
           }
         }
       }
+    },
+    "Save" : {
+
     },
     "Save on photos" : {
       "localizations" : {

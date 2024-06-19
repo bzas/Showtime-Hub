@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct MediaContextMenu: View {
+    let apiService: APIService
     let media: Media
     let mediaType: MediaType
     @Binding var toastInfo: ToastInfo?
@@ -20,10 +21,12 @@ struct MediaContextMenu: View {
     @Query var userLists: [UserList]
 
     init(
+        apiService: APIService,
         media: Media,
         mediaType: MediaType,
         toastInfo: Binding<ToastInfo?>
     ) {
+        self.apiService = apiService
         self.media = media
         self.mediaType = mediaType
         self._toastInfo = toastInfo
@@ -116,12 +119,17 @@ struct MediaContextMenu: View {
     }
     
     func insert(userList: UserList) {
-        let storage = LocalStorage(modelContext: modelContext)
-        storage.insert(
-            media: media,
-            type: mediaType,
-            userList: userList
-        )
+        Task {
+            guard let mediaDetail = await apiService.getDetail(type: mediaType, id: media.id) else { return }
+            let storage = LocalStorage(modelContext: modelContext)
+            await MainActor.run {
+                storage.insert(
+                    media: mediaDetail,
+                    type: mediaType,
+                    userList: userList
+                )
+            }
+        }
     }
     
     func remove(userList: UserList) {

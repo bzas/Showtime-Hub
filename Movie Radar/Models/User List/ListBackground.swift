@@ -23,13 +23,27 @@ enum ListBackground: String, CaseIterable {
         }
     }
     
-    func imagePath(index: Int) -> String {
-        rawValue + "-\(index)"
-    }
+    static let defaultPath = ListBackground.abstract.imagePath(index: 0)
     
     var pathItems: [String] {
-        Array(1...10).map {
+        Array(0...9).map {
             imagePath(index: $0)
         }
+    }
+    
+    func imagePath(index: Int) -> String {
+        rawValue + "-\(index + 1)"
+    }
+    
+    static func parse(path: String?) -> (ListBackground, Int) {
+        let components = path?.components(separatedBy: "-")
+        guard let components,
+              components.count == 2,
+              let type = ListBackground(rawValue: components[0]),
+              let index = Int(components[1]) else {
+            return (.abstract, 0)
+        }
+        
+        return (type, index - 1)
     }
 }

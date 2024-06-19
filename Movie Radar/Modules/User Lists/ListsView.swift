@@ -50,8 +50,7 @@ struct ListsView: View {
                         isSelected: viewModel.selectedListIndex == userList.index
                     )
                     .onTapGesture {
-                        viewModel.selectedListIndex = userList.index
-                        viewModel.dismiss()
+                        viewModel.selectList(index: userList.index)
                     }
                 }
                 
@@ -101,8 +100,7 @@ struct ListsView: View {
                             )
                             .onTapGesture {
                                 if !viewModel.isEditing {
-                                    viewModel.selectedListIndex = correctedIndex
-                                    viewModel.dismiss()
+                                    viewModel.selectList(index: correctedIndex)
                                 }
                             }
                         }

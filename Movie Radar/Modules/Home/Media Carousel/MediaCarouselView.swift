@@ -31,13 +31,6 @@ struct MediaCarouselView: View {
                             .onTapGesture {
                                 viewModel.detailMediaToShow = media
                             }
-                            .contextMenu {
-                                MediaContextMenu(
-                                    media: media,
-                                    mediaType: viewModel.type,
-                                    toastInfo: $viewModel.toastInfo
-                                )
-                            }
                     }
                 }
                 .scrollTargetLayout()

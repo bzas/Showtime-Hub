@@ -56,13 +56,14 @@ extension UserListsView {
                 return
             }
             
+            let newIndex = (currentLists.last?.index ?? 0) + 1
             let userList = UserList(
                 title: listName,
                 imageName: listIcon,
-                index: (currentLists.last?.index ?? 0) + 1,
+                index: newIndex,
                 listType: .myLists,
                 colorInfo: .init(color: listColor),
-                backgroundPath: listBackgroundType.imagePath(index: listBackgroundIndex + 1)
+                backgroundPath: listBackgroundType.imagePath(index: listBackgroundIndex)
             )
             
             localStorage.insert(list: userList)
@@ -73,6 +74,7 @@ extension UserListsView {
             listBackgroundType = .abstract
             listBackgroundIndex = 1
             
+            selectList(index: currentLists.count)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
                 self?.toastInfo = .init(isRemoved: false)
             }
@@ -109,6 +111,11 @@ extension UserListsView {
         func isNameInUse(lists: [UserList]) -> Bool {
             let currentListNames = lists.compactMap { $0.title?.lowercased() }
             return currentListNames.contains(listName.lowercased())
+        }
+        
+        func selectList(index: Int) {
+            selectedListIndex = index
+            dismiss()
         }
     }
 }

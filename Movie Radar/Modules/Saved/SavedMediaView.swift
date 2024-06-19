@@ -33,7 +33,7 @@ struct SavedMediaView: View {
         .background(
             ZStack {
                 if viewModel.selectedListIndex < userLists.count {
-                    let imagePath = userLists[viewModel.selectedListIndex].backgroundPath ?? ListBackground.abstract.imagePath(index: 1)
+                    let imagePath = userLists[viewModel.selectedListIndex].backgroundPath ?? ListBackground.abstract.imagePath(index: 0)
                     Image(imagePath)
                         .resizable()
                         .scaledToFill()
@@ -83,6 +83,9 @@ struct SavedMediaView: View {
                     selectedMediaType: $viewModel.selectedMediaType
                 )
             )
+        }
+        .sheet(isPresented: $viewModel.showBackgroundEditionView) {
+            EditBackgroundView(userList: $viewModel.backgroundEditionList)
         }
         .toast(
             show: $viewModel.showToast,
