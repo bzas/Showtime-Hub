@@ -13,6 +13,15 @@ struct SettingsView: View {
 
     var body: some View {
         List {
+            HStack {
+                Image("appLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 50)
+                Spacer()
+            }
+            .listRowBackground(Color.clear)
+            
             Section(header: Text("Personalization")) {
                 AppIconPickerView()
                     .environmentObject(viewModel)
@@ -32,5 +41,6 @@ struct SettingsView: View {
                     .environmentObject(viewModel)
             }
         }
+        .scrollIndicators(.hidden)
     }
 }
