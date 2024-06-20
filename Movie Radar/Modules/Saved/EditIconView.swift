@@ -1,22 +1,24 @@
 //
-//  EditBackgroundView.swift
+//  EditIconView.swift
 //  Movie Radar
 //
-//  Created by Alfonso Boizas Crespo on 19/6/24.
+//  Created by Alfonso Boizas Crespo on 20/6/24.
 //
 
 import SwiftUI
 
-struct EditBackgroundView: View {
+struct EditIconView: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
-    @State var listBackgroundType: ListBackground
-    @State var listBackgroundIndex: Int
     @Binding var userList: UserList?
+    @State var newIconName: String
+    @State var newIconColor: Color
+    @State var isSelectingNewIcon = false
     
     init(userList: Binding<UserList?>) {
         self._userList = userList
-        (listBackgroundType, listBackgroundIndex) = ListBackground.parse(path: userList.wrappedValue?.backgroundPath)
+        self.newIconName = userList.wrappedValue?.imageName ?? ""
+        self.newIconColor = userList.wrappedValue?.colorInfo?.color ?? .white
     }
     
     var body: some View {
@@ -24,7 +26,8 @@ struct EditBackgroundView: View {
             HStack {
                 Spacer()
                 Button("Save") {
-                    userList?.backgroundPath = listBackgroundType.imagePath(index: listBackgroundIndex)
+                    userList?.imageName = newIconName
+                    userList?.colorInfo = .init(color: newIconColor)
                     userList = nil
                     dismiss()
                 }
@@ -34,9 +37,10 @@ struct EditBackgroundView: View {
             
             Spacer()
             
-            BackgroundPickerView(
-                listBackgroundType: $listBackgroundType,
-                listBackgroundIndex: $listBackgroundIndex
+            IconPickerView(
+                isSelectingNewIcon: $isSelectingNewIcon,
+                listIcon: $newIconName,
+                listColor: $newIconColor
             )
         }
         .padding()

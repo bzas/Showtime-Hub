@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import SFSymbolsPicker
 
 struct UserListsView: View {
     @StateObject var viewModel: ViewModel

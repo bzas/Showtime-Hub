@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SFSymbolsPicker
 import SwiftData
 
 struct CreateListView: View {
@@ -66,32 +65,11 @@ struct CreateListView: View {
                 }
                 .padding(.vertical)
                 
-                VStack(spacing: 0) {
-                    HStack {
-                        Text("Icon")
-                        Spacer()
-                        Button {
-                            viewModel.isSelectingNewIcon.toggle()
-                        } label: {
-                            Image(systemName: viewModel.listIcon)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxWidth: 25, maxHeight: 25)
-                        }
-                    }
-                    .padding()
-                    .padding(.trailing, 2)
-                    
-                    Color.gray
-                        .opacity(0.2)
-                        .frame(height: 1)
-                    
-                    ColorPicker(
-                        "Color",
-                        selection: $viewModel.listColor
-                    )
-                    .padding()
-                }
+                IconPickerView(
+                    isSelectingNewIcon: $viewModel.isSelectingNewIcon,
+                    listIcon: $viewModel.listIcon,
+                    listColor: $viewModel.listColor
+                )
                 .background(.ultraThinMaterial)
                 .cornerRadius(10)
                 .padding(.vertical)
@@ -140,13 +118,6 @@ struct CreateListView: View {
         .padding(.top)
         .padding(.horizontal, 25)
         .scrollIndicators(.hidden)
-        .sheet(isPresented: $viewModel.isSelectingNewIcon) {
-            SymbolsPicker(
-                selection: $viewModel.listIcon,
-                title: "Pick a list icon",
-                autoDismiss: true
-            )
-        }
         .onChange(of: viewModel.tabIndex, { _, newValue in
             if newValue == 0 {
                 isEditingField = false

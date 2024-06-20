@@ -97,13 +97,15 @@ struct SavedMediaListHeaderView: View {
                     
                     Menu {
                         Button {
-                            
+                            viewModel.iconEditionList = userList
                         } label: {
                             Label(
                                 "Icon",
                                 systemImage: "face.dashed"
                             )
                         }
+                        .disabled(isDefaultList)
+                        
                         Button {
                             viewModel.backgroundEditionList = userList
                         } label: {
@@ -151,6 +153,7 @@ struct SavedMediaListHeaderView: View {
                                         Spacer()
                                     }
                                 }
+                                .frame(width: 55, height: 55)
                             }
                         }
                     }

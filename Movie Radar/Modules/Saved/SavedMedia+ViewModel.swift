@@ -66,6 +66,13 @@ extension SavedMediaView {
                 showBackgroundEditionView = backgroundEditionList != nil
             }
         }
+        
+        @Published var showIconEditionView = false
+        @Published var iconEditionList: UserList? {
+            didSet {
+                showIconEditionView = iconEditionList != nil
+            }
+        }
 
         init(
             apiService: APIService,

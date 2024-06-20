@@ -87,6 +87,9 @@ struct SavedMediaView: View {
         .sheet(isPresented: $viewModel.showBackgroundEditionView) {
             EditBackgroundView(userList: $viewModel.backgroundEditionList)
         }
+        .sheet(isPresented: $viewModel.showIconEditionView) {
+            EditIconView(userList: $viewModel.iconEditionList)
+        }
         .toast(
             show: $viewModel.showToast,
             toastInfo: viewModel.toastInfo

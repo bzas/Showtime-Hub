@@ -138,6 +138,8 @@
 		48C544D82C0C55D700AE6517 /* ListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C544D72C0C55D700AE6517 /* ListsView.swift */; };
 		48C544DA2C0C7EAB00AE6517 /* CreateListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C544D92C0C7EAB00AE6517 /* CreateListView.swift */; };
 		48C544DC2C0C818D00AE6517 /* UserLists+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C544DB2C0C818D00AE6517 /* UserLists+ViewModel.swift */; };
+		48DA1FDA2C24655A00E7E00E /* IconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA1FD92C24655A00E7E00E /* IconPickerView.swift */; };
+		48DA1FDC2C24668000E7E00E /* EditIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DA1FDB2C24668000E7E00E /* EditIconView.swift */; };
 		48F38C002BF6868A003F0CD0 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F38BFF2BF6868A003F0CD0 /* MediaType.swift */; };
 		48F38C022BF69A96003F0CD0 /* SeriesGridSortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F38C012BF69A96003F0CD0 /* SeriesGridSortType.swift */; };
 		48F562D22C14D8BE0019DF20 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F562D12C14D8BE0019DF20 /* Int.swift */; };
@@ -299,6 +301,8 @@
 		48C544D72C0C55D700AE6517 /* ListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsView.swift; sourceTree = "<group>"; };
 		48C544D92C0C7EAB00AE6517 /* CreateListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateListView.swift; sourceTree = "<group>"; };
 		48C544DB2C0C818D00AE6517 /* UserLists+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserLists+ViewModel.swift"; sourceTree = "<group>"; };
+		48DA1FD92C24655A00E7E00E /* IconPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerView.swift; sourceTree = "<group>"; };
+		48DA1FDB2C24668000E7E00E /* EditIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditIconView.swift; sourceTree = "<group>"; };
 		48F38BFF2BF6868A003F0CD0 /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
 		48F38C012BF69A96003F0CD0 /* SeriesGridSortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesGridSortType.swift; sourceTree = "<group>"; };
 		48F562D12C14D8BE0019DF20 /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
@@ -496,6 +500,7 @@
 				4846E8772BF8F14C00D7ADAB /* TabViewHeader.swift */,
 				48F562D72C15BC5A0019DF20 /* ScrollOffsetPreferenceKey.swift */,
 				482F7CB22C23266800D01FDF /* BackgroundPickerView.swift */,
+				48DA1FD92C24655A00E7E00E /* IconPickerView.swift */,
 				481B4ECC2C136170003D1DEB /* Toast */,
 				48181E362C0CD9940067D5CB /* PlaceholderStyle.swift */,
 				4850F71F2C1F5C6A0061C6AC /* AppCoordinateSpaces.swift */,
@@ -529,6 +534,7 @@
 				48A3094F2BF5041900F1733C /* SavedMedia+ViewModel.swift */,
 				4850F7212C1F60A20061C6AC /* SavedMediaListHeaderView.swift */,
 				482F7CB02C23264D00D01FDF /* EditBackgroundView.swift */,
+				48DA1FDB2C24668000E7E00E /* EditIconView.swift */,
 				48B8B2BF2BF92168002276C7 /* Saved Media Grid */,
 			);
 			path = Saved;
@@ -1107,6 +1113,7 @@
 				48A309F22BF5044400F1733C /* PersonMedia.swift in Sources */,
 				482833DE2C22B49200C64235 /* SavedMediaCellView.swift in Sources */,
 				4823935D2C09AE3A00E7DB24 /* UserList.swift in Sources */,
+				48DA1FDA2C24655A00E7E00E /* IconPickerView.swift in Sources */,
 				48A49B392C09C2C600E94E3B /* UserListType.swift in Sources */,
 				48A309F02BF5044400F1733C /* Credits.swift in Sources */,
 				48A309BE2BF5041900F1733C /* AppVersionView.swift in Sources */,
@@ -1118,6 +1125,7 @@
 				48A309982BF5041900F1733C /* GenreSelectorCellView.swift in Sources */,
 				48A309B82BF5041900F1733C /* PersonCarouselCellView.swift in Sources */,
 				48A309AB2BF5041900F1733C /* RecommendationsCarouselView.swift in Sources */,
+				48DA1FDC2C24668000E7E00E /* EditIconView.swift in Sources */,
 				48A309AC2BF5041900F1733C /* ReviewCarouselCellView.swift in Sources */,
 				48A309A72BF5041900F1733C /* GenreCellView.swift in Sources */,
 				4846E87C2BF8F31200D7ADAB /* SavedMediaGridView.swift in Sources */,
