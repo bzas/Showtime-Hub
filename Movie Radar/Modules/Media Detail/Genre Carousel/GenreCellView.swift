@@ -14,17 +14,9 @@ struct GenreCellView: View {
     var body: some View {
         Text(genre.name)
             .font(.system(size: 14, weight: .light))
-            .foregroundStyle(appGradient.value)
             .padding(.horizontal)
             .frame(height: 30)
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(
-                        appGradient.value,
-                        lineWidth: 1
-                    )
-                    .fill(.clear)
-                    .padding(2)
-            )
+            .background(.ultraThinMaterial)
+            .clipShape(Capsule())
     }
 }

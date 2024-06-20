@@ -553,8 +553,8 @@
 		48A309582BF5041900F1733C /* Genre Selector */ = {
 			isa = PBXGroup;
 			children = (
-				48A309562BF5041900F1733C /* GenreSelectorCellView.swift */,
 				48A309572BF5041900F1733C /* GenreSelectorView.swift */,
+				48A309562BF5041900F1733C /* GenreSelectorCellView.swift */,
 			);
 			path = "Genre Selector";
 			sourceTree = "<group>";
