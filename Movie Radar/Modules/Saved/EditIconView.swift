@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EmojiPicker
 
 struct EditIconView: View {
     @Environment(\.dismiss) private var dismiss
@@ -13,8 +14,8 @@ struct EditIconView: View {
     @Binding var userList: UserList?
     @State var newIconName: String
     @State var newIconColor: Color
-    @State var isSelectingNewIcon = false
-    
+    @State var newIconEmoji: Emoji?
+
     init(userList: Binding<UserList?>) {
         self._userList = userList
         self.newIconName = userList.wrappedValue?.imageName ?? ""
@@ -26,8 +27,15 @@ struct EditIconView: View {
             HStack {
                 Spacer()
                 Button("Save") {
-                    userList?.imageName = newIconName
-                    userList?.colorInfo = .init(color: newIconColor)
+                    if let newIconEmoji {
+                        userList?.emoji = newIconEmoji.value
+                        userList?.imageName = nil
+                        userList?.colorInfo = nil
+                    } else {
+                        userList?.emoji = nil
+                        userList?.imageName = newIconName
+                        userList?.colorInfo = .init(color: newIconColor)
+                    }
                     userList = nil
                     dismiss()
                 }
@@ -38,9 +46,9 @@ struct EditIconView: View {
             Spacer()
             
             IconPickerView(
-                isSelectingNewIcon: $isSelectingNewIcon,
                 listIcon: $newIconName,
-                listColor: $newIconColor
+                listColor: $newIconColor, 
+                listEmoji: $newIconEmoji
             )
         }
         .padding()

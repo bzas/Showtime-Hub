@@ -292,6 +292,9 @@
         }
       }
     },
+    "Emoji" : {
+
+    },
     "Favorites" : {
       "localizations" : {
         "es" : {
@@ -594,6 +597,9 @@
         }
       }
     },
+    "Pick a list emoji" : {
+
+    },
     "Please make sure you are connected to the internet for being able to use the app" : {
       "localizations" : {
         "es" : {
@@ -835,6 +841,9 @@
           }
         }
       }
+    },
+    "System icon" : {
+
     },
     "Theme" : {
       "localizations" : {

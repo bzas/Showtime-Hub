@@ -18,15 +18,21 @@ struct SavedMediaListHeaderView: View {
         VStack {
             VStack {
                 HStack(spacing: 10) {
-                    Image(systemName: userList.imageName ?? "")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundStyle(userList.colorInfo?.color ?? .white)
-                        .frame(width: 20, height: 20)
-                        .shadow(radius: 2)
+                    if let emoji = userList.emoji {
+                        Text(emoji)
+                            .font(.system(size: 30))
+                    } else {
+                        Image(systemName: userList.imageName ?? "")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundStyle(userList.colorInfo?.color ?? .white)
+                            .frame(width: 25, height: 25)
+                            .shadow(radius: 2)
+                    }
                     Text(userList.title ?? "")
                         .lineLimit(5)
                         .font(.system(size: 25, weight: .light))
+                        .shadow(radius: 2)
                         .shadow(radius: 2)
                         .multilineTextAlignment(.center)
                 }

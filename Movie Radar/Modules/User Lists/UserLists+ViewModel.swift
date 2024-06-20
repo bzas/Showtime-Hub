@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import EmojiPicker
 
 extension UserListsView {
     class ViewModel: ObservableObject {
@@ -17,10 +18,10 @@ extension UserListsView {
         @Published var tabIndex = 0
         @Published var listIcon = "star.fill"
         @Published var listName = ""
+        @Published var listEmoji: Emoji?
         @Published var listBackgroundType = ListBackground.abstract
         @Published var listBackgroundIndex = 0
         @Published var listColor = Color.white
-        @Published var isSelectingNewIcon = false
         @Published var isEditing = false
         @Published var showToast = false
         @Published var toastInfo: ToastInfo? {
@@ -37,7 +38,6 @@ extension UserListsView {
             tabIndex: Int = 0,
             newListIcon: String = "star.fill",
             newListName: String = "",
-            isSelectingNewIcon: Bool = false,
             showDetail: Binding<Bool>,
             selectedListIndex: Binding<Int>,
             modelContext: ModelContext
@@ -45,7 +45,6 @@ extension UserListsView {
             self.tabIndex = tabIndex
             self.listIcon = newListIcon
             self.listName = newListName
-            self.isSelectingNewIcon = isSelectingNewIcon
             self._showDetail = showDetail
             self._selectedListIndex = selectedListIndex
             self.localStorage = LocalStorage(modelContext: modelContext)
@@ -57,14 +56,26 @@ extension UserListsView {
             }
             
             let newIndex = (currentLists.last?.index ?? 0) + 1
-            let userList = UserList(
-                title: listName,
-                imageName: listIcon,
-                index: newIndex,
-                listType: .myLists,
-                colorInfo: .init(color: listColor),
-                backgroundPath: listBackgroundType.imagePath(index: listBackgroundIndex)
-            )
+            
+            var userList: UserList!
+            if let listEmoji {
+                userList = UserList(
+                    title: listName,
+                    index: newIndex,
+                    listType: .myLists,
+                    backgroundPath: listBackgroundType.imagePath(index: listBackgroundIndex),
+                    emoji: listEmoji.value
+                )
+            } else {
+                userList = UserList(
+                    title: listName,
+                    imageName: listIcon,
+                    index: newIndex,
+                    listType: .myLists,
+                    colorInfo: .init(color: listColor),
+                    backgroundPath: listBackgroundType.imagePath(index: listBackgroundIndex)
+                )
+            }
             
             localStorage.insert(list: userList)
             

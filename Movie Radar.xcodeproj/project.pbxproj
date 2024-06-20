@@ -45,6 +45,8 @@
 		48609A122C0FAC8C00289E35 /* WatchInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A112C0FAC8C00289E35 /* WatchInfo.swift */; };
 		48609A152C10A92A00289E35 /* ProviderCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A142C10A92A00289E35 /* ProviderCarouselView.swift */; };
 		48609A172C10A93300289E35 /* ProviderCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A162C10A93300289E35 /* ProviderCarouselCellView.swift */; };
+		486866C72C249F2D00EC154B /* EmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 486866C62C249F2D00EC154B /* EmojiPicker */; };
+		486866C92C24A0EA00EC154B /* ListIconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486866C82C24A0EA00EC154B /* ListIconType.swift */; };
 		486AB3512C062D8100F80289 /* ToastInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486AB3502C062D8100F80289 /* ToastInfo.swift */; };
 		488A644F2BFA409C00C5471A /* SaveMediaStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A644E2BFA409C00C5471A /* SaveMediaStackView.swift */; };
 		488A64522BFA40DB00C5471A /* SaveMediaButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A64512BFA40DB00C5471A /* SaveMediaButtonView.swift */; };
@@ -206,6 +208,7 @@
 		48609A112C0FAC8C00289E35 /* WatchInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchInfo.swift; sourceTree = "<group>"; };
 		48609A142C10A92A00289E35 /* ProviderCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderCarouselView.swift; sourceTree = "<group>"; };
 		48609A162C10A93300289E35 /* ProviderCarouselCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderCarouselCellView.swift; sourceTree = "<group>"; };
+		486866C82C24A0EA00EC154B /* ListIconType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListIconType.swift; sourceTree = "<group>"; };
 		486AB3502C062D8100F80289 /* ToastInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastInfo.swift; sourceTree = "<group>"; };
 		488A644E2BFA409C00C5471A /* SaveMediaStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMediaStackView.swift; sourceTree = "<group>"; };
 		488A64512BFA40DB00C5471A /* SaveMediaButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMediaButtonView.swift; sourceTree = "<group>"; };
@@ -319,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48C544D62C0C54BF00AE6517 /* SFSymbolsPicker in Frameworks */,
+				486866C72C249F2D00EC154B /* EmojiPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -851,6 +855,7 @@
 				48181E342C0CBCFF0067D5CB /* ColorInfo.swift */,
 				48A49B382C09C2C600E94E3B /* UserListType.swift */,
 				4850F7232C1F699C0061C6AC /* ListBackground.swift */,
+				486866C82C24A0EA00EC154B /* ListIconType.swift */,
 			);
 			path = "User List";
 			sourceTree = "<group>";
@@ -890,6 +895,7 @@
 			name = "Movie Radar";
 			packageProductDependencies = (
 				48C544D52C0C54BF00AE6517 /* SFSymbolsPicker */,
+				486866C62C249F2D00EC154B /* EmojiPicker */,
 			);
 			productName = "Movie Radar";
 			productReference = 48A3090F2BF503C900F1733C /* Movie Radar.app */;
@@ -967,6 +973,7 @@
 			packageReferences = (
 				486AB34B2C06138500F80289 /* XCRemoteSwiftPackageReference "AlertToast" */,
 				48C544D42C0C54BF00AE6517 /* XCRemoteSwiftPackageReference "SFSymbolsPickerForSwiftUI" */,
+				486866C52C249F2D00EC154B /* XCRemoteSwiftPackageReference "EmojiPicker" */,
 			);
 			productRefGroup = 48A309102BF503C900F1733C /* Products */;
 			projectDirPath = "";
@@ -1104,6 +1111,7 @@
 				48A3094C2BF5040700F1733C /* PlaceholderView.swift in Sources */,
 				488A644F2BFA409C00C5471A /* SaveMediaStackView.swift in Sources */,
 				48A309EA2BF5044400F1733C /* Link.swift in Sources */,
+				486866C92C24A0EA00EC154B /* ListIconType.swift in Sources */,
 				48A309C02BF5041900F1733C /* RateView.swift in Sources */,
 				48A309AA2BF5041900F1733C /* RecommendationsCarouselCellView.swift in Sources */,
 				48C544D82C0C55D700AE6517 /* ListsView.swift in Sources */,
@@ -1488,6 +1496,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		486866C52C249F2D00EC154B /* XCRemoteSwiftPackageReference "EmojiPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kelvas09/EmojiPicker.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
 		486AB34B2C06138500F80289 /* XCRemoteSwiftPackageReference "AlertToast" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/elai950/AlertToast.git";
@@ -1507,6 +1523,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		486866C62C249F2D00EC154B /* EmojiPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 486866C52C249F2D00EC154B /* XCRemoteSwiftPackageReference "EmojiPicker" */;
+			productName = EmojiPicker;
+		};
 		48C544D52C0C54BF00AE6517 /* SFSymbolsPicker */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 48C544D42C0C54BF00AE6517 /* XCRemoteSwiftPackageReference "SFSymbolsPickerForSwiftUI" */;

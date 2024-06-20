@@ -1,5 +1,5 @@
 {
-  "originHash" : "82fbadcd4ec63cce55a6f403e171a2498d9afcf0c4fd29e06c4f7d7ef9ad3059",
+  "originHash" : "677ff8a17763d255ea46be601c87c53d11e913128989e38cc5a3dd8fdd01b98f",
   "pins" : [
     {
       "identity" : "alerttoast",
@@ -11,12 +11,30 @@
       }
     },
     {
+      "identity" : "emojipicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kelvas09/EmojiPicker.git",
+      "state" : {
+        "revision" : "d787591e2121b617209172ad6a8ebf2975f605ae",
+        "version" : "1.0.1"
+      }
+    },
+    {
       "identity" : "sfsymbolspickerforswiftui",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/alessiorubicini/SFSymbolsPickerForSwiftUI.git",
       "state" : {
         "revision" : "73c909b8a7fc77a30dd04208e33f759f8b52c4c8",
         "version" : "1.0.6"
+      }
+    },
+    {
+      "identity" : "smile",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onmyway133/Smile",
+      "state" : {
+        "revision" : "40604722a7a56f735124e069fcbb58307637744b",
+        "version" : "2.1.0"
       }
     }
   ],

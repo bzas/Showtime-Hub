@@ -66,9 +66,9 @@ struct CreateListView: View {
                 .padding(.vertical)
                 
                 IconPickerView(
-                    isSelectingNewIcon: $viewModel.isSelectingNewIcon,
                     listIcon: $viewModel.listIcon,
-                    listColor: $viewModel.listColor
+                    listColor: $viewModel.listColor, 
+                    listEmoji: $viewModel.listEmoji
                 )
                 .background(.ultraThinMaterial)
                 .cornerRadius(10)
