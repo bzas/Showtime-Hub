@@ -12,16 +12,8 @@ struct GridView: View {
 
     var body: some View {
         VStack {
-            HStack {
-                Spacer()
-                VStack {
-                    Spacer()
-                    SortSelectorView()
-                        .environmentObject(viewModel)
-                }
-            }
-
-            SearchBar()
+            SortSelectorView()
+                .environmentObject(viewModel)
 
             GenreSelectorView()
                 .environmentObject(viewModel)

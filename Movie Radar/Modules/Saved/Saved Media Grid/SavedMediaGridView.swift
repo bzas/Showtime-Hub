@@ -80,7 +80,7 @@ struct SavedMediaGridView: View {
                                     }
                                 }
                                 
-                                SavedMediaCellView(
+                                MediaCellView(
                                     media: media.detail,
                                     type: media.type
                                 )

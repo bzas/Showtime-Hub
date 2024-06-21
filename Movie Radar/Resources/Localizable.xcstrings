@@ -557,6 +557,9 @@
         }
       }
     },
+    "No results found" : {
+
+    },
     "No reviews available" : {
       "localizations" : {
         "es" : {

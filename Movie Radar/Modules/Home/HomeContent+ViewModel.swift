@@ -24,14 +24,6 @@ extension HomeContentView {
         }
         
         @Published var upcomingList = MediaList()
-        @Published var searchList = MediaList()
-        @Published var searchText = "" {
-            didSet {
-                Task {
-                    await searchMedia()
-                }
-            }
-        }
         @Published var genreList = GenreList()
         @Published var discoverList = MediaList()
         @Published var showDetailMedia = false
@@ -58,10 +50,9 @@ extension HomeContentView {
         }
         
         var gridItems: [Media] {
-            let items = searchText.isEmpty ? discoverList.results : searchList.results
-            let totalCount = items.count
-            let correctedCount = totalCount - (items.count % 3)
-            return Array(items[0..<correctedCount])
+            let totalCount = discoverList.results.count
+            let correctedCount = totalCount - (discoverList.results.count % 3)
+            return Array(discoverList.results[0..<correctedCount])
         }
 
         init(
@@ -141,26 +132,7 @@ extension HomeContentView {
             }
         }
 
-        func searchMedia() async {
-            await updateLoading(true)
-            guard !searchText.isEmpty else {
-                await MainActor.run {
-                    searchList = MediaList()
-                }
-                await updateLoading(false)
-                return
-            }
 
-            if let movieList = await apiService.searchMovies(
-                type: type,
-                queryString: searchText
-            ) {
-                await MainActor.run {
-                    searchList = movieList
-                }
-                await updateLoading(false)
-            }
-        }
 
         func selectGenre(genre: Genre) {
             if selectedGenre == genre {
@@ -174,10 +146,6 @@ extension HomeContentView {
 
         func isSelected(genre: Genre) -> Bool {
             genre == selectedGenre
-        }
-
-        func updateVisibility(isEditingSearch: Bool) {
-            isSearching = isEditingSearch || !searchText.isEmpty
         }
         
         func updateLoading(_ value: Bool) async {

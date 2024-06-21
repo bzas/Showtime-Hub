@@ -14,44 +14,50 @@ struct SortSelectorView: View {
 
     var body: some View {
         HStack {
-            Text("Sort by")
-                .font(.system(size: 12, weight: .light))
+            Spacer()
+            VStack {
+                Spacer()
+                HStack {
+                    Text("Sort by")
+                        .font(.system(size: 12, weight: .light))
 
-            Menu {
-                if viewModel.type.isMovie {
-                    movieSortTypes()
-                } else {
-                    seriesSortTypes()
+                    Menu {
+                        if viewModel.type.isMovie {
+                            movieSortTypes()
+                        } else {
+                            seriesSortTypes()
+                        }
+                    } label: {
+                        HStack(spacing: 5) {
+                            Text(viewModel.sortTitle)
+                            Image(systemName: "chevron.down")
+                        }
+                        .foregroundStyle(appGradient.value)
+                    }
+                    .sensoryFeedback(
+                        .impact(flexibility: .soft, intensity: 0.5),
+                        trigger: viewModel.sortTitle
+                    )
+                    .tint(.white)
+                    .font(.system(size: 14, weight: .semibold))
+                    .animation(
+                        .spring(duration: 0.3, bounce: 0),
+                        value: viewModel.sortTitle
+                    )
+                    .onTapGesture {
+                        triggerHapticFeedback.toggle()
+                    }
+                    .sensoryFeedback(
+                        .impact(flexibility: .soft, intensity: 1),
+                        trigger: triggerHapticFeedback
+                    )
                 }
-            } label: {
-                HStack(spacing: 5) {
-                    Text(viewModel.sortTitle)
-                    Image(systemName: "chevron.down")
-                }
-                .foregroundStyle(appGradient.value)
+                .disabled(viewModel.isSearching)
+                .opacity(viewModel.isSearching ? 0.5 : 1)
+                .padding(.top, 25)
+                .padding(.trailing, 4)
             }
-            .sensoryFeedback(
-                .impact(flexibility: .soft, intensity: 0.5),
-                trigger: viewModel.sortTitle
-            )
-            .tint(.white)
-            .font(.system(size: 14, weight: .semibold))
-            .animation(
-                .spring(duration: 0.3, bounce: 0),
-                value: viewModel.sortTitle
-            )
-            .onTapGesture {
-                triggerHapticFeedback.toggle()
-            }
-            .sensoryFeedback(
-                .impact(flexibility: .soft, intensity: 1),
-                trigger: triggerHapticFeedback
-            )
         }
-        .disabled(viewModel.isSearching)
-        .opacity(viewModel.isSearching ? 0.5 : 1)
-        .padding(.top, 25)
-        .padding(.trailing, 4)
     }
     
     @ViewBuilder

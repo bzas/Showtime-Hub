@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainHomeView: View {
     var apiService: APIService
+    @State var isSearching = false
     @State private var selectedTab = 0
     
     var body: some View {
@@ -40,17 +41,34 @@ struct MainHomeView: View {
                         titles: [MediaType.movie, MediaType.tv].map { $0.title }
                     )
                     
-                    Button(action: {
-                    }, label: {
+                    Button {
+                        withAnimation {
+                            isSearching = true
+                        }
+                    } label: {
                         Image(systemName: "magnifyingglass")
                             .padding(13)
                             .background(.ultraThinMaterial)
                             .clipShape(Circle())
-                    })
+                    }
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 10)
                 Spacer()
+            }
+        }
+        .disabled(isSearching)
+        .blur(radius: isSearching ? 10 : 0)
+        .opacity(isSearching ? 0.8 : 1)
+        .blur(radius: isSearching ? 10 : 0)
+        .overlay {
+            if isSearching {
+                SearchView(
+                    viewModel: .init(
+                        apiService: apiService,
+                        isSearching: $isSearching
+                    )
+                )
             }
         }
     }

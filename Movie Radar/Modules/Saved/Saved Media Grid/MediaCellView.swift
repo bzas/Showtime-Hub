@@ -1,5 +1,5 @@
 //
-//  SavedMediaCellView.swift
+//  MediaCellView.swift
 //  Movie Radar
 //
 //  Created by Alfonso Boizas Crespo on 19/6/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SavedMediaCellView: View {
+struct MediaCellView: View {
     @State var media: Media
     @State var opacity = 0.0
     @ObservedObject var imageLoader: ImageLoader
