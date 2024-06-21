@@ -44,9 +44,32 @@ extension APIService {
 
         return await perform(request: request)
     }
+    
+    func searchAllMedia(queryString: String) async -> [SearchResult] {
+        var moviesList = await searchMedia(
+            type: .movie,
+            queryString: queryString
+        ) ?? MediaList()
+        let seriesList = await searchMedia(
+            type: .tv,
+            queryString: queryString
+        ) ?? MediaList()
+        
+        let moviesResults: [SearchResult] = moviesList.results.map {
+            .init(media: $0, type: .movie)
+        }
+        
+        let seriesResults: [SearchResult] = seriesList.results.map {
+            .init(media: $0, type: .tv)
+        }
+        
+        return (moviesResults + seriesResults).sorted {
+            ($0.media.popularity ?? 0) > ($1.media.popularity ?? 0)
+        }
+    }
 
     // MARK: - /search/{type}
-    func searchMovies(type: MediaType, queryString: String) async -> MediaList? {
+    func searchMedia(type: MediaType, queryString: String) async -> MediaList? {
         let queryItems = [
             URLQueryItem(name: "page", value: "\(1)"),
             URLQueryItem(name: "query", value: queryString)

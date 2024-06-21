@@ -25,12 +25,17 @@ struct SearchView: View {
                 .padding(.horizontal, 4)
                 .background(.ultraThinMaterial)
                 .clipShape(Capsule())
+                .onSubmit {
+                    Task {
+                        await viewModel.searchMedia()
+                    }
+                }
                 .overlay {
                     if !viewModel.searchText.isEmpty {
                         HStack {
                             Spacer()
                             Button {
-                                viewModel.searchText = ""
+                                viewModel.resetSearch()
                             } label: {
                                 Image(systemName: "xmark.circle.fill")
                                     .resizable()
@@ -54,9 +59,16 @@ struct SearchView: View {
             .padding(.horizontal)
             .padding(.top)
 
-            if viewModel.searchResults.isEmpty, !viewModel.searchText.isEmpty {
-                Text("No results found")
-                    .frame(maxHeight: .infinity)
+            if viewModel.searchResults.isEmpty,
+               !viewModel.searchText.isEmpty,
+               !isFocused {
+                if viewModel.isLoading {
+                    ProgressView()
+                        .frame(maxHeight: .infinity)
+                } else {
+                    Text("No results found")
+                        .frame(maxHeight: .infinity)
+                }
             } else {
                ScrollView {
                     LazyVStack(spacing: 16) {
@@ -67,6 +79,14 @@ struct SearchView: View {
                             )
                             .onTapGesture {
                                 viewModel.detailResultToShow = searchResult
+                            }
+                            .contextMenu {
+                                MediaContextMenu(
+                                    apiService: viewModel.apiService,
+                                    media: searchResult.media,
+                                    mediaType: searchResult.type,
+                                    toastInfo: $viewModel.toastInfo
+                                )
                             }
                         }
                     }
@@ -87,6 +107,10 @@ struct SearchView: View {
                 )
             }
         }
+        .toast(
+            show: $viewModel.showToast,
+            toastInfo: viewModel.toastInfo
+        )
         .onAppear {
             isFocused = true
         }

@@ -107,11 +107,11 @@ struct ListsView: View {
                     }
                 }
                 
-                Button(action: {
+                Button {
                     withAnimation {
                         viewModel.tabIndex = 1
                     }
-                }, label: {
+                } label: {
                     HStack(spacing: 25) {
                         Text("New")
                         Image(systemName: "plus")
@@ -123,7 +123,7 @@ struct ListsView: View {
                     .padding()
                     .background(.white)
                     .clipShape(Capsule())
-                })
+                }
                 .padding()
                 .padding(.bottom, 48)
                 
@@ -133,8 +133,5 @@ struct ListsView: View {
         .scrollIndicators(.hidden)
         .padding(.horizontal, 25)
         .padding(.top, 40)
-        .onTapGesture {
-            viewModel.dismiss()
-        }
     }
 }

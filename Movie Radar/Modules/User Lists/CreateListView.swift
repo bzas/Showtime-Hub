@@ -70,8 +70,6 @@ struct CreateListView: View {
                     listColor: $viewModel.listColor, 
                     listEmoji: $viewModel.listEmoji
                 )
-                .background(.ultraThinMaterial)
-                .cornerRadius(10)
                 .padding(.vertical)
                 
                 VStack {

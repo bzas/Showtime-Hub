@@ -7,29 +7,26 @@
 
 import SwiftUI
 
-struct SearchResult: Hashable {
-    var media: Media
-    var type: MediaType
-}
-
 extension SearchView {
     class ViewModel: ObservableObject {
         var apiService: APIService
         @Binding var isSearching: Bool
         @Published var searchResults: [SearchResult] = []
         @Published var isLoading = false
-        @Published var searchText = "" {
-            didSet {
-                Task {
-                    await searchMedia()
-                }
-            }
-        }
-        
+        @Published var searchText = ""
         @Published var showDetailMedia = false
         @Published var detailResultToShow: SearchResult? {
             didSet {
                 showDetailMedia.toggle()
+            }
+        }
+        
+        @Published var showToast = false
+        @Published var toastInfo: ToastInfo? {
+            didSet {
+                withAnimation(.spring) {
+                    showToast = true
+                }
             }
         }
         
@@ -51,36 +48,23 @@ extension SearchView {
                 return
             }
 
-            var moviesList = await apiService.searchMovies(
-                type: .movie,
-                queryString: searchText
-            ) ?? MediaList()
-            let seriesList = await apiService.searchMovies(
-                type: .tv,
-                queryString: searchText
-            ) ?? MediaList()
-            
-            let moviesResults: [SearchResult] = moviesList.results.map {
-                .init(media: $0, type: .movie)
-            }
-            
-            let seriesResults: [SearchResult] = seriesList.results.map {
-                .init(media: $0, type: .tv)
-            }
-            
-            let totalResults = (moviesResults + seriesResults).sorted {
-                ($0.media.popularity ?? 0) > ($1.media.popularity ?? 0)
-            }
-            
+            let allSearchResults = await apiService.searchAllMedia(queryString: searchText)
             await MainActor.run {
-                searchResults = totalResults
+                searchResults = allSearchResults
+                isLoading = false
             }
-            await updateLoading(false)
         }
         
         func updateLoading(_ value: Bool) async {
             await MainActor.run {
                 isLoading = value
+            }
+        }
+        
+        func resetSearch() {
+            searchText = ""
+            Task {
+                await searchMedia()
             }
         }
     }

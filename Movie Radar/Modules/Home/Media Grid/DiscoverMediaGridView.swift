@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DiscoverMediaGridView: View {
-    @EnvironmentObject var viewModel: HomeContentView.ViewModel
+    @EnvironmentObject var viewModel: HomeGridView.ViewModel
     let columns = [
         GridItem(.flexible()),
         GridItem(.flexible()),
@@ -17,20 +17,11 @@ struct DiscoverMediaGridView: View {
 
     var body: some View {
         if viewModel.gridItems.isEmpty {
-            VStack {
-                if viewModel.isLoading {
-                    ProgressView()
-                        .padding()
-                        .padding(.vertical)
-                } else {
+            if !viewModel.isLoading {
                 Text("No items were found")
                     .foregroundStyle(.gray)
-                    .padding()
-                    .padding(.vertical)
-                }
-                Spacer()
+                    .frame(height: 500)
             }
-            .frame(height: 500)
         } else {
             LazyVGrid(columns: columns, spacing: 8) {      
                 ForEach(viewModel.gridItems, id: \.self) { media in

@@ -24,4 +24,15 @@ enum MediaType: String, Codable, CaseIterable {
             NSLocalizedString("All", comment: "")
         }
     }
+    
+    var titleSingular: String {
+        switch self {
+        case .movie:
+            NSLocalizedString("Movie", comment: "")
+        case .tv:
+            NSLocalizedString("Series", comment: "")
+        case .all:
+            NSLocalizedString("All", comment: "")
+        }
+    }
 }

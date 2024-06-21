@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GenreSelectorCellView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
-    @EnvironmentObject var viewModel: HomeContentView.ViewModel
+    @EnvironmentObject var viewModel: HomeGridView.ViewModel
     var genre: Genre
     
     let grayGradient = LinearGradient(

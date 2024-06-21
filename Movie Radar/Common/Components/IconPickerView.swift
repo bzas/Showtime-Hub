@@ -26,7 +26,7 @@ struct IconPickerView: View {
                 }
             }
             .pickerStyle(.segmented)
-            .padding(.bottom)
+            .padding(.bottom, 12)
             
             switch selectedIconType {
             case .emoji:
@@ -40,7 +40,7 @@ struct IconPickerView: View {
                             Text(emoji)
                                 .font(.system(size: 30))
                         } else {
-                            UIColor.systemGray4.color
+                            UIColor.systemGray3.color
                                 .frame(
                                     width: 40,
                                     height: 40
@@ -50,32 +50,37 @@ struct IconPickerView: View {
                     }
                 }
                 .padding()
-                .padding(.trailing, 2)
+                .background(.ultraThinMaterial)
+                .cornerRadius(10)
             case .systemSymbol:
-                HStack {
-                    Text("System icon")
-                    Spacer()
-                    Button {
-                        isSelectingNewIcon.toggle()
-                    } label: {
-                        Image(systemName: listIcon)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: 25, maxHeight: 25)
+                VStack(spacing: 0) {
+                    HStack {
+                        Text("System icon")
+                        Spacer()
+                        Button {
+                            isSelectingNewIcon.toggle()
+                        } label: {
+                            Image(systemName: listIcon)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxWidth: 25, maxHeight: 25)
+                        }
                     }
+                    .padding()
+                    .padding(.trailing, 2)
+                    
+                    Color.gray
+                        .opacity(0.2)
+                        .frame(height: 1)
+                    
+                    ColorPicker(
+                        "Color",
+                        selection: $listColor
+                    )
+                    .padding()
                 }
-                .padding()
-                .padding(.trailing, 2)
-                
-                Color.gray
-                    .opacity(0.2)
-                    .frame(height: 1)
-                
-                ColorPicker(
-                    "Color",
-                    selection: $listColor
-                )
-                .padding()
+                .background(.ultraThinMaterial)
+                .cornerRadius(10)
             }
             
             Spacer()

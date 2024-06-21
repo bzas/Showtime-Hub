@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MediaCellView: View {
     @State var media: Media
+    @State var mediaType: MediaType
     @State var opacity = 0.0
     @ObservedObject var imageLoader: ImageLoader
     
@@ -17,6 +18,7 @@ struct MediaCellView: View {
         type: MediaType
     ) {
         self.media = media
+        self.mediaType = type
         imageLoader = .init(
             key: media.mediaKey(type: type),
             url: media.posterImageUrl
@@ -35,10 +37,18 @@ struct MediaCellView: View {
                     Spacer()
                 }
                 
-                HStack {
+                HStack(spacing: 12) {
+                    Text(mediaType.titleSingular)
+                        .foregroundStyle(.black)
+                        .font(.system(size: 12))
+                        .padding(2)
+                        .padding(.horizontal, 2)
+                        .background(.white.opacity(0.5))
+                        .clipShape(Capsule())
+                    
                     Text(media.dateString ?? "")
                         .font(.system(size: 14))
-                        .foregroundStyle(.gray)
+                        .foregroundStyle(.white.opacity(0.6))
                         .shadow(radius: 2)
                     Spacer()
                 }
@@ -86,11 +96,15 @@ struct MediaCellView: View {
                 }
         } else if imageLoader.loadingFailed {
             PlaceholderView()
+                .frame(width: 80, height: 120)
+                .cornerRadius(5)
                 .onAppear {
                     makeCellVisible()
                 }
         } else {
             PlaceholderView()
+                .frame(width: 80, height: 120)
+                .cornerRadius(5)
         }
     }
     

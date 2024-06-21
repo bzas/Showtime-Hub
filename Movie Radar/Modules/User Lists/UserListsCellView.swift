@@ -20,13 +20,15 @@ struct UserListsCellView: View {
             if let emoji = userList.emoji {
                 Text(emoji)
                     .font(.system(size: 30))
+                    .frame(height: 30)
             } else if let imageName = userList.imageName {
                 Image(systemName: imageName)
                     .resizable()
                     .scaledToFit()
-                    .frame(maxWidth: 25, maxHeight: 25)
+                    .frame(width: 25, height: 25)
                     .foregroundStyle(userList.colorInfo?.color ?? .white)
                     .padding(.trailing, 4)
+                    .frame(height: 30)
             }
         }
         .padding()

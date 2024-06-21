@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GenreSelectorView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
-    @EnvironmentObject var viewModel: HomeContentView.ViewModel
+    @EnvironmentObject var viewModel: HomeGridView.ViewModel
 
     let rows = [
         GridItem(.flexible())

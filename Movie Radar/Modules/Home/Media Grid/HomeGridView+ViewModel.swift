@@ -1,5 +1,5 @@
 //
-//  HomeContentView+ViewModel.swift
+//  HomeGridView+ViewModel.swift
 //  Movie Radar
 //
 //  Created by Alfonso Boizas Crespo on 24/4/24.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-extension HomeContentView {
+extension HomeGridView {
     class ViewModel: ObservableObject {
         var apiService: APIService
         var type: MediaType

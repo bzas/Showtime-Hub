@@ -15,7 +15,7 @@ struct MainHomeView: View {
     var body: some View {
         ZStack {
             TabView(selection: $selectedTab) {
-                HomeContentView(
+                HomeGridView(
                     viewModel: .init(
                         apiService: apiService,
                         type: .movie
@@ -23,7 +23,7 @@ struct MainHomeView: View {
                 )
                 .tag(0)
                 
-                HomeContentView(
+                HomeGridView(
                     viewModel: .init(
                         apiService: apiService,
                         type: .tv

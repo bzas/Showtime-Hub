@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SortSelectorView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
-    @EnvironmentObject var viewModel: HomeContentView.ViewModel
+    @EnvironmentObject var viewModel: HomeGridView.ViewModel
     @State private var triggerHapticFeedback = false
 
     var body: some View {
@@ -55,7 +55,7 @@ struct SortSelectorView: View {
                 .disabled(viewModel.isSearching)
                 .opacity(viewModel.isSearching ? 0.5 : 1)
                 .padding(.top, 25)
-                .padding(.trailing, 4)
+                .padding(.trailing, 8)
             }
         }
     }
