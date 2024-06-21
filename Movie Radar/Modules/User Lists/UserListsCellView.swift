@@ -17,12 +17,16 @@ struct UserListsCellView: View {
         HStack {
             Text(userList.title ?? "")
             Spacer()
-            if let imageName = userList.imageName {
+            if let emoji = userList.emoji {
+                Text(emoji)
+                    .font(.system(size: 30))
+            } else if let imageName = userList.imageName {
                 Image(systemName: imageName)
                     .resizable()
                     .scaledToFit()
                     .frame(maxWidth: 25, maxHeight: 25)
                     .foregroundStyle(userList.colorInfo?.color ?? .white)
+                    .padding(.trailing, 4)
             }
         }
         .padding()

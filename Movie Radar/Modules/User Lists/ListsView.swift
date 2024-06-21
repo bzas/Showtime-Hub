@@ -89,7 +89,7 @@ struct ListsView: View {
                                     Image(systemName: "trash")
                                         .scaledToFit()
                                         .frame(width: 30, height: 30)
-                                        .background(.red)
+                                        .background(.red.opacity(0.75))
                                         .clipShape(Circle())
                                 })
                             }

@@ -40,12 +40,12 @@ struct IconPickerView: View {
                             Text(emoji)
                                 .font(.system(size: 30))
                         } else {
-                            UIColor.systemGray5.color
+                            UIColor.systemGray4.color
                                 .frame(
-                                    width: 35,
-                                    height: 35
+                                    width: 40,
+                                    height: 40
                                 )
-                                .clipShape(RoundedRectangle(cornerRadius: 5))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                     }
                 }

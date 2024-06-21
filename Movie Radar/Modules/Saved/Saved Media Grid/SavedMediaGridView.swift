@@ -12,6 +12,7 @@ struct SavedMediaGridView: View {
     @ObservedObject var viewModel: SavedMediaView.ViewModel
     @Query var mediaItems: [SavedMedia]
     @State var userList: UserList
+    @State var isEditingItems = false
     
     init(
         viewModel: SavedMediaView.ViewModel,
@@ -30,7 +31,8 @@ struct SavedMediaGridView: View {
             LazyVStack {
                 SavedMediaListHeaderView(
                     userList: userList,
-                    mediaItems: mediaItems
+                    mediaItems: mediaItems, 
+                    isEditingItems: $isEditingItems
                 )
                 .environmentObject(viewModel)
                 
@@ -44,20 +46,53 @@ struct SavedMediaGridView: View {
                         Spacer()
                     }
                 } else {
+                    HStack {
+                        Spacer()
+                        Button {
+                            withAnimation {
+                                isEditingItems = false
+                            }
+                        } label: {
+                            Text("Done")
+                                .font(.system(size: 14))
+                        }
+                    }
+                    .padding(.horizontal, 24)
+                    .disabled(!isEditingItems)
+                    .opacity(isEditingItems ? 1 : 0)
+                    
                     LazyVStack(spacing: 16) {
                         ForEach(mediaItems, id: \.self) { media in
-                            SavedMediaCellView(
-                                media: media.detail,
-                                type: media.type
-                            )
-                            .onTapGesture {
-                                viewModel.detailMediaToShow = media
-                            }
-                            .contextMenu {
-                                DeleteItemMenu(
-                                    media: media,
-                                    userList: userList
+                            HStack(spacing: 16) {
+                                if isEditingItems {
+                                    Button {
+                                        viewModel.removeFromList(
+                                            media: media,
+                                            userList: userList,
+                                            mediaItems: mediaItems
+                                        )
+                                    } label: {
+                                        Image(systemName: "trash")
+                                            .scaledToFit()
+                                            .frame(width: 30, height: 30)
+                                            .background(.red.opacity(0.75))
+                                            .clipShape(Circle())
+                                    }
+                                }
+                                
+                                SavedMediaCellView(
+                                    media: media.detail,
+                                    type: media.type
                                 )
+                                .onTapGesture {
+                                    viewModel.detailMediaToShow = media
+                                }
+                                .contextMenu {
+                                    DeleteItemMenu(
+                                        media: media,
+                                        userList: userList
+                                    )
+                                }
                             }
                         }
                     }

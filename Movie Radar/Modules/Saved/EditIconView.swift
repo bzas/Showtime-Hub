@@ -18,7 +18,7 @@ struct EditIconView: View {
 
     init(userList: Binding<UserList?>) {
         self._userList = userList
-        self.newIconName = userList.wrappedValue?.imageName ?? ""
+        self.newIconName = userList.wrappedValue?.imageName ?? "star.fill"
         self.newIconColor = userList.wrappedValue?.colorInfo?.color ?? .white
     }
     

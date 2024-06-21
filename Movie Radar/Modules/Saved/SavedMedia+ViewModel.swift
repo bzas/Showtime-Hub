@@ -111,5 +111,18 @@ extension SavedMediaView {
             userList.title = listNewName
             listNewName = ""
         }
+        
+        func removeFromList(
+            media: SavedMedia,
+            userList: UserList,
+            mediaItems: [SavedMedia]
+        ) {
+            localStorage.delete(
+                media: media.detail,
+                mediaType: media.type,
+                userList: userList,
+                list: mediaItems
+            )
+        }
     }
 }

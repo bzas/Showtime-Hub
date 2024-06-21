@@ -84,10 +84,7 @@ struct MediaContextMenu: View {
                     systemImage: isSaved(userList: userList) ? associatedType.fillImageName : associatedType.imageName
                 )
             } else {
-                Label(
-                    userList.actionTitle(isSaved: isSaved(userList: userList)),
-                    systemImage: userList.imageName ?? ""
-                )
+                Text(userList.actionTitle(isSaved: isSaved(userList: userList)))
             }
         }
     }

@@ -75,10 +75,7 @@ struct SaveMediaStackView: View {
                     Button(role: buttonRole(userList: list)) {
                         addOrRemove(list: list)
                     } label: {
-                        Label(
-                            list.actionTitle(isSaved: isSaved(userList: list)),
-                            systemImage: list.imageName ?? ""
-                        )
+                        Text(list.actionTitle(isSaved: isSaved(userList: list)))
                     }
                 }
             } label: {

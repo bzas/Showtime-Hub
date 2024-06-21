@@ -13,6 +13,7 @@ struct SavedMediaListHeaderView: View {
     @EnvironmentObject var viewModel: SavedMediaView.ViewModel
     var userList: UserList
     var mediaItems: [SavedMedia]
+    @Binding var isEditingItems: Bool
     
     var body: some View {
         VStack {
@@ -64,40 +65,52 @@ struct SavedMediaListHeaderView: View {
                 .padding()
                 
                 let isDefaultList = userList.listType == .defaultList
+                
                 HStack {
                     Button {
-                        viewModel.listToDelete = userList
+                        viewModel.listNewName = userList.title ?? ""
                     } label: {
-                        VStack {
-                            Image(systemName: isDefaultList ? "trash.slash.fill" : "trash.fill")
-                                .scaledToFit()
-                                .frame(width: 55, height: 55)
-                                .background(.regularMaterial)
-                                .clipShape(Circle())
-                            Text("Delete")
-                                .font(.system(size: 14))
-                                .shadow(radius: 1)
-                        }
+                        buildListAction(
+                            systemImage: isDefaultList ? "pencil.slash" : "pencil",
+                            title: "Rename"
+                        )
                     }
                     .disabled(isDefaultList)
                     
                     Spacer()
                     
-                    Button {
-                        viewModel.listNewName = userList.title ?? ""
-                    } label: {
-                        VStack {
-                            Image(systemName: isDefaultList ? "pencil.slash" : "pencil")
-                                .scaledToFit()
-                                .frame(width: 55, height: 55)
-                                .background(.regularMaterial)
-                                .clipShape(Circle())
-                            Text("Rename")
-                                .font(.system(size: 14))
-                                .shadow(radius: 1)
+                    Menu {
+                        Button {
+                            viewModel.listToDelete = userList
+                        } label: {
+                            Label(
+                                "Delete list",
+                                systemImage: "trash.fill"
+                            )
                         }
+                        .disabled(isDefaultList)
+                        
+                        Button {
+                            Task {
+                                try? await Task.sleep(nanoseconds: 250_000_000)
+                                await MainActor.run {
+                                    withAnimation {
+                                        isEditingItems.toggle()
+                                    }
+                                }
+                            }
+                        } label: {
+                            Label(
+                                isEditingItems ? "End editing" : "Remove elements",
+                                systemImage: "list.bullet"
+                            )
+                        }
+                    } label: {
+                        buildListAction(
+                            systemImage: "wrench.and.screwdriver.fill",
+                            title: "Edit"
+                        )
                     }
-                    .disabled(isDefaultList)
                     
                     Spacer()
                     
@@ -121,16 +134,10 @@ struct SavedMediaListHeaderView: View {
                             )
                         }
                     } label: {
-                        VStack {
-                            Image(systemName: "paintpalette.fill")
-                                .scaledToFit()
-                                .frame(width: 55, height: 55)
-                                .background(.regularMaterial)
-                                .clipShape(Circle())
-                            Text("Appearance")
-                                .font(.system(size: 14))
-                                .shadow(radius: 1)
-                        }
+                        buildListAction(
+                            systemImage: "paintpalette.fill",
+                            title: "Appearance"
+                        )
                     }
                     
                     Spacer()
@@ -138,16 +145,10 @@ struct SavedMediaListHeaderView: View {
                     Button {
                         viewModel.showFilters.toggle()
                     } label: {
-                        VStack {
-                            Image(systemName: "line.3.horizontal.decrease")
-                                .scaledToFit()
-                                .frame(width: 55, height: 55)
-                                .background(.regularMaterial)
-                                .clipShape(Circle())
-                            Text("Filter")
-                                .font(.system(size: 14))
-                                .shadow(radius: 1)
-                        }
+                        buildListAction(
+                            systemImage: "line.3.horizontal.decrease",
+                            title: "Filter"
+                        )
                         .overlay {
                             if viewModel.filtersApplied {
                                 HStack {
@@ -173,5 +174,19 @@ struct SavedMediaListHeaderView: View {
         .disabled(viewModel.showUserLists)
         .padding(.bottom, 10)
         .padding(.top)
+    }
+    
+    @ViewBuilder
+    func buildListAction(systemImage: String, title: String) -> some View {
+        VStack {
+            Image(systemName: systemImage)
+                .scaledToFit()
+                .frame(width: 55, height: 55)
+                .background(.regularMaterial)
+                .clipShape(Circle())
+            Text(title)
+                .font(.system(size: 12))
+                .shadow(radius: 1)
+        }
     }
 }

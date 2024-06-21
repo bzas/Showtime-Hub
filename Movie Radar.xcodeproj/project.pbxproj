@@ -16,7 +16,6 @@
 		4823935F2C09B67800E7DB24 /* UserListsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4823935E2C09B67800E7DB24 /* UserListsCellView.swift */; };
 		482833DE2C22B49200C64235 /* SavedMediaCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482833DD2C22B49200C64235 /* SavedMediaCellView.swift */; };
 		48289DE32BF5084B00C7F68B /* MainHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48289DE22BF5084B00C7F68B /* MainHomeView.swift */; };
-		482F7CAF2C22D0AC00D01FDF /* DeleteItemMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F7CAE2C22D0AC00D01FDF /* DeleteItemMenu.swift */; };
 		482F7CB12C23264D00D01FDF /* EditBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F7CB02C23264D00D01FDF /* EditBackgroundView.swift */; };
 		482F7CB32C23266800D01FDF /* BackgroundPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F7CB22C23266800D01FDF /* BackgroundPickerView.swift */; };
 		482FBAF12C08C1AC005DA9F4 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482FBAF02C08C1AC005DA9F4 /* NetworkMonitor.swift */; };
@@ -47,6 +46,7 @@
 		48609A172C10A93300289E35 /* ProviderCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48609A162C10A93300289E35 /* ProviderCarouselCellView.swift */; };
 		486866C72C249F2D00EC154B /* EmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 486866C62C249F2D00EC154B /* EmojiPicker */; };
 		486866C92C24A0EA00EC154B /* ListIconType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486866C82C24A0EA00EC154B /* ListIconType.swift */; };
+		486866CB2C25858800EC154B /* DeleteItemMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486866CA2C25858800EC154B /* DeleteItemMenu.swift */; };
 		486AB3512C062D8100F80289 /* ToastInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486AB3502C062D8100F80289 /* ToastInfo.swift */; };
 		488A644F2BFA409C00C5471A /* SaveMediaStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A644E2BFA409C00C5471A /* SaveMediaStackView.swift */; };
 		488A64522BFA40DB00C5471A /* SaveMediaButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488A64512BFA40DB00C5471A /* SaveMediaButtonView.swift */; };
@@ -179,7 +179,6 @@
 		4823935E2C09B67800E7DB24 /* UserListsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListsCellView.swift; sourceTree = "<group>"; };
 		482833DD2C22B49200C64235 /* SavedMediaCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMediaCellView.swift; sourceTree = "<group>"; };
 		48289DE22BF5084B00C7F68B /* MainHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHomeView.swift; sourceTree = "<group>"; };
-		482F7CAE2C22D0AC00D01FDF /* DeleteItemMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItemMenu.swift; sourceTree = "<group>"; };
 		482F7CB02C23264D00D01FDF /* EditBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBackgroundView.swift; sourceTree = "<group>"; };
 		482F7CB22C23266800D01FDF /* BackgroundPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPickerView.swift; sourceTree = "<group>"; };
 		482FBAF02C08C1AC005DA9F4 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
@@ -209,6 +208,7 @@
 		48609A142C10A92A00289E35 /* ProviderCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderCarouselView.swift; sourceTree = "<group>"; };
 		48609A162C10A93300289E35 /* ProviderCarouselCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderCarouselCellView.swift; sourceTree = "<group>"; };
 		486866C82C24A0EA00EC154B /* ListIconType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListIconType.swift; sourceTree = "<group>"; };
+		486866CA2C25858800EC154B /* DeleteItemMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteItemMenu.swift; sourceTree = "<group>"; };
 		486AB3502C062D8100F80289 /* ToastInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastInfo.swift; sourceTree = "<group>"; };
 		488A644E2BFA409C00C5471A /* SaveMediaStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMediaStackView.swift; sourceTree = "<group>"; };
 		488A64512BFA40DB00C5471A /* SaveMediaButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveMediaButtonView.swift; sourceTree = "<group>"; };
@@ -500,11 +500,11 @@
 				48A309402BF5040700F1733C /* NoDataAvailableView.swift */,
 				48A309412BF5040700F1733C /* PlaceholderView.swift */,
 				4846E86A2BF7A31000D7ADAB /* MediaContextMenu.swift */,
-				482F7CAE2C22D0AC00D01FDF /* DeleteItemMenu.swift */,
 				4846E8772BF8F14C00D7ADAB /* TabViewHeader.swift */,
 				48F562D72C15BC5A0019DF20 /* ScrollOffsetPreferenceKey.swift */,
 				482F7CB22C23266800D01FDF /* BackgroundPickerView.swift */,
 				48DA1FD92C24655A00E7E00E /* IconPickerView.swift */,
+				486866CA2C25858800EC154B /* DeleteItemMenu.swift */,
 				481B4ECC2C136170003D1DEB /* Toast */,
 				48181E362C0CD9940067D5CB /* PlaceholderStyle.swift */,
 				4850F71F2C1F5C6A0061C6AC /* AppCoordinateSpaces.swift */,
@@ -1051,7 +1051,6 @@
 				48A3099A2BF5041900F1733C /* DiscoverMediaGridView.swift in Sources */,
 				48A309ED2BF5044400F1733C /* Media.swift in Sources */,
 				4846E8722BF8C12B00D7ADAB /* SeasonCellView.swift in Sources */,
-				482F7CAF2C22D0AC00D01FDF /* DeleteItemMenu.swift in Sources */,
 				48A309BA2BF5041900F1733C /* PersonHeaderView.swift in Sources */,
 				48F38C002BF6868A003F0CD0 /* MediaType.swift in Sources */,
 				4846E8762BF8CC8E00D7ADAB /* ImageData.swift in Sources */,
@@ -1138,6 +1137,7 @@
 				48A309A72BF5041900F1733C /* GenreCellView.swift in Sources */,
 				4846E87C2BF8F31200D7ADAB /* SavedMediaGridView.swift in Sources */,
 				48A309A02BF5041900F1733C /* HomeContent+ViewModel.swift in Sources */,
+				486866CB2C25858800EC154B /* DeleteItemMenu.swift in Sources */,
 				48A309482BF5040700F1733C /* AppGradient.swift in Sources */,
 				48A309B42BF5041900F1733C /* MediaDetailView.swift in Sources */,
 				482FBAF12C08C1AC005DA9F4 /* NetworkMonitor.swift in Sources */,

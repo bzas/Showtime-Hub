@@ -147,9 +147,6 @@
         }
       }
     },
-    "Appearance" : {
-
-    },
     "Apply" : {
       "localizations" : {
         "es" : {
@@ -262,6 +259,9 @@
     "Delete" : {
 
     },
+    "Delete list" : {
+
+    },
     "Discover" : {
       "localizations" : {
         "es" : {
@@ -295,6 +295,9 @@
     "Emoji" : {
 
     },
+    "End editing" : {
+
+    },
     "Favorites" : {
       "localizations" : {
         "es" : {
@@ -304,9 +307,6 @@
           }
         }
       }
-    },
-    "Filter" : {
-
     },
     "Filters" : {
       "localizations" : {
@@ -659,6 +659,9 @@
           }
         }
       }
+    },
+    "Remove elements" : {
+
     },
     "Remove from %@" : {
       "localizations" : {

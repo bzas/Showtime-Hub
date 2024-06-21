@@ -62,6 +62,7 @@ struct SavedMediaCellView: View {
                 }
             }
         }
+        .contentShape(Rectangle())
         .opacity(opacity)
         .scrollTransition(.animated.threshold(.visible(0.9))) { content, phase in
             content
