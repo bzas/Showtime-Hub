@@ -8,7 +8,7 @@
 import Foundation
 
 enum ListIconType: CaseIterable {
-    case systemSymbol, emoji
+    case emoji, systemSymbol
     
     var title: String {
         switch self {

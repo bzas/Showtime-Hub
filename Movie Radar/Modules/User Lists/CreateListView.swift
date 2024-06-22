@@ -54,12 +54,12 @@ struct CreateListView: View {
                     }
                     
                     if isEditingField {
-                        Button(action: {
+                        Button {
                             isEditingField = false
-                        }, label: {
+                        } label: {
                             Text("Done")
                                 .foregroundStyle(.white)
-                        })
+                        }
                         .padding(.trailing, 10)
                     }
                 }
@@ -86,27 +86,28 @@ struct CreateListView: View {
                 
                 HStack {
                     Spacer()
-                    Button(action: {
+                    Button {
                         withAnimation {
                             viewModel.tabIndex = 0
                         }
-                    }, label: {
+                    } label: {
                         Text("Cancel")
                             .foregroundStyle(.white)
                             .padding()
-                    })
-                    Button(action: {
+                    }
+                    
+                    let shouldDisableButton = viewModel.listName.isEmpty || viewModel.isNameInUse(lists: currentLists)
+                    Button {
                         viewModel.createList(currentLists: currentLists)
-                    }, label: {
-                        let shouldDisableButton = viewModel.listName.isEmpty || viewModel.isNameInUse(lists: currentLists)
+                    } label: {
                         Text("Create")
                             .foregroundStyle(.black)
                             .padding()
                             .background(.white)
                             .clipShape(Capsule())
-                            .disabled(shouldDisableButton)
                             .opacity(shouldDisableButton ? 0.5 : 1)
-                    })
+                    }
+                    .disabled(shouldDisableButton)
                 }
                 .padding(.bottom)
             }

@@ -56,7 +56,9 @@ extension SavedMediaView {
         @Published var showRenameAlert = false
         @Published var listNewName = "" {
             didSet {
-                showRenameAlert = !listNewName.isEmpty
+                if !showRenameAlert {
+                    showRenameAlert = !listNewName.isEmpty
+                }
             }
         }
         

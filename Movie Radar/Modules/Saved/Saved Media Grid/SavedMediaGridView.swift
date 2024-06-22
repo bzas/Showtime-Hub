@@ -125,7 +125,9 @@ struct SavedMediaGridView: View {
                 viewModel.listNewName = ""
             }
             Button("Rename") {
-                viewModel.renameList(userList)
+                withAnimation {
+                    viewModel.renameList(userList)
+                }
             }
         }
     }

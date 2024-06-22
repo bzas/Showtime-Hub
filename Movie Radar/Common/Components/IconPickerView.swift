@@ -16,7 +16,7 @@ struct IconPickerView: View {
 
     @State var isSelectingNewIcon = false
     @State var isSelectingNewEmoji = false
-    @State var selectedIconType = ListIconType.systemSymbol
+    @State var selectedIconType = ListIconType.emoji
     
     var body: some View {
         VStack(spacing: 0) {
