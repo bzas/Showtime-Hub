@@ -11,7 +11,7 @@ struct UserListsCellView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
 
     var userList: UserList
-    var isSelected: Bool
+    @State var isSelected: Bool
     
     var body: some View {
         HStack {

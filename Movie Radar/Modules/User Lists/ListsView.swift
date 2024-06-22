@@ -79,19 +79,19 @@ struct ListsView: View {
                         let correctedIndex = index + defaultLists.count
                         HStack {
                             if viewModel.isEditing {
-                                Button(action: {
+                                Button {
                                     viewModel.deleteList(
                                         userList,
                                         index: index,
                                         mediaItems: mediaItems
                                     )
-                                }, label: {
+                                } label: {
                                     Image(systemName: "trash")
                                         .scaledToFit()
                                         .frame(width: 30, height: 30)
                                         .background(.red.opacity(0.75))
                                         .clipShape(Circle())
-                                })
+                                }
                             }
                             
                             UserListsCellView(

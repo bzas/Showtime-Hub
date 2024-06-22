@@ -97,15 +97,20 @@ extension SavedMediaView {
         func deleteList(mediaItems: [SavedMedia]) {
             guard let listToDelete else { return }
             
-            selectedTab -= 1
-            localStorage.delete(
-                list: listToDelete,
-                mediaItems: mediaItems
-            )
-            
-            self.listToDelete = nil
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
-                self?.toastInfo = .init(isRemoved: true)
+            withAnimation {
+                selectedTab -= 1
+            } completion: { [weak self] in
+                guard let self else { return }
+                
+                localStorage.delete(
+                    list: listToDelete,
+                    mediaItems: mediaItems
+                )
+                
+                self.listToDelete = nil
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    self.toastInfo = .init(isRemoved: true)
+                }
             }
         }
         

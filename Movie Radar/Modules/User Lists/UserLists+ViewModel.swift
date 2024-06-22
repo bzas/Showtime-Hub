@@ -96,20 +96,23 @@ extension UserListsView {
             index: Int,
             mediaItems: [SavedMedia]
         ) {
-            if index == selectedListIndex {
-                selectedListIndex = 0
-            }
-            
-            localStorage.delete(
-                list: list,
-                mediaItems: mediaItems
-            )
-            withAnimation {
-                isEditing = false
+            if (index + SavedType.allCases.count) == selectedListIndex {
+                selectedListIndex -= 1
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
-                self?.toastInfo = .init(isRemoved: true)
+                guard let self else { return }
+                localStorage.delete(
+                    list: list,
+                    mediaItems: mediaItems
+                )
+                withAnimation {
+                    self.isEditing = false
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                    self.toastInfo = .init(isRemoved: true)
+                }
             }
         }
         
