@@ -72,7 +72,7 @@ struct SavedMediaListHeaderView: View {
                     } label: {
                         buildListAction(
                             systemImage: isDefaultList ? "pencil.slash" : "pencil",
-                            title: "Rename"
+                            title: NSLocalizedString("Rename", comment: "")
                         )
                     }
                     .disabled(isDefaultList)
@@ -84,7 +84,7 @@ struct SavedMediaListHeaderView: View {
                             viewModel.listToDelete = userList
                         } label: {
                             Label(
-                                "Delete list",
+                                NSLocalizedString("Delete list", comment: ""),
                                 systemImage: "trash.fill"
                             )
                         }
@@ -101,14 +101,14 @@ struct SavedMediaListHeaderView: View {
                             }
                         } label: {
                             Label(
-                                isEditingItems ? "End editing" : "Remove elements",
+                                isEditingItems ? "End editing" : "Remove items",
                                 systemImage: "list.bullet"
                             )
                         }
                     } label: {
                         buildListAction(
                             systemImage: "wrench.and.screwdriver.fill",
-                            title: "Edit"
+                            title: NSLocalizedString("Edit", comment: "")
                         )
                     }
                     
@@ -119,7 +119,7 @@ struct SavedMediaListHeaderView: View {
                             viewModel.iconEditionList = userList
                         } label: {
                             Label(
-                                "Icon",
+                                NSLocalizedString("Icon", comment: ""),
                                 systemImage: "face.dashed"
                             )
                         }
@@ -136,7 +136,7 @@ struct SavedMediaListHeaderView: View {
                     } label: {
                         buildListAction(
                             systemImage: "paintpalette.fill",
-                            title: "Appearance"
+                            title: NSLocalizedString("Appearance", comment: "")
                         )
                     }
                     
@@ -147,7 +147,7 @@ struct SavedMediaListHeaderView: View {
                     } label: {
                         buildListAction(
                             systemImage: "line.3.horizontal.decrease",
-                            title: "Filter"
+                            title: NSLocalizedString("Filter", comment: "")
                         )
                         .overlay {
                             if viewModel.filtersApplied {

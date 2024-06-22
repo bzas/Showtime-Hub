@@ -72,7 +72,14 @@
       }
     },
     "%lld" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
     },
     "%lld min" : {
       "localizations" : {
@@ -95,7 +102,14 @@
       }
     },
     "Abstract" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abstracto"
+          }
+        }
+      }
     },
     "Add to %@" : {
       "localizations" : {
@@ -147,6 +161,16 @@
         }
       }
     },
+    "Appearance" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apariencia"
+          }
+        }
+      }
+    },
     "Apply" : {
       "localizations" : {
         "es" : {
@@ -158,10 +182,24 @@
       }
     },
     "Are you sure you want to delete \"%@\" list?" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Estás seguro de que quieres eliminar la lista \"%@\"?"
+          }
+        }
+      }
     },
     "Background" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fondo de pantalla"
+          }
+        }
+      }
     },
     "Budget" : {
       "localizations" : {
@@ -204,7 +242,14 @@
       }
     },
     "City" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ciudad"
+          }
+        }
+      }
     },
     "Color" : {
       "localizations" : {
@@ -257,10 +302,24 @@
       }
     },
     "Delete" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
+          }
+        }
+      }
     },
     "Delete list" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar lista"
+          }
+        }
+      }
     },
     "Discover" : {
       "localizations" : {
@@ -293,10 +352,24 @@
       }
     },
     "Emoji" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Emoji"
+          }
+        }
+      }
     },
     "End editing" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminar edición"
+          }
+        }
+      }
     },
     "Favorites" : {
       "localizations" : {
@@ -304,6 +377,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Favoritos"
+          }
+        }
+      }
+    },
+    "Filter" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtros"
           }
         }
       }
@@ -349,10 +432,24 @@
       }
     },
     "item" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "item"
+          }
+        }
+      }
     },
     "items" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "items"
+          }
+        }
+      }
     },
     "Links" : {
       "localizations" : {
@@ -395,7 +492,14 @@
       }
     },
     "Movie" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Película"
+          }
+        }
+      }
     },
     "Movies" : {
       "localizations" : {
@@ -428,7 +532,14 @@
       }
     },
     "Nature" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naturaleza"
+          }
+        }
+      }
     },
     "New" : {
       "localizations" : {
@@ -561,7 +672,14 @@
       }
     },
     "No results found" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se han encontrado resultados"
+          }
+        }
+      }
     },
     "No reviews available" : {
       "localizations" : {
@@ -603,8 +721,15 @@
         }
       }
     },
-    "Pick a list emoji" : {
-
+    "Pick an emoji" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige un emoji"
+          }
+        }
+      }
     },
     "Please make sure you are connected to the internet for being able to use the app" : {
       "localizations" : {
@@ -666,15 +791,22 @@
         }
       }
     },
-    "Remove elements" : {
-
-    },
     "Remove from %@" : {
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eliminar de %@"
+          }
+        }
+      }
+    },
+    "Remove items" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar items"
           }
         }
       }
@@ -690,10 +822,24 @@
       }
     },
     "Rename" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renombrar"
+          }
+        }
+      }
     },
     "Rename list" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renombrar lista"
+          }
+        }
+      }
     },
     "Rent" : {
       "localizations" : {
@@ -736,7 +882,14 @@
       }
     },
     "Save" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar"
+          }
+        }
+      }
     },
     "Save on photos" : {
       "localizations" : {
@@ -839,7 +992,14 @@
       }
     },
     "Sports" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deportes"
+          }
+        }
+      }
     },
     "Streaming" : {
       "localizations" : {
@@ -852,7 +1012,14 @@
       }
     },
     "System icon" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icono del sistema"
+          }
+        }
+      }
     },
     "Theme" : {
       "localizations" : {

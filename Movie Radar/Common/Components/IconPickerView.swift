@@ -98,7 +98,7 @@ struct IconPickerView: View {
                     selectedEmoji: $listEmoji,
                     selectedColor: .white
                 )
-                .navigationTitle("Pick a list emoji")
+                .navigationTitle("Pick an emoji")
                 .navigationBarTitleDisplayMode(.inline)
             }
         }

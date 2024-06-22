@@ -21,6 +21,7 @@ struct SearchView: View {
                 )
                 .focused($isFocused)
                 .submitLabel(.search)
+                .autocorrectionDisabled()
                 .padding(8)
                 .padding(.horizontal, 4)
                 .background(.ultraThinMaterial)
