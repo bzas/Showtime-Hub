@@ -36,16 +36,18 @@ struct IconPickerView: View {
                     Button {
                         isSelectingNewEmoji.toggle()
                     } label: {
-                        if let emoji = listEmoji?.value {
-                            Text(emoji)
-                                .font(.system(size: 30))
-                        } else {
+                        ZStack {
                             UIColor.systemGray3.color
                                 .frame(
-                                    width: 40,
-                                    height: 40
+                                    width: 45,
+                                    height: 45
                                 )
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
+                            
+                            if let emoji = listEmoji?.value {
+                                Text(emoji)
+                                    .font(.system(size: 30))
+                            }
                         }
                     }
                 }
