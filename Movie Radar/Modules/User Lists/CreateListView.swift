@@ -65,11 +65,20 @@ struct CreateListView: View {
                 }
                 .padding(.vertical)
                 
-                IconPickerView(
-                    listIcon: $viewModel.listIcon,
-                    listColor: $viewModel.listColor, 
-                    listEmoji: $viewModel.listEmoji
-                )
+                VStack {
+                    HStack{
+                        Text("Icon")
+                        Spacer()
+                    }
+                    
+                    IconPickerView(
+                        listIcon: $viewModel.listIcon,
+                        listColor: $viewModel.listColor,
+                        listEmoji: $viewModel.listEmoji,
+                        selectedIconType: $viewModel.selectedIconType, 
+                        customImage: $viewModel.customImage
+                    )
+                }
                 .padding(.vertical)
                 
                 VStack {

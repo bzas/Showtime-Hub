@@ -1011,6 +1011,9 @@
         }
       }
     },
+    "Symbol" : {
+
+    },
     "System icon" : {
       "localizations" : {
         "es" : {
@@ -1050,6 +1053,12 @@
           }
         }
       }
+    },
+    "Upload" : {
+
+    },
+    "Upload image" : {
+
     },
     "Version" : {
       "localizations" : {

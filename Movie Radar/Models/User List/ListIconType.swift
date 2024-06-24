@@ -8,14 +8,16 @@
 import Foundation
 
 enum ListIconType: CaseIterable {
-    case emoji, systemSymbol
+    case emoji, systemSymbol, upload
     
     var title: String {
         switch self {
         case .emoji:
             NSLocalizedString("Emoji", comment: "")
         case .systemSymbol:
-            NSLocalizedString("System icon", comment: "")
+            NSLocalizedString("Symbol", comment: "")
+        case .upload:
+            NSLocalizedString("Upload", comment: "")
         }
     }
 }

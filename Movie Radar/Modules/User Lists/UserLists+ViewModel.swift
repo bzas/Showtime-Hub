@@ -16,9 +16,11 @@ extension UserListsView {
         
         @Published var showGradient = false
         @Published var tabIndex = 0
-        @Published var listIcon = "star.fill"
+        @Published var listIcon = ""
         @Published var listName = ""
         @Published var listEmoji: Emoji?
+        @Published var selectedIconType = ListIconType.emoji
+        @Published var customImage: UIImage?
         @Published var listBackgroundType = ListBackground.abstract
         @Published var listBackgroundIndex = 0
         @Published var listColor = Color.white
@@ -36,7 +38,7 @@ extension UserListsView {
         
         init(
             tabIndex: Int = 0,
-            newListIcon: String = "star.fill",
+            newListIcon: String = "",
             newListName: String = "",
             showDetail: Binding<Bool>,
             selectedListIndex: Binding<Int>,
@@ -58,15 +60,17 @@ extension UserListsView {
             let newIndex = (currentLists.last?.index ?? 0) + 1
             
             var userList: UserList!
-            if let listEmoji {
+            
+            switch selectedIconType {
+            case .emoji:
                 userList = UserList(
                     title: listName,
                     index: newIndex,
                     listType: .myLists,
                     backgroundPath: listBackgroundType.imagePath(index: listBackgroundIndex),
-                    emoji: listEmoji.value
+                    emoji: listEmoji?.value
                 )
-            } else {
+            case .systemSymbol:
                 userList = UserList(
                     title: listName,
                     imageName: listIcon,
@@ -75,12 +79,22 @@ extension UserListsView {
                     colorInfo: .init(color: listColor),
                     backgroundPath: listBackgroundType.imagePath(index: listBackgroundIndex)
                 )
+            case .upload:
+                userList = UserList(
+                    title: listName,
+                    imageName: listIcon,
+                    index: newIndex,
+                    listType: .myLists,
+                    colorInfo: .init(color: listColor),
+                    backgroundPath: listBackgroundType.imagePath(index: listBackgroundIndex), 
+                    customImage: customImage?.pngData()
+                )
             }
             
             localStorage.insert(list: userList)
             
             listName = ""
-            listIcon = "star.fill"
+            listIcon = ""
             listColor = .white
             listBackgroundType = .abstract
             listBackgroundIndex = 1

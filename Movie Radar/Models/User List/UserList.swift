@@ -17,7 +17,8 @@ class UserList: Codable {
     var colorInfo: ColorInfo?
     var backgroundPath: String?
     var emoji: String?
-    
+    @Attribute(.externalStorage) var customImage: Data?
+
     var _listType: String?
     @Transient var listType: UserListType {
         get { UserListType(rawValue: _listType ?? UserListType.defaultList.rawValue)! }
@@ -41,7 +42,8 @@ class UserList: Codable {
              _listType,
              colorInfo,
              backgroundPath,
-             emoji
+             emoji,
+             customImage
     }
     
     init(
@@ -51,7 +53,8 @@ class UserList: Codable {
         listType: UserListType,
         colorInfo: ColorInfo? = nil,
         backgroundPath: String?,
-        emoji: String? = nil
+        emoji: String? = nil,
+        customImage: Data? = nil
     ) {
         self.title = title
         self.imageName = imageName
@@ -60,6 +63,7 @@ class UserList: Codable {
         self.colorInfo = colorInfo
         self.backgroundPath = backgroundPath
         self.emoji = emoji
+        self.customImage = customImage
     }
     
     required init(from decoder: Decoder) throws {
@@ -72,6 +76,7 @@ class UserList: Codable {
         self.colorInfo = (try? container?.decode(ColorInfo.self, forKey: .colorInfo)) ?? ColorInfo(color: .white)
         self.backgroundPath = (try? container?.decode(String.self, forKey: .backgroundPath))
         self.emoji = (try? container?.decode(String.self, forKey: .emoji))
+        self.customImage = (try? container?.decode(Data.self, forKey: .customImage))
     }
     
     func encode(to encoder: Encoder) throws {
@@ -84,6 +89,7 @@ class UserList: Codable {
         try? container.encode(colorInfo, forKey: .colorInfo)
         try? container.encode(backgroundPath, forKey: .backgroundPath)
         try? container.encode(emoji, forKey: .emoji)
+        try? container.encode(customImage, forKey: .customImage)
     }
     
     func actionTitle(isSaved: Bool) -> String {

@@ -21,7 +21,16 @@ struct UserListsCellView: View {
                 Text(emoji)
                     .font(.system(size: 30))
                     .frame(height: 30)
-            } else if let imageName = userList.imageName {
+            } else if let customImageData = userList.customImage,
+                     let uiImage = UIImage(data: customImageData) {
+               Image(uiImage: uiImage)
+                   .resizable()
+                   .scaledToFill()
+                   .frame(width: 30, height: 30)
+                   .clipShape(RoundedRectangle(cornerRadius: 5))
+                   .shadow(radius: 2)
+                   .padding(.trailing, 2)
+           } else if let imageName = userList.imageName {
                 Image(systemName: imageName)
                     .resizable()
                     .scaledToFit()

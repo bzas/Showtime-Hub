@@ -22,6 +22,14 @@ struct SavedMediaListHeaderView: View {
                     if let emoji = userList.emoji {
                         Text(emoji)
                             .font(.system(size: 30))
+                    } else if let customImageData = userList.customImage,
+                              let uiImage = UIImage(data: customImageData) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 30, height: 30)
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                            .shadow(radius: 2)
                     } else {
                         Image(systemName: userList.imageName ?? "")
                             .resizable()
