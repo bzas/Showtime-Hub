@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import EmojiPicker
 
 @Model
 class UserList: Codable {
@@ -18,6 +19,7 @@ class UserList: Codable {
     var backgroundPath: String?
     var emoji: String?
     @Attribute(.externalStorage) var customImage: Data?
+    @Attribute(.externalStorage) var customBackground: Data?
 
     var _listType: String?
     @Transient var listType: UserListType {
@@ -43,7 +45,8 @@ class UserList: Codable {
              colorInfo,
              backgroundPath,
              emoji,
-             customImage
+             customImage,
+             customBackground
     }
     
     init(
@@ -54,14 +57,19 @@ class UserList: Codable {
         colorInfo: ColorInfo? = nil,
         backgroundPath: String?,
         emoji: String? = nil,
-        customImage: Data? = nil
+        customImage: Data? = nil,
+        customBackground: Data? = nil
     ) {
         self.title = title
         self.imageName = imageName
         self.index = index
         self._listType = listType.rawValue
         self.colorInfo = colorInfo
-        self.backgroundPath = backgroundPath
+        if let customBackground {
+            self.customBackground = customBackground
+        } else {
+            self.backgroundPath = backgroundPath
+        }
         self.emoji = emoji
         self.customImage = customImage
     }
@@ -77,6 +85,7 @@ class UserList: Codable {
         self.backgroundPath = (try? container?.decode(String.self, forKey: .backgroundPath))
         self.emoji = (try? container?.decode(String.self, forKey: .emoji))
         self.customImage = (try? container?.decode(Data.self, forKey: .customImage))
+        self.customBackground = (try? container?.decode(Data.self, forKey: .customBackground))
     }
     
     func encode(to encoder: Encoder) throws {
@@ -90,9 +99,64 @@ class UserList: Codable {
         try? container.encode(backgroundPath, forKey: .backgroundPath)
         try? container.encode(emoji, forKey: .emoji)
         try? container.encode(customImage, forKey: .customImage)
+        try? container.encode(customBackground, forKey: .customBackground)
     }
     
     func actionTitle(isSaved: Bool) -> String {
         isSaved ? removeActionText : addActionText
+    }
+    
+    func updateBackground(
+        selectedType: ListBackgroundGenericType,
+        newCustomBackground: UIImage?,
+        listBackgroundType: ListBackground,
+        listBackgroundIndex: Int
+    ) async {
+        if selectedType == .upload,
+           let newCustomBackground {
+            let pngData = newCustomBackground.pngData()
+            await MainActor.run {
+                customBackground = pngData
+                backgroundPath = nil
+            }
+        } else {
+            await MainActor.run {
+                backgroundPath = listBackgroundType.imagePath(index: listBackgroundIndex)
+                customBackground = nil
+            }
+        }
+    }
+    
+    func updateIcon(
+        selectedIconType: ListIconType,
+        newIconEmoji: Emoji?,
+        newCustomImage: UIImage?,
+        newIconName: String,
+        newIconColor: Color
+    ) async {
+        switch selectedIconType {
+        case .emoji:
+            await MainActor.run {
+                emoji = newIconEmoji?.value
+                imageName = nil
+                colorInfo = nil
+                customImage = nil
+            }
+        case .systemSymbol:
+            await MainActor.run {
+                emoji = nil
+                imageName = newIconName
+                colorInfo = .init(color: newIconColor)
+                customImage = nil
+            }
+        case .upload:
+            let pngData = newCustomImage?.pngData()
+            await MainActor.run {
+                emoji = nil
+                imageName = nil
+                colorInfo = nil
+                customImage = pngData
+            }
+        }
     }
 }

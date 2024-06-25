@@ -66,25 +66,18 @@ struct EditIconView: View {
     }
     
     func save() {
-        switch selectedIconType {
-        case .emoji:
-            userList?.emoji = newIconEmoji?.value
-            userList?.imageName = nil
-            userList?.colorInfo = nil
-            userList?.customImage = nil
-        case .systemSymbol:
-            userList?.emoji = nil
-            userList?.imageName = newIconName
-            userList?.colorInfo = .init(color: newIconColor)
-            userList?.customImage = nil
-        case .upload:
-            userList?.emoji = nil
-            userList?.imageName = nil
-            userList?.colorInfo = nil
-            userList?.customImage = newCustomImage?.pngData()
+        Task {
+            await userList?.updateIcon(
+                selectedIconType: selectedIconType,
+                newIconEmoji: newIconEmoji,
+                newCustomImage: newCustomImage,
+                newIconName: newIconName,
+                newIconColor: newIconColor
+            )
+            await MainActor.run {
+                userList = nil
+            }
         }
-        
-        userList = nil
         dismiss()
     }
 }

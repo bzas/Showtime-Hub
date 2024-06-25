@@ -21,7 +21,9 @@ extension UserListsView {
         @Published var listEmoji: Emoji?
         @Published var selectedIconType = ListIconType.emoji
         @Published var customImage: UIImage?
+        @Published var customBackground: UIImage?
         @Published var listBackgroundType = ListBackground.abstract
+        @Published var listBackgroundGenericType = ListBackgroundGenericType.app
         @Published var listBackgroundIndex = 0
         @Published var listColor = Color.white
         @Published var isEditing = false
@@ -68,7 +70,8 @@ extension UserListsView {
                     index: newIndex,
                     listType: .myLists,
                     backgroundPath: listBackgroundType.imagePath(index: listBackgroundIndex),
-                    emoji: listEmoji?.value
+                    emoji: listEmoji?.value,
+                    customBackground: listBackgroundGenericType == .upload ? customBackground?.pngData() : nil
                 )
             case .systemSymbol:
                 userList = UserList(
@@ -77,7 +80,8 @@ extension UserListsView {
                     index: newIndex,
                     listType: .myLists,
                     colorInfo: .init(color: listColor),
-                    backgroundPath: listBackgroundType.imagePath(index: listBackgroundIndex)
+                    backgroundPath: listBackgroundType.imagePath(index: listBackgroundIndex),
+                    customBackground: listBackgroundGenericType == .upload ? customBackground?.pngData() : nil
                 )
             case .upload:
                 userList = UserList(
@@ -87,7 +91,8 @@ extension UserListsView {
                     listType: .myLists,
                     colorInfo: .init(color: listColor),
                     backgroundPath: listBackgroundType.imagePath(index: listBackgroundIndex), 
-                    customImage: customImage?.pngData()
+                    customImage: customImage?.pngData(),
+                    customBackground: listBackgroundGenericType == .upload ? customBackground?.pngData() : nil
                 )
             }
             

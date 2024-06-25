@@ -7,6 +7,19 @@
 
 import Foundation
 
+enum ListBackgroundGenericType: String, CaseIterable {
+    case app, upload
+    
+    var title: String {
+        switch self {
+        case .app:
+            NSLocalizedString("App backgrounds", comment: "")
+        case .upload:
+            NSLocalizedString("Upload", comment: "")
+        }
+    }
+}
+
 enum ListBackground: String, CaseIterable {
     case abstract, city, nature, sports
     

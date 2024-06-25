@@ -23,7 +23,11 @@ extension SavedMediaView {
                 }
             }
         }
-        @Published var selectedListIndex = 0
+        @Published var selectedListIndex = 0 {
+            didSet {
+                needsImageReload.toggle()
+            }
+        }
         @Published var showFilters = false
         @Published var showUserLists = false
         @Published var searchText = ""
@@ -62,7 +66,13 @@ extension SavedMediaView {
             }
         }
         
-        @Published var showBackgroundEditionView = false
+        @Published var showBackgroundEditionView = false {
+            didSet {
+                if !showBackgroundEditionView {
+                    needsImageReload.toggle()
+                }
+            }
+        }
         @Published var backgroundEditionList: UserList? {
             didSet {
                 showBackgroundEditionView = backgroundEditionList != nil
@@ -75,6 +85,9 @@ extension SavedMediaView {
                 showIconEditionView = iconEditionList != nil
             }
         }
+        
+        @Published var backgroundImage: UIImage?
+        @Published var needsImageReload = false
 
         init(
             apiService: APIService,
@@ -130,6 +143,26 @@ extension SavedMediaView {
                 userList: userList,
                 list: mediaItems
             )
+        }
+        
+        func loadBackgroundImage(userLists: [UserList]) {
+            Task {                
+                if let customBackgroundData = userLists[selectedListIndex].customBackground,
+                   let image = UIImage(data: customBackgroundData) {
+                    await updateBackgroundImage(image)
+                } else {
+                    let appBackgroundPath = userLists[selectedListIndex].backgroundPath ?? ListBackground.abstract.imagePath(index: 0)
+                    await updateBackgroundImage(UIImage(named: appBackgroundPath))
+                }
+            }
+        }
+        
+        func updateBackgroundImage(_ image: UIImage?) async {
+            await MainActor.run {
+                withAnimation {
+                    backgroundImage = image
+                }
+            }
         }
     }
 }

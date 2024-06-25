@@ -151,6 +151,9 @@
         }
       }
     },
+    "App backgrounds" : {
+
+    },
     "App icon" : {
       "localizations" : {
         "es" : {
@@ -730,6 +733,9 @@
           }
         }
       }
+    },
+    "Pick an image" : {
+
     },
     "Please make sure you are connected to the internet for being able to use the app" : {
       "localizations" : {

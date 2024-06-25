@@ -32,14 +32,14 @@ struct SavedMediaView: View {
         .sensoryFeedback(.success, trigger: viewModel.selectedTab)
         .background(
             ZStack {
-                if viewModel.selectedListIndex < userLists.count {
-                    let imagePath = userLists[viewModel.selectedListIndex].backgroundPath ?? ListBackground.abstract.imagePath(index: 0)
-                    Image(imagePath)
+                if viewModel.selectedListIndex < userLists.count,
+                   let backgroundImage = viewModel.backgroundImage {
+                    Image(uiImage: backgroundImage)
                         .resizable()
                         .scaledToFill()
                         .clipped()
                         .transition(.blurReplace.animation(.default))
-
+                    
                     LinearGradient(
                         colors: [.clear, .black],
                         startPoint: .top,
@@ -94,5 +94,11 @@ struct SavedMediaView: View {
             show: $viewModel.showToast,
             toastInfo: viewModel.toastInfo
         )
+        .onChange(of: viewModel.needsImageReload) { _, _ in
+            viewModel.loadBackgroundImage(userLists: userLists)
+        }
+        .onAppear {
+            viewModel.needsImageReload.toggle()
+        }
     }
 }

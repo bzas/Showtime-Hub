@@ -85,11 +85,14 @@ struct CreateListView: View {
                     HStack{
                         Text("Background")
                         Spacer()
+                        GenericBackgroundPickerView(listBackgroundGenericType: $viewModel.listBackgroundGenericType)
                     }
                     
                     BackgroundPickerView(
                         listBackgroundType: $viewModel.listBackgroundType,
-                        listBackgroundIndex: $viewModel.listBackgroundIndex
+                        listBackgroundIndex: $viewModel.listBackgroundIndex, 
+                        listBackgroundGenericType: $viewModel.listBackgroundGenericType, 
+                        customImage: $viewModel.customBackground
                     )
                 }
                 
@@ -126,10 +129,10 @@ struct CreateListView: View {
         .padding(.top)
         .padding(.horizontal, 25)
         .scrollIndicators(.hidden)
-        .onChange(of: viewModel.tabIndex, { _, newValue in
+        .onChange(of: viewModel.tabIndex) { _, newValue in
             if newValue == 0 {
                 isEditingField = false
             }
-        })
+        }
     }
 }

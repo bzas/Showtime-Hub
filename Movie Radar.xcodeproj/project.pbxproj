@@ -19,6 +19,7 @@
 		482F7CB12C23264D00D01FDF /* EditBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F7CB02C23264D00D01FDF /* EditBackgroundView.swift */; };
 		482F7CB32C23266800D01FDF /* BackgroundPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482F7CB22C23266800D01FDF /* BackgroundPickerView.swift */; };
 		482FBAF12C08C1AC005DA9F4 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482FBAF02C08C1AC005DA9F4 /* NetworkMonitor.swift */; };
+		4833F2D02C29FB5F00FAD695 /* GenericBackgroundPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4833F2CF2C29FB5F00FAD695 /* GenericBackgroundPickerView.swift */; };
 		483C09A12C19BAED00258E71 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483C09A02C19BAED00258E71 /* ImageCache.swift */; };
 		483C09A32C19EFBE00258E71 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483C09A22C19EFBE00258E71 /* ImageLoader.swift */; };
 		483DDF9B2BFBB1A9007677A1 /* ReviewDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483DDF9A2BFBB1A9007677A1 /* ReviewDetailView.swift */; };
@@ -180,6 +181,7 @@
 		482F7CB02C23264D00D01FDF /* EditBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditBackgroundView.swift; sourceTree = "<group>"; };
 		482F7CB22C23266800D01FDF /* BackgroundPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundPickerView.swift; sourceTree = "<group>"; };
 		482FBAF02C08C1AC005DA9F4 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		4833F2CF2C29FB5F00FAD695 /* GenericBackgroundPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericBackgroundPickerView.swift; sourceTree = "<group>"; };
 		483C09A02C19BAED00258E71 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		483C09A22C19EFBE00258E71 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		483DDF9A2BFBB1A9007677A1 /* ReviewDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailView.swift; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 				4846E8772BF8F14C00D7ADAB /* TabViewHeader.swift */,
 				48F562D72C15BC5A0019DF20 /* ScrollOffsetPreferenceKey.swift */,
 				482F7CB22C23266800D01FDF /* BackgroundPickerView.swift */,
+				4833F2CF2C29FB5F00FAD695 /* GenericBackgroundPickerView.swift */,
 				48DA1FD92C24655A00E7E00E /* IconPickerView.swift */,
 				486866CA2C25858800EC154B /* DeleteItemMenu.swift */,
 				481B4ECC2C136170003D1DEB /* Toast */,
@@ -1128,6 +1131,7 @@
 				48A309AB2BF5041900F1733C /* RecommendationsCarouselView.swift in Sources */,
 				48DA1FDC2C24668000E7E00E /* EditIconView.swift in Sources */,
 				48A309AC2BF5041900F1733C /* ReviewCarouselCellView.swift in Sources */,
+				4833F2D02C29FB5F00FAD695 /* GenericBackgroundPickerView.swift in Sources */,
 				48A309A72BF5041900F1733C /* GenreCellView.swift in Sources */,
 				4846E87C2BF8F31200D7ADAB /* SavedMediaGridView.swift in Sources */,
 				48A309A02BF5041900F1733C /* HomeGridView+ViewModel.swift in Sources */,
