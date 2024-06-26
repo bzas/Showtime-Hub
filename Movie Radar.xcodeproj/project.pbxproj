@@ -86,8 +86,8 @@
 		48A309A72BF5041900F1733C /* GenreCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3096A2BF5041900F1733C /* GenreCellView.swift */; };
 		48A309A82BF5041900F1733C /* ImageCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3096C2BF5041900F1733C /* ImageCarouselCellView.swift */; };
 		48A309A92BF5041900F1733C /* ImageCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3096D2BF5041900F1733C /* ImageCarouselView.swift */; };
-		48A309AA2BF5041900F1733C /* RecommendationsCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3096F2BF5041900F1733C /* RecommendationsCarouselCellView.swift */; };
-		48A309AB2BF5041900F1733C /* RecommendationsCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309702BF5041900F1733C /* RecommendationsCarouselView.swift */; };
+		48A309AA2BF5041900F1733C /* MediaCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3096F2BF5041900F1733C /* MediaCarouselCellView.swift */; };
+		48A309AB2BF5041900F1733C /* MediaCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309702BF5041900F1733C /* MediaCarouselView.swift */; };
 		48A309AC2BF5041900F1733C /* ReviewCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309722BF5041900F1733C /* ReviewCarouselCellView.swift */; };
 		48A309AD2BF5041900F1733C /* ReviewCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309732BF5041900F1733C /* ReviewCarouselView.swift */; };
 		48A309AE2BF5041900F1733C /* LinksCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309752BF5041900F1733C /* LinksCarouselCellView.swift */; };
@@ -250,8 +250,8 @@
 		48A3096A2BF5041900F1733C /* GenreCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreCellView.swift; sourceTree = "<group>"; };
 		48A3096C2BF5041900F1733C /* ImageCarouselCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCarouselCellView.swift; sourceTree = "<group>"; };
 		48A3096D2BF5041900F1733C /* ImageCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCarouselView.swift; sourceTree = "<group>"; };
-		48A3096F2BF5041900F1733C /* RecommendationsCarouselCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationsCarouselCellView.swift; sourceTree = "<group>"; };
-		48A309702BF5041900F1733C /* RecommendationsCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendationsCarouselView.swift; sourceTree = "<group>"; };
+		48A3096F2BF5041900F1733C /* MediaCarouselCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCarouselCellView.swift; sourceTree = "<group>"; };
+		48A309702BF5041900F1733C /* MediaCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaCarouselView.swift; sourceTree = "<group>"; };
 		48A309722BF5041900F1733C /* ReviewCarouselCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCarouselCellView.swift; sourceTree = "<group>"; };
 		48A309732BF5041900F1733C /* ReviewCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCarouselView.swift; sourceTree = "<group>"; };
 		48A309752BF5041900F1733C /* LinksCarouselCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinksCarouselCellView.swift; sourceTree = "<group>"; };
@@ -555,6 +555,7 @@
 		48A309582BF5041900F1733C /* Genre Selector */ = {
 			isa = PBXGroup;
 			children = (
+				48A3095C2BF5041900F1733C /* HomeGridView.swift */,
 				48A309572BF5041900F1733C /* GenreSelectorView.swift */,
 				48A309562BF5041900F1733C /* GenreSelectorCellView.swift */,
 			);
@@ -568,7 +569,6 @@
 				48A309592BF5041900F1733C /* DiscoverMediaGridView.swift */,
 				48A3095A2BF5041900F1733C /* GridPlaceholderView.swift */,
 				48A3095B2BF5041900F1733C /* GridCellView.swift */,
-				48A3095C2BF5041900F1733C /* HomeGridView.swift */,
 				48A309602BF5041900F1733C /* HomeGridView+ViewModel.swift */,
 				48A3095E2BF5041900F1733C /* SortSelectorView.swift */,
 			);
@@ -620,13 +620,13 @@
 			path = "Image Carousel";
 			sourceTree = "<group>";
 		};
-		48A309712BF5041900F1733C /* Recommendations Carousel */ = {
+		48A309712BF5041900F1733C /* Media Carousel */ = {
 			isa = PBXGroup;
 			children = (
-				48A3096F2BF5041900F1733C /* RecommendationsCarouselCellView.swift */,
-				48A309702BF5041900F1733C /* RecommendationsCarouselView.swift */,
+				48A309702BF5041900F1733C /* MediaCarouselView.swift */,
+				48A3096F2BF5041900F1733C /* MediaCarouselCellView.swift */,
 			);
-			path = "Recommendations Carousel";
+			path = "Media Carousel";
 			sourceTree = "<group>";
 		};
 		48A309742BF5041900F1733C /* Reviews Carousel */ = {
@@ -661,7 +661,7 @@
 				48A309682BF5041900F1733C /* Actor Carousel */,
 				48A3096B2BF5041900F1733C /* Genre Carousel */,
 				48A3096E2BF5041900F1733C /* Image Carousel */,
-				48A309712BF5041900F1733C /* Recommendations Carousel */,
+				48A309712BF5041900F1733C /* Media Carousel */,
 				48A309742BF5041900F1733C /* Reviews Carousel */,
 				48609A132C10A90B00289E35 /* Provider Carousel */,
 				48A309772BF5041900F1733C /* Social Network Carousel */,
@@ -1108,7 +1108,7 @@
 				48A309EA2BF5044400F1733C /* Link.swift in Sources */,
 				486866C92C24A0EA00EC154B /* ListIconType.swift in Sources */,
 				48A309C02BF5041900F1733C /* RateView.swift in Sources */,
-				48A309AA2BF5041900F1733C /* RecommendationsCarouselCellView.swift in Sources */,
+				48A309AA2BF5041900F1733C /* MediaCarouselCellView.swift in Sources */,
 				48C544D82C0C55D700AE6517 /* ListsView.swift in Sources */,
 				48A3099D2BF5041900F1733C /* HomeGridView.swift in Sources */,
 				48A309B22BF5041900F1733C /* MediaDetailBodyView.swift in Sources */,
@@ -1128,7 +1128,7 @@
 				48A309F92BF5044400F1733C /* PathBuilder.swift in Sources */,
 				48A309982BF5041900F1733C /* GenreSelectorCellView.swift in Sources */,
 				48A309B82BF5041900F1733C /* PersonCarouselCellView.swift in Sources */,
-				48A309AB2BF5041900F1733C /* RecommendationsCarouselView.swift in Sources */,
+				48A309AB2BF5041900F1733C /* MediaCarouselView.swift in Sources */,
 				48DA1FDC2C24668000E7E00E /* EditIconView.swift in Sources */,
 				48A309AC2BF5041900F1733C /* ReviewCarouselCellView.swift in Sources */,
 				4833F2D02C29FB5F00FAD695 /* GenericBackgroundPickerView.swift in Sources */,

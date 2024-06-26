@@ -1,5 +1,5 @@
 //
-//  SimilarMoviesCarouselCellView.swift
+//  MediaCarouselCellView.swift
 //  Movie Radar
 //
 //  Created by Alfonso Boizas Crespo on 1/5/24.
@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-struct RecommendationsCarouselCellView: View {
-    var movie: Media
+struct MediaCarouselCellView: View {
+    var media: Media
     let maxWidth = 200.0
 
     var body: some View {
         VStack(spacing: 2) {
-            AsyncImage(url: movie.wideImageUrl) { image in
+            AsyncImage(url: media.wideImageUrl) { image in
                 image
                     .resizable()
                     .scaledToFill()
@@ -23,7 +23,7 @@ struct RecommendationsCarouselCellView: View {
             .frame(width: maxWidth, height: maxWidth * 0.66)
             .clipped()
 
-            Text(movie.name)
+            Text(media.name)
                 .font(.system(size: 12, weight: .light))
                 .lineLimit(2)
                 .frame(maxWidth: maxWidth - 8, alignment: .topLeading)

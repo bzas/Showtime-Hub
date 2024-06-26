@@ -13,6 +13,11 @@ struct HomeGridView: View {
     var body: some View {
         ScrollView {
             VStack {
+                MediaCarouselView(
+                    recommendationsList: $viewModel.popularList,
+                    detailMediaToShow: $viewModel.detailMediaToShow
+                )
+                
                 SortSelectorView()
                     .environmentObject(viewModel)
 
@@ -27,7 +32,7 @@ struct HomeGridView: View {
             }
             .padding(.horizontal, 6)
             .padding(.bottom, 12)
-            .padding(.top, 48)
+            .padding(.top, 72)
         }
         .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
             if let detailMediaToShow = viewModel.detailMediaToShow {

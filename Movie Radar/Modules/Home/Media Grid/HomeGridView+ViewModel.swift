@@ -23,7 +23,7 @@ extension HomeGridView {
             }
         }
         
-        @Published var upcomingList = MediaList()
+        @Published var popularList = MediaList()
         @Published var genreList = GenreList()
         @Published var discoverList = MediaList()
         @Published var showDetailMedia = false
@@ -67,7 +67,7 @@ extension HomeGridView {
         }
 
         func fetchData() async {
-            await getUpcoming()
+            await getPopular()
             await getGenres()
             await getDiscoverContent()
         }
@@ -82,20 +82,19 @@ extension HomeGridView {
             }
         }
 
-        func getUpcoming() async {
-            if let movieList = await apiService.getUpcomingMovies(page: upcomingList.page) {
-                let itemsToAdd = upcomingList.filteredList(movieList)
-                await MainActor.run {
-                    upcomingList.append(itemsToAdd)
-                }
+        func getPopular() async {
+            guard let mediaList = await apiService.getPopular(type: type) else { return }
+            
+            await MainActor.run {
+                popularList = mediaList
             }
         }
 
         func getGenres() async {
-            if let genreList = await apiService.getGenres(type: type) {
-                await MainActor.run {
-                    self.genreList = genreList
-                }
+            guard let genreList = await apiService.getGenres(type: type) else { return }
+            
+            await MainActor.run {
+                self.genreList = genreList
             }
         }
         
@@ -107,32 +106,33 @@ extension HomeGridView {
 
         func getDiscoverContent() async {
             await updateLoading(true)
-            if let mediaList = await apiService.discoverMedia(
+            guard let mediaList = await apiService.discoverMedia(
                 type: type,
                 genreId: selectedGenre?.id,
                 sortType: type.isMovie ? movieSortType.requestKey : seriesSortType.requestKey,
                 page: discoverList.page
-            ) {
-                let itemsToAdd = discoverList.filteredList(mediaList)
-                let cachedItems = mediaList.results.map { mediaItem in
-                    CachedItem(
-                        key: mediaItem.mediaKey(type: type),
-                        media: mediaItem
-                    )
-                }
-                
-                await ImageCache.shared.load(
-                    items: cachedItems
-                )
-                
-                await MainActor.run {
-                    discoverList.append(itemsToAdd)
-                }
+            ) else {
                 await updateLoading(false)
+                return
             }
+            
+            let itemsToAdd = discoverList.filteredList(mediaList)
+            let cachedItems = mediaList.results.map { mediaItem in
+                CachedItem(
+                    key: mediaItem.mediaKey(type: type),
+                    media: mediaItem
+                )
+            }
+            
+            await ImageCache.shared.load(
+                items: cachedItems
+            )
+            
+            await MainActor.run {
+                discoverList.append(itemsToAdd)
+            }
+            await updateLoading(false)
         }
-
-
 
         func selectGenre(genre: Genre) {
             if selectedGenre == genre {

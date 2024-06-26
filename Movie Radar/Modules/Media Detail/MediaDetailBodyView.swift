@@ -36,8 +36,11 @@ struct MediaDetailBodyView: View {
             ReviewCarouselView()
                 .environmentObject(viewModel)
 
-            SimilarMoviesCarouselView()
-                .environmentObject(viewModel)
+            MediaCarouselView(
+                title: NSLocalizedString("Similar", comment: ""),
+                recommendationsList: $viewModel.recommendationsList,
+                detailMediaToShow: $viewModel.detailMediaToShow
+            )
 
             LinksCarouselView()
                 .environmentObject(viewModel)

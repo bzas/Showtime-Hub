@@ -16,7 +16,8 @@ enum Path: String {
          discoverTv = "/discover/tv",
          detail = "/movie/%@",
          detailTv = "/tv/%@",
-         upcoming = "/movie/upcoming",
+         popular = "/movie/popular",
+         popularTv = "/tv/popular",
          credits = "/movie/%@/credits",
          creditsTv = "/tv/%@/credits",
          recommendations = "/movie/%@/recommendations",
@@ -36,9 +37,12 @@ enum Path: String {
 
 extension APIService {
 
-    // MARK: - /movie/upcoming
-    func getUpcomingMovies(page: Int) async -> MediaList? {
-        guard let request = PathBuilder.request(.upcoming, queryItems: defaultQueryItems) else {
+    // MARK: - /{type}/popular
+    func getPopular(type: MediaType) async -> MediaList? {
+        guard let request = PathBuilder.request(
+            type.isMovie ? .popular : .popularTv,
+            queryItems: defaultQueryItems
+        ) else {
             return nil
         }
 
