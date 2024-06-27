@@ -14,6 +14,15 @@ struct DiscoverMediaGridView: View {
         GridItem(.flexible()),
         GridItem(.flexible())
     ]
+    
+    let iPadColumns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
 
     var body: some View {
         if viewModel.gridItems.isEmpty {
@@ -23,7 +32,7 @@ struct DiscoverMediaGridView: View {
                     .frame(height: 500)
             }
         } else {
-            LazyVGrid(columns: columns, spacing: 8) {      
+            LazyVGrid(columns: UIDevice.isIPad ? iPadColumns : columns, spacing: 8) {
                 ForEach(viewModel.gridItems, id: \.self) { media in
                     GridCellView(
                         media: media,

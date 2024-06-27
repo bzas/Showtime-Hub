@@ -75,6 +75,7 @@ struct SavedMediaListHeaderView: View {
                 let isDefaultList = userList.listType == .defaultList
                 
                 HStack {
+                    Spacer()
                     Button {
                         viewModel.listNewName = userList.title ?? ""
                     } label: {
@@ -172,6 +173,7 @@ struct SavedMediaListHeaderView: View {
                             }
                         }
                     }
+                    Spacer()
                 }
                 .padding(.horizontal, 12)
             }

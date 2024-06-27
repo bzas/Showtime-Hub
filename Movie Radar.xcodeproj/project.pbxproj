@@ -11,6 +11,7 @@
 		48181E372C0CD9940067D5CB /* PlaceholderStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48181E362C0CD9940067D5CB /* PlaceholderStyle.swift */; };
 		481B4EC72C11B801003D1DEB /* ProviderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B4EC62C11B801003D1DEB /* ProviderType.swift */; };
 		481B4ECE2C13617C003D1DEB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B4ECD2C13617C003D1DEB /* Toast.swift */; };
+		481C5FA22C2DEA69007C68F5 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481C5FA12C2DEA69007C68F5 /* UIDevice.swift */; };
 		4823935B2C09AD9F00E7DB24 /* UserListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4823935A2C09AD9F00E7DB24 /* UserListsView.swift */; };
 		4823935D2C09AE3A00E7DB24 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4823935C2C09AE3A00E7DB24 /* UserList.swift */; };
 		4823935F2C09B67800E7DB24 /* UserListsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4823935E2C09B67800E7DB24 /* UserListsCellView.swift */; };
@@ -173,6 +174,7 @@
 		48181E362C0CD9940067D5CB /* PlaceholderStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderStyle.swift; sourceTree = "<group>"; };
 		481B4EC62C11B801003D1DEB /* ProviderType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderType.swift; sourceTree = "<group>"; };
 		481B4ECD2C13617C003D1DEB /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		481C5FA12C2DEA69007C68F5 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		4823935A2C09AD9F00E7DB24 /* UserListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListsView.swift; sourceTree = "<group>"; };
 		4823935C2C09AE3A00E7DB24 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
 		4823935E2C09B67800E7DB24 /* UserListsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListsCellView.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				48A309432BF5040700F1733C /* Colors.swift */,
 				48A309442BF5040700F1733C /* View.swift */,
 				48F562D12C14D8BE0019DF20 /* Int.swift */,
+				481C5FA12C2DEA69007C68F5 /* UIDevice.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1039,6 +1042,7 @@
 				48A309C42BF5041900F1733C /* MainTabView.swift in Sources */,
 				48A309A32BF5041900F1733C /* ImageDetailView.swift in Sources */,
 				486866D22C262E3200EC154B /* SearchResult.swift in Sources */,
+				481C5FA22C2DEA69007C68F5 /* UIDevice.swift in Sources */,
 				48A3094D2BF5040700F1733C /* Colors.swift in Sources */,
 				48A309472BF5040700F1733C /* ActivityView.swift in Sources */,
 				4850F7242C1F699C0061C6AC /* ListBackground.swift in Sources */,
@@ -1330,7 +1334,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Boizas.Showtime-Hub";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1365,7 +1369,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.1.1;
+				MARKETING_VERSION = 2.1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "Boizas.Showtime-Hub";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
