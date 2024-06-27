@@ -73,6 +73,7 @@ struct ListsView: View {
                 if userLists.isEmpty {
                     Text("No lists created yet")
                         .foregroundStyle(.white)
+                        .multilineTextAlignment(.center)
                         .padding()
                 } else {
                     ForEach(Array(userLists.enumerated()), id: \.1.self) { index, userList in
