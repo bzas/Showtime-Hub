@@ -15,7 +15,7 @@ enum ListBackgroundGenericType: String, CaseIterable {
         case .app:
             NSLocalizedString("App backgrounds", comment: "")
         case .upload:
-            NSLocalizedString("Upload", comment: "")
+            NSLocalizedString("Upload from gallery", comment: "")
         }
     }
 }

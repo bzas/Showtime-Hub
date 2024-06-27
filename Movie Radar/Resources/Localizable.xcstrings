@@ -152,7 +152,14 @@
       }
     },
     "App backgrounds" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fondos de la app"
+          }
+        }
+      }
     },
     "App icon" : {
       "localizations" : {
@@ -735,7 +742,14 @@
       }
     },
     "Pick an image" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige una imagen"
+          }
+        }
+      }
     },
     "Please make sure you are connected to the internet for being able to use the app" : {
       "localizations" : {
@@ -1018,7 +1032,14 @@
       }
     },
     "Symbol" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Símbolo"
+          }
+        }
+      }
     },
     "System icon" : {
       "localizations" : {
@@ -1060,11 +1081,25 @@
         }
       }
     },
-    "Upload" : {
-
+    "Upload from gallery" : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cargar de la galería"
+          }
+        }
+      }
     },
     "Upload image" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cargar imagen"
+          }
+        }
+      }
     },
     "Version" : {
       "localizations" : {
