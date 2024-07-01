@@ -111,7 +111,6 @@
 		48A309C02BF5041900F1733C /* RateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3098B2BF5041900F1733C /* RateView.swift */; };
 		48A309C12BF5041900F1733C /* Settings+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3098C2BF5041900F1733C /* Settings+ViewModel.swift */; };
 		48A309C22BF5041900F1733C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3098D2BF5041900F1733C /* SettingsView.swift */; };
-		48A309C32BF5041900F1733C /* DataProvidersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3098E2BF5041900F1733C /* DataProvidersView.swift */; };
 		48A309C42BF5041900F1733C /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309902BF5041900F1733C /* MainTabView.swift */; };
 		48A309E52BF5044400F1733C /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309C52BF5044400F1733C /* LocalStorage.swift */; };
 		48A309E62BF5044400F1733C /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309C72BF5044400F1733C /* Genre.swift */; };
@@ -277,7 +276,6 @@
 		48A3098B2BF5041900F1733C /* RateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RateView.swift; sourceTree = "<group>"; };
 		48A3098C2BF5041900F1733C /* Settings+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Settings+ViewModel.swift"; sourceTree = "<group>"; };
 		48A3098D2BF5041900F1733C /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		48A3098E2BF5041900F1733C /* DataProvidersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvidersView.swift; sourceTree = "<group>"; };
 		48A309902BF5041900F1733C /* MainTabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		48A309C52BF5044400F1733C /* LocalStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		48A309C72BF5044400F1733C /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
@@ -698,7 +696,6 @@
 				48A3098B2BF5041900F1733C /* RateView.swift */,
 				48A3098C2BF5041900F1733C /* Settings+ViewModel.swift */,
 				48A3098D2BF5041900F1733C /* SettingsView.swift */,
-				48A3098E2BF5041900F1733C /* DataProvidersView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1063,7 +1060,6 @@
 				48A309E92BF5044400F1733C /* MediaImage.swift in Sources */,
 				48F38C022BF69A96003F0CD0 /* SeriesGridSortType.swift in Sources */,
 				48289DE32BF5084B00C7F68B /* MainHomeView.swift in Sources */,
-				48A309C32BF5041900F1733C /* DataProvidersView.swift in Sources */,
 				485E800A2C08CFD20042ED4C /* NoInternetPopUpView.swift in Sources */,
 				48A309E72BF5044400F1733C /* GenreList.swift in Sources */,
 				48A309932BF5041900F1733C /* SavedMedia+ViewModel.swift in Sources */,

@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct RateView: View {
-    @Environment(\.requestReview) var requestReview
-
     var body: some View {
-        Button {
-            requestReview()
-        } label: {
+        Link(destination: URL(string: "https://apps.apple.com/es/app/showtime-hub-cine-y-series/id6503365201")!) {
             HStack {
                 Text("Rate on the App Store")
                 Spacer()
@@ -24,6 +20,5 @@ struct RateView: View {
             }
             .contentShape(Rectangle())
         }
-        .buttonStyle(PlainButtonStyle())
     }
 }

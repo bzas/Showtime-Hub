@@ -37,8 +37,29 @@ struct SettingsView: View {
             }
 
             Section(header: Text("Powered by")) {
-                DataProvidersView()
-                    .environmentObject(viewModel)
+                Link(destination: URL(string: "https://www.themoviedb.org")!) {
+                    HStack {
+                        Text("The Movie DB")
+                        Spacer()
+                        Image("tmdbLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 15)
+                            .clipped()
+                    }
+                }
+                
+                Link(destination: URL(string: "https://www.justwatch.com")!) {
+                    HStack {
+                        Text("JustWatch")
+                        Spacer()
+                        Image("justWatchLogo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 15)
+                            .clipped()
+                    }
+                }
             }
         }
         .scrollIndicators(.hidden)
