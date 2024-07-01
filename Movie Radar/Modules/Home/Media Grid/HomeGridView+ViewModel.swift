@@ -23,7 +23,6 @@ extension HomeGridView {
             }
         }
         
-        @Published var popularList = MediaList()
         @Published var genreList = GenreList()
         @Published var discoverList = MediaList()
         @Published var showDetailMedia = false
@@ -67,7 +66,6 @@ extension HomeGridView {
         }
 
         func fetchData() async {
-            await getPopular()
             await getGenres()
             await getDiscoverContent()
         }
@@ -79,14 +77,6 @@ extension HomeGridView {
             discoverList = MediaList()
             Task {
                 await getDiscoverContent()
-            }
-        }
-
-        func getPopular() async {
-            guard let mediaList = await apiService.getPopular(type: type) else { return }
-            
-            await MainActor.run {
-                popularList = mediaList
             }
         }
 

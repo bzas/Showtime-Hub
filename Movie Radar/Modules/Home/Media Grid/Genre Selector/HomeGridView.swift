@@ -12,28 +12,33 @@ struct HomeGridView: View {
 
     var body: some View {
         ScrollView {
-            VStack {
-                MediaCarouselView(
-                    recommendationsList: $viewModel.popularList,
+            VStack(spacing: 0) {
+                DiscoverHeaderView(
+                    media: viewModel.discoverList.results.first,
                     detailMediaToShow: $viewModel.detailMediaToShow
                 )
-                
-                SortSelectorView()
-                    .environmentObject(viewModel)
 
-                GenreSelectorView()
-                    .environmentObject(viewModel)
+                VStack {
+                    SortSelectorView()
+                        .environmentObject(viewModel)
 
-                DiscoverMediaGridView()
-                    .environmentObject(viewModel)
-                
-                ProgressView()
-                    .frame(height: 75)
+                    GenreSelectorView()
+                        .environmentObject(viewModel)
+
+                    DiscoverMediaGridView()
+                        .environmentObject(viewModel)
+                    
+                    ProgressView()
+                        .frame(height: 75)
+                }
+                .padding(.horizontal, 6)
+                .background(.black)
+
             }
-            .padding(.horizontal, 6)
             .padding(.bottom, 12)
-            .padding(.top, 72)
+            .background(.black)
         }
+        .ignoresSafeArea(edges: .top)
         .fullScreenCover(isPresented: $viewModel.showDetailMedia) {
             if let detailMediaToShow = viewModel.detailMediaToShow {
                 MediaDetailView(

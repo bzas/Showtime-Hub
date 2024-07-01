@@ -69,6 +69,16 @@ class Media: Codable, Hashable {
             )
         )
     }
+    
+    var originalWideImageUrl: URL? {
+        guard let backdropPath else { return nil }
+        return URL(
+            string: PathBuilder.image(
+                type: .original,
+                imagePath: backdropPath
+            )
+        )
+    }
 
     var wideImageUrl: URL? {
         guard let backdropPath else { return nil }
