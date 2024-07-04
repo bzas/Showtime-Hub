@@ -42,7 +42,7 @@ struct SavedMediaGridView: View {
                         Text("No items saved yet")
                             .shadow(radius: 2)
                             .frame(maxWidth: .infinity)
-                            .frame(height: UIScreen.main.bounds.height / 2)
+                            .frame(height: 100)
                         Spacer()
                     }
                 } else {

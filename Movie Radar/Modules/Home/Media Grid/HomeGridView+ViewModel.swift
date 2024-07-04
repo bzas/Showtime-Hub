@@ -17,7 +17,7 @@ extension HomeGridView {
         @Published var showToast = false
         @Published var toastInfo: ToastInfo? {
             didSet {
-                withAnimation(.spring) {
+                withAnimation(.spring(duration: 0.3)) {
                     showToast = true
                 }
             }

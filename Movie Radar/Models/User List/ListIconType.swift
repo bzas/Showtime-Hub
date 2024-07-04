@@ -17,7 +17,7 @@ enum ListIconType: CaseIterable {
         case .systemSymbol:
             NSLocalizedString("Symbol", comment: "")
         case .upload:
-            NSLocalizedString("Upload from gallery", comment: "")
+            NSLocalizedString("Upload", comment: "")
         }
     }
 }

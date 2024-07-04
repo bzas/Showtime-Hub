@@ -24,7 +24,7 @@ extension SearchView {
         @Published var showToast = false
         @Published var toastInfo: ToastInfo? {
             didSet {
-                withAnimation(.spring) {
+                withAnimation(.spring(duration: 0.3)) {
                     showToast = true
                 }
             }
@@ -51,8 +51,10 @@ extension SearchView {
             let allSearchResults = await apiService.searchAllMedia(queryString: searchText)
             await MainActor.run {
                 searchResults = allSearchResults
-                isLoading = false
             }
+            
+            try? await Task.sleep(nanoseconds: 250_000_000)
+            await updateLoading(false)
         }
         
         func updateLoading(_ value: Bool) async {

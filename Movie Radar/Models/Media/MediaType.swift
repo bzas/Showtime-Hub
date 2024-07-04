@@ -30,7 +30,7 @@ enum MediaType: String, Codable, CaseIterable {
         case .movie:
             NSLocalizedString("Movie", comment: "")
         case .tv:
-            NSLocalizedString("Series", comment: "")
+            NSLocalizedString("Serie", comment: "")
         case .all:
             NSLocalizedString("All", comment: "")
         }

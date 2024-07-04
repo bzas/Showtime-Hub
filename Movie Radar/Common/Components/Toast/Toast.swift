@@ -38,7 +38,7 @@ struct Toast: View {
     }
     
     func dismissToast() {
-        withAnimation(.spring(duration: 0.25)) {
+        withAnimation(.spring(duration: 0.15)) {
             show = false
         }
     }

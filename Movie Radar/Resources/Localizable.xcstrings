@@ -964,6 +964,16 @@
         }
       }
     },
+    "Serie" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Series"
+          }
+        }
+      }
+    },
     "Series" : {
       "localizations" : {
         "es" : {
@@ -1087,7 +1097,11 @@
         }
       }
     },
+    "Upload" : {
+
+    },
     "Upload from gallery" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {

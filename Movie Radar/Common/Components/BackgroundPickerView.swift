@@ -33,7 +33,7 @@ struct BackgroundPickerView: View {
                             Image(imagePath)
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: 100, height: 150)
+                                .frame(width: 150, height: 225)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
                                 .padding(6)
                                 .background(
@@ -70,8 +70,9 @@ struct BackgroundPickerView: View {
                         }
                 }
             }
-            .frame(width: 150, height: 225)
+            .frame(width: 175, height: 260)
             .clipShape(RoundedRectangle(cornerRadius: 10))
+            .padding(.top, 12)
             .onChange(of: imageItem) {
                 Task {
                     if let imageData = try? await imageItem?.loadTransferable(type: Data.self) {

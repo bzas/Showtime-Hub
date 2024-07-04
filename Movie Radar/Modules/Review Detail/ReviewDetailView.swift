@@ -52,7 +52,7 @@ struct ReviewDetailView: View {
             }
             .background(.clear)
             .onTapGesture {
-                withAnimation(.spring(duration: 0.25)) {
+                withAnimation(.spring(duration: 0.15)) {
                     viewModel.showDetail = false
                 }
             }

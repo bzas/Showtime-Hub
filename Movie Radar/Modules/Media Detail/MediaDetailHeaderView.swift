@@ -53,7 +53,7 @@ struct MediaDetailHeaderView: View {
                         viewModel.updateZoom(value.y)
                     }
             }
-            .frame(height: 600)
+            .frame(height: viewModel.imageHeaderHeight)
 
             LinearGradient(
                 stops: [

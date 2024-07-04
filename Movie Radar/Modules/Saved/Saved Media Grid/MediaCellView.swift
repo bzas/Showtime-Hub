@@ -80,6 +80,9 @@ struct MediaCellView: View {
                 .scaleEffect(phase.isIdentity ? 1 : 0.9)
                 .blur(radius: phase.isIdentity ? 0 : 1)
         }
+        .onAppear {
+            makeCellVisible()
+        }
     }
     
     @ViewBuilder
@@ -91,16 +94,6 @@ struct MediaCellView: View {
                 .frame(width: 80)
                 .clipped()
                 .cornerRadius(5)
-                .onAppear {
-                    makeCellVisible()
-                }
-        } else if imageLoader.loadingFailed {
-            PlaceholderView()
-                .frame(width: 80, height: 120)
-                .cornerRadius(5)
-                .onAppear {
-                    makeCellVisible()
-                }
         } else {
             PlaceholderView()
                 .frame(width: 80, height: 120)

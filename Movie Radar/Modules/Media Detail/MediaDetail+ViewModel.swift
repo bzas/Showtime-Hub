@@ -23,7 +23,7 @@ extension MediaDetailView {
         @Published var showToast = false
         @Published var toastInfo: ToastInfo? {
             didSet {
-                withAnimation(.spring) {
+                withAnimation(.spring(duration: 0.3)) {
                     showToast = true
                 }
             }
@@ -44,14 +44,18 @@ extension MediaDetailView {
         @Published var showDetailImage = false
         @Published var imageIndexToShow: Int? {
             didSet {
-                showDetailImage.toggle()
+                withAnimation(.spring(duration: 0.3)) {
+                    showDetailImage.toggle()
+                }
             }
         }
         
         @Published var showDetailSeason = false
         @Published var seasonIndexToShow: Int? {
             didSet {
-                showDetailSeason.toggle()
+                withAnimation(.spring(duration: 0.3)) {
+                    showDetailSeason.toggle()
+                }
             }
         }
 
@@ -72,7 +76,7 @@ extension MediaDetailView {
         @Published var showDetailReview = false
         @Published var reviewIndexToShow: Int? {
             didSet {
-                withAnimation(.spring) {
+                withAnimation(.spring(duration: 0.3)) {
                     showDetailReview.toggle()
                 }
             }
@@ -83,6 +87,13 @@ extension MediaDetailView {
         @Published var showHeaderInfo = false
         @Published var showHeaderGradient = false
         @Published var imageZoom = 0.0
+        
+        var imageHeaderHeight: CGFloat {
+            if UIDevice.isIPad {
+                return max(600, UIScreen.main.bounds.height * 0.75)
+            }
+            return min(600, UIScreen.main.bounds.height * 0.75)
+        }
 
         init(
             apiService: APIService,

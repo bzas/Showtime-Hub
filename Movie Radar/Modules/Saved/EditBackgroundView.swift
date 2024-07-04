@@ -48,7 +48,7 @@ struct EditBackgroundView: View {
             )
         }
         .padding()
-        .presentationDetents([.height(300)])
+        .presentationDetents([.height(375)])
     }
     
     func save() {

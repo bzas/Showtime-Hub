@@ -31,9 +31,7 @@ struct ImageCarouselView: View {
                         ForEach(Array(viewModel.imageList.posters.enumerated()), id: \.1.self) { (index, imageInfo) in
                             ImageCarouselCellView(imageInfo: imageInfo)
                                 .onTapGesture {
-                                    withAnimation {
-                                        viewModel.imageIndexToShow = index
-                                    }
+                                    viewModel.imageIndexToShow = index
                                 }
                         }
                     }

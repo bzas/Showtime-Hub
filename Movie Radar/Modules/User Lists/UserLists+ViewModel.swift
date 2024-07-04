@@ -30,7 +30,7 @@ extension UserListsView {
         @Published var showToast = false
         @Published var toastInfo: ToastInfo? {
             didSet {
-                withAnimation(.spring) {
+                withAnimation(.spring(duration: 0.3)) {
                     showToast = true
                 }
             }
@@ -136,7 +136,7 @@ extension UserListsView {
         }
         
         func dismiss() {
-            withAnimation(.bouncy(duration: 0.3)) {
+            withAnimation(.spring(duration: 0.15)) {
                 showDetail = false
             }
         }

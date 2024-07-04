@@ -30,8 +30,8 @@ struct SavedMediaListHeaderView: View {
                             .frame(width: 30, height: 30)
                             .clipShape(RoundedRectangle(cornerRadius: 5))
                             .shadow(radius: 2)
-                    } else {
-                        Image(systemName: userList.imageName ?? "")
+                    } else if let imageName = userList.imageName {
+                        Image(systemName: imageName)
                             .resizable()
                             .scaledToFit()
                             .foregroundStyle(userList.colorInfo?.color ?? .white)
@@ -47,7 +47,7 @@ struct SavedMediaListHeaderView: View {
                 }
                 
                 Button {
-                    withAnimation(.spring) {
+                    withAnimation(.spring(duration: 0.3)) {
                         viewModel.showUserLists.toggle()
                     }
                 } label: {

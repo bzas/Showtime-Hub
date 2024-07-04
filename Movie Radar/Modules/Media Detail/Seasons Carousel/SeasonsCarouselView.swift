@@ -27,9 +27,7 @@ struct SeasonsCarouselView: View {
                         ForEach(seasons, id: \.1.self) { (index, season) in
                             SeasonCellView(season: season)
                                 .onTapGesture {
-                                    withAnimation {
-                                        viewModel.seasonIndexToShow = index
-                                    }
+                                    viewModel.seasonIndexToShow = index
                                 }
                         }
                     }
