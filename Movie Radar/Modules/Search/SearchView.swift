@@ -24,7 +24,7 @@ struct SearchView: View {
                 TextField(
                     "",
                     text: $viewModel.searchText,
-                    prompt: Text("Movies, series, actors...")
+                    prompt: Text("Movies, series, people...")
                 )
                 .focused($isFocused)
                 .submitLabel(.search)

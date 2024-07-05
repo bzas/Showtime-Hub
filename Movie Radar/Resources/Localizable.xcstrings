@@ -112,7 +112,14 @@
       }
     },
     "Actor" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actor"
+          }
+        }
+      }
     },
     "Add to %@" : {
       "localizations" : {
@@ -205,7 +212,14 @@
       }
     },
     "Artist" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artista"
+          }
+        }
+      }
     },
     "Background" : {
       "localizations" : {
@@ -238,7 +252,14 @@
       }
     },
     "Camera" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cámara"
+          }
+        }
+      }
     },
     "Cancel" : {
       "localizations" : {
@@ -311,7 +332,14 @@
       }
     },
     "Crew" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personal"
+          }
+        }
+      }
     },
     "Default" : {
       "localizations" : {
@@ -344,7 +372,14 @@
       }
     },
     "Director" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Director"
+          }
+        }
+      }
     },
     "Discover" : {
       "localizations" : {
@@ -477,7 +512,14 @@
       }
     },
     "JustWatch" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JustWatch"
+          }
+        }
+      }
     },
     "Links" : {
       "localizations" : {
@@ -540,10 +582,24 @@
       }
     },
     "Movies & Series" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Películas & Series"
+          }
+        }
+      }
     },
-    "Movies, series, actors..." : {
-
+    "Movies, series, people..." : {
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Películas, series, personas..."
+          }
+        }
+      }
     },
     "My lists" : {
       "localizations" : {
@@ -746,7 +802,14 @@
       }
     },
     "People" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personas"
+          }
+        }
+      }
     },
     "Personalization" : {
       "localizations" : {
@@ -809,7 +872,14 @@
       }
     },
     "Producer" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Productor"
+          }
+        }
+      }
     },
     "Rate on the App Store" : {
       "localizations" : {
@@ -971,17 +1041,6 @@
         }
       }
     },
-    "Search..." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Buscar..."
-          }
-        }
-      }
-    },
     "Seasons" : {
       "localizations" : {
         "es" : {
@@ -995,6 +1054,12 @@
     "Serie" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Series"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Series"
@@ -1093,7 +1158,14 @@
       }
     },
     "The Movie DB" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Movie DB"
+          }
+        }
+      }
     },
     "Theme" : {
       "localizations" : {
@@ -1126,15 +1198,11 @@
       }
     },
     "Upload" : {
-
-    },
-    "Upload from gallery" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cargar de la galería"
+            "value" : "Cargar"
           }
         }
       }
@@ -1190,7 +1258,14 @@
       }
     },
     "Writer" : {
-
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guionista"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
