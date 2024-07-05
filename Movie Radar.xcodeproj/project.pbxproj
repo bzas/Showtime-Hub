@@ -13,6 +13,9 @@
 		481B4ECE2C13617C003D1DEB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481B4ECD2C13617C003D1DEB /* Toast.swift */; };
 		481C5FA22C2DEA69007C68F5 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481C5FA12C2DEA69007C68F5 /* UIDevice.swift */; };
 		481C5FA42C2EEFC0007C68F5 /* DiscoverHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481C5FA32C2EEFC0007C68F5 /* DiscoverHeaderView.swift */; };
+		481C5FA62C36D677007C68F5 /* PersonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481C5FA52C36D677007C68F5 /* PersonList.swift */; };
+		481C5FA82C36DA81007C68F5 /* PersonCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481C5FA72C36DA81007C68F5 /* PersonCellView.swift */; };
+		481C5FAA2C37F471007C68F5 /* PersonDepartmentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481C5FA92C37F471007C68F5 /* PersonDepartmentType.swift */; };
 		4823935B2C09AD9F00E7DB24 /* UserListsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4823935A2C09AD9F00E7DB24 /* UserListsView.swift */; };
 		4823935D2C09AE3A00E7DB24 /* UserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4823935C2C09AE3A00E7DB24 /* UserList.swift */; };
 		4823935F2C09B67800E7DB24 /* UserListsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4823935E2C09B67800E7DB24 /* UserListsCellView.swift */; };
@@ -101,8 +104,8 @@
 		48A309B42BF5041900F1733C /* MediaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3097C2BF5041900F1733C /* MediaDetailView.swift */; };
 		48A309B62BF5041900F1733C /* PersonDetail+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A3097F2BF5041900F1733C /* PersonDetail+ViewModel.swift */; };
 		48A309B72BF5041900F1733C /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309802BF5041900F1733C /* PersonDetailView.swift */; };
-		48A309B82BF5041900F1733C /* PersonCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309812BF5041900F1733C /* PersonCarouselCellView.swift */; };
-		48A309B92BF5041900F1733C /* PersonCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309822BF5041900F1733C /* PersonCarouselView.swift */; };
+		48A309B82BF5041900F1733C /* PersonMediaCarouselCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309812BF5041900F1733C /* PersonMediaCarouselCellView.swift */; };
+		48A309B92BF5041900F1733C /* PersonMediaCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309822BF5041900F1733C /* PersonMediaCarouselView.swift */; };
 		48A309BA2BF5041900F1733C /* PersonHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309832BF5041900F1733C /* PersonHeaderView.swift */; };
 		48A309BC2BF5041900F1733C /* AppIconPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309872BF5041900F1733C /* AppIconPickerView.swift */; };
 		48A309BD2BF5041900F1733C /* AppThemePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A309882BF5041900F1733C /* AppThemePickerView.swift */; };
@@ -176,6 +179,9 @@
 		481B4ECD2C13617C003D1DEB /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		481C5FA12C2DEA69007C68F5 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		481C5FA32C2EEFC0007C68F5 /* DiscoverHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverHeaderView.swift; sourceTree = "<group>"; };
+		481C5FA52C36D677007C68F5 /* PersonList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonList.swift; sourceTree = "<group>"; };
+		481C5FA72C36DA81007C68F5 /* PersonCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCellView.swift; sourceTree = "<group>"; };
+		481C5FA92C37F471007C68F5 /* PersonDepartmentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDepartmentType.swift; sourceTree = "<group>"; };
 		4823935A2C09AD9F00E7DB24 /* UserListsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListsView.swift; sourceTree = "<group>"; };
 		4823935C2C09AE3A00E7DB24 /* UserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserList.swift; sourceTree = "<group>"; };
 		4823935E2C09B67800E7DB24 /* UserListsCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListsCellView.swift; sourceTree = "<group>"; };
@@ -266,8 +272,8 @@
 		48A3097C2BF5041900F1733C /* MediaDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaDetailView.swift; sourceTree = "<group>"; };
 		48A3097F2BF5041900F1733C /* PersonDetail+ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersonDetail+ViewModel.swift"; sourceTree = "<group>"; };
 		48A309802BF5041900F1733C /* PersonDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
-		48A309812BF5041900F1733C /* PersonCarouselCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCarouselCellView.swift; sourceTree = "<group>"; };
-		48A309822BF5041900F1733C /* PersonCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCarouselView.swift; sourceTree = "<group>"; };
+		48A309812BF5041900F1733C /* PersonMediaCarouselCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonMediaCarouselCellView.swift; sourceTree = "<group>"; };
+		48A309822BF5041900F1733C /* PersonMediaCarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonMediaCarouselView.swift; sourceTree = "<group>"; };
 		48A309832BF5041900F1733C /* PersonHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonHeaderView.swift; sourceTree = "<group>"; };
 		48A309872BF5041900F1733C /* AppIconPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIconPickerView.swift; sourceTree = "<group>"; };
 		48A309882BF5041900F1733C /* AppThemePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppThemePickerView.swift; sourceTree = "<group>"; };
@@ -425,6 +431,7 @@
 			children = (
 				486866CD2C25AEB400EC154B /* SearchView.swift */,
 				486866CF2C25AEC000EC154B /* Search+ViewModel.swift */,
+				481C5FA72C36DA81007C68F5 /* PersonCellView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -679,8 +686,8 @@
 			children = (
 				48A3097F2BF5041900F1733C /* PersonDetail+ViewModel.swift */,
 				48A309802BF5041900F1733C /* PersonDetailView.swift */,
-				48A309812BF5041900F1733C /* PersonCarouselCellView.swift */,
-				48A309822BF5041900F1733C /* PersonCarouselView.swift */,
+				48A309812BF5041900F1733C /* PersonMediaCarouselCellView.swift */,
+				48A309822BF5041900F1733C /* PersonMediaCarouselView.swift */,
 				48A309832BF5041900F1733C /* PersonHeaderView.swift */,
 			);
 			path = "Person Detail";
@@ -787,6 +794,8 @@
 				48A309D42BF5044400F1733C /* Cast.swift */,
 				48A309D52BF5044400F1733C /* Credits.swift */,
 				48A309D62BF5044400F1733C /* Person.swift */,
+				481C5FA92C37F471007C68F5 /* PersonDepartmentType.swift */,
+				481C5FA52C36D677007C68F5 /* PersonList.swift */,
 				48A309D72BF5044400F1733C /* PersonMedia.swift */,
 				48A309D82BF5044400F1733C /* PersonMediaList.swift */,
 			);
@@ -1044,9 +1053,11 @@
 				486866D22C262E3200EC154B /* SearchResult.swift in Sources */,
 				481C5FA22C2DEA69007C68F5 /* UIDevice.swift in Sources */,
 				48A3094D2BF5040700F1733C /* Colors.swift in Sources */,
+				481C5FA82C36DA81007C68F5 /* PersonCellView.swift in Sources */,
 				48A309472BF5040700F1733C /* ActivityView.swift in Sources */,
 				4850F7242C1F699C0061C6AC /* ListBackground.swift in Sources */,
 				48181E352C0CBCFF0067D5CB /* ColorInfo.swift in Sources */,
+				481C5FA62C36D677007C68F5 /* PersonList.swift in Sources */,
 				48C544DC2C0C818D00AE6517 /* UserLists+ViewModel.swift in Sources */,
 				48A309492BF5040700F1733C /* AppIcon.swift in Sources */,
 				48609A172C10A93300289E35 /* ProviderCarouselCellView.swift in Sources */,
@@ -1095,7 +1106,7 @@
 				48A309A82BF5041900F1733C /* ImageCarouselCellView.swift in Sources */,
 				48A3094E2BF5040700F1733C /* View.swift in Sources */,
 				48609A152C10A92A00289E35 /* ProviderCarouselView.swift in Sources */,
-				48A309B92BF5041900F1733C /* PersonCarouselView.swift in Sources */,
+				48A309B92BF5041900F1733C /* PersonMediaCarouselView.swift in Sources */,
 				4850F7222C1F60A20061C6AC /* SavedMediaListHeaderView.swift in Sources */,
 				48A309A42BF5041900F1733C /* ActorCarouselCellView.swift in Sources */,
 				4846E8662BF7968300D7ADAB /* MediaCrewCellView.swift in Sources */,
@@ -1131,7 +1142,7 @@
 				481B4ECE2C13617C003D1DEB /* Toast.swift in Sources */,
 				48A309F92BF5044400F1733C /* PathBuilder.swift in Sources */,
 				48A309982BF5041900F1733C /* GenreSelectorCellView.swift in Sources */,
-				48A309B82BF5041900F1733C /* PersonCarouselCellView.swift in Sources */,
+				48A309B82BF5041900F1733C /* PersonMediaCarouselCellView.swift in Sources */,
 				48A309AB2BF5041900F1733C /* MediaCarouselView.swift in Sources */,
 				48DA1FDC2C24668000E7E00E /* EditIconView.swift in Sources */,
 				48A309AC2BF5041900F1733C /* ReviewCarouselCellView.swift in Sources */,
@@ -1139,6 +1150,7 @@
 				48A309A72BF5041900F1733C /* GenreCellView.swift in Sources */,
 				4846E87C2BF8F31200D7ADAB /* SavedMediaGridView.swift in Sources */,
 				48A309A02BF5041900F1733C /* HomeGridView+ViewModel.swift in Sources */,
+				481C5FAA2C37F471007C68F5 /* PersonDepartmentType.swift in Sources */,
 				486866CB2C25858800EC154B /* DeleteItemMenu.swift in Sources */,
 				48A309482BF5040700F1733C /* AppGradient.swift in Sources */,
 				48A309B42BF5041900F1733C /* MediaDetailView.swift in Sources */,

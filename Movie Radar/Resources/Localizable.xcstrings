@@ -111,6 +111,9 @@
         }
       }
     },
+    "Actor" : {
+
+    },
     "Add to %@" : {
       "localizations" : {
         "es" : {
@@ -201,6 +204,9 @@
         }
       }
     },
+    "Artist" : {
+
+    },
     "Background" : {
       "localizations" : {
         "es" : {
@@ -230,6 +236,9 @@
           }
         }
       }
+    },
+    "Camera" : {
+
     },
     "Cancel" : {
       "localizations" : {
@@ -301,6 +310,9 @@
         }
       }
     },
+    "Crew" : {
+
+    },
     "Default" : {
       "localizations" : {
         "es" : {
@@ -330,6 +342,9 @@
           }
         }
       }
+    },
+    "Director" : {
+
     },
     "Discover" : {
       "localizations" : {
@@ -523,6 +538,12 @@
           }
         }
       }
+    },
+    "Movies & Series" : {
+
+    },
+    "Movies, series, actors..." : {
+
     },
     "My lists" : {
       "localizations" : {
@@ -724,6 +745,9 @@
         }
       }
     },
+    "People" : {
+
+    },
     "Personalization" : {
       "localizations" : {
         "es" : {
@@ -783,6 +807,9 @@
           }
         }
       }
+    },
+    "Producer" : {
+
     },
     "Rate on the App Store" : {
       "localizations" : {
@@ -945,6 +972,7 @@
       }
     },
     "Search..." : {
+      "extractionState" : "stale",
       "localizations" : {
         "es" : {
           "stringUnit" : {
@@ -1160,6 +1188,9 @@
           }
         }
       }
+    },
+    "Writer" : {
+
     }
   },
   "version" : "1.0"

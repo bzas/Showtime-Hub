@@ -19,7 +19,7 @@ struct PersonDetailView: View {
             GeometryReader { proxy in
                 ScrollView {
                     VStack(spacing: 8) {
-                        PersonMovieHeaderView(proxy: proxy)
+                        PersonHeaderView(proxy: proxy)
                             .environmentObject(viewModel)
 
                         if let biography = viewModel.person?.biography {
@@ -28,10 +28,10 @@ struct PersonDetailView: View {
                                 .padding()
                         }
 
-                        PersonCarouselView(type: .movie)
+                        PersonMediaCarouselView(type: .movie)
                             .environmentObject(viewModel)
                         
-                        PersonCarouselView(type: .tv)
+                        PersonMediaCarouselView(type: .tv)
                             .environmentObject(viewModel)
                     }
                 }

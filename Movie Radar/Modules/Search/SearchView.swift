@@ -8,16 +8,23 @@
 import SwiftUI
 
 struct SearchView: View {
+    @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @StateObject var viewModel: ViewModel
     @FocusState var isFocused: Bool
-
+    
+    let grayGradient = LinearGradient(
+        colors: [UIColor.systemGray5.color],
+        startPoint: .top,
+        endPoint: .bottom
+    )
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 12) {
                 TextField(
                     "",
                     text: $viewModel.searchText,
-                    prompt: Text("Search...")
+                    prompt: Text("Movies, series, actors...")
                 )
                 .focused($isFocused)
                 .submitLabel(.search)
@@ -27,9 +34,7 @@ struct SearchView: View {
                 .background(.ultraThinMaterial)
                 .clipShape(Capsule())
                 .onSubmit {
-                    Task {
-                        await viewModel.searchMedia()
-                    }
+                    viewModel.search()
                 }
                 .overlay {
                     if !viewModel.searchText.isEmpty {
@@ -59,41 +64,93 @@ struct SearchView: View {
             }
             .padding(.horizontal)
             .padding(.top)
-
-            if viewModel.searchResults.isEmpty,
-               !viewModel.searchText.isEmpty,
-               !isFocused {
-                if viewModel.isLoading {
-                    ProgressView()
-                        .frame(maxHeight: .infinity)
-                } else {
-                    Text("No results found")
-                        .frame(maxHeight: .infinity)
-                }
-            } else {
-               ScrollView {
-                    LazyVStack(spacing: 16) {
-                        ForEach(viewModel.searchResults, id: \.self) { searchResult in
-                            MediaCellView(
-                                media: searchResult.media,
-                                type: searchResult.type
-                            )
-                            .onTapGesture {
-                                viewModel.detailResultToShow = searchResult
+            
+            ScrollView {
+                LazyVStack(spacing: 16) {
+                    HStack {
+                        Button {
+                            withAnimation {
+                                viewModel.isShowingMediaResults = true
                             }
-                            .contextMenu {
-                                MediaContextMenu(
-                                    apiService: viewModel.apiService,
+                        } label: {
+                            Text("Movies & Series")
+                                .font(.system(size: 14, weight: .light))
+                                .padding(.horizontal)
+                                .frame(height: 30)
+                                .foregroundStyle(viewModel.isShowingMediaResults ? .black : .white)
+                                .background(viewModel.isShowingMediaResults ? appGradient.value : grayGradient)
+                                .clipShape(Capsule())
+                        }
+                        
+                        Button {
+                            withAnimation {
+                                viewModel.isShowingMediaResults = false
+                            }
+                        } label: {
+                            Text("People")
+                                .font(.system(size: 14, weight: .light))
+                                .padding(.horizontal)
+                                .frame(height: 30)
+                                .foregroundStyle(!viewModel.isShowingMediaResults ? .black : .white)
+                                .background(!viewModel.isShowingMediaResults ? appGradient.value : grayGradient)
+                                .clipShape(Capsule())
+                        }
+                        Spacer()
+                    }
+                    
+                    if viewModel.isShowingMediaResults {
+                        if viewModel.searchMediaResults.isEmpty,
+                           !viewModel.searchText.isEmpty,
+                           !isFocused {
+                            if viewModel.isLoading {
+                                ProgressView()
+                                    .frame(height: 100)
+                            } else {
+                                Text("No results found")
+                                    .frame(height: 100)
+                            }
+                        } else {
+                            ForEach(viewModel.searchMediaResults, id: \.self) { searchResult in
+                                MediaCellView(
                                     media: searchResult.media,
-                                    mediaType: searchResult.type,
-                                    toastInfo: $viewModel.toastInfo
+                                    type: searchResult.type
                                 )
+                                .onTapGesture {
+                                    viewModel.detailResultToShow = searchResult
+                                }
+                                .contextMenu {
+                                    MediaContextMenu(
+                                        apiService: viewModel.apiService,
+                                        media: searchResult.media,
+                                        mediaType: searchResult.type,
+                                        toastInfo: $viewModel.toastInfo
+                                    )
+                                }
+                            }
+                        }
+                    } else {
+                        if viewModel.searchPeopleResults.results.isEmpty,
+                           !viewModel.searchText.isEmpty,
+                           !isFocused {
+                            if viewModel.isLoading {
+                                ProgressView()
+                                    .frame(height: 100)
+                            } else {
+                                Text("No results found")
+                                    .frame(height: 100)
+                            }
+                        } else {
+                            ForEach(viewModel.searchPeopleResults.results, id: \.self) { searchPerson in
+                                PersonCellView(person: searchPerson)
+                                .onTapGesture {
+                                    viewModel.detailPersonIdToShow = searchPerson.id
+                                }
                             }
                         }
                     }
-                    .padding()
-                    .padding(.bottom, 48)
                 }
+                .padding()
+                .padding(.bottom, 48)
             }
             Spacer()
         }
@@ -104,6 +161,16 @@ struct SearchView: View {
                         apiService: viewModel.apiService,
                         media: detailResultToShow.media,
                         type: detailResultToShow.type
+                    )
+                )
+            }
+        }
+        .sheet(isPresented: $viewModel.showDetailPerson) {
+            if let detailPersonIdToShow = viewModel.detailPersonIdToShow {
+                PersonDetailView(
+                    viewModel: .init(
+                        apiService: viewModel.apiService,
+                        personId: detailPersonIdToShow
                     )
                 )
             }

@@ -32,7 +32,7 @@ struct ActorCarouselView: View {
                         ForEach(viewModel.mediaActors, id: \.self) { mediaActor in
                             ActorCarouselCellView(mediaActor: mediaActor)
                                 .onTapGesture {
-                                    viewModel.detailPersonToShow = mediaActor
+                                    viewModel.detailPersonIdToShow = mediaActor.id
                                 }
                         }
                     }

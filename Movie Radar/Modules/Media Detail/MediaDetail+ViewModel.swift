@@ -60,7 +60,7 @@ extension MediaDetailView {
         }
 
         @Published var showDetailPerson = false
-        @Published var detailPersonToShow: Cast? {
+        @Published var detailPersonIdToShow: Int? {
             didSet {
                 showDetailPerson.toggle()
             }
@@ -118,6 +118,7 @@ extension MediaDetailView {
             if let mediaDetail = await apiService.getDetail(type: type, id: media.id) {
                 let crew = mediaDetail.creators?.map {
                     GenericCrew(
+                        id: $0.id,
                         name: $0.name,
                         imageUrl: $0.imageUrl
                     )
@@ -133,6 +134,7 @@ extension MediaDetailView {
             if let movieCredits = await apiService.getMediaActors(type: type, id: media.id) {
                 let crew = movieCredits.directors.map {
                     GenericCrew(
+                        id: $0.id,
                         name: $0.name,
                         imageUrl: $0.imageUrl
                     )

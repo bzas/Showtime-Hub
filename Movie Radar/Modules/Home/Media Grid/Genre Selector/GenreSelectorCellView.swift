@@ -19,16 +19,17 @@ struct GenreSelectorCellView: View {
     )
 
     var body: some View {
-        Text(genre.name)
-            .font(.system(size: 14))
-            .animation(.default)
-            .padding(.horizontal)
-            .frame(height: 30)
-            .foregroundStyle(viewModel.isSelected(genre: genre) ? .black : .white)
-            .background(viewModel.isSelected(genre: genre) ? appGradient.value : grayGradient)
-            .clipShape(Capsule())
-            .onTapGesture {
-                viewModel.selectGenre(genre: genre)
-            }
+        Button {
+            viewModel.selectGenre(genre: genre)
+        } label: {
+            Text(genre.name)
+                .font(.system(size: 14))
+                .animation(.default)
+                .padding(.horizontal)
+                .frame(height: 30)
+                .foregroundStyle(viewModel.isSelected(genre: genre) ? .black : .white)
+                .background(viewModel.isSelected(genre: genre) ? appGradient.value : grayGradient)
+                .clipShape(Capsule())
+        }
     }
 }

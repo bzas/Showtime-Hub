@@ -1,5 +1,5 @@
 //
-//  PersonMovieHeaderView.swift
+//  PersonHeaderView.swift
 //  Movie Radar
 //
 //  Created by Alfonso Boizas Crespo on 7/5/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PersonMovieHeaderView: View {
+struct PersonHeaderView: View {
     @EnvironmentObject var viewModel: PersonDetailView.ViewModel
     var proxy: GeometryProxy
     

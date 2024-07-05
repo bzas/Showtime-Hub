@@ -41,7 +41,7 @@ struct MediaDetailView: View {
             }
         }
         .sheet(isPresented: $viewModel.showDetailPerson) {
-            if let detailPersonId = viewModel.detailPersonToShow?.id {
+            if let detailPersonId = viewModel.detailPersonIdToShow {
                 PersonDetailView(
                     viewModel: .init(
                         apiService: viewModel.apiService,

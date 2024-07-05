@@ -8,6 +8,7 @@
 import Foundation
 
 struct GenericCrew: Hashable {
+    var id: Int
     var name: String?
     var imageUrl: URL?
 }

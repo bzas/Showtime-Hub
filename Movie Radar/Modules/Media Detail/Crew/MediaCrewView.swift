@@ -19,6 +19,9 @@ struct MediaCrewView: View {
                         image: crew.imageUrl,
                         role: viewModel.type.isMovie ? "Director" : "Creator"
                     )
+                    .onTapGesture {
+                        viewModel.detailPersonIdToShow = crew.id
+                    }
                 }
             }
             .scrollTargetLayout()

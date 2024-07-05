@@ -1,5 +1,5 @@
 //
-//  PersonCarouselView.swift
+//  PersonMediaCarouselView.swift
 //  Movie Radar
 //
 //  Created by Alfonso Boizas Crespo on 6/5/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PersonCarouselView: View {
+struct PersonMediaCarouselView: View {
     @AppStorage(LocalStorage.appGradientKey) var appGradient: AppGradient = .white
     @EnvironmentObject var viewModel: PersonDetailView.ViewModel
     let type: MediaType
@@ -31,7 +31,7 @@ struct PersonCarouselView: View {
                 ScrollView(.horizontal) {
                     LazyHGrid(rows: rows, spacing: 16) {
                         ForEach(mediaList, id: \.self) { movie in
-                            PersonCarouselCellView(movie: movie)
+                            PersonMediaCarouselCellView(movie: movie)
                                 .onTapGesture {
                                     if let movieId = movie.id {
                                         viewModel.selectedMediaToShow = Media(id: movieId)

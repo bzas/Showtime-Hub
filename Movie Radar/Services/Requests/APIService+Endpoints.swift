@@ -10,6 +10,7 @@ import Foundation
 enum Path: String {
     case search = "/search/movie",
          searchTv = "/search/tv",
+         searchPerson = "/search/person",
          genres = "/genre/movie/list",
          genresTv = "/genre/tv/list",
          discover = "/discover/movie",
@@ -50,10 +51,11 @@ extension APIService {
     }
     
     func searchAllMedia(queryString: String) async -> [SearchResult] {
-        var moviesList = await searchMedia(
+        let moviesList = await searchMedia(
             type: .movie,
             queryString: queryString
         ) ?? MediaList()
+        
         let seriesList = await searchMedia(
             type: .tv,
             queryString: queryString
@@ -72,6 +74,23 @@ extension APIService {
         }
     }
 
+    // MARK: - /search/person
+    func searchPerson(queryString: String) async -> PersonList? {
+        let queryItems = [
+            URLQueryItem(name: "page", value: "\(1)"),
+            URLQueryItem(name: "query", value: queryString)
+        ] + defaultQueryItems
+
+        guard let request = PathBuilder.request(
+            .searchPerson,
+            queryItems: queryItems
+        ) else {
+            return nil
+        }
+
+        return await perform(request: request)
+    }
+    
     // MARK: - /search/{type}
     func searchMedia(type: MediaType, queryString: String) async -> MediaList? {
         let queryItems = [
