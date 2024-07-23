@@ -106,9 +106,12 @@ struct MediaDetailHeaderView: View {
                                 }
                             )
                             .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-                                withAnimation(.spring(duration: 0.25)) {
-                                    viewModel.isHeaderHidden = value.y <= 0
-                                }
+                                let isHidden = value.y <= 0
+                                if viewModel.isHeaderHidden != isHidden {
+                                    withAnimation(.spring(duration: 0.25)) {
+                                        viewModel.isHeaderHidden = value.y <= 0
+                                    }
+                                }                                
                             }
                         
                         Spacer()
